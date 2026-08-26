@@ -1,0 +1,8 @@
+# Capabilities of dsn-competitive-ui-analyst — by name only, must exist in room manifests
+skills:
+  - design-system-extractor
+tools:
+  - Chrome-DevTools
+  - Playwright
+  - Kitesurf
+  - Filesystem-Scoped

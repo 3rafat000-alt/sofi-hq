@@ -113,5 +113,8 @@ derived
 | str-gate0-classify | 01-strategy | prefix |
 | ui-styling | 03-design | name-family |
 | ui-ux-pro-max | 03-design | name-family |
+| mobbin-scraper | 02-research | explicit-name-rule |
+| design-system-extractor | 03-design | explicit-name-rule |
+| rtl-mirror-validator | 03-design | explicit-name-rule |
 | xlsx | 13-knowledge | knowledge-library-default |
 | xlsx | 13-knowledge | librarian-default |

@@ -25,6 +25,9 @@
 | 02 | [res-journey-map](res-journey-map/SKILL.md) | res-lead | research dossier + journey map + personas (Gate-1) |
 | 03 | [dsn-design-handoff](dsn-design-handoff/SKILL.md) | dsn-lead | UI spec + tokens + a11y → frontend (Contract 03) |
 | 03 | [dsn-design-system-gen](dsn-design-system-gen/SKILL.md) | dsn-lead | design system generation: 3-layer tokens + WCAG 2.2 + React/Flutter |
+| 02 | [mobbin-scraper](mobbin-scraper/SKILL.md) | res-lead | visual platform pattern extraction (Mobbin/PageFlows/Land-book) per Protocol 18 |
+| 03 | [design-system-extractor](design-system-extractor/SKILL.md) | dsn-lead | competitor design-token extraction + comparison vs SOFI system per Protocol 18 |
+| 03 | [rtl-mirror-validator](rtl-mirror-validator/SKILL.md) | dsn-lead | RTL/Arabic layout validation checklist — signature gates DFR (Protocol 18) |
 | 03 | [dsn-design-review](dsn-design-review/SKILL.md) | dsn-lead | design review: Nielsen + axes + P0/P1/P2 findings |
 | 04 | [arc-adr](arc-adr/SKILL.md) | arc-lead | architecture decision: ADR + system design + migration |
 | 05 | [bck-feature-build](bck-feature-build/SKILL.md) | bck-lead | backend feature build + tests + code evidence |

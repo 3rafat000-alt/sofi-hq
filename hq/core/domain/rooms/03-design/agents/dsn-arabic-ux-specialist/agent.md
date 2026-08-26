@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/dsn-arabic-ux-specialist.md

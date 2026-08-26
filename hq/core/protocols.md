@@ -387,6 +387,35 @@ Unjustified context waste = L1 (immediate correction); repeat = L2 with the agen
 
 ---
 
+## Protocol 18 — Visual Research Protocol
+
+### Purpose
+Make visual research methodical, documented, and integrated: agents design from proven real-world
+patterns gathered under protocol — never from random browsing, and never by copying competitors.
+
+### Rules
+
+1. **P-18.1 — Research before design:** `dsn-ui-designer` starts no new screen without (a) a pattern
+   report from `res-visual-pattern-scout` (3–5 examples via the `mobbin-scraper` skill), (b) a
+   competitive analysis from `dsn-competitive-ui-analyst`, and (c) RTL sign-off from
+   `dsn-arabic-ux-specialist`. Violation = L2.
+2. **P-18.2 — Mandatory documentation:** every extracted pattern is filed under
+   `projects/<slug>/brain/visual-patterns/` (one file per pattern: onboarding-flow · checkout-flow ·
+   dashboard-layout · navigation-patterns · rtl/ · competitive/) containing: screenshot URLs,
+   user-flow description, elements breakdown, why-it-works rationale, adaptation notes. Violation = L1.
+3. **P-18.3 — No verbatim copying:** extracting the principle is mandatory, copying the shape is
+   forbidden; every adoption is adapted to the SOFI design system with a distinct SOFI touch.
+   Violation = L3 (intellectual theft).
+4. **P-18.4 — Design-system integration:** every approved pattern lands in the design system
+   (tokens/components/patterns) via `dsn-design-system-gen`, and `hq/core/standards/uiux-standard.md`
+   is updated. Violation = L2.
+5. **P-18.5 — Periodic refresh:** `res-visual-pattern-scout` reviews the binding platforms every 40
+   agent turns, detects new trends, and reports to `dsn-lead` and `brd-cpo`. Violation = L1.
+
+Binding platform list: `hq/core/standards/uiux-standard.md §Visual Inspiration Sources`.
+
+---
+
 ## Protocol Priority
 
 In case of conflict between protocols, resolution follows:

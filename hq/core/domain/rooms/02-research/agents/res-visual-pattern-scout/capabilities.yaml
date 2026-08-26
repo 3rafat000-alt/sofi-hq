@@ -1,0 +1,9 @@
+# Capabilities of res-visual-pattern-scout — by name only, must exist in room manifests
+skills:
+  - mobbin-scraper
+tools:
+  - Context7
+  - DeepWiki
+  - Playwright
+  - Kitesurf
+  - Filesystem-Scoped

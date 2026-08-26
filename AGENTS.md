@@ -64,7 +64,7 @@ The owner speaks Arabic only and is non-technical regarding abstract terms — e
 Applies equally to CEO delivery (L3) and fast-track delivery (L1). Internal agent-to-agent work remains technical as usual. Violation = L1, then L2 on repetition.
 
 ### Law 12 — Registry Invariant
-`hq/core/nexus/registry.yaml` is the official registry of rooms and agents (15 rooms · 111 agents). Any generation or migration must match it or fail loudly. Capsules in `hq/core/domain/rooms/` respect their capability limits (zero skill or tool leakage outside room manifests).
+`hq/core/nexus/registry.yaml` is the official registry of rooms and agents (15 rooms · 114 agents). Any generation or migration must match it or fail loudly. Capsules in `hq/core/domain/rooms/` respect their capability limits (zero skill or tool leakage outside room manifests).
 
 ### Law 13 — Zero-Randomness (INT-GTW-026)
 1. **Triple engine for critical and architectural work:** sequential thinking decomposes dependencies ← tree audit of every asset's path ← strict task tree.
@@ -113,7 +113,7 @@ Violation: routing an over-threshold request = L2 to the gateway agent.
 
 | Reference | Location |
 |-----------|----------|
-| Full protocols (16+1) | `hq/core/protocols.md` |
+| Full protocols (18) | `hq/core/protocols.md` |
 | Communication & return matrix (who→whom · rejections · escalation) | `hq/core/domain/communication-matrix.md` |
 | Inter-room contracts | `hq/core/contracts.md` |
 | Context map (DDD) | `hq/core/domain/context-map.yaml` |
@@ -185,4 +185,4 @@ Completes the laws without replacing them — **writing any line of code before 
 
 ---
 
-*Last updated: 2026-08-26 — Laws 14–16 added by owner order closing the six operational gaps (+3 agents) · amendment (2): priority & cadence package · amendment (3): +2 architecture architects (`arc-security-architect`, `arc-performance-architect`) by owner order → **15 rooms · 111 agents**; full records in `hq/history/` and `system-state-current.md`. Any modification requires brd-ceo approval.*
+*Last updated: 2026-08-26 — Laws 14–16 added by owner order closing the six operational gaps (+3 agents) · amendment (2): priority & cadence package · amendment (3): +2 architecture architects (`arc-security-architect`, `arc-performance-architect`) · amendment (4): Visual Research Protocol 18 + visual feeding system (+3 agents: `res-visual-pattern-scout`, `dsn-competitive-ui-analyst`, `dsn-arabic-ux-specialist`; +3 skills) by owner order → **15 rooms · 114 agents**; full records in `hq/history/` and `system-state-current.md`. Any modification requires brd-ceo approval.*

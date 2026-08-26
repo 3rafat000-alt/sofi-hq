@@ -1,6 +1,6 @@
 # Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
 room: 03-design
-skill-count: 16
+skill-count: 18
 owned-skills:
   - algorithmic-art
   - banner-design
@@ -18,3 +18,5 @@ owned-skills:
   - theme-factory
   - ui-styling
   - ui-ux-pro-max
+  - design-system-extractor
+  - rtl-mirror-validator

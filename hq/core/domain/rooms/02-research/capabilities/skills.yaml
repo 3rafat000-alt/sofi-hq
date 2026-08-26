@@ -1,7 +1,8 @@
 # Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
 room: 02-research
-skill-count: 3
+skill-count: 4
 owned-skills:
   - api-fetcher-specific-domains
   - res-journey-map
   - res-web-scrape
+  - mobbin-scraper

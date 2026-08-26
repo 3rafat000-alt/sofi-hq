@@ -1,4 +1,4 @@
-# SOFI AI Agent Registry — 15 rooms, 111 agents
+# SOFI AI Agent Registry — 15 rooms, 114 agents
 # Source of truth for who exists, their room, and prefix.
 # Routes/budgets live in routing.yaml; persona names in personas.yaml; gates in gates.yaml.
 # 2026-08-26: +3 operational-gap agents by owner order (agile-orchestrator · sandbox-executor · license-auditor) — record: hq/history/2026-08-26-operational-gaps/
@@ -18,12 +18,12 @@ rooms:
     code: "02"
     name_en: UX Research
     prefix: res
-    agents: [lead, ux-researcher, journey-architect, competitor-analyst, data-researcher, fact-checker, web-scout]
+    agents: [lead, ux-researcher, journey-architect, competitor-analyst, data-researcher, fact-checker, web-scout, visual-pattern-scout]
   "03-design":
     code: "03"
     name_en: Visual Design
     prefix: dsn
-    agents: [lead, ui-designer, design-system, brand-designer, content-strategist, motion-designer, a11y-specialist, ux-architect]
+    agents: [lead, ui-designer, design-system, brand-designer, content-strategist, motion-designer, a11y-specialist, ux-architect, competitive-ui-analyst, arabic-ux-specialist]
   "04-architecture":
     code: "04"
     name_en: Architecture

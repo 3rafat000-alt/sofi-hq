@@ -90,3 +90,32 @@ LCP ≤ 2.5s · CLS ≤ 0.1 (dimensions reserved for every image/skeleton) · IN
 
 ---
 *Source of authority: owner decision WEB-2026-0823. Periodic review: every 90 days or upon issuance of an industry standard changing a quantitative clause.*
+
+---
+
+## Visual Inspiration Sources (binding list — Protocol 18)
+
+**Mobile apps patterns:**
+1. Mobbin.com — primary source: most comprehensive, full flows, updated daily
+2. Scrnshts.com — App Store screenshots, detail focus
+3. PageFlows.com — interactive videos, complete user flows
+
+**Websites patterns:**
+1. Land-book.com — landing pages, corporate sites
+2. Awwwards.com — innovative/award-winning web
+
+**Arabic / RTL:**
+1. Ilham.io — Arabic designs, RTL examples
+2. Ehab Fahmy gallery — Arabic visual references
+
+**General inspiration (secondary):**
+1. Dribbble.com — UI shots, micro-interactions
+2. Behance.net — full case studies, UX process
+3. Pinterest.com — visual search, collections
+
+**Usage rules:** research follows Protocol 18 (research-before-design · documented in
+`projects/<slug>/brain/visual-patterns/` · principles extracted not pixels copied · findings
+integrated into the design system). Arabic/RTL validation checklist lives in the
+`rtl-mirror-validator` skill; RTL sign-off gates DFR alongside rooms 09+10.
+
+## FILE: hq/core/standards/uiux-standard.md (appended section)

@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/dsn-competitive-ui-analyst.md

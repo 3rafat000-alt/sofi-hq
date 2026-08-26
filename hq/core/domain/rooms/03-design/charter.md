@@ -12,7 +12,7 @@
 **Purpose:**
 Visual design, design system, branding, UX
 
-**Agent count:** 8
+**Agent count:** 10
 
 ---
 
@@ -24,6 +24,8 @@ Visual design, design system, branding, UX
 - `dsn-brand-designer` — brand-designer
 - `dsn-content-strategist` — content-strategist
 - `dsn-motion-designer` — motion-designer *(scope extended 2026-08-26, owner order: also owns interaction-behavior design)*
+- `dsn-competitive-ui-analyst` — competitive-ui-analyst (added 2026-08-26, owner order)
+- `dsn-arabic-ux-specialist` — arabic-ux-specialist (added 2026-08-26, owner order; RTL signature gates DFR per Protocol 18)
 - `dsn-a11y-specialist` — a11y-specialist
 - `dsn-ux-architect` — ux-architect
 

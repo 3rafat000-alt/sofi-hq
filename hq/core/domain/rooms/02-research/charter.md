@@ -12,7 +12,7 @@
 **Purpose:**
 UX research, competitor analysis, fact checking
 
-**Agent count:** 7
+**Agent count:** 8
 
 ---
 
@@ -25,6 +25,7 @@ UX research, competitor analysis, fact checking
 - `res-data-researcher` — data-researcher
 - `res-fact-checker` — fact-checker
 - `res-web-scout` — web-scout
+- `res-visual-pattern-scout` — visual-pattern-scout (added 2026-08-26, owner order)
 
 **Operational agent definitions:** `.opencode/agent/` — the single source of truth.
 

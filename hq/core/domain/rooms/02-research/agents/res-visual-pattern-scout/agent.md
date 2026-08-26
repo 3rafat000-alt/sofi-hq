@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/res-visual-pattern-scout.md

@@ -1,7 +1,7 @@
 # SOFI HQ
 
 > **An AI enterprise organization** — a complete, constitution-governed multi-agent software company:
-> **15 rooms · 111 agents · 16 binding laws · 9 gates · an S1→S6 production line.**
+> **15 rooms · 114 agents · 16 binding laws · 9 gates · an S1→S6 production line.**
 >
 > SOFI HQ is not a traditional application you "run". It is an *operating organization* for AI coding
 > harnesses: every request enters through a single gateway, gets classified by criticality, and flows
@@ -33,7 +33,7 @@ SOFI HQ models a real software company as an agent hierarchy:
 | Concept | Implementation |
 |---|---|
 | **Rooms** | 15 departments (`00-boardroom` → `14-gateway`), each with its own charter |
-| **Agents** | 111 specialist agents defined as Markdown specs in `.opencode/agent/` |
+| **Agents** | 114 specialist agents defined as Markdown specs in `.opencode/agent/` |
 | **Constitution** | `AGENTS.md` at the root — 16 binding laws, violation levels L1–L4 |
 | **Production line** | Six stages S1–S6: idea → data/contract design → experience → backend → unified UI → shield & production |
 | **Gates** | 0–8 quality gates; artifacts cannot skip stages |
@@ -45,7 +45,12 @@ order on 2026-08-26. Memory folders exist with `ZEROED.md` markers and start fre
 Amendment (3) on the same date added two dedicated architects to room 04 (`arc-security-architect`,
 `arc-performance-architect`) and wired three scope rules into charters: interaction-behavior
 ownership in Design, state ownership for the merged S5 Flutter/Dart team, and mandatory
-builder-authored tests verified by Quality (no duplicate test agents — registry reconciles at 111).
+builder-authored tests verified by Quality (no duplicate test agents). Amendment (4) added the
+**Visual Research Protocol 18** + visual feeding system: `res-visual-pattern-scout` (room 02),
+`dsn-competitive-ui-analyst` + `dsn-arabic-ux-specialist` (room 03, RTL signature gates DFR),
+three skills (`mobbin-scraper`, `design-system-extractor`, `rtl-mirror-validator`), a binding
+platform list in `uiux-standard.md`, and pattern documentation under
+`projects/<slug>/brain/visual-patterns/`.
 
 ### The 15 Rooms
 
@@ -53,8 +58,8 @@ builder-authored tests verified by Quality (no duplicate test agents — registr
 |---|------|------|------|
 | 00 | Boardroom | `brd-ceo` | CEO + CPO/CTO/CQO/CSO + chief-of-staff + arbiter (advisory board) |
 | 01 | Strategy | `str-lead` | Product strategy, PRD, roadmaps, Agile flow tracking |
-| 02 | Research | `res-lead` | Market/user/technical research |
-| 03 | Design | `dsn-lead` | UX flows, design systems, mockups, interaction-behavior specs |
+| 02 | Research | `res-lead` | Market/user/technical research · visual pattern scouting (Mobbin/PageFlows) |
+| 03 | Design | `dsn-lead` | UX flows, design systems, mockups, interaction-behavior specs · competitive UI analysis · Arabic/RTL sign-off gates DFR |
 | 04 | Architecture | `arc-lead` | DDD architecture, API contracts, review · secure-design & performance-by-design architects |
 | 05 | Backend | `bck-lead` | Laravel domain engineering |
 | 06 | Frontend | `fnt-lead` | Web interfaces (Flutter R2 unified standard) |
@@ -119,12 +124,12 @@ SOFI/
 │   ├── core/                  # ALL governance
 │   │   ├── constitution-master.md        # Supreme law, detailed edition
 │   │   ├── constitution_articles/        # Individual constitutional articles
-│   │   ├── protocols.md                  # 16+1 operational protocols (incl. Protocol 10 emergencies)
+│   │   ├── protocols.md                  # 18 operational protocols (incl. Protocol 10 emergencies · 18 visual research)
 │   │   ├── contracts.md                  # Inter-room contract deeds
 │   │   ├── domain/                       # DDD layer: context-map.yaml + rooms/<room>/ capsules
 │   │   │   └── rooms/<room>/             # charter.md · agents/<name>/ capsules (senses/capabilities/memory)
 │   │   ├── nexus/                        # Machine-readable routing brain
-│   │   │   ├── registry.yaml             # ⭐ official registry: 15 rooms · 111 agents
+│   │   │   ├── registry.yaml             # ⭐ official registry: 15 rooms · 114 agents
 │   │   │   ├── routing.yaml              # model routing grid (aliases, budgets)
 │   │   │   ├── pipeline.yaml             # S1–S6 stage/gate machine
 │   │   │   ├── gates.yaml                # gate map & stage_map
@@ -156,8 +161,8 @@ SOFI/
 │   └── <slug>/brain/          # Project memory: CONTEXT · DECISIONS · HANDOFFS · LESSONS
 │
 ├── .opencode/                 # Operating layer — source of truth for agents & skills
-│   ├── agent/*.md             # 111 agent definitions (legal spec source)
-│   └── skills/                # 107 skill packages
+│   ├── agent/*.md             # 114 agent definitions (legal spec source)
+│   └── skills/                # 109 skill packages
 │
 └── .kilo/                     # Mirror layer: generated agent mirrors + commands + local config
 ```
@@ -181,7 +186,7 @@ SOFI/
 | 9 | Chain of Responsibility | Agent owns output · lead owns team · CEO owns system |
 | 10 | Direct-on-Project | Work on the main tree; worktrees forbidden |
 | 11 | Owner Communication | Owner-facing text = clear simple Arabic; internal docs = English |
-| 12 | Registry Invariant | `registry.yaml` must always match reality (15 rooms · 111 agents) |
+| 12 | Registry Invariant | `registry.yaml` must always match reality (15 rooms · 114 agents) |
 | 13 | Zero-Randomness | Triple engine for critical work · `## FILE:` path headers · kebab-case naming |
 | 14 | Double-Rejection | Same task rejected twice → freeze → binding arbitration ≤24h |
 | 15 | License Gate | No dependency merge without recorded license verdict |
@@ -299,7 +304,7 @@ Subagents (room specialists) are invoked hierarchically via Task calls — max d
 
 ```bash
 node hq/core/tooling/port-agents.mjs     # .opencode/agent → .kilo/agent mirror sync
-python3 hq/core/tooling/count_sync.py    # verify counts match the registry (111 expected)
+python3 hq/core/tooling/count_sync.py    # verify counts match the registry (114 expected)
 ```
 
 ### Run the constitutional path guard (Law 13)
@@ -393,7 +398,7 @@ Binding for anyone (human or agent) working in this tree:
    path is forbidden; folders/files use English kebab-case (technical identifiers excepted) (Law 13).
 4. **No worktrees, ever** — all work happens directly on the main tree (Law 10).
 5. **Internal texts in English**, owner-facing communication in clear simple Arabic (Law 11).
-6. **The registry is law** — 15 rooms · 111 agents must always reconcile (Law 12).
+6. **The registry is law** — 15 rooms · 114 agents must always reconcile (Law 12).
 7. **Never edit historical record texts** — append amendments instead; old paths resolve through
    `structure-standard.md`.
 8. **Secrets safety net** — `projects/**/*.env`, `backups/`, vendor and node artifacts are

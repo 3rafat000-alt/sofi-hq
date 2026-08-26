@@ -1,0 +1,8 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 07-mobile
+mcp-tools:
+  - Dart-Flutter
+  - Context7
+  - Filesystem-Scoped
+
+script-tools:

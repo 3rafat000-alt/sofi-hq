@@ -1,0 +1,11 @@
+# Capabilities of sec-license-auditor — by name only, must exist in room manifests
+skills:
+  - api-compliance-checker
+  - sofi-evidence
+  - sofi-handoff
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - WebFetch

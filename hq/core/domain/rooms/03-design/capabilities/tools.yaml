@@ -1,0 +1,9 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 03-design
+mcp-tools:
+  - Chrome-DevTools
+  - Playwright
+  - Kitesurf
+  - Filesystem-Scoped
+
+script-tools:

@@ -1,0 +1,10 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 09-security
+mcp-tools:
+  - Sequential-Thinking
+  - Playwright
+  - Chrome-DevTools
+  - Filesystem-Scoped
+
+script-tools:
+  - tooling/law13_path_guard.py

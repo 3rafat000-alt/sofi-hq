@@ -1,0 +1,7 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 11-devops
+skill-count: 3
+owned-skills:
+  - cicd-pipeline-skill
+  - ops-deploy-runbook
+  - sofi-project-spawn

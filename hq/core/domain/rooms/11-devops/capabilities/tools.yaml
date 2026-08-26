@@ -1,0 +1,8 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 11-devops
+mcp-tools:
+  - Filesystem-Scoped
+
+script-tools:
+  - engine/scripts/*.sh
+  - tooling/docker/*

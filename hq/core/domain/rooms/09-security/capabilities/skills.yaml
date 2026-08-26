@@ -1,0 +1,7 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 09-security
+skill-count: 3
+owned-skills:
+  - api-compliance-checker
+  - sec-mcp-vetting
+  - sec-threat-model

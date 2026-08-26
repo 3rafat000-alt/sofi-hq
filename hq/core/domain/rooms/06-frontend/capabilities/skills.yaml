@@ -1,0 +1,9 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 06-frontend
+skill-count: 5
+owned-skills:
+  - fnt-component-build
+  - fnt-ux-lint
+  - frontend-design
+  - web-artifacts-builder
+  - webapp-testing

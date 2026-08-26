@@ -1,0 +1,65 @@
+# FILE: hq/core/nexus/room-priority.yaml
+# Room Priority & Work-Order Map — owner order 2026-08-26
+#
+# Purpose: single binding reference for room priority tiers and execution order.
+# Precedence: AGENTS.md laws > pipeline.yaml > this map > any charter-local ordering.
+# Companion docs: pipeline-production-line.md (S1–S6 backbone) · routing.yaml (request grid)
+
+version: 1
+date: 2026-08-26
+authority: owner order — "arrange the rooms, the priorities, and the work in order of importance"
+
+priority_tiers:
+
+  T0_spine:
+    rooms: [14-gateway, 00-boardroom]
+    role: >
+      Always-on spine. Every request enters via 14-gateway (Law 1) and every
+      escalation ends at 00-boardroom. Never deprioritized; the gateway
+      classifies the lane before any other room activates.
+    active_stages: all
+
+  T1_design_first:
+    rooms: [01-strategy, 02-research, 04-architecture, 08-data, 03-design]
+    order: "01 -> 02 -> 04+08 (parallel) -> 03"
+    role: >
+      Paper stages. No executable code may exist while a T1 artifact is open.
+      Exit condition for the whole tier: PRD approved, schema + OpenAPI frozen,
+      Design-Freeze Review signed by 09-security and 10-quality (DFR gate).
+    active_stages: [S1, S2, S3]
+
+  T2_execution:
+    rooms: [05-backend, 06-frontend, 07-mobile]
+    order: "05 alone (S4) -> 06+07 as one merged team on Flutter R2 (S5)"
+    role: >
+      Code stages. Activate only after T1 exits clean. Hard rule: backend
+      complete, running, and security-checked before any UI line is written.
+    active_stages: [S4, S5]
+
+  T3_shield:
+    rooms: [09-security, 10-quality, 11-devops, 12-observability]
+    role: >
+      Continuous shield across ALL tiers. Veto powers apply anywhere:
+      cso veto on security, qa rejection returning work upstream through the
+      leads' chain, license gate on every merge (Law 15), Gate-8 observation.
+    active_stages: all
+
+  T4_memory:
+    rooms: [13-knowledge]
+    role: >
+      Continuity layer. Logs every tier's decisions into CORTEX (Law 7).
+      Never blocks a stage; skipping its logging is an L1/L2 violation handled
+      after the fact, not a reason to pause live work.
+
+work_order_rules:
+  - Requests enter only via 14-gateway (Law 1) and flow strictly S1->S6.
+  - Money/security/production/schema work is FATEFUL regardless of size — no tier shortcut applies.
+  - Lane promotion ascends only (fast -> standard -> fateful); it never descends.
+  - A blocked T1 artifact freezes its entire downstream chain until resolved.
+  - T3 rejections return work to the lowest responsible tier through the leads' chain (never sideways).
+
+escalation_priority:
+  1: "SEV-1 incidents (Protocol 10) — everything else pauses"
+  2: "Law-14 double-rejection arbitration (24-hour binding window)"
+  3: "Gate failures blocking an active stage"
+  4: "Scheduled reporting cadence (standards/reporting-cadence.md)"

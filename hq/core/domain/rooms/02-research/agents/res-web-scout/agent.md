@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/res-web-scout.md

@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/obs-insights-analyst.md

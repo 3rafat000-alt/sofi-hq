@@ -1,0 +1,1 @@
+../domain/rooms/03-design/charter.md

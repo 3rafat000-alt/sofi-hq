@@ -1,0 +1,7 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 01-strategy
+skill-count: 3
+owned-skills:
+  - brainstorming
+  - str-gate0-classify
+  - writing-plans

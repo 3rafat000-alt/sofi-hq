@@ -1,0 +1,1 @@
+../domain/rooms/14-gateway/charter.md

@@ -1,0 +1,7 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 01-strategy
+mcp-tools:
+  - DeepWiki
+  - Filesystem-Scoped
+
+script-tools:

@@ -1,0 +1,8 @@
+# Senses — what this agent receives
+listens:
+  - tickets: { from: brd-ceo, type: RCCF }
+dispatches:
+  - tickets: { to: agents-of-11-devops, via: Task }
+escalates:
+  - to: brd-ceo
+forbidden-inputs: [ direct-owner-chat, other-room-tickets ]

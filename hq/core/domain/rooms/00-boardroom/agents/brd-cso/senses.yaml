@@ -1,0 +1,7 @@
+# Senses — what this agent receives
+listens:
+  - escalations: { from: gtw-dispatcher-and-room-leads }
+powers:
+  - cso-veto-absolute-security
+  - arbiter-final-opinion
+forbidden-inputs: [ direct-task-execution ]

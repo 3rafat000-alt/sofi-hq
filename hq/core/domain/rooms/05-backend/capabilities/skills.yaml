@@ -1,0 +1,7 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 05-backend
+skill-count: 3
+owned-skills:
+  - bck-feature-build
+  - laravel-dusk-skill
+  - phpunit-skill

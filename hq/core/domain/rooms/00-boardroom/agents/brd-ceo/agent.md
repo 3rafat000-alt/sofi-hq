@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/brd-ceo.md

@@ -1,0 +1,7 @@
+# Capabilities of gtw-dispatcher — by name only, must exist in room manifests
+skills:
+  - sofi-boot
+  - sofi-mcp-fleet
+tools:
+  - Sequential-Thinking
+  - Filesystem-Scoped

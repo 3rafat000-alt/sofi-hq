@@ -1,0 +1,8 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 14-gateway
+skill-count: 4
+owned-skills:
+  - gtw-intake-route
+  - mcp-builder
+  - sofi-boot
+  - sofi-mcp-fleet

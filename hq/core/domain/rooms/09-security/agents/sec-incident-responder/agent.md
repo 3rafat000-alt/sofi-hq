@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/sec-incident-responder.md

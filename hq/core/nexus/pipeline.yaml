@@ -1,0 +1,131 @@
+meta:
+  version: 2
+  date: "2026-08-23"
+  authority: OWNER-DIRECTIVE-2026-0823-R2
+  source_ticket: SOFI-HQ-INT-0002
+  principle: upfront-comprehensive-design  # the complete approved design exists before any line of code
+
+stages:
+  - id: S1
+    name_ar: "Idea, Strategy & Research"
+    rooms: ["00", "01", "14", "02"]
+    lead: str-lead
+    gate:
+      criteria:
+        - "intake-report issued by gtw-intake-reformer with route classified fast|standard|fateful"
+        - "RCCF work order created and approved by brd-ceo before any execution"
+        - "PRD issued covering MVP scope (str-lead) backed by market & competitor research (res-lead)"
+        - "PRD pinned into projects/<name>/brain/CONTEXT.md"
+    artifacts:
+      in: []
+      out: [intake-report, RCCF, PRD]
+
+  - id: S2
+    name_ar: "Data & Contract Design (paper exclusively — no code, no live databases)"
+    rooms: ["04", "08", "05"]
+    lead: arc-lead
+    contributors: [dat-lead, bck-lead]
+    gate:
+      criteria:
+        - "ERD and schema-contract approved by arc-lead with dat-lead — zero live databases created or migrated"
+        - "openapi-spec authored, approved and frozen conforming api_envelope_v1"
+        - "business logic documented fully on paper — no implementation"
+        - "zero code lines written — verified by git audit before passing the gate"
+        - "UI design (S3) must not start before this gate passes"
+    artifacts:
+      in: [RCCF, PRD]
+      out: [adr, ERD, schema-contract, business-logic-doc, openapi-spec]
+
+  - id: S3
+    name_ar: "Experience & Visual System Design + Design-Freeze Review (DFR)"
+    rooms: ["03", "09", "10"]
+    lead: dsn-lead
+    g3_reviewers: [sec-lead, qa-lead]
+    gate:
+      criteria:
+        - "ux-flows mirror the approved data model and frozen openapi-spec exactly"
+        - "central unified design-system exported: colors, fonts, shared components"
+        - "hi-fi mockups cover web AND mobile from one visual identity"
+        - "DFR sign-off: sec-lead and qa-lead review and approve data + API + UI designs"
+        - "zero code lines written anywhere before DFR approval"
+    artifacts:
+      in: [openapi-spec, schema-contract]
+      out: [ux-flows, design-tokens, hi-fi-mockups, dfr-signoff]
+
+  - id: S4
+    name_ar: "Live Backend Execution"
+    rooms: ["08", "05"]
+    lead: bck-lead
+    gate:
+      criteria:
+        - "live databases activated strictly per approved schema-contract — migrations reversible with rollback plan"
+        - "api-code implements the frozen openapi-spec at 100 percent — contract tests green against the spec"
+        - "backend running end-to-end and security-scanned clean"
+        - "hard rule enforced: rooms 06/07 write zero UI code until this gate passes"
+    artifacts:
+      in: [adr, schema-contract, openapi-spec, ux-flows, design-tokens, hi-fi-mockups, dfr-signoff]
+      out: [live-schema, api-code, backend-security-scan]
+
+  - id: S5
+    name_ar: "Both Interfaces in Parallel with Live Wiring (merged Flutter/Dart team)"
+    rooms: ["06", "07"]
+    parallel: true
+    lead: fnt-lead
+    co_lead: mob-lead
+    stack: flutter-dart-unified
+    gate:
+      criteria:
+        - "rooms 06+07 operate as one integrated interfaces team on the unified Flutter/Dart stack via system skills"
+        - "both web-app and mobile-app built on the approved design system exclusively"
+        - "both consume the frozen openapi-spec contract exclusively"
+        - "live integration against the completed running backend — evidence attached"
+        - "no mocks crossing the service boundary (mocks_cross_boundary_forbidden)"
+    artifacts:
+      in: [api-code, design-tokens, hi-fi-mockups, openapi-spec]
+      out: [web-app, mobile-app, live-integration-evidence]
+
+  - id: S6
+    name_ar: "Shield & Production"
+    rooms: ["09", "10", "11", "12", "13"]
+    lead: qa-lead
+    gate:
+      criteria:
+        - "security-signoff issued by sec-lead with zero unresolved critical findings"
+        - "qa-verdict pass with full integration regression suite green — zero known bugs"
+        - "deploy-runbook includes rollback plan and health checks for servers and stores"
+        - "telemetry dashboards live and knowledge-log updated by knw-lead in CORTEX"
+    artifacts:
+      in: [web-app, mobile-app, live-integration-evidence]
+      out: [security-signoff, qa-verdict, deploy-runbook, telemetry, knowledge-log]
+
+lanes:
+  fast:
+    self_approved: true
+    scope: trivial-reversible
+    excluded: [money, security, prod, schema]
+  standard:
+    approver: brd-ceo
+  fateful:
+    approver: brd-ceo
+    board_required: true
+    cso_veto: true
+
+laws:
+  - design_before_code          # v2: not a single line of code before every design document passes the Design-Freeze Review (DFR)
+  - backend_complete_before_ui  # v2: no interface code before the backend is complete, running, and security-checked
+  - openapi_first
+  - mocks_cross_boundary_forbidden
+  - api_envelope_v1
+  - isolated_json_handoff
+
+non_retroactive: true  # existing projects finish on their contracted stack — v2 applies to new work only
+
+escalation_rule: upgrade-on-higher-risk-never-downgrade
+
+refs:
+  - hq/core/standards/pipeline-production-line.md
+  - hq/core/standards/api-envelope.md
+  - hq/core/standards/ddd-capsule.md
+  - hq/core/standards/knowledge-cx-uiux.md
+  - hq/core/standards/stacks-tech.md
+  - hq/core/nexus/registry.yaml

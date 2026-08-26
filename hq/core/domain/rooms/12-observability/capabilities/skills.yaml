@@ -1,0 +1,5 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 12-observability
+skill-count: 1
+owned-skills:
+  - obs-incident-response

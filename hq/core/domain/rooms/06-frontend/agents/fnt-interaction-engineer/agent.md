@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/fnt-interaction-engineer.md

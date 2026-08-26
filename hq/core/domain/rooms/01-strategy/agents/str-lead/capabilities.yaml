@@ -1,0 +1,5 @@
+# Capabilities of str-lead — by name only, must exist in room manifests
+skills:
+tools:
+  - DeepWiki
+  - Filesystem-Scoped

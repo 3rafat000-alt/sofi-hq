@@ -1,0 +1,6 @@
+# Capabilities of dat-privacy-officer — by name only, must exist in room manifests
+skills:
+tools:
+  - Context7
+  - DeepWiki
+  - Filesystem-Scoped

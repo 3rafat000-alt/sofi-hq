@@ -1,0 +1,34 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 07-mobile
+skill-count: 30
+owned-skills:
+  - appium-skill
+  - dart-add-unit-test
+  - dart-build-cli-app
+  - dart-collect-coverage
+  - dart-fix-runtime-errors
+  - dart-generate-test-mocks
+  - dart-migrate-to-checks-package
+  - dart-resolve-package-conflicts
+  - dart-run-static-analysis
+  - dart-setup-ffi-assets
+  - dart-use-ffigen
+  - dart-use-pattern-matching
+  - dart-use-primary-constructors
+  - detox-skill
+  - espresso-skill
+  - flutter-add-integration-test
+  - flutter-add-widget-preview
+  - flutter-add-widget-test
+  - flutter-apply-architecture-best-practices
+  - flutter-build-responsive-layout
+  - flutter-fix-layout-issues
+  - flutter-implement-json-serialization
+  - flutter-setup-declarative-routing
+  - flutter-setup-localization
+  - flutter-testing-skill
+  - flutter-use-http-package
+  - mob-feature-build
+  - mob-flutter-kb
+  - smartui-skill
+  - xcuitest-skill

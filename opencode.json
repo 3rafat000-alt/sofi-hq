@@ -1,0 +1,37 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "default_agent": "gtw-intake-reformer",
+  "subagent_depth": 6,
+
+  "mcp": {
+    "Context7":            { "type": "remote", "url": "https://mcp.context7.com/mcp", "enabled": true },
+    "DeepWiki":            { "type": "remote", "url": "https://mcp.deepwiki.com/mcp", "enabled": true },
+    "Sequential-Thinking": { "type": "local", "command": ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking"], "enabled": true },
+    "Chrome-DevTools":     { "type": "local", "command": ["npx", "-y", "chrome-devtools-mcp@latest"], "enabled": true },
+    "Playwright":          { "type": "local", "command": ["npx", "-y", "@playwright/mcp@latest"], "enabled": true },
+    "Kitesurf":            { "type": "local", "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--wsEndpoint=wss://kitesurf.cloudflare.app/devtools/browser"], "enabled": true },
+    "Dart-Flutter":        { "type": "local", "command": ["/home/es3dlll/.pub-cache/bin/dart_mcp_server"], "enabled": true },
+    "Filesystem-Scoped":   { "type": "local", "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "/home/es3dlll/Desktop/SOFI"], "enabled": true }
+  },
+
+  "lsp": {
+    "dart":       { "command": ["/usr/local/bin/dart", "language-server"], "extensions": [".dart"] },
+    "typescript": { "command": ["typescript-language-server", "--stdio"], "extensions": [".js", ".jsx", ".ts", ".tsx"] },
+    "python":     { "command": ["pyright-langserver", "--stdio"], "extensions": [".py"] },
+    "php":        { "command": ["intelephense", "--stdio"], "extensions": [".php"] }
+  },
+
+  "agent": {
+    "build":               { "description": "SOFI direct-execution mode: build/edit on the main tree after gateway routing (Law 1 remains binding)" },
+    "plan":                { "description": "SOFI planning mode (read-only): explore and draft plans without modifying files" },
+    "gtw-intake-reformer": { "description": "SOFI gateway — mandatory first entry point: classifies the request (fast/standard/critical) and routes it to the right room" }
+  },
+
+  "permission": {
+    "read": "allow", "edit": "allow", "glob": "allow", "grep": "allow", "list": "allow",
+    "bash": "allow", "task": "allow", "external_directory": "allow", "todowrite": "allow",
+    "question": "allow", "webfetch": "allow", "websearch": "allow", "lsp": "allow",
+    "doom_loop": "allow", "skill": "allow"
+  }
+}

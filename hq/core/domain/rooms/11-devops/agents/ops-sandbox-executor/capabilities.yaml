@@ -1,0 +1,11 @@
+# Capabilities of ops-sandbox-executor — by name only, must exist in room manifests
+skills:
+  - systematic-debugging
+  - ops-deploy-runbook
+  - sofi-evidence
+  - sofi-handoff
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash

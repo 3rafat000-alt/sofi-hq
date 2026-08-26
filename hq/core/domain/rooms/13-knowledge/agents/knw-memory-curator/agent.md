@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/knw-memory-curator.md

@@ -1,0 +1,1 @@
+../domain/rooms/13-knowledge/charter.md

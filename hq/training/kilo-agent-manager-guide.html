@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<!-- FILE: hq/training/kilo-agent-manager-guide.html -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليلك الكامل لإدارة فريق المساعدين الأذكياء — Kilo Agent Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#114b4b;
+    --petrol-dark:#0a3333;
+    --sand:#f6f1e7;
+    --sand-deep:#efe7d6;
+    --copper:#b87333;
+    --copper-soft:#e8d5bd;
+    --ink:#26302e;
+    --ink-soft:#5c6865;
+    --white:#ffffff;
+    --ok:#2e7d4f;
+    --warn:#b3541e;
+    --danger:#9c2f2f;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;
+    background:var(--sand);
+    color:var(--ink);
+    line-height:1.95;
+    font-size:17px;
+  }
+  /* ====== الهيدر ====== */
+  header.hero{
+    background:linear-gradient(135deg,var(--petrol-dark) 0%,var(--petrol) 60%,#17605c 100%);
+    color:var(--white);
+    padding:64px 24px 80px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    bottom:-40px;left:-10%;right:-10%;
+    height:90px;
+    background:var(--sand);
+    border-radius:50% 50% 0 0;
+  }
+  .hero-badge{
+    display:inline-block;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    color:var(--copper-soft);
+    padding:6px 20px;border-radius:999px;
+    font-size:.85rem;margin-bottom:22px;letter-spacing:.4px;
+  }
+  header.hero h1{font-size:clamp(1.7rem,4vw,2.7rem);font-weight:700;line-height:1.5;max-width:900px;margin:0 auto}
+  header.hero p.sub{max-width:760px;margin:18px auto 0;color:#d8e6e3;font-weight:300;font-size:1.08rem}
+  /* ====== التنقل ====== */
+  nav.toc{
+    position:relative;z-index:2;
+    max-width:1000px;margin:-30px auto 0;
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:0 12px 32px rgba(17,75,75,.14);
+    padding:22px 28px;
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  }
+  nav.toc a{
+    color:var(--petrol);text-decoration:none;font-size:.88rem;font-weight:500;
+    padding:8px 16px;border-radius:999px;background:var(--sand);
+    transition:.2s;border:1px solid transparent;
+  }
+  nav.toc a:hover{background:var(--petrol);color:var(--white)}
+  /* ====== الحاويات ====== */
+  main{max-width:1000px;margin:0 auto;padding:50px 22px 90px}
+  section.card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:38px 36px;
+    margin-bottom:34px;
+    box-shadow:0 4px 18px rgba(38,48,46,.06);
+    scroll-margin-top:24px;
+  }
+  h2.sec-title{
+    display:flex;align-items:center;gap:14px;
+    color:var(--petrol-dark);font-size:1.45rem;font-weight:700;
+    margin-bottom:8px;
+  }
+  .sec-num{
+    flex:none;width:44px;height:44px;border-radius:12px;
+    background:var(--petrol);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:1.15rem;font-weight:700;
+  }
+  p.sec-intro{color:var(--ink-soft);margin-bottom:22px;font-size:.98rem}
+  h3{color:var(--petrol);font-size:1.12rem;margin:26px 0 10px;font-weight:600}
+  ul.clean,ol.clean{padding-right:22px;margin-bottom:14px}
+  ul.clean li,ol.clean li{margin-bottom:9px}
+  strong{color:var(--petrol-dark)}
+  /* ====== صناديق خاصة ====== */
+  .box{
+    border-radius:12px;padding:18px 22px;margin:18px 0;font-size:.95rem;
+    border-right:5px solid;
+  }
+  .box.tip{background:#eef6ef;border-color:var(--ok)}
+  .box.warn{background:#fbf1e6;border-color:var(--copper)}
+  .box.stop{background:#faecec;border-color:var(--danger)}
+  .box.info{background:#edf4f4;border-color:var(--petrol)}
+  .box .box-t{font-weight:700;margin-bottom:6px;display:block}
+  .box.tip .box-t{color:var(--ok)}
+  .box.warn .box-t{color:var(--warn)}
+  .box.stop .box-t{color:var(--danger)}
+  .box.info .box-t{color:var(--petrol-dark)}
+  /* ====== المفاتيح ====== */
+  kbd{
+    direction:ltr;display:inline-block;
+    background:linear-gradient(180deg,#fff,#eceae4);
+    border:1px solid #cfc9bb;border-bottom-width:3px;
+    border-radius:7px;padding:1px 9px;
+    font-family:inherit;font-size:.85rem;font-weight:600;color:var(--ink);
+  }
+  /* ====== الجداول ====== */
+  table.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:.93rem}
+  table.tbl th{
+    background:var(--petrol);color:#fff;padding:11px 14px;text-align:right;
+    font-weight:600;
+  }
+  table.tbl td{padding:11px 14px;border-bottom:1px solid #eee5d4;vertical-align:top}
+  table.tbl tr:nth-child(even) td{background:#fbf8f1}
+  /* ====== بطاقات المقارنة (الأنماط) ====== */
+  .modes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:18px}
+  .mode-card{
+    border:1px solid #e8dfcd;border-radius:14px;padding:20px;background:#fdfbf5;
+    border-top:4px solid var(--petrol);
+  }
+  .mode-card.c2{border-top-color:var(--copper)}
+  .mode-card h4{color:var(--petrol-dark);font-size:1rem;margin-bottom:6px;font-weight:700}
+  .mode-card p{font-size:.9rem;color:var(--ink-soft);line-height:1.8}
+  .mode-card .when{display:block;margin-top:10px;font-size:.83rem;color:var(--copper);font-weight:600}
+  /* ====== خطوات مرقمة كبيرة ====== */
+  ol.steps{list-style:none;counter-reset:s;padding:0;margin:18px 0}
+  ol.steps li{
+    counter-increment:s;position:relative;
+    padding:0 58px 22px 0;margin-right:20px;
+    border-right:2px dashed #cfd8d4;
+  }
+  ol.steps li:last-child{border-right-color:transparent;padding-bottom:4px}
+  ol.steps li::before{
+    content:counter(s);
+    position:absolute;right:-21px;top:0;
+    width:42px;height:42px;border-radius:50%;
+    background:var(--copper);color:#fff;font-weight:700;
+    display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+    box-shadow:0 3px 8px rgba(184,115,51,.35);
+  }
+  ol.steps li b.st{display:block;color:var(--petrol-dark);font-size:1.03rem;margin-bottom:2px}
+  /* ====== كود قابل للنسخ ====== */
+  pre.code{
+    direction:ltr;text-align:left;
+    background:#12312f;color:#dbe9e6;
+    border-radius:12px;padding:18px 20px;
+    overflow-x:auto;font-size:.86rem;line-height:1.75;
+    font-family:'Courier New',monospace;
+    margin:14px 0;position:relative;
+  }
+  pre.code .cm{color:#7fa39d}
+  pre.code .kw{color:#e8b06a}
+  /* ====== تشبيه القصة ====== */
+  .story{
+    background:linear-gradient(135deg,#fdfaf3,#f7efdd);
+    border:1px solid var(--copper-soft);
+    border-radius:14px;padding:26px 30px;margin:16px 0;
+  }
+  .story p{margin-bottom:12px}
+  .story p:last-child{margin-bottom:0}
+  /* ====== الأسئلة الشائعة ====== */
+  details.faq{
+    border:1px solid #e5dcc9;border-radius:12px;
+    margin-bottom:12px;background:#fdfbf5;overflow:hidden;
+  }
+  details.faq summary{
+    cursor:pointer;padding:16px 22px;font-weight:600;color:var(--petrol-dark);
+    list-style-position:inside;
+  }
+  details.faq[open] summary{background:var(--sand);border-bottom:1px solid #e5dcc9}
+  details.faq .ans{padding:16px 22px;font-size:.95rem;color:var(--ink-soft)}
+  footer{
+    text-align:center;padding:34px 20px;color:var(--ink-soft);font-size:.85rem;
+    border-top:1px solid #e5dcc9;margin-top:20px;
+  }
+  @media print{
+    body{background:#fff;font-size:13px}
+    section.card,nav.toc{box-shadow:none;border:1px solid #ddd}
+    header.hero{padding:34px 20px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="hero-badge">دليل تدريبي — من الصفر إلى الاحتراف</span>
+  <h1>كيف تُدير فريقاً كاملاً من المساعدين الأذكياء<br>داخل برنامج البرمجة الخاص بك؟</h1>
+  <p class="sub">
+    شرح مبسّط بالعربية لخاصية «مدير الوكلاء» (Agent Manager) في أداة Kilo:
+    ما هي، لماذا تهتم بها، وكيف تضبطها وتستخدمها في كل مواقف عملك — خطوة بخطوة.
+  </p>
+</header>
+
+<nav class="toc">
+  <a href="#story">القصة البسيطة</a>
+  <a href="#why">ماذا تستفيد؟</a>
+  <a href="#words">المصطلحات ببساطة</a>
+  <a href="#start">ابدأ أول مهمة</a>
+  <a href="#patterns">أنماط العمل الستة</a>
+  <a href="#setup">التجهيز التلقائي</a>
+  <a href="#review">المراجعة والتصحيح</a>
+  <a href="#merge">إرجاع العمل للبيت</a>
+  <a href="#safety">قوانين السلامة</a>
+  <a href="#fix">حل المشاكل</a>
+  <a href="#cheat">ورقة الغش</a>
+  <a href="#faq">أسئلة شائعة</a>
+</nav>
+
+<main>
+
+<!-- ==================== 1. القصة ==================== -->
+<section class="card" id="story">
+  <h2 class="sec-title"><span class="sec-num">1</span> افهم الفكرة من قصة واحدة</h2>
+  <p class="sec-intro">قبل أي مصطلح تقني، هذه قصة تشرح كل شيء.</p>
+
+  <div class="story">
+    <p><strong>تخيّل أن مشروعك هو مطعم كبير، وأنت صاحبه.</strong> لديك «المطبخ الرئيسي» — وهذه هي نسخة مشروعك الأساسية التي يجب أن تبقى نظيفة وسليمة دائماً، لأنها ما يراه الزبون.</p>
+    <p><strong>جاءتك ستة أفكار لأعمال جديدة في وقت واحد:</strong> طبق جديد، إصلاح ثلاجة، تجديد الديكور... لو أدخلت ستة طهاة جميعهم إلى المطبخ الرئيسي نفسه دفعة واحدة، سيتدافعون على نفس القدور ويتعبث أحدهم بطعام الآخر، وستقضي يومك تنظيف فوضى بدل الطهي.</p>
+    <p><strong>الحل الذكي؟</strong> تبني لكل طاهٍ <strong>مطبخاً جانبياً مؤقتاً</strong> — غرفة مستقلة تماماً، لكنها متصلة بنفس مخزن المكونات والأرشيف. كل طاهٍ يعمل في غرفته بحرية كاملة، ولا يستطيع لمس عمل زميله إطلاقاً. حين ينتهي أحدهم بعمل ممتاز، تنقل طبقه إلى المطبخ الرئيسي. وحين يفشل أحدهم، تغلق غرفته وترمي ما فيها — والمطبخ الرئيسي لم يُمسّ أصلاً.</p>
+    <p><strong>هذا بالضبط ما تفعله خاصية اليوم.</strong> المساعد الذكي هو «الطاهي»، والغرفة الجانبية اسمها التقني «Worktree»، ولوحة التحكم التي ترى بها كل الغرف وتديرها اسمها «Agent Manager».</p>
+  </div>
+
+  <div class="box info">
+    <span class="box-t">لماذا هذا مهم لك أنت تحديداً؟</span>
+    لأنه يحوّلك من شخص ينتظر مساعداً واحداً ينتهي ثم يعطيه المهمة الثانية… إلى مدير يوزّع ست مهام على ستة مساعدين ويتابعهم من شاشة واحدة، ثم يجمع النتائج الجيدة فقط. الوقت نفسه، إنجاز مضاعف، ومشروعك الرئيسي محمي دوماً.
+  </div>
+</section>
+
+<!-- ==================== 2. الفوائد ==================== -->
+<section class="card" id="why">
+  <h2 class="sec-title"><span class="sec-num">2</span> ماذا ستستفيد عملياً؟</h2>
+  <ul class="clean">
+    <li><strong>أنجز أكثر في وقت واحد:</strong> ميزة جديدة هنا، وإصلاح عطل هناك، وتوثيق في مكان ثالث — كل ذلك بالتوازي لا بالتتابع.</li>
+    <li><strong>جرّب أربع حلول واختر الأجمل:</strong> أعطِ نفس المهمة لأربعة مساعدين بأربعة "عقول" مختلفة، وقارن النتائج جنباً إلى جنب، واختر الفائز فقط. الباقي يُرمى دون أي ضرر.</li>
+    <li><strong>مشروعك الرئيسي في أمان تام:</strong> كل التجارب تحدث في غرف معزولة. أسوأ سيناريو = تغلق الغرفة، ولا شيء يتغير عندك.</li>
+    <li><strong>لا تعيد شرح مشروعك أبداً:</strong> الإعدادات التي تجهّز كل غرفة جديدة تُبنى مرة واحدة، فكل مساعد جديد يجد المشروع جاهزاً للعمل فوراً.</li>
+    <li><strong>تعليقات المراجعين تصبح أوامر إصلاح تلقائية:</strong> إذا كانت لديك ملاحظات على عمل ما، يمكنك إرسالها للمساعد ليصلحها بنفسه.</li>
+  </ul>
+</section>
+
+<!-- ==================== 3. المصطلحات ==================== -->
+<section class="card" id="words">
+  <h2 class="sec-title"><span class="sec-num">3</span> المصطلحات العشر في دقيقتين</h2>
+  <p class="sec-intro">كل مصطلح ستصادفه، ومعناه بلغة الحياة اليومية.</p>
+  <table class="tbl">
+    <tr><th>المصطلح</th><th>يعني إيه ببساطة؟</th><th>تشبيهه من حياتك</th></tr>
+    <tr><td><strong>المشروع / المستودع</strong></td><td>ملفات مشروعك كلها + سجل كامل بكل تعديل حدث فيها منذ البداية</td><td>الأرشيف الرسمي للمطعم</td></tr>
+    <tr><td><strong>الفرع (Branch)</strong></td><td>خط زمني موازٍ للتعديلات؛ تعمل فيه دون تأثير الخط الأساسي</td><td>مسودة رسم على ورقة منفصلة قبل اعتمادها</td></tr>
+    <tr><td><strong>غرفة العمل (Worktree)</strong></td><td>نسخة عمل كاملة من المشروع على قرصك، مربوطة بفرع خاص، تعيش داخل مجلد مخفي باسم <code>.kilo/worktrees</code></td><td>المطبخ الجانبي المؤقت</td></tr>
+    <tr><td><strong>الوكيل / المساعد (Agent)</strong></td><td>برنامج ذكاء اصطناعي يقرأ ويكتب ويجرب نيابة عنك داخل غرفته</td><td>الطاهي الذي وظفته</td></tr>
+    <tr><td><strong>مدير الوكلاء (Agent Manager)</strong></td><td>لوحة التحكم الكاملة: تبويب داخل البرنامج يعرض كل الغرف والمساعدين كبطاقات منظمة</td><td>شاشة كاميرات المراقبة + غرفة العمليات</td></tr>
+    <tr><td><strong>الدمج (Merge)</strong></td><td>نقل العمل الناجح من الغرفة الجانبية إلى المشروع الرئيسي</td><td>إخراج الطبق من المطبخ الجانبي إلى قائمة المطعم</td></tr>
+    <tr><td><strong>طلب الدمج (PR)</strong></td><td>طريقة رسمية لإرسال عملك للمراجعة قبل قبوله — مفيدة عندما يعمل معك أشخاص آخرون</td><td>تقديم العينة للجنة التذوق قبل إضافتها للقائمة</td></tr>
+    <tr><td><strong>لوحة المقارنة (Diff)</strong></td><td>شاشة تُظهر بالتفصيل ما الذي أضافه أو حذفه المساعد، سطراً بسطر</td><td>قبل/بعد في صور التعديل</td></tr>
+    <tr><td><strong>سكربت التجهيز (Setup)</strong></td><td>أوامر تُنفَّذ تلقائياً مرة واحدة عند بناء أي غرفة جديدة، لتجهيزها بالأدوات والملفات الخاصة</td><td>قائمة تجهيز الغرفة الجديدة قبل قدوم الطاهي</td></tr>
+    <tr><td><strong>سكربت التشغيل (Run)</strong></td><td>أوامر تشغيل مشروعك للتجربة، بزر واحد داخل أي غرفة تختارها</td><td>زر "شغّل الكهرباء" لغرفة الطهي المختارة</td></tr>
+  </table>
+</section>
+
+<!-- ==================== 4. البداية ==================== -->
+<section class="card" id="start">
+  <h2 class="sec-title"><span class="sec-num">4</span> افتح اللوحة ونفّذ أول مهمة</h2>
+  <p class="sec-intro">متطلباتك الثلاثة الوحيدة: برنامج VS Code، ومجلد مشروعك مفتوح فيه، وأن المشروع عليه نظام حفظ التعديلات (Git). هذا كل شيء — اللوحة مدمجة في البرنامج ولا تحتاج تثبيت إضافي.</p>
+
+  <h3>افتح لوحة مدير الوكلاء</h3>
+  <ol class="clean">
+    <li>اضغط على لوحة المفاتيح: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd></li>
+    <li>أو ابحث في قائمة الأوامر عن: <strong>Kilo Code: Open Agent Manager</strong></li>
+    <li>أو اضغط أيقونتها في شريط الأدوات الجانبي.</li>
+  </ol>
+  <p>ستفتح لك لوحة كاملة (تبويب مثل أي صفحة) تعرض بطاقات الغرف والمساعدين العاملين.</p>
+
+  <h3>أنشئ غرتك الأولى وشغّل مهمة</h3>
+  <ol class="steps">
+    <li>
+      <b class="st">اضغط زر «New Worktree» أو Ctrl+N</b>
+      ستظهر نافذة إنشاء غرفة جديدة. اكتب اسم الفرع إن أردت — أو اتركه يولّده تلقائياً باسم جميل من كلمتين.
+    </li>
+    <li>
+      <b class="st">اكتب مهمتك بلغة عادية</b>
+      مثال: «أنشئ صفحة عروض خاصة تحتوي شبكة منتجات وزر شراء». لا تحتاج أي لغة برمجة — صف النتيجة التي تريدها كما تفعل مع أي مساعد ذكي.
+    </li>
+    <li>
+      <b class="st">(اختياري) اختر "العقل" المناسب</b>
+      اكتب <kbd>/models</kbd> داخل نافذة الإنشاء لتختار نموذج الذكاء الاصطناعي، و<kbd>/agents</kbd> لنوع المساعد. إن لم تختر، سيُستخدم الافتراضي الجيد تلقائياً.
+    </li>
+    <li>
+      <b class="st">اضغط Create ودع المساعد يعمل</b>
+      سيُبنى المطبخ الجانبي خلال ثوانٍ، ويبدأ المساعد فوراً: يقرأ مشروعك، يخطط، ثم يكتب الملفات. تابع حالته لحظياً من البطاقة: يقرأ ← يخطط ← يكتب.
+    </li>
+    <li>
+      <b class="st">انتقل لعمل آخر أو أنشئ غرفة ثانية</b>
+      هذا سر السحر: المساعد يعمل وحده. أنت حر تفتح غرفة ثانية لمهمة أخرى، أو تغادر وتعود لاحقاً.
+    </li>
+    <li>
+      <b class="st">تحقق بنفسك قبل التصديق</b>
+      عندما يقول المساعد «انتهيت»: اضغط <kbd>Ctrl+E</kbd> لتشغيل المشروع ورؤية النتيجة بعينيك، أو <kbd>Ctrl+/</kbd> لفتح شاشة أوامر جاهزة داخل الغرفة لتجربة أي شيء بنفسك. <strong>الثقة بعد التحقق، ليس قبلها.</strong>
+    </li>
+  </ol>
+
+  <div class="box tip">
+    <span class="box-t">اختصارات سريعة تستحق الحفظ</span>
+    <kbd>Ctrl+N</kbd> غرفة جديدة بإعدادات كاملة ·
+    <kbd>Ctrl+Shift+N</kbd> غرفة فورية سريعة ·
+    <kbd>Ctrl+D</kbd> شاهد كل التغييرات ·
+    <kbd>Ctrl+E</kbd> شغّل المشروع ·
+    <kbd>Ctrl+/</kbd> شاشة الأوامر ·
+    <kbd>Ctrl+T</kbd> محادثة إضافية في نفس الغرفة
+  </div>
+</section>
+
+<!-- ==================== 5. الأنماط ==================== -->
+<section class="card" id="patterns">
+  <h2 class="sec-title"><span class="sec-num">5</span> الأنماط الستة: متى تستخدم كل واحد؟</h2>
+  <p class="sec-intro">هذه هي الطرق الموثقة رسمياً لاستخدام اللوحة. اختر النمط المناسب لموقفك.</p>
+
+  <div class="modes-grid">
+    <div class="mode-card">
+      <h4>المهمة الجانبية الطارئة</h4>
+      <p>أنت وسط عمل مهم وجاءك شيء عاجل غير مرتبط به. افتح غرفة جديدة للعمل العاجل، وأكمل عملك الأساسي في مكانه — لا أحد يزعج أحداً.</p>
+      <span class="when">متى؟ أي مقاطعة غير متوقعة لعملك الجاري</span>
+    </div>
+    <div class="mode-card c2">
+      <h4>أربع محاولات واختر الأجمل</h4>
+      <p>في نافذة الإنشاء اختر حتى 4 نسخ لنفس المهمة — ويمكنك إعطاء كل نسخة "عقلاً" مختلفاً. النتائج تظهر جنباً إلى جنب، تستعرضها وتختار الفائز وترمي الباقي.</p>
+      <span class="when">متى؟ مهمة صعبة ولا تعرف أي حل سيكون أفضل</span>
+    </div>
+    <div class="mode-card">
+      <h4>الهيكل أولاً ثم التقطيع</h4>
+      <p>لمشروع كبير متعدد الأجزاء: ابنِ الهيكل الأساسي والعقود المشتركة أولاً في غرفة واحدة وادمجه، ثم افتح غرفة لكل جزء تنطلق من الهيكل المعتمد. مثل فريق بشري يتفق على الاتفاقيات أولاً ثم ينقسم للعمل.</p>
+      <span class="when">متى؟ مشاريع كبيرة ذات أجزاء مترابطة</span>
+    </div>
+    <div class="mode-card c2">
+      <h4>ترقية محادثة إلى غرفة</h4>
+      <p>بدأت مهمة في المحادثة الجانبية العادية وكبرت عن حجمها؟ اختر «Continue in Worktree» — تنتقل المحادثة كاملة مع كل تغييراتها إلى غرفة مستقلة، وتفرغ محادثتك.</p>
+      <span class="when">متى؟ أي محادثة بدأت صغيرة وتضخمت</span>
+    </div>
+    <div class="mode-card">
+      <h4>غرفة لكل عطل</h4>
+      <p>في يوم مليء بالإصلاحات الصغيرة: غرفة لكل عطل على حدة. أصلح، ادمج بسرعة، أغلق الغرفة. لا يتراكم شيء ولا يتداخل شيء.</p>
+      <span class="when">متى؟ أيام الإصلاحات المتعددة الصغيرة</span>
+    </div>
+    <div class="mode-card c2">
+      <h4>محادثتان في غرفة واحدة</h4>
+      <p>اضغط <kbd>Ctrl+T</kbd> داخل أي غرفة لفتح محادثة إضافية على نفس الفرع: واحدة "باحثة ومخططة" وأخرى "منفذة"، أو محادثة نظيفة جديدة عندما تطول الأولى.</p>
+      <span class="when">متى؟ فصل التخطيط عن التنفيذ أو تجديد السياق</span>
+    </div>
+  </div>
+
+  <div class="box info">
+    <span class="box-t">القاعدة الذهبية لاختيار الوقت المناسب</span>
+    إن كنت ستغلق ملفاتك وتنتقل لعمل آخر — فهذه مهمة غرفة. أما المهام الصغيرة التفاعلية التي تريد متابعتها حرفاً حرفاً — فالمحادثة الجانبية العادية أسرع وأبسط. والعمل "للقراءة فقط" (فهم كود، بحث، استفسار) آمن في أي مكان دائماً لأنه لا يعدّل شيئاً.
+  </div>
+
+  <h3>نظّم لوحتك بالأقسام الملونة (Sections)</h3>
+  <p>كلك يمين على أي بطاقة واختر «New Section» لإنشاء مجلد ملون — مثلاً «قيد التنفيذ» و«بانتظار المراجعة» و«جاهز». اسحب البطاقات وأفلتها بين الأقسام كما في لوحة المهام. ثمانية ألوان متاحة، ويمكنك طيّ كل قسم بضغطة على عنوانه.</p>
+</section>
+
+<!-- ==================== 6. التجهيز ==================== -->
+<section class="card" id="setup">
+  <h2 class="sec-title"><span class="sec-num">6</span> التجهيز التلقائي: اجعل كل غرفة جاهزة من أول لحظة</h2>
+  <p class="sec-intro">هذا هو الجزء الذي يفرّق بين مستخدم عادي ومستخدم محترف. تُجهَّز فيه كل غرفة جديدة تلقائياً دون أن تلمس شيئاً.</p>
+
+  <h3>ماذا يحدث خلف الكواليس عند بناء غرفة جديدة؟</h3>
+  <ol class="clean">
+    <li><strong>أولاً — تلقائياً وبلا تدخل:</strong> ينسخ النظام ملفات الإعدادات السرية من جذر مشروعك (الملفات التي تبدأ أسماؤها بـ <code>.env</code>) إلى الغرفة الجديدة — وهي مفاتيح الاتصال والإعدادات الخاصة التي لا تُرفع للإنترنت.</li>
+    <li><strong>ثانياً — إن جهّزته:</strong> يُنفَّذ «سكربت التجهيز» الخاص بمشروعك: تثبيت المكتبات، نسخ ملفات خاصة، إنشاء قاعدة بيانات تجريبية للغرفة... أي شيء يحتاجه مشروعك ليعمل.</li>
+    <li><strong>ثالثاً:</strong> يدخل المساعد ويجد المشروع كامل الجاهزية — يبدأ العمل مباشرة.</li>
+  </ol>
+
+  <h3>أين تكتب هذين السكربتين؟</h3>
+  <p>في مجلد <code>.kilo/</code> داخل مشروعك الرئيسي (وليس داخل الغرف المولدة). الملفان هما:</p>
+  <table class="tbl">
+    <tr><th>الملف</th><th>متى يعمل؟</th><th>ماذا تضع فيه؟</th></tr>
+    <tr><td><code>.kilo/setup-script</code></td><td>مرة واحدة عند إنشاء أي غرفة جديدة</td><td>التثبيتات والنسخ والتجهيز — كل ما يلزم ليكون المشروع "قابلاً للتشغيل"</td></tr>
+    <tr><td><code>.kilo/run-script</code></td><td>كل ضغطة على زر Run (<kbd>Ctrl+E</kbd>)</td><td>أوامر تشغيل مشروعك: الخادم التجريبي، المراقب، المحاكي...</td></tr>
+  </table>
+  <p>إن لم يوجد الملف، سيفتح لك البرنامج قالباً جاهزاً معلقاً بالتعليمات — عدّله واحفظه.</p>
+
+  <div class="box warn">
+    <span class="box-t">أهم نصيحة تقنية في الدليل كله: مشكلة "المنفذ المحجوز"</span>
+    عندما يعمل مساعدان متوازيان ويشغل كل منهما المشروع، سيحتاجان كلٌّ منهما "خط هاتف" مختلف — لأن خطاً واحداً (يسمى المنفذ/PORT) لا يستقبلهما معاً. الحل الاحترافي: اجعل رقم الخط يُشتق تلقائياً من اسم الغرفة. انسخ هذا المثال الجاهز إلى ملف <code>.kilo/run-script</code>:
+  </div>
+  <pre class="code"><span class="cm"># تشغيل المشروع برقم منفذ فريد لكل غرفة — بلا تصادمات</span>
+<span class="kw">#!/bin/sh</span>
+set -e
+sum=$(cksum &lt;&lt;EOF | cut -d ' ' -f 1
+$WORKTREE_PATH
+EOF
+)
+export PORT=$((4000 + (sum % 1000)))
+npm run dev</pre>
+  <p style="font-size:.92rem;color:var(--ink-soft)">ماذا يفعل؟ يأخذ اسم مسار الغرفة، يحوله لرقم ثابت بين 4000 و5000 — كل غرفة تحصل على رقمها الخاص الدائم، فتعمل عشرة مساعدين دون أن يصرخ أحدهم «الخط مشغول». وللمشاريع العاملة بتقنية Docker، نفس الفكرة مع سطر إضافي يشتق اسماً فريداً للحاويات من اسم الغرفة.</p>
+
+  <div class="box tip">
+    <span class="box-t">معلومتان تريحانك</span>
+    أولاً: سكربت التجهيز له مهلة 5 دقائق — لا تضع فيه أعمالاً ثقيلة جداً، وضع التثبيتات الضخمة في سكربت التشغيل بدلاً منه. ثانياً: إخراج السكربتات يظهر في شاشات المهام داخل VS Code (قائمة Terminal)، وليس في شاشة محادثة المساعد — ابحث عنه هناك عند التنقيح.
+  </div>
+</section>
+
+<!-- ==================== 7. المراجعة ==================== -->
+<section class="card" id="review">
+  <h2 class="sec-title"><span class="sec-num">7</span> راجع وصحّح: كيف تتأكد أن العمل ممتاز؟</h2>
+
+  <h3>لوحة المقارنة (اضغط Ctrl+D)</h3>
+  <p>شاشة تُظهر مقابل الفرع الأم: كل ملف تغيّر، وكل سطر أُضيف (بالأخضر) أو حُذف (بالأحمر). أهم ميزة فيها: <strong>اضغط على أي سطر واكتب ملاحظة ثم اضغط «Send to chat»</strong> — تذهب ملاحظتك للمساعد مع سياق السطر نفسه فيصلّحها بدقة، دون أن تعيد الشرح.</p>
+
+  <h3>مراجعة احترافية بأمر واحد</h3>
+  <p>اكتب في محادثة الغرفة الأمر <kbd>/review</kbd> — يقوم مساعد آخر بمراجعة نقية للتغييرات ويعطيك تقريراً بالملاحظات قبل أن تُرسل العمل للآخرين. تسلسل المحترف: راجع بنفسك في لوحة المقارنة ← أمر <kbd>/review</kbd> ← أرسل للمراجعة البشرية إن كان لديك فريق.</p>
+
+  <h3>إذا كان عملك على GitHub مع مراجعين</h3>
+  <p>لكل غرفة لها عمل مرفوع على الإنترنت تظهر <strong>شارة ملونة حية</strong>: رمادية = مسودة · خضراء = بانتظار الموافقة وسليمة · صفراء = هناك ملاحظات أو فحوصات جارية (تنبض أثناء الانتظار) · بنفسجية = تم الدمج بنجاح · حمراء = رفض أو فحوصات فاشلة. اضغط عليها لفتح الطلب، أو اضغط <kbd>Ctrl+Shift+R</kbd> للوحة المراجعة الكاملة التي تعرض ملاحظات المراجعين — ويمكنك إرسال أي ملاحظة للمساعد بضغطة ليصلّحها.</p>
+
+  <h3>عندما تخطئ المحادثة أو تطول</h3>
+  <ul class="clean">
+    <li><strong>زر الإيقاف:</strong> يوقف المساعد بأمان في أي لحظة.</li>
+    <li><strong>نقاط الاسترجاع (Checkpoints):</strong> النظام يلتقط لقطة قبل وبعد كل خطوة للمساعد — يمكنك التراجع عن خطوات معينة أو كلها والعودة لحالة سابقة، ثم توجيه المساعد من جديد.</li>
+    <li><strong>محادثة جديدة نظيفة:</strong> <kbd>Ctrl+T</kbd> وابدأ من حيث وقفت بسياق جديد غير متضخم.</li>
+  </ul>
+</section>
+
+<!-- ==================== 8. الدمج ==================== -->
+<section class="card" id="merge">
+  <h2 class="sec-title"><span class="sec-num">8</span> إرجاع العمل للبيت: ثلاث طرق، اختر حسب الموقف</h2>
+  <p class="sec-intro">المساعد أنهى واختبرتَ بنفسك وأعجبك الناتج. الآن كيف ينزل العمل إلى المشروع الرئيسي؟</p>
+  <table class="tbl">
+    <tr><th>الطريقة</th><th>كيف؟</th><th>متى تختارها؟</th></tr>
+    <tr>
+      <td><strong>النقل المباشر (Apply)</strong></td>
+      <td>زر «Apply to Local» في لوحة المقارنة — ويمكنك اختيار ملفات بعينها فقط</td>
+      <td>أنت تعمل وحدك وتريد النتيجة الآن. أسرع طريق بلا طقوس.</td>
+    </tr>
+    <tr>
+      <td><strong>الدمج المباشر (Merge)</strong></td>
+      <td>من شاشة الأوامر للغرفة: أمر الدمج القياسي</td>
+      <td>فريق بلا دورة مراجعات رسمية على الإنترنت.</td>
+    </tr>
+    <tr>
+      <td><strong>طلب الدمج (PR)</strong></td>
+      <td>ارفع الفرع وأنشئ طلب دمج — تظهر الشارة الملونة على بطاقة الغرفة تلقائياً</td>
+      <td>هناك زملاء يراجعون العمل، أو تريد سجلاً رسمياً بالمناقشة.</td>
+    </tr>
+  </table>
+
+  <h3>والاتجاه المعاكس: تحديث غرفتك بما الجديد</h3>
+  <p>بينما المساعدون يعملون، ربما تغيّر المشروع الرئيسي. اطلب من مساعد الغرفة نصياً: <em>«ادمج آخر تحديثات الفرع الرئيسي في فرعك واحسم أي تعارضات»</em>. وإن ظهرت تعارضات (طالبان كتبا على نفس السطر)، أعطِ المساعد السياق: <em>«هذا الفرع فعل كذا، والرئيسي أضاف كذا — كلاهما لازم ينجو»</em>. سيحسمها بذكاء بدل التخمين.</p>
+
+  <div class="box stop">
+    <span class="box-t">القانون الأحمر: لا تستخدم «الرف المؤقت» (stash) داخل الغرف — أبداً</span>
+    الـ stash أداة شهيرة تعني «اخفِ تغييراتي جانباً مؤقتاً». المشكلة: صندوق الإخفاء هذا <strong>واحد مشترك بين كل الغرف</strong> — ما يخفيه مساعد قد يظهر فجأة عند مساعد آخر، فتختلط أعمال غير محفوظة وتفسد. البديل الآمن: اطلب من المساعد حفظ العمل كـ«حفظ مؤقت مسمّى» (commit) بدلاً من الإخفاء. احفظ هذه الجملة وأعطها للمساعد عند الحاجة: <strong>«احفظ تقدمك بـ commit مؤقت ولا تستخدم git stash»</strong>.
+  </div>
+
+  <h3>عندما تنتهي عدة غرف معاً</h3>
+  <p>ادمج <strong>الأكثر أساساً أولاً</strong> (الهيكل قبل الزخرفة)، ثم اطلب من كل غرفة متبقية سحب التحديثات الجديدة قبل دمجها تباعاً. المساعد يدير اتجاه الدمج ويرفع لك التعارضات العويصة فقط.</p>
+</section>
+
+<!-- ==================== 9. السلامة ==================== -->
+<section class="card" id="safety">
+  <h2 class="sec-title"><span class="sec-num">9</span> قوانين السلامة الخمسة (احفظها كاسمك)</h2>
+  <ol class="clean">
+    <li><strong>لا تتجاوز 4–5 مساعدين معاً.</strong> الحد ليس في جهازك — بل في قدرتك أنت على المراجعة والدمج. أكثر من ذلك = فوضى إدارة تفوق مكاسب السرعة.</li>
+    <li><strong>لا تفتح غرفتين لنفس الملفات.</strong> الغرف تعزل المكان، لكن إن عمل مساعدَان على نفس الملف فالتصادم سيظهر عند الدمج حتماً. وزّع المهام على مناطق مختلفة من المشروع.</li>
+    <li><strong>تحقق بنفسك دوماً.</strong> «نجحت كل الاختبارات» كلام المساعد — شغّل المشروع بزرك (<kbd>Ctrl+E</kbd>) وعاين بعينك قبل الاعتماد. الثقة تُكتسب بالمعاينة.</li>
+    <li><strong>ادمج خلال يوم أو يومين.</strong> الغرفة التي تبقى أسبوعاً دون دمج تنحرف عن الرئيسي وتكبر مشكلة الدمج. طوّلت عمرها؟ اسحب التحديثات إليها دورياً.</li>
+    <li><strong>اجعل نطاق كل غرفة صغيراً.</strong> مهمة واحدة واضحة لكل غرفة. العمل الصغير يُختبر ويراجع ويُدمج بسرعة — الكبير يعلق ويطفو.</li>
+  </ol>
+  <div class="box warn">
+    <span class="box-t">وأمر النظافة الأخير</span>
+    عند إغلاق غرفة تُحذف نسخة عملها لكن <strong>ما أنشأه مشروعك خارج الغرفة يبقى</strong>: حاويات، قواعد بيانات تجريبية، ملفات مؤقتة. نظّفها دورياً — أو اجعل أسماء كل هذه الموارد مشتقة من اسم الغرفة كما تعلمنا في قسم التجهيز، فتنتهي المشكلة من جذورها.
+  </div>
+</section>
+
+<!-- ==================== 10. حل المشاكل ==================== -->
+<section class="card" id="fix">
+  <h2 class="sec-title"><span class="sec-num">10</span> جدول إنقاذ المشاكل الشائعة</h2>
+  <p class="sec-intro">عرَض واجهتك ← سببه الحقيقي ← علاجه الفوري.</p>
+  <table class="tbl">
+    <tr><th>العلامة التي تراها</th><th>السبب الحقيقي</th><th>العلاج</th></tr>
+    <tr><td>«Initialize a repository before using worktrees»</td><td>مشروعك بلا أي حفظ تعديلات أول (commit)</td><td>اطلب من المساعد: «اعمل حفظاً أولياً للمشروع» ثم أعد المحاولة</td></tr>
+    <tr><td>زر Run يفتح قالباً فارغاً بدل التشغيل</td><td>لا يوجد ملف تشغيل صالح لنظام تشغيلك</td><td>أنشئ <code>.kilo/run-script</code> بالاسم الصحيح (على ويندوز: <code>run-script.bat</code> أو <code>.ps1</code>)</td></tr>
+    <tr><td>التجهيز ينجح في طرفيتك ويفشل داخل البرنامج</td><td>بيئة سكربت التجهيز فقيرة عمداً — قد لا يجد برامجك المعتادة</td><td>استخدم المسارات الكاملة للأدوات، وانقل ما يحتاج بيئتك الكاملة إلى run-script</td></tr>
+    <tr><td>خطأ «المنفذ مستخدم» أو اختبارات تصيب الغرفة الخطأ</td><td>مورد مشترك مثبت (منفذ أو حاوية أو قاعدة بيانات واحدة للجميع)</td><td>طبّق حل الاشتقاق من اسم الغرفة (قسم 6) في run-script وفي إعدادات مشروعك</td></tr>
+    <tr><td>تعارضات دمج غامضة من لا شيء</td><td>أحد المساعدين استخدم الرف المؤقت stash الممنوع</td><td>امنعه مستقبلاً بالجملة الذهبية: «commit مؤقت بدل git stash»، وأعطِ المساعد سياق كل جهة عند الحسم</td></tr>
+    <tr><td>بطاقة غرفة «تيتيمة» أو غير متاحة</td><td>حُذف مجلد غرفة يدوياً خارج البرنامج</td><td>النظام ينظفها ذاتياً («Removed stale») — أو أغلقها يدوياً من قائمتها اليمنى</td></tr>
+    <tr><td>التغييرات الجديدة لا تظهر في لوحة المقارنة</td><td>أمر المقارنة القياسي لا يرى الملفات الجديدة غير المسجلة أصلاً</td><td>طبيعي تماماً — النظام يجلبها بأمر منفصل؛ إن لم تظهر انتظر ثانية أو أعد فتح اللوحة</td></tr>
+    <tr><td>شارات طلبات الدمج لا تظهر إطلاقاً</td><td>أداة الاتصال بـ GitHub (gh) غير مثبتة أو غير مسجَّل دخولك فيها</td><td>ثبت أداة gh وسجّل دخولك مرة واحدة، والشارات تعمل للأبد</td></tr>
+    <tr><td>القرص يمتلئ بعد كثير من الغرف</td><td>كل غرفة نسخة كاملة: مكتبات وملفات بناء تُحسب منفصلة</td><td>أغلق الغرف المنتهية فوراً (يحفظ الفرع ويحذف المجلد)، ونظف الموارد الخارجية دورياً</td></tr>
+  </table>
+</section>
+
+<!-- ==================== 11. ورقة الغش ==================== -->
+<section class="card" id="cheat">
+  <h2 class="sec-title"><span class="sec-num">11</span> ورقة الغش: كل الاختصارات وكل المواقف في جدولين</h2>
+
+  <h3>الاختصارات</h3>
+  <table class="tbl">
+    <tr><th>الضغط</th><th>ماذا يفعل؟</th></tr>
+    <tr><td><kbd>Ctrl+Shift+M</kbd></td><td>افتح مدير الوكلاء</td></tr>
+    <tr><td><kbd>Ctrl+N</kbd></td><td>غرفة جديدة بإعدادات كاملة (نموذج، نوع مساعد، فرع)</td></tr>
+    <tr><td><kbd>Ctrl+Shift+N</kbd></td><td>غرفة فورية من الفرع الافتراضي بلا نوافذ</td></tr>
+    <tr><td><kbd>Ctrl+D</kbd></td><td>لوحة مقارنة التغييرات</td></tr>
+    <tr><td><kbd>Ctrl+E</kbd></td><td>تشغيل المشروع في الغرفة المحددة</td></tr>
+    <tr><td><kbd>Ctrl+/</kbd></td><td>شاشة أوامر داخل الغرفة</td></tr>
+    <tr><td><kbd>Ctrl+T</kbd></td><td>محادثة إضافية في نفس الغرفة</td></tr>
+    <tr><td><kbd>Ctrl+Shift+R</kbd></td><td>لوحة مراجعة طلب الدمج</td></tr>
+    <tr><td>داخل نافذة الإنشاء: <kbd>/models</kbd> · <kbd>/agents</kbd> · <kbd>/variant</kbd> · <kbd>/sandbox</kbd></td><td>اختيار العقل · نوع المساعد · مستوى التفكير · تشديد العزل الأمني</td></tr>
+  </table>
+
+  <h3>أنا في الموقف الفلاني — أين أعمل؟</h3>
+  <table class="tbl">
+    <tr><th>الموقف</th><th>المكان الصحيح</th></tr>
+    <tr><td>مهمة صغيرة أريد متابعتها لحظة بلحظة</td><td>المحادثة الجانبية العادية</td></tr>
+    <tr><td>مهمة طويلة وأريد العمل على شيء آخر بالتوازي</td><td>غرفة جديدة مضبوطة (<kbd>Ctrl+N</kbd>)</td></tr>
+    <tr><td>مهمة صغيرة على الفرع الأساسي بلا تعقيد</td><td>غرفة فورية (<kbd>Ctrl+Shift+N</kbd>)</td></tr>
+    <tr><td>مهمة صعبة وأريد مقارنة حلولين إلى أربعة</td><td>النسخ المتعددة في نافذة الإنشاء</td></tr>
+    <tr><td>محادثة جانبية كبرت وتحتاج استقلالاً</td><td>Continue in Worktree</td></tr>
+    <tr><td>محادثة ثانية على نفس الفرع (مخطط + منفذ)</td><td><kbd>Ctrl+T</kbd></td></tr>
+    <tr><td>أريد رؤية النتيجة بعيني قبل الاعتماد</td><td><kbd>Ctrl+E</kbd> ثم تصفّح</td></tr>
+    <tr><td>عمل فردي أريد نزوله الآن بلا طقوس</td><td>Apply to Local من لوحة المقارنة</td></tr>
+    <tr><td>عمل جماعي يمر على مراجعين</td><td>رفع + طلب دمج PR</td></tr>
+  </table>
+</section>
+
+<!-- ==================== 12. FAQ ==================== -->
+<section class="card" id="faq">
+  <h2 class="sec-title"><span class="sec-num">12</span> أسئلة يسألها كل مبتدئ</h2>
+
+  <details class="faq">
+    <summary>هل تكرار الغرف يستهلك مساحة القرص كثيراً؟</summary>
+    <div class="ans">أقل بكثير مما تتصور: الغرف تتشارك سجل المشروع كله وتكرر ملفاته الحالية فقط. لكن انتبه: كل غرفة تُثبّت مكتباتها وتبني ملفاتها الخاصة — لذلك أغلق الغرف المنتهية فوراً (الفرع يبقى محفوظاً والمجلد يُمسح).</div>
+  </details>
+  <details class="faq">
+    <summary>هل يستطيع مساعد الغرفة أن يفسد مشروعي الرئيسي؟</summary>
+    <div class="ans">لا — هذا هو جوهر الفكرة. المساعد محبوس في غرفته وفرعه حتى تقرر أنت نقل عمله. أسوأ ما يمكن: تغلق الغرفة وتمحو عملها، والرئيسي لم يُمسّ.</div>
+  </details>
+  <details class="faq">
+    <summary>هل يحتاج كل مساعد مفتاح اشتراك منفصل؟</summary>
+    <div class="ans">لا. الإعدادات والمفاتيح مشتركة بين الجميع — تضبطها مرة واحدة في إعدادات البرنامج وتنطبق على كل الغرف. ما يتفرّد لكل مساعد هو ملفاته وفرعه وطرفيته فقط.</div>
+  </details>
+  <details class="faq">
+    <summary>أعطيت نفس المهمة لأربعة نسخ — هل يرون عمل بعضهم؟</summary>
+    <div class="ans">لا إطلاقاً. كل نسخة في غرفة وفرع معزولين تماماً، لا يعلم أحدها بوجود الأخرى. تقارن نتائجهم أنت وحدك في لوحة المقارنة، وتبقى نسخة الفائز وحدها.</div>
+  </details>
+  <details class="faq">
+    <summary>ماذا يحدث لعمل الغرفة إذا أغلقتها بالخطأ قبل الدمج؟</summary>
+    <div class="ans">الإغلاق يحذف مجلد النسخة فقط. إن كان العمل محفوظاً كفرع (وهو الحالة الطبيعية)، يبقى الفرع موجوداً في سجل المشروع ويمكن استيراده من جديد إلى اللوحة عبر خيار الاستيراد من فرع موجود.</div>
+  </details>
+  <details class="faq">
+    <summary>متى أستخدم «وضع العزل الأمني» (Sandbox)؟</summary>
+    <div class="ans">عندما تريد حصر المساعد أكثر: علاقة بملفات مشروعك فقط ومنعه من لمس نظام جهازك بحرية. الغرف تعزل المساعدين بعضهم عن بعض — والعزل الأمني يعزلهم عن جهازك. طبقتان مستقلتان تفعلهان معاً عند الأعمال الحساسة.</div>
+  </details>
+</section>
+
+<footer>
+  أُعدّ هذا الدليل من دراسة الوثائق الرسمية لأداة Kilo، وتحليل الكود المصدري للإضافة، وأدلة سير العمل المنشورة، وتجارب عملية موثقة — وقد خُصِّص ليكون مرجعاً تعليمياً عربياً مبسطاً.
+  <br>للطباعة أو الحفظ PDF: اضغط Ctrl+P من متصفحك.
+</footer>
+
+</main>
+</body>
+</html>

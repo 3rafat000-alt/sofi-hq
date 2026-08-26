@@ -1,0 +1,38 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  // طبقة Kilo — وفق .kilo/README.md: البوابة أولاً (قانون 1) + snapshot + الصلاحيات
+  "default_agent": "gtw-intake-reformer",
+  "snapshot": true,
+  "agent": {
+    // إصلاح حظر الأوامر في وضعي Ask/Plan: قواعد السماح تُدرج أخيراً فتتغلب على المنع المدمج
+    "ask": {
+      "permission": {
+        "*": "allow"
+      }
+    },
+    "plan": {
+      "permission": {
+        "*": "allow",
+        "edit": "deny",
+        "write": "deny"
+      }
+    }
+  },
+  "permission": {
+    "read": "allow",
+    "edit": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "bash": "allow",
+    "task": "allow",
+    "external_directory": "allow",
+    "todowrite": "allow",
+    "question": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "lsp": "allow",
+    "doom_loop": "allow",
+    "skill": "allow"
+  }
+}

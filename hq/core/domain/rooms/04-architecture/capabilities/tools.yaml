@@ -1,0 +1,9 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 04-architecture
+mcp-tools:
+  - Context7
+  - DeepWiki
+  - Sequential-Thinking
+  - Filesystem-Scoped
+
+script-tools:

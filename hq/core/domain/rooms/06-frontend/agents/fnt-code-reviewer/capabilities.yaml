@@ -1,0 +1,8 @@
+# Capabilities of fnt-code-reviewer — by name only, must exist in room manifests
+skills:
+tools:
+  - Context7
+  - Chrome-DevTools
+  - Playwright
+  - Kitesurf
+  - Filesystem-Scoped

@@ -1,0 +1,7 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 14-gateway
+mcp-tools:
+  - Sequential-Thinking
+  - Filesystem-Scoped
+
+script-tools:

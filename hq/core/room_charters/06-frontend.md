@@ -1,0 +1,1 @@
+../domain/rooms/06-frontend/charter.md

@@ -1,0 +1,448 @@
+# Persona registry — agent-id ↔ persona name mapping (Syrian persona names, Latin transliteration)
+# Canonical source for all persona names. Serves Token Economy (Teaching IV): one name, one lookup.
+#
+# Dual-hat convention (intentional, not an error): four persons hold both a boardroom C-seat
+# and the lead chair of the room they govern — same human, two agent-ids, two routes:
+#   Luay Al-Hakim     = brd-cto  + arc-lead   (technology seat governs Architecture)
+#   Lama Al-Trabulsi  = brd-cqo  + qa-lead    (quality seat governs Quality)
+#   Wajih Al-Issami   = brd-cso  + sec-lead   (security seat governs Security)
+#   Nazih Al-Muhaini  = brd-cpo  + str-lead   (product seat governs Strategy)
+# Each agent-id keeps its own routing.yaml entry; the shared human is the same, the roles are distinct.
+
+version: 1
+personas:
+  arc-api-architect:
+    ar: Anas Al-Azmah
+    role: API Architecture Engineer
+
+  arc-data-architect:
+    ar: Tamim Al-Kilani
+    role: Data Architecture Engineer
+
+  arc-infra-architect:
+    ar: Harith Al-Qabbani
+    role: Infrastructure Architecture Engineer
+
+  arc-integration-architect:
+    ar: Mays Al-Sharbaji
+    role: Integration Architecture Engineer
+
+  arc-lead:
+    ar: Luay Al-Hakim
+    role: Head of the Architecture Room
+
+  arc-review-architect:
+    ar: Wisam Al-Tibbaa
+    role: Architecture Review Engineer
+
+  arc-system-architect:
+    ar: Suhaib Al-Shahabi
+    role: Systems Architecture Engineer
+
+  bck-api-engineer:
+    ar: Muadh Al-Jabri
+    role: API Engineer
+
+  bck-blade-engineer:
+    ar: Bara Al-Maidani
+    role: Blade Engineer
+
+  bck-code-reviewer:
+    ar: Tha'er Al-Barudi
+    role: Code Reviewer
+
+  bck-domain-engineer:
+    ar: Muheeb Al-Kuzbari
+    role: Domain Engineer
+
+  bck-integration-engineer:
+    ar: Ghiath Al-Abid
+    role: Integration Engineer
+
+  bck-lead:
+    ar: Aws Al-Ghazzi
+    role: Head of Backend Engineering
+
+  bck-queue-engineer:
+    ar: Adham Al-Haffar
+    role: Queue Engineer
+
+  bck-refactoring-surgeon:
+    ar: Ramz Al-Sibai
+    role: Refactoring Surgeon
+
+  brd-arbiter:
+    ar: Siraj Al-Hourani
+    role: The Arbiter — resolves design and development disputes
+
+  brd-ceo:
+    ar: Bassel Al-Droubi
+    role: Chief Executive Officer — top-level coordination
+
+  brd-chief-of-staff:
+    ar: Rahaf Al-Qawwas
+    role: Chief of Staff — turns intent into work orders
+
+  brd-cpo:
+    ar: Nazih Al-Muhaini
+    role: Chief Product Officer — Gates 0–2
+
+  brd-cqo:
+    ar: Lama Al-Trabulsi
+    role: Chief Quality Officer — Gate 5
+
+  brd-cso:
+    ar: Wajih Al-Issami
+    role: Chief Security Officer — institutional veto
+
+  brd-cto:
+    ar: Luay Al-Hakim
+    role: Chief Technology Officer — Gates 3–4
+
+  dat-analytics-engineer:
+    ar: Ma'mun Al-Shishakli
+    role: Analytics Engineer
+
+  dat-cache-engineer:
+    ar: Nael Al-Quatli
+    role: Cache Engineer
+
+  dat-db-engineer:
+    ar: Jana Al-Maghribi
+    role: Database Engineer
+
+  dat-etl-engineer:
+    ar: Haitham Al-Zaim
+    role: ETL Engineer
+
+  dat-lead:
+    ar: Tala Al-Zirikli
+    role: Head of Data Analytics
+
+  dat-ml-engineer:
+    ar: Bushra Al-Alamadi
+    role: ML Engineer
+
+  dat-privacy-officer:
+    ar: Dirar Al-Khatib
+    role: Privacy Officer
+
+  dsn-a11y-specialist:
+    ar: Talal Al-Alabi
+    role: Accessibility Specialist
+
+  dsn-brand-designer:
+    ar: Dhafir Al-Nahhas
+    role: Brand Identity Designer
+
+  dsn-content-strategist:
+    ar: Raghad Al-Kawakbi
+    role: Content Strategist
+
+  dsn-design-system:
+    ar: Abed Al-Shawish
+    role: Design System Engineer
+
+  dsn-lead:
+    ar: Sulaf Al-Rashid
+    role: Head of Visual Design
+
+  dsn-motion-designer:
+    ar: Hiba Al-Dahhan
+    role: Motion Designer
+
+  dsn-ui-designer:
+    ar: Waad Al-Qaddah
+    role: UI Designer
+
+  dsn-ux-architect:
+    ar: Qusay Al-Turk
+    role: UX Architect
+
+  fnt-a11y-engineer:
+    ar: Alaa Al-Shaer
+    role: Accessibility Engineer
+
+  fnt-code-reviewer:
+    ar: Kaid Al-Qalai
+    role: Frontend Code Reviewer
+
+  fnt-css-artisan:
+    ar: Bana Al-Tabbakh
+    role: CSS Artisan
+
+  fnt-interaction-engineer:
+    ar: Sakhr Al-Saigh
+    role: Interaction Engineer
+
+  fnt-lead:
+    ar: Adnan Al-Daqqaq
+    role: Head of the Frontend Room
+
+  fnt-performance-engineer:
+    ar: Qais Al-Saqa
+    role: Performance Engineer
+
+  fnt-react-engineer:
+    ar: Talya Al-Qasir
+    role: React Engineer
+
+  fnt-vue-engineer:
+    ar: Mazen Al-Khoja
+    role: Vue Engineer
+
+  gtw-budget-warden:
+    ar: Nabil Al-Bizem
+    role: Budget Warden
+
+  gtw-conflict-resolver:
+    ar: Hashem Al-Ajlani
+    role: Cross-room conflict resolution
+
+  gtw-dispatcher:
+    ar: Yahya Al-Kahhala
+    role: The Dispatcher
+
+  gtw-external-reviewer:
+    ar: Jouri Al-Sabaa
+    role: External review — the Gemini desk
+
+  gtw-gatekeeper:
+    ar: Hala Al-Halbouni
+    role: Gatekeeper — adversarial checking
+
+  gtw-intake-reformer:
+    ar: Kaisar Al-Rabat
+    role: Intake Reformer — reformulates user intent for the CEO
+
+  gtw-router:
+    ar: Ayham Al-Qassar
+    role: The routing table
+
+  knw-brain-query:
+    ar: Bashir Al-Mallah
+    role: Brain query specialist
+
+  knw-doc-writer:
+    ar: Dana Al-Atari
+    role: Documentation Writer
+
+  knw-historian:
+    ar: Razan Al-Deiri
+    role: Decisions Historian
+
+  knw-lead:
+    ar: Sireen Al-Zein
+    role: Head of Knowledge Management
+
+  knw-memory-curator:
+    ar: Jawad Al-Hamwi
+    role: Memory Curator
+
+  knw-reflector:
+    ar: Shatha Al-Sirraj
+    role: Lessons Reflector
+
+  mob-flutter-engineer:
+    ar: Hamdan Al-Haj
+    role: Flutter Engineer
+
+  mob-lead:
+    ar: Khattab Al-Bunni
+    role: Head of the Mobile Room
+
+  mob-perf-profiler:
+    ar: Rakan Al-Omar
+    role: Performance Optimizer
+
+  mob-platform-engineer:
+    ar: Zaher Al-Dalati
+    role: Platform Engineer
+
+  mob-release-engineer:
+    ar: Ola Al-Ajami
+    role: Release Engineer
+
+  mob-state-engineer:
+    ar: Ghofran Al-Farra
+    role: State Engineer
+
+  obs-alerting-engineer:
+    ar: Salman Al-Shami
+    role: Alerting Engineer
+
+  obs-incident-commander:
+    ar: Salah Al-Bitar
+    role: Incident Commander
+
+  obs-insights-analyst:
+    ar: Farah Al-Hammawi
+    role: Insights Analyst
+
+  obs-lead:
+    ar: Lujain Al-Khani
+    role: Head of the Observability Room
+
+  obs-monitoring-engineer:
+    ar: Mira Al-Baba
+    role: Monitoring Engineer
+
+  obs-sre:
+    ar: Tarif Al-Kurdi
+    role: Site Reliability Engineer
+
+  ops-cicd-engineer:
+    ar: Azzam Al-Halawani
+    role: CI/CD Engineer
+
+  ops-cloud-engineer:
+    ar: Ghanem Al-Sawwaf
+    role: Cloud Engineer
+
+  ops-cost-optimizer:
+    ar: Fateh Al-Qattan
+    role: Cost Optimizer
+
+  ops-domain-warden:
+    ar: Qutada Al-Zayyat
+    role: Domain Warden
+
+  ops-lead:
+    ar: Kamil Al-Samman
+    role: Head of Infrastructure
+
+  ops-migration-runner:
+    ar: Labib Al-Dabbagh
+    role: Migration Runner
+
+  ops-release-manager:
+    ar: Munzer Al-Tahan
+    role: Release Manager
+
+  ops-sandbox-executor:
+    ar: Tariq Al-Najjar
+    role: Sandbox Execution Engineer
+
+  qa-automation-engineer:
+    ar: Numair Al-Attar
+    role: Test Automation Engineer
+
+  qa-design-auditor:
+    ar: Naya Al-Asfari
+    role: Design Auditor
+
+  qa-lead:
+    ar: Lama Al-Trabulsi
+    role: Head of the Quality Room
+
+  qa-manual-explorer:
+    ar: Hanadi Al-Naqri
+    role: Manual Explorer
+
+  qa-perf-analyst:
+    ar: Hilal Al-Jazairi
+    role: Performance Analyst
+
+  qa-regression-warden:
+    ar: Wijdan Al-Hallaq
+    role: Regression Warden
+
+  qa-test-architect:
+    ar: Yasmin Al-Atassi
+    role: Test Architect
+
+  res-competitor-analyst:
+    ar: Arwa Al-Samman
+    role: Competitor Analyst
+
+  res-data-researcher:
+    ar: Wasel Al-Hammami
+    role: Quantitative Data Researcher
+
+  res-fact-checker:
+    ar: Yaarub Al-Qahoji
+    role: Fact Checker
+
+  res-journey-architect:
+    ar: Iyad Al-Miqati
+    role: Journey Architect
+
+  res-lead:
+    ar: Bisan Al-Hourani
+    role: Head of UX Research
+
+  res-ux-researcher:
+    ar: Tasneem Al-Mardini
+    role: UX Researcher
+
+  res-web-scout:
+    ar: Bassem Al-Sarmini
+    role: Web Scout
+
+  sec-appsec-engineer:
+    ar: Jarrah Al-Khal
+    role: Application Security Engineer
+
+  sec-authn-engineer:
+    ar: Hayyan Al-Moustafa
+    role: Authentication Engineer
+
+  sec-compliance-auditor:
+    ar: Jumana Al-Kiyali
+    role: Compliance Auditor
+
+  sec-incident-responder:
+    ar: Khaldoun Al-Telawi
+    role: Incident Responder
+
+  sec-lead:
+    ar: Wajih Al-Issami
+    role: Head of Information Security
+
+  sec-license-auditor:
+    ar: Nadim Al-Kaylani
+    role: License & IP Compliance Auditor
+
+  sec-pentester:
+    ar: Riyad Al-Jundali
+    role: Ethical Hacker
+
+  sec-secrets-warden:
+    ar: Zuhair Al-Sayoufi
+    role: Secrets Warden
+
+  sec-threat-modeler:
+    ar: Sinan Al-Kakli
+    role: Threat Modeler
+
+  str-agile-orchestrator:
+    ar: Munir Al-Sabuni
+    role: Agile & Flow Orchestrator
+
+  str-business-analyst:
+    ar: Shakib Al-Nablusi
+    role: Business & Requirements Analyst
+
+  str-lead:
+    ar: Nazih Al-Muhaini
+    role: Head of Product Sector & Executive Creative Director
+
+  str-market-analyst:
+    ar: Hanin Al-Razzi
+    role: Market & Competitive Positioning Analyst
+
+  str-monetization-strategist:
+    ar: Diala Al-Baqai
+    role: Pricing & Revenue Strategist
+
+  str-product-strategist:
+    ar: Diya Al-Hakawati
+    role: Product Vision Engineer
+
+  str-risk-analyst:
+    ar: Aref Al-Shammaa
+    role: Business Risk Analyst
+
+  str-roadmap-planner:
+    ar: Fahd Al-Ayyoubi
+    role: Product Roadmap Planner

@@ -1,0 +1,1 @@
+../domain/rooms/12-observability/charter.md

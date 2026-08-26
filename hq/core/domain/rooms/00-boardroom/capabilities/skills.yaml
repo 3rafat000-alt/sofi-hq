@@ -1,0 +1,6 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 00-boardroom
+skill-count: 2
+owned-skills:
+  - brd-decision-gate
+  - internal-comms

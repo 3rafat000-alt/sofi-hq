@@ -1,0 +1,13 @@
+# Python dependencies for SOFI skill scripts (NOT needed by tooling/* — those are stdlib-only)
+# Install: python3 -m pip install -r requirements.txt
+lxml
+defusedxml
+openpyxl
+pypdf
+pdfplumber
+pdf2image
+Pillow
+playwright
+anthropic
+mcp
+pyyaml

@@ -1,0 +1,5 @@
+# [disabled 2026-08-25] hosts permanently removed (their sources no longer exist) — previously responded 410
+# To re-enable: move this file to sites/ then run bash scripts/deploy.sh
+http://jw.local http://owais.local http://wa.local http://wa-track.local {
+	respond 410
+}

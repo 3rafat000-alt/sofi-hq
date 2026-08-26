@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/bck-lead.md

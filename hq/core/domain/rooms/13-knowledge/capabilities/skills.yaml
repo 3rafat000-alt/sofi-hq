@@ -1,0 +1,16 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 13-knowledge
+skill-count: 12
+owned-skills:
+  - api-documentation
+  - doc-coauthoring
+  - docx
+  - knw-brain-write
+  - knw-knowledge-harvest
+  - pdf
+  - pptx
+  - skill-creator
+  - skill-forge
+  - sofi-evidence
+  - sofi-handoff
+  - xlsx

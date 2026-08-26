@@ -1,0 +1,20 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 03-design
+skill-count: 16
+owned-skills:
+  - algorithmic-art
+  - banner-design
+  - brand
+  - brand-guidelines
+  - canvas-design
+  - design
+  - design-system
+  - dsn-design-handoff
+  - dsn-design-intelligence
+  - dsn-design-review
+  - dsn-design-system-gen
+  - dsn-web-design-guidelines
+  - slides
+  - theme-factory
+  - ui-styling
+  - ui-ux-pro-max

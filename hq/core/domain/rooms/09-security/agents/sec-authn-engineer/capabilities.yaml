@@ -1,0 +1,8 @@
+# Capabilities of sec-authn-engineer — by name only, must exist in room manifests
+skills:
+tools:
+  - Sequential-Thinking
+  - Playwright
+  - Chrome-DevTools
+  - Filesystem-Scoped
+  - tooling/law13_path_guard.py

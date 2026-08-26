@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/qa-manual-explorer.md

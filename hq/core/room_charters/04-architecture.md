@@ -1,0 +1,1 @@
+../domain/rooms/04-architecture/charter.md

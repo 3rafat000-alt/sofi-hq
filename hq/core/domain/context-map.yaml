@@ -1,0 +1,107 @@
+# Context Map — contexts and contracts across the 15 rooms
+# Governing rule: this is the single official interface between domain contexts.
+# Communication outside what is defined here = leakage (Law 2 / Law 3).
+# Execution goes through the ticket bus at hq/core/application/bus, and delivery is exclusively through the room lead.
+# v1 (2026-08-25): derived from the constitution, contracts, and charters — each room matures its own lines in its dedicated session.
+# Reading rules:
+#   provides = what the room commits to produce for the system · requires = what it needs by name, not by source
+#   talks-to = legitimate neighbors, via tickets only · forbidden = explicit prohibitions
+#   Any change passes through a gate and its decision is recorded — contracts are frozen between gates.
+
+shared-kernel: [glossary, evidence-rule, envelope, identity]  # read by everyone — only brd-ceo may modify it
+
+"00-boardroom":
+  provides: [rccf-work-orders, final-arbitration, security-veto]
+  requires: [escalations-from-all-rooms]
+  talks-to: ["14-gateway", all-room-leads]
+  forbidden: [direct-task-execution]
+
+"01-strategy":
+  provides: [prd, mvp-scope, gate0-classification]
+  requires: [market-research-from-02-research]
+  talks-to: ["00-boardroom", "02-research"]
+  forbidden: [implementation-decisions]
+
+"02-research":
+  provides: [ux-research, competitor-analysis, fact-checks]
+  requires: [questions-from-01-strategy-and-03-design]
+  talks-to: ["01-strategy", "03-design"]
+  forbidden: [design-decisions]
+
+"03-design":
+  provides: [ux-flows, design-system, mockups]
+  requires: [research-findings-from-02-research, data-model-from-08-data, api-contract-from-04-architecture]
+  talks-to: ["02-research", "04-architecture", "06-frontend", "07-mobile"]
+  forbidden: [code-commits-before-dfr-gate]
+
+"04-architecture":
+  provides: [data-design, api-design, adr-chain, capsule-standards]
+  requires: [prd-from-01-strategy, designs-from-03-design]
+  talks-to: ["05-backend", "08-data", all-engineering-leads]
+  forbidden: [bypassing-dfr]
+
+"05-backend":
+  provides: [working-api, migrations, backend-security-hardening]
+  requires: [frozen-api-contract-from-04-architecture, approved-schema-from-08-data]
+  talks-to: ["10-quality:tickets", "09-security:gates"]
+  forbidden: [direct-chat-with-06-frontend, ui-code]
+
+"06-frontend":
+  provides: [web-apps-on-approved-design-system]
+  requires: [frozen-api-contract-from-04-architecture, live-backend-via-11-devops, designs-from-03-design]
+  talks-to: ["10-quality:tickets", "07-mobile:unified-ui-lane"]
+  forbidden: [backend-code, schema-changes]
+
+"07-mobile":
+  provides: [flutter-apps-web-and-mobile-unified]
+  requires: [frozen-api-contract-from-04-architecture, designs-from-03-design]
+  talks-to: ["06-frontend:unified-lane", "10-quality"]
+  forbidden: [divergent-design-system]
+
+"08-data":
+  provides: [erd, schemas, migration-review, data-quality-rules]
+  requires: [domain-model-from-04-architecture]
+  talks-to: ["04-architecture", "05-backend"]
+  forbidden: [production-data-exposure]
+
+"09-security":
+  provides: [threat-models, pentest-reports, dfr-signature, absolute-veto]
+  requires: [review-access-to-every-design-and-release]
+  talks-to: [all-rooms-gates-only, "00-boardroom"]
+  forbidden: [implementation-duties]
+
+"10-quality":
+  provides: [test-plans, zero-bug-evidence, release-verdicts]
+  requires: [testable-builds-via-bus, acceptance-criteria-from-leads]
+  talks-to: ["05-backend", "06-frontend", "07-mobile", "11-devops"]
+  forbidden: [fixing-code-themselves]
+
+"11-devops":
+  provides: [deployments, live-infra-health, rollback-plans]
+  requires: [qa-passed-artifacts-from-10-quality, runbooks-from-standards]
+  talks-to: ["10-quality", "12-observability", "09-security"]
+  forbidden: [deploying-without-qa-or-owner-order]
+
+"12-observability":
+  provides: [health-metrics, incident-alerts, postmortems]
+  requires: [access-to-live-signals-via-engine]
+  talks-to: ["11-devops", "00-boardroom:incidents"]
+  forbidden: [config-changes]
+
+"13-knowledge":
+  provides: [memory-curation, skills-forge, documentation]
+  requires: [decisions-input-via-ceo-promotion]
+  talks-to: [all-rooms-memory-contracts, "00-boardroom"]
+  forbidden: [unilateral-law-edits]
+
+"14-gateway":
+  provides: [intake-classification, routing-dispatch, mcp-fleet-license]
+  requires: []  # first entry point — needs nothing
+  talks-to: ["00-boardroom", room-leads]
+  forbidden: [execution-outside-classified-flow]
+
+# Gate matrix governing cross-context transitions (summary from gates.yaml)
+gate-matrix:
+  design-to-code: "DFR — signature of 09+10"
+  backend-to-frontend: "backend complete, running, and security-checked"
+  anything-to-production: "zero-defect QA + owner order or approved track"

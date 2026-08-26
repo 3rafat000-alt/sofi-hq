@@ -1,0 +1,7 @@
+# Capabilities of qa-manual-explorer — by name only, must exist in room manifests
+skills:
+tools:
+  - Playwright
+  - Chrome-DevTools
+  - Kitesurf
+  - Filesystem-Scoped

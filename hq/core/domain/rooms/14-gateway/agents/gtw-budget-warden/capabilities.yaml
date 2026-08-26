@@ -1,0 +1,5 @@
+# Capabilities of gtw-budget-warden — by name only, must exist in room manifests
+skills:
+tools:
+  - Sequential-Thinking
+  - Filesystem-Scoped

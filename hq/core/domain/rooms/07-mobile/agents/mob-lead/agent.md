@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/mob-lead.md

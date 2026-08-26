@@ -1,0 +1,1 @@
+../domain/rooms/09-security/charter.md

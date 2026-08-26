@@ -1,0 +1,6 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 12-observability
+mcp-tools:
+  - Filesystem-Scoped
+
+script-tools:

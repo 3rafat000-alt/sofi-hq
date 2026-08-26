@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/gtw-conflict-resolver.md

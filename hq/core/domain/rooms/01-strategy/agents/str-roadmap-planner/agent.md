@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/str-roadmap-planner.md

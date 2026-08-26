@@ -1,0 +1,1 @@
+../domain/rooms/10-quality/charter.md

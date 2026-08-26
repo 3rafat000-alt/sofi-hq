@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/dsn-motion-designer.md

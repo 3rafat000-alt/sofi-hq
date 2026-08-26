@@ -1,0 +1,8 @@
+# Capabilities of res-competitor-analyst — by name only, must exist in room manifests
+skills:
+tools:
+  - Context7
+  - DeepWiki
+  - Playwright
+  - Kitesurf
+  - Filesystem-Scoped

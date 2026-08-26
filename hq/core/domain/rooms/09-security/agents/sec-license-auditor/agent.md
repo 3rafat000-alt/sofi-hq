@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/sec-license-auditor.md

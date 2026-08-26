@@ -1,0 +1,1 @@
+../domain/rooms/00-boardroom/charter.md

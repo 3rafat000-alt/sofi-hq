@@ -1,0 +1,1 @@
+../domain/rooms/01-strategy/charter.md

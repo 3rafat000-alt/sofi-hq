@@ -1,0 +1,6 @@
+# Capabilities of ops-domain-warden — by name only, must exist in room manifests
+skills:
+tools:
+  - Filesystem-Scoped
+  - engine/scripts/*.sh
+  - tooling/docker/*

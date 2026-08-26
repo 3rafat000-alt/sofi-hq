@@ -1,0 +1,10 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 02-research
+mcp-tools:
+  - Context7
+  - DeepWiki
+  - Playwright
+  - Kitesurf
+  - Filesystem-Scoped
+
+script-tools:

@@ -1,0 +1,4 @@
+# Capabilities of obs-lead — by name only, must exist in room manifests
+skills:
+tools:
+  - Filesystem-Scoped

@@ -1,0 +1,1 @@
+../domain/rooms/07-mobile/charter.md

@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/brd-chief-of-staff.md

@@ -1,0 +1,11 @@
+# Capabilities of knw-lead — by name only, must exist in room manifests
+skills:
+  - skill-forge
+  - sofi-evidence
+  - sofi-handoff
+tools:
+  - Context7
+  - DeepWiki
+  - Filesystem-Scoped
+  - tooling/port-agents.mjs
+  - tooling/count_sync.py

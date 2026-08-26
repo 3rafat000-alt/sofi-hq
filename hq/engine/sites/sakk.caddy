@@ -1,0 +1,237 @@
+# sakk.caddy — configuration of the single active sakk project (moved verbatim from the original Caddyfile · 2026-08-25)
+# Adding a future domain = a new <domain>.caddy file here then: bash scripts/deploy.sh
+# ───────────────────────────────────────────────────────────────────────
+# SAKK Wallet — Laravel API via php-fpm + React SPA (web + admin)
+# Location: /home/es3dlll/Desktop/SOFI/projects/sakk · Database: SQLite for local development
+# ───────────────────────────────────────────────────────────────────────
+
+(sakk_app) {
+	import block_sensitive
+
+	# Backend API interface (Laravel via php-fpm)
+	handle /api/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/backend/public
+
+		@notStatic {
+			not file {
+				try_files {path} /index.php?{query}
+			}
+		}
+		rewrite @notStatic /index.php?{query}
+
+		php_fastcgi unix//run/php/sakk.sock {
+			root /home/es3dlll/Desktop/SOFI/projects/sakk/backend/public
+		}
+
+		file_server
+		encode zstd gzip
+	}
+
+	# Public storage files (content images)
+	handle /storage/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/backend/storage/app/public
+		file_server
+		encode zstd gzip
+	}
+
+	# Admin panel (React Admin SPA — /admin)
+	redir /admin /admin/ permanent
+	handle_path /admin/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/admin/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		import security_headers
+	}
+
+	# Independent partner portals — direct routes (React SPA from the same dist)
+	handle_path /agent/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		import security_headers
+	}
+	redir /agent /agent/ permanent
+
+	handle_path /merchant/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		import security_headers
+	}
+	redir /merchant /merchant/ permanent
+
+	handle_path /company/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		import security_headers
+	}
+	redir /company /company/ permanent
+
+	# Public site (SPA from portal — apps/web never existed · M10-b)
+	# /portal retired (2026-08-20) — the portal app was deleted — returns 404
+	handle /portal* {
+		respond 404
+	}
+
+	handle /portal/assets/* {
+		uri strip_prefix /portal
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		file_server
+		encode zstd gzip
+		header Cache-Control "public, max-age=31536000, immutable"
+	}
+	handle /assets/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		file_server
+		encode zstd gzip
+		header Cache-Control "public, max-age=31536000, immutable"
+		import security_headers
+		import csp_sakk
+	}
+
+	handle {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "public, max-age=300"
+		import security_headers
+		import csp_sakk
+	}
+}
+
+# Public variant (Cloudflare Tunnel — sakk.zanjour.com): web + API only, /admin blocked
+(sakk_app_public) {
+	import block_sensitive
+
+	# Admin panel deliberately blocked from outside
+	@admin path /admin /admin/*
+	handle @admin {
+		respond 404
+	}
+
+	# Backend API interface (Laravel via php-fpm)
+	handle /api/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/backend/public
+
+		@notStatic {
+			not file {
+				try_files {path} /index.php?{query}
+			}
+		}
+		rewrite @notStatic /index.php?{query}
+
+		php_fastcgi unix//run/php/sakk.sock {
+			root /home/es3dlll/Desktop/SOFI/projects/sakk/backend/public
+		}
+
+		file_server
+		encode zstd gzip
+	}
+
+	# Public storage files (content images)
+	handle /storage/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/backend/storage/app/public
+		file_server
+		encode zstd gzip
+	}
+
+	# Public storage files (content images)
+	handle /storage/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/backend/storage/app/public
+		file_server
+		encode zstd gzip
+	}
+
+	# Webhook routes (CCPayment/Stripe — no local docs, handled by Laravel)
+	handle /webhooks/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/backend/public
+
+		@notStatic {
+			not file {
+				try_files {path} /index.php?{query}
+			}
+		}
+		rewrite @notStatic /index.php?{query}
+
+		php_fastcgi unix//run/php/sakk.sock {
+			root /home/es3dlll/Desktop/SOFI/projects/sakk/backend/public
+		}
+
+		file_server
+		encode zstd gzip
+	}
+
+	# Independent partner portals (React SPA — /agent /merchant /company)
+	redir /agent /agent/ permanent
+	handle_path /agent/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		import security_headers
+	}
+
+	redir /merchant /merchant/ permanent
+	handle_path /merchant/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		import security_headers
+	}
+
+	redir /company /company/ permanent
+	handle_path /company/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		import security_headers
+	}
+
+	# Public site (SPA from portal — apps/web never existed · M10-b)
+	# /portal retired (2026-08-20) — the portal app was deleted — returns 404
+	handle /portal* {
+		respond 404
+	}
+
+	handle /assets/* {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		file_server
+		encode zstd gzip
+		header Cache-Control "public, max-age=31536000, immutable"
+		import security_headers
+		import csp_sakk
+	}
+
+	handle {
+		root * /home/es3dlll/Desktop/SOFI/projects/sakk/apps/portal/dist
+		try_files {path} /index.html
+		file_server
+		encode zstd gzip
+		header Cache-Control "public, max-age=300"
+		import security_headers
+		import csp_sakk
+	}
+}
+
+http://sakk.local {
+	import sakk_app
+}
+
+http://sakk.zanjour.com {
+	import sakk_app_public
+}

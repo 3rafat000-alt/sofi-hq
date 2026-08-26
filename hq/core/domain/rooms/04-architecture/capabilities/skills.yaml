@@ -1,0 +1,8 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 04-architecture
+skill-count: 4
+owned-skills:
+  - api-ai-augmented
+  - api-analyzer
+  - api-designer
+  - arc-adr

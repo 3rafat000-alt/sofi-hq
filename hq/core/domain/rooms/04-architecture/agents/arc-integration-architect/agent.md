@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/arc-integration-architect.md

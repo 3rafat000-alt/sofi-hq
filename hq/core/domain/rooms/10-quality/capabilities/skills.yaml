@@ -1,0 +1,20 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 10-quality
+skill-count: 16
+owned-skills:
+  - behat-skill
+  - cucumber-skill
+  - cypress-skill
+  - jest-skill
+  - mocha-skill
+  - playwright-skill
+  - pytest-skill
+  - qa-agent-browser
+  - qa-test-plan
+  - selenium-skill
+  - sofi-agent-eval
+  - systematic-debugging
+  - test-framework-migration-skill
+  - unittest-skill
+  - vitest-skill
+  - webdriverio-skill

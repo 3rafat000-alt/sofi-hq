@@ -1,0 +1,12 @@
+# SOFI AI Model Aliases
+# Alias → model-id mapping. Single source of truth (tools engine retired 2026-07-16).
+
+aliases:
+  mechanical: claude-haiku-4-5    # 🟢 80% of routine ops
+  workhorse:  claude-sonnet-5     # 🔵 clear-cut coding
+  gatekeeper: claude-fable-5      # 🔮 adversarial checks
+  deep:       claude-opus-4-8     # 🟣 last resort only
+
+policy:
+  routing_yaml_may_reference: [mechanical, workhorse, gatekeeper, deep]
+  note: "routing.yaml must reference these aliases only — enforced hierarchically (Lead → CEO); mechanical linting retired 2026-07-16"

@@ -1,0 +1,43 @@
+# ═══════════════════════════════════════════════════════════════════════
+# Caddyfile — main file (source of truth) · "sakk only" restructuring dated 2026-08-25
+# Structure: shared snippets + default guard + a single import of sites/
+# Adding a future domain = new file sites/<domain>.caddy then: bash scripts/deploy.sh
+# Hosts disabled by relocation (tobacco · jw · owais · wa · old wildcard): sites-disabled/
+# ═══════════════════════════════════════════════════════════════════════
+
+# Shared security block — imported by every site (single source)
+# path_regexp matches at any depth (unlike glob handle_path, which does not cross "/")
+# It catches: .env and all its variants (.env.production / .env.local / .env.windows),
+# secrets (.secret/.key/.pem), databases, and internal application folders
+(block_sensitive) {
+	@sensitive {
+		path_regexp sensitive ^/(\.env(\.\w+)?|\.secret|\.key|\.pem|\.htpasswd)$|^/.*\.(sqlite|sqlite3|db|pem|key)$|^/.*\.env(\.\w+)?$|^/(app|data|vendor|storage|config|database)(/|$)
+	}
+	handle @sensitive {
+		respond 404
+	}
+}
+
+# Shared security headers — imported by every site
+(security_headers) {
+	header X-Content-Type-Options nosniff
+	header X-Frame-Options DENY
+	header Referrer-Policy strict-origin-when-cross-origin
+	header Permissions-Policy "camera=(self), microphone=(), geolocation=(), usb=(self)"
+}
+
+# Content Security Policy for the public sakk site (SPA — allows consent trackers only)
+(csp_sakk) {
+	header Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-TeCPOmjrrh0hDQEMSuJuxSrTeLTVmZqSzS/ahPPGNeo=' 'sha256-OBTN3RiyCV4Bq7dFqZ5a2pAXjnCcCYeTJMO2I/LYKeo=' 'sha256-kWV+QtPsIfme9Hja0skXvj3TneiadVpiSTfNEbpO+ns=' 'sha256-ERqbsu0pbaP9Cj1WhYQUtbJ7UG6Dl5fRpT/gPxhYyKA=' 'sha256-36pWrVAzdYZl4tU55qbEcIaOPjyf5oMzsKCq1VjlWo8=' 'sha256-T7J5hBREKPd+wpQetNlSDZoqMHo13Srm/bJkSeEG8xg=' 'sha256-2kUqX1mTKF0rrPfgfN0894vsctZtl6An1X2KbPBgII8=' 'sha256-kU5jAi/HfXLFnJH/yhmJiZMmpabdKgsJIrVDkrW7Wko=' 'sha256-ho6MCWBeMv4lT5H9UA/8/26SOQjnj/bXwsttCLBxk2k=' 'sha256-JpEtjyIIawf7afv2TyezMYmCvzGc914MiasXGcGvp3c=' 'sha256-QdzDeXo3Sk/O/tPWi/mwF6/b4s5hFKxUzVD3tKUWQng=' 'sha256-Zea8B4HYqyK9g61Pr7urHL6b2efUecYBuNYnltXobH4=' 'sha256-PiFCry/KETv4PKdd8dqT1rb//ZUd21k3ZYhOnc4hSOA=' 'sha256-R8/TXsNZp+keDApVUJ1Rk/NnAvXcENswomgbD0OxxOk=' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com https://stats.g.doubleclick.net; connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net https://connect.facebook.net https://www.googletagmanager.com; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+}
+
+# ───────────────────────────────────────────────────────────────────────
+# Default guard: any undefined host on port 80 → explicit 404
+# (replaces the old wildcard and prevents disclosing content on random names)
+# ───────────────────────────────────────────────────────────────────────
+http://:80 {
+	respond 404
+}
+
+# Active sites — one file per domain
+import sites/*.caddy

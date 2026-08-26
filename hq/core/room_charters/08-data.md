@@ -1,0 +1,1 @@
+../domain/rooms/08-data/charter.md

@@ -1,0 +1,6 @@
+# Capabilities of mob-lead — by name only, must exist in room manifests
+skills:
+tools:
+  - Dart-Flutter
+  - Context7
+  - Filesystem-Scoped

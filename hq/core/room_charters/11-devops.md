@@ -1,0 +1,1 @@
+../domain/rooms/11-devops/charter.md

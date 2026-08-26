@@ -1,0 +1,115 @@
+# SOFI AI Gates — 9 gates (machine-readable)
+# Owner: gtw-gatekeeper.
+# v1.2 (2026-08-24 · INT-GTW-023): the "G3" naming collision is permanently resolved by owner order — the R2 design-approval review was renamed "Design-Freeze Review (DFR)" across 119+ files (152+ documented replacements).
+#
+# The three now-distinct namespaces (unambiguous from here on):
+#   • G0-G8 (this file + Article-10): the lifecycle discipline gates — Gate 3 = Architecture. Always written "Gate 3" and never as the bare abstract "G3".
+#   • DFR: the Design-Freeze Review gate at the end of S3 (signature of sec-lead + qa-lead on every design before the first line of code) — the sole official name of what R2 used to call "the G3 gate".
+#   • G1-G5 (Article-02 grounding): executive grounding checks — an independent namespace unrelated to the gates.
+# Working rule: S2 crosses Gate-3 on paper; then S3 closes with the DFR signature before any line of code.
+
+gates:
+  "0":
+    name: Inception
+    owner: 01-strategy
+    entry: "Idea worth a project"
+    exit_bar: "Project charter exists; scope pinned in projects/<slug>/brain/CONTEXT.md"
+    artifacts: ["blueprint.md", "problem-statement.md"]
+    on_fail: "Reject upward — clarify scope"
+
+  "1":
+    name: Discovery
+    owner: 02-research
+    entry: "Gate 0 tagged; problem statement frozen"
+    exit_bar: "Evidence-grounded personas + journey map (Mermaid); cited sources"
+    artifacts: ["personas.md", "journey-map.md"]
+    on_fail: "More research required"
+
+  "2":
+    name: Solution Design
+    owner: 03-design
+    entry: "Journey Map frozen"
+    exit_bar: "WCAG 2.2 AA passes; every screen traces to journey stage; freeze"
+    artifacts: ["prototype-spec.md", "content-strings.json"]
+    on_fail: "Design gaps — revise"
+
+  "3":
+    name: Architecture
+    owner: 04-architecture
+    entry: "Prototype frozen"
+    exit_bar: "Schema↔screens traceable; migrations reversible; threat model signed"
+    artifacts: ["schema.md", "erd.md", "openapi.yaml", "tech-stack.md", "threat-model.md"]
+    on_fail: "Architecture gaps — revise; journey-less features → Backlog"
+
+  "4":
+    name: Build
+    owner: ["05-backend", "06-frontend", "07-mobile"]
+    entry: "Gate-3 bundle frozen"
+    exit_bar: "All states built; leads consolidate squad output at close; test green"
+    artifacts: ["code", "test-report.md"]
+    on_fail: "Code gaps — fix before consolidation"
+
+  "5":
+    name: Quality
+    owner: 10-quality
+    entry: "Build consolidated in projects/<PRJ>"
+    exit_bar: "ONE PASS/BLOCK; crit/high fixed; coverage >90%; TTI <2s; pass^k on money/auth/PII"
+    artifacts: ["test-report.md", "design-audit.md", "qa-verdict.md"]
+    on_fail: "BLOCK until resolved"
+
+  "6":
+    name: Staging / UAT
+    owner: 11-devops
+    entry: "Quality PASS"
+    exit_bar: "UAT pass; pass^k re-run on critical paths"
+    artifacts: ["staging-report.md", "uat-log.md"]
+    on_fail: "UAT fails — fix and re-deploy"
+
+  "7":
+    name: Production
+    owner: 11-devops
+    entry: "UAT signed"
+    exit_bar: "Blue/Green healthy; rollback rehearsed"
+    artifacts: ["deploy-report.md", "rollback-script.md"]
+    on_fail: "Rollback and fix"
+
+  "8":
+    name: Observe
+    owner: 12-observability
+    entry: "Prod live"
+    exit_bar: "SLO report + journey drop-off insights; breach auto-files Gate-1 issue"
+    artifacts: ["slo-report.md"]
+    on_fail: "SLO breach → re-enter Gate 1"
+
+tracks:
+  fast-track:
+    collapses: [1, 2, 3]
+    eligibility: "UI copy, i18n, non-money fields, low-risk"
+    gate: "Blueprint check → prod on green tests"
+    authority: "proposed at Gate 0 (str-lead); authorized exclusively by brd-ceo — single text: PROTOCOLS P-01.8; logged to hq/brain/cortex-decisions.md"
+  deep-audit:
+    gates: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    eligibility: "Money, auth, PII, credentials, irreversible operations"
+    note: "No exception; unsure → Deep-Audit"
+
+# stage_map (INT-GTW-022 · 2026-08-24): binds the lifecycle gates G0-G8 to the production-line stages S1-S6 (pipeline.yaml v2)
+# A stage crosses its evidence-bound gates (Law 4) — no stage opens before its predecessor's gate closes.
+stage_map:
+  S1: [0, 1]        # Idea, strategy and research → Inception + Discovery
+  S2: [3]           # Data & contract design on paper → Architecture bundle (ERD+openapi+threat-model), zero code
+  S3: [2]           # Experience & visual system → Solution Design; then the DFR signature (sec+qa) freezes every design
+  S4: [4]           # Live backend execution → Build (rooms 05·08 only — rooms 06/07 forbidden)
+  S5: [4]           # Both interfaces in parallel on the frozen contract → Build completion by the merged team
+  S6: [5, 6, 7, 8]  # Shield & production → Quality, Staging/UAT, Production, Observe
+stage_map_note: "G0-G8 are quality thresholds across the whole life of the project; S1-S6 are the v2 production-line sequence — the same vision from two angles"
+
+# DFR (INT-GTW-024 · 2026-08-24): Design-Freeze Review — a machine gate-block equivalent to the nine gates (closes the former on_fail gap)
+dfr:
+  name: Design-Freeze Review (DFR)
+  owner: dsn-lead
+  signers: [sec-lead, qa-lead]   # dual signature mandatory — either one alone suffices to reject
+  stage: S3                       # seals the stage before the first line of code anywhere in the project
+  entry: "Gate-3 paper bundle approved in S2 + ux-flows/design-tokens/hi-fi-mockups ready"
+  exit_bar: "sec-lead and qa-lead sign dfr-signoff covering data+API+UI designs; zero code lines anywhere"
+  artifacts: ["dfr-signoff"]
+  on_fail: "revise designs and re-review — zero code until re-signed; repeated failure → escalate brd-ceo"

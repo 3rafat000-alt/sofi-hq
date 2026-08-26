@@ -1,0 +1,10 @@
+# Capabilities of str-agile-orchestrator — by name only, must exist in room manifests
+skills:
+  - writing-plans
+  - sofi-evidence
+  - sofi-handoff
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash

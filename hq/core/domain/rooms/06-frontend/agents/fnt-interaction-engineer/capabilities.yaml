@@ -1,0 +1,8 @@
+# Capabilities of fnt-interaction-engineer — by name only, must exist in room manifests
+skills:
+tools:
+  - Context7
+  - Chrome-DevTools
+  - Playwright
+  - Kitesurf
+  - Filesystem-Scoped

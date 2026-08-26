@@ -1,0 +1,72 @@
+# SOFI — Persistent Knowledge Graph Memory (Phase 1+)
+# auto-memory is a symlink to the harness-owned Claude Code memory dir (external, not tracked)
+org_brain/auto_memory_archive
+
+# ── External on-disk tooling — never tracked (owner decision INT-GTW-019) ──
+# (note)
+.kilo/worktrees/
+
+# Obsidian per-machine workspace/cache (keep app.json, graph.json, core-plugins.json tracked)
+
+# Obsidian per-machine workspace/cache (keep app.json, graph.json, core-plugins.json tracked)
+org_brain/.obsidian/workspace*.json
+org_brain/.obsidian/cache
+org_brain/.obsidian/graph.json.bak
+
+# playwright/browser session leftovers
+.playwright-mcp/
+sandbox/
+
+# verdict store cache — regenerated, never committed
+org_brain/state_runtime/verdicts.db
+org_brain/state_runtime/verdicts.db-*
+org_brain/state_runtime/verdicts.chain.lock
+org_brain/state_runtime/*.tmp
+
+# projects/<name>/ — dependency + build artifacts, regenerable, never committed
+# (each project's own .gitignore should cover this too, but pnpm hoists a
+# workspace-root node_modules/ that no per-app .gitignore reaches — belt+suspences)
+node_modules/
+vendor/
+.dart_tool/
+build/
+dist/
+dist-ssr/
+.pub-cache/
+.pub/
+*.lock.tmp
+
+# ── Secrets safety net (all projects) ──────────────────────
+# (note)
+# (note)
+projects/**/*.env
+projects/**/*.env.*
+!projects/**/*.env.example
+
+# (note)
+# (note)
+# (note)
+projects/sakk/
+
+# (note)
+# (note)
+# (note)
+backups/*.enc
+backups/screenshots/
+
+
+# (note)
+org_brain/
+memory_index/
+
+# (note)
+backups/
+
+# (note)
+**/.env.production
+
+# (note)
+cleanup-workspace/
+
+# (note)
+hq/brain/

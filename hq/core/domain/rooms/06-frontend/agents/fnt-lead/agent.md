@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/fnt-lead.md

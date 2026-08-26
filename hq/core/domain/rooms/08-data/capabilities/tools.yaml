@@ -1,0 +1,8 @@
+# Room-licensed tools — every capability below is authorized for this room only
+room: 08-data
+mcp-tools:
+  - Context7
+  - DeepWiki
+  - Filesystem-Scoped
+
+script-tools:

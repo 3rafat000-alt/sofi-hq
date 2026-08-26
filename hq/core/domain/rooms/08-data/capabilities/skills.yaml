@@ -1,0 +1,5 @@
+# Room-owned skills — ownership ledger: domain/SKILLS-ASSIGNMENT.md
+room: 08-data
+skill-count: 1
+owned-skills:
+  - dat-schema-migration

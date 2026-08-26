@@ -1,0 +1,1 @@
+../domain/rooms/02-research/charter.md

@@ -1,0 +1,7 @@
+# Capabilities of dsn-motion-designer — by name only, must exist in room manifests
+skills:
+tools:
+  - Chrome-DevTools
+  - Playwright
+  - Kitesurf
+  - Filesystem-Scoped

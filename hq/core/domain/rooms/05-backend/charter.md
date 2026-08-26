@@ -77,6 +77,8 @@ Gate-4 (Build)
 - **External room skills:** `phpunit-skill` · `laravel-dusk-skill`⭐(Blade) · `behat-skill` · `api-designer/analyzer/documentation/fetcher`
 - **Full map:** `.opencode/skills/INDEX.md`.
 
+**Builder-test-authorship rule (owner order 2026-08-26):** the engineer who builds a feature authors its unit and integration tests in the same task — `php artisan test` green is part of the definition of done, verified by `qa-automation-engineer` (room 10) at review. A feature delivered without its tests fails evidence check (Law 4); test strategy and verdicts remain room 10's mandate — no duplicate test-engineer agent is created.
+
 ---
 
 ## | Room Law

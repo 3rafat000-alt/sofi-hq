@@ -75,6 +75,10 @@ Gate-4 (Build)
 - **External room skills:** `flutter-testing-skill`⭐ + flutter-*/dart-* suite (22) · `espresso-skill` · `xcuitest-skill` · `detox-skill` · `appium-skill`⚠️blocked until sec-lead review
 - **Full map:** `.opencode/skills/INDEX.md`.
 
+**Merged-team state ownership (owner order 2026-08-26):** `mob-state-engineer` owns the state architecture for the whole merged S5 Flutter/Dart team — web and mobile together (R2 unified standard) — so no separate frontend state agent exists; state decisions for web screens flow through this role.
+
+**Builder-test-authorship rule (owner order 2026-08-26):** the engineer who builds a screen or feature authors its widget and integration tests in the same task (`flutter test` green = definition of done), verified by `qa-automation-engineer` (room 10). Test strategy, device-lab coverage, and verdicts remain room 10's mandate — no duplicate test-engineer agent is created.
+
 ---
 
 ## | Room Law

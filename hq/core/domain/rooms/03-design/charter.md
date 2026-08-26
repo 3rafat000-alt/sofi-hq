@@ -23,7 +23,7 @@ Visual design, design system, branding, UX
 - `dsn-design-system` — design-system
 - `dsn-brand-designer` — brand-designer
 - `dsn-content-strategist` — content-strategist
-- `dsn-motion-designer` — motion-designer
+- `dsn-motion-designer` — motion-designer *(scope extended 2026-08-26, owner order: also owns interaction-behavior design)*
 - `dsn-a11y-specialist` — a11y-specialist
 - `dsn-ux-architect` — ux-architect
 
@@ -78,6 +78,8 @@ Gate-2 (Design)
 - **Full map:** `.opencode/skills/INDEX.md`.
 
 **Shift-left data-privacy rule (owner order 2026-08-26):** no UX flow, screen, or mockup passes the Design-Freeze Review without `dat-privacy-officer` (room 08, via the leads' chain) signing off on every personal-data collection, storage, and display point — a privacy defect caught on paper costs nothing; caught in production it is an SEV-1 incident (runbook R1).
+
+**Interaction-design ownership rule (owner order 2026-08-26):** `dsn-motion-designer` owns not only visual motion but the full interaction-behavior spec — press/hold/drag/scroll states, transitions between states, and micro-feedback — documented per component before handoff to the merged S5 team; `fnt-interaction-engineer` implements the spec and returns deviations through the leads' chain.
 
 ---
 

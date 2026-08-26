@@ -12,7 +12,7 @@
 **Purpose:**
 System design, architecture, integration planning
 
-**Agent count:** 7
+**Agent count:** 9
 
 ---
 
@@ -25,6 +25,8 @@ System design, architecture, integration planning
 - `arc-infra-architect` — infra-architect
 - `arc-integration-architect` — integration-architect
 - `arc-review-architect` — review-architect
+- `arc-security-architect` — security-architect (added 2026-08-26, owner order)
+- `arc-performance-architect` — performance-architect (added 2026-08-26, owner order)
 
 **Operational agent definitions:** `.opencode/agent/` — the single source of truth.
 

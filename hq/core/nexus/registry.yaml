@@ -1,4 +1,4 @@
-# SOFI AI Agent Registry — 15 rooms, 109 agents
+# SOFI AI Agent Registry — 15 rooms, 111 agents
 # Source of truth for who exists, their room, and prefix.
 # Routes/budgets live in routing.yaml; persona names in personas.yaml; gates in gates.yaml.
 # 2026-08-26: +3 operational-gap agents by owner order (agile-orchestrator · sandbox-executor · license-auditor) — record: hq/history/2026-08-26-operational-gaps/
@@ -28,7 +28,7 @@ rooms:
     code: "04"
     name_en: Architecture
     prefix: arc
-    agents: [lead, system-architect, api-architect, data-architect, infra-architect, integration-architect, review-architect]
+    agents: [lead, system-architect, api-architect, data-architect, infra-architect, integration-architect, review-architect, security-architect, performance-architect]
   "05-backend":
     code: "05"
     name_en: Backend Engineering

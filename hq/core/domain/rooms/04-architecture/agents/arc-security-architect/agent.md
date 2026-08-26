@@ -1,0 +1,1 @@
+../../../../../../../.opencode/agent/arc-security-architect.md

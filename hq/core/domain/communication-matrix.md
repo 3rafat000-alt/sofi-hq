@@ -33,6 +33,10 @@
 | External review desk | `gtw-external-reviewer` | fateful decision points (Teaching VII) |
 | Board consultation | brd-* advisors | critical-track decisions (Law 6) |
 | Excellence ritual | `str-agile-orchestrator`+`knw-reflector`+`arc-review-architect` → `brd-cto` | monthly process-health review |
+| Research data flow | `dsn-ux-architect` → dsn-lead → res-lead → `res-ux-researcher` / `res-journey-architect` | design needs user/journey evidence (added 2026-08-26) |
+| Endpoint security design | `arc-security-architect` ↔ sec-lead → `sec-threat-modeler` / `sec-authn-engineer` | secure-architecture design ↔ threat model & implementation (added 2026-08-26) |
+| Performance budget handoff | `arc-performance-architect` → obs-lead → `obs-monitoring-engineer`; → dat-lead → `dat-cache-engineer` | SLO budgets to measurement; cache mechanics to implementation (added 2026-08-26) |
+| Mobile design fit | `mob-flutter-engineer` → mob-lead → dsn-lead → `dsn-ux-architect` | mobile-suitability verification of designs (added 2026-08-26) |
 
 ## 4. Return / rejection paths (work going back)
 

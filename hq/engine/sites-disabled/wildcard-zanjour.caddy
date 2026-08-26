@@ -1,5 +1,0 @@
-# [disabled 2026-08-25] public wildcard — replaced by the 404 guard in the main file (same behavior, tighter scope)
-# Any undefined subdomain arriving via the tunnel → 404
-http://*.zanjour.com {
-	respond 404
-}

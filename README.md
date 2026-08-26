@@ -138,6 +138,7 @@ SOFI/
 │   │   ├── gate_checklists/              # gate-0 … gate-8 checklists
 │   │   ├── standards/                    # stacks-tech · devops · deploy · pipeline-production-line
 │   │   │                                 # reporting-cadence · kpi-thresholds (K1–K17)
+│   │   │                                 # room-dod-and-execution-rules (unified DoD reference)
 │   │   ├── runbooks/                     # incident-response.md — R1–R4 SEV playbooks
 │   │   ├── tech_templates/               # ddd-capsule-protocol.md · auth-rbac-stack
 │   │   ├── templates/                    # document templates (project brain etc.)

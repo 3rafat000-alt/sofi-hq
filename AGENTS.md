@@ -123,6 +123,7 @@ Violation: routing an over-threshold request = L2 to the gateway agent.
 | Structure standard | `hq/core/structure-standard.md` |
 | File discipline | `hq/training/file-discipline.md` |
 | Stack standards | `hq/core/standards/stacks-tech.md` |
+| Unified room DoD & execution rules | `hq/core/standards/room-dod-and-execution-rules.md` |
 | Engineering workflow | `hq/core/standards/devops-standard.md` |
 | Reference operating state | `hq/core/system-state-current.md` |
 

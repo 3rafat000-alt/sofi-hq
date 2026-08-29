@@ -1,0 +1,470 @@
+## FILE: hq/engine/mcp_server/contracts/openapi.yaml
+openapi: 3.1.0
+info:
+  title: SOFI HQ Local MCP Server
+  version: 1.0.0
+  description: |
+    حافلة MCP محلية تربط 114 وكيلًا بـ15 قائدًا — تفرض عزل الغرف (Law 2) وتسليم هرمي (Law 3)
+    Local-first — localhost:8765 — SQLite — MIT only
+servers:
+  - url: http://localhost:8765
+    description: Local MCP Server
+security:
+  - ApiKeyAuth: []
+paths:
+  /health:
+    get:
+      summary: Health check
+      security: []  # open but rate-limited; alternative: require key — we require key per spec
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+  /api/v1/message:
+    post:
+      summary: Send message agent<->lead (enforces Law 2)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageCreate'
+      responses:
+        '200':
+          description: Delivered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/ForbiddenCrossRoom'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/messages:
+    get:
+      summary: List messages filtered
+      parameters:
+        - name: agent
+          in: query
+          schema: {type: string}
+        - name: room
+          in: query
+          schema: {type: string}
+        - name: page
+          in: query
+          schema: {type: integer, default: 1}
+        - name: limit
+          in: query
+          schema: {type: integer, default: 20, maximum: 100}
+      responses:
+        '200':
+          description: List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+  /api/v1/tickets:
+    get:
+      summary: List tickets filtered
+      parameters:
+        - name: status
+          in: query
+          schema: {type: string, enum: [open, in_progress, resolved, closed]}
+        - name: priority
+          in: query
+          schema: {type: string, enum: [low, medium, high, critical]}
+        - name: room
+          in: query
+          schema: {type: string}
+        - name: page
+          in: query
+          schema: {type: integer, default: 1}
+        - name: limit
+          in: query
+          schema: {type: integer, default: 20, maximum: 100}
+      responses:
+        '200':
+          description: List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+    post:
+      summary: Create ticket lead->lead
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketCreate'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '422': {$ref: '#/components/responses/ValidationError'}
+  /api/v1/tickets/{id}:
+    get:
+      summary: Get ticket by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: {type: integer}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '404': {$ref: '#/components/responses/NotFound'}
+    patch:
+      summary: Update ticket status (only open->in_progress->resolved->closed)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: {type: integer}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status: {type: string, enum: [open, in_progress, resolved, closed]}
+                assignee: {type: string}
+              required: [status]
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '400': {$ref: '#/components/responses/BadTransition'}
+  /api/v1/memory/decision:
+    post:
+      summary: Write decision to cortex-decisions.md (Law 7)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content: {type: string, minLength: 1, maxLength: 4096}
+                room: {type: string}
+                evidence: {type: string}
+              required: [content]
+      responses:
+        '201':
+          description: Written
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+  /api/v1/memory/session:
+    post:
+      summary: Write session to hippocampus-sessions.md
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content: {type: string, minLength: 1, maxLength: 4096}
+                session_id: {type: string}
+              required: [content]
+      responses:
+        '201':
+          description: Written
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+  /api/v1/memory/incident:
+    post:
+      summary: Write incident to amygdala-incidents.md
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content: {type: string, minLength: 1, maxLength: 4096}
+                severity: {type: string, enum: [low, medium, high, critical]}
+              required: [content]
+      responses:
+        '201':
+          description: Written
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+  /api/v1/audit:
+    get:
+      summary: Search audit logs
+      parameters:
+        - name: agent
+          in: query
+          schema: {type: string}
+        - name: type
+          in: query
+          schema: {type: string}
+        - name: page
+          in: query
+          schema: {type: integer, default: 1}
+        - name: limit
+          in: query
+          schema: {type: integer, default: 20, maximum: 100}
+      responses:
+        '200':
+          description: List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+  /api/v1/consult:
+    post:
+      summary: Board consultation (Law 6) — lead/CEO consults board advisor or fellow lead after gateway delivery
+      security: [{ApiKeyAuth: []}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsultCreate'
+      responses:
+        '201':
+          description: Consultation ticket opened (type consultation_request)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/v1/meetings:
+    post:
+      summary: Schedule a room meeting (اجتماع الغرف)
+      security: [{ApiKeyAuth: []}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingCreate'
+      responses:
+        '201':
+          description: Meeting scheduled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+    get:
+      summary: List room meetings (scheduled/closed · by room)
+      security: [{ApiKeyAuth: []}]
+      parameters:
+        - name: status
+          in: query
+          schema: {type: string, enum: [scheduled, closed]}
+        - name: room
+          in: query
+          schema: {type: string}
+        - name: limit
+          in: query
+          schema: {type: integer, default: 20}
+      responses:
+        '200':
+          description: Meetings list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+  /api/v1/meetings/{mid}/minutes:
+    post:
+      summary: Close a meeting with minutes — decisions → CORTEX (Law 7)
+      security: [{ApiKeyAuth: []}]
+      parameters:
+        - name: mid
+          in: path
+          required: true
+          schema: {type: integer}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingMinutes'
+      responses:
+        '200':
+          description: Minutes saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+  /api/v1/audit/export:
+    get:
+      summary: Export audit logs JSON/CSV
+      parameters:
+        - name: format
+          in: query
+          schema: {type: string, enum: [json, csv], default: json}
+        - name: from
+          in: query
+          schema: {type: string, format: date}
+        - name: to
+          in: query
+          schema: {type: string, format: date}
+        - name: room
+          in: query
+          schema: {type: string}
+      responses:
+        '200':
+          description: Export
+          content:
+            application/json:
+              schema:
+                type: object
+            text/csv:
+              schema:
+                type: string
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+  schemas:
+    Envelope:
+      type: object
+      properties:
+        success: {type: boolean}
+        message: {type: string}
+        data: {}
+        error: {type: object, nullable: true, properties: {code: {type: string}, message: {type: string}, details: {type: array, items: {type: object}}}}
+        meta: {type: object, properties: {request_id: {type: string, format: uuid}, timestamp: {type: string, format: date-time}, envelope_version: {type: string, example: v1}, pagination: {type: object, nullable: true}}}
+    MessageCreate:
+      type: object
+      required: [recipient, content]
+      properties:
+        sender: {type: string, description: agent or lead id}
+        recipient: {type: string}
+        content: {type: string, minLength: 1, maxLength: 4096}
+        evidence: {type: string, example: "hq/engine/mcp_server/main.py:42"}
+    TicketCreate:
+      type: object
+      required: [subject, description, priority, type, assignee]
+      properties:
+        subject: {type: string, minLength: 1, maxLength: 256}
+        description: {type: string, minLength: 1, maxLength: 4096}
+        priority: {type: string, enum: [low, medium, high, critical]}
+        type: {type: string, enum: [task_assignment, consultation_request, escalation, gate_check, clarification_request]}
+        assignee: {type: string}
+        requester: {type: string}
+    ConsultCreate:
+      type: object
+      required: [requester, consultee, subject, description]
+      properties:
+        requester: {type: string, description: "lead or brd-ceo opening the consultation"}
+        consultee: {type: string, description: "board advisor (brd-*) or another lead"}
+        subject: {type: string, minLength: 3, maxLength: 160}
+        description: {type: string, minLength: 3, maxLength: 4096}
+        decision_options: {type: array, items: {type: string}, description: "explicit options the consultee decides on"}
+        priority: {type: string, enum: [low, medium, high, critical]}
+    MeetingCreate:
+      type: object
+      required: [organizer, title, agenda]
+      properties:
+        organizer: {type: string}
+        title: {type: string, minLength: 3, maxLength: 200}
+        room: {type: string, default: boardroom, description: "room key e.g. 05-backend or boardroom"}
+        agenda: {type: string, minLength: 3, maxLength: 4096}
+        scheduled_at: {type: string, nullable: true, format: date-time}
+        attendees: {type: array, items: {type: string}}
+    MeetingMinutes:
+      type: object
+      properties:
+        attendees: {type: array, items: {type: string}}
+        decisions: {type: array, items: {type: string}, description: "→ CORTEX (Law 7)"}
+        actions: {type: array, items: {type: string}}
+        evidence: {type: string, nullable: true}
+  responses:
+    Unauthorized:
+      description: 401
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+          example:
+            success: false
+            message: "مفتاح API غير صحيح"
+            data: null
+            error: {code: UNAUTHENTICATED, message: "مفتاح API غير صحيح", details: []}
+            meta: {request_id: "uuid", timestamp: "2026-08-29T00:00:00Z", envelope_version: v1, pagination: null}
+    ForbiddenCrossRoom:
+      description: 403 Law 2
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+          example:
+            success: false
+            message: "ممنوع التواصل المباشر بين الغرف — أرسل عبر قائد غرفتك (Cross-room communication blocked by Law 2)"
+            data: null
+            error: {code: FORBIDDEN, message: "Cross-room blocked by Law 2", details: []}
+            meta: {request_id: "uuid", timestamp: "2026-08-29T00:00:00Z", envelope_version: v1, pagination: null}
+    ValidationError:
+      description: 422
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+          example:
+            success: false
+            message: "The submitted inputs are invalid"
+            data: null
+            error: {code: VALIDATION_ERROR, message: "Validation failed", details: [{field: content, message: "المحتوى فارغ"}]}
+            meta: {request_id: "uuid", timestamp: "2026-08-29T00:00:00Z", envelope_version: v1, pagination: null}
+    RateLimited:
+      description: 429
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+          example:
+            success: false
+            message: "تجاوزت الحد المسموح — حاول بعد دقيقة"
+            data: null
+            error: {code: RATE_LIMITED, message: "Rate limit exceeded", details: []}
+            meta: {request_id: "uuid", timestamp: "2026-08-29T00:00:00Z", envelope_version: v1, pagination: null}
+    NotFound:
+      description: 404
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+    BadTransition:
+      description: 400 invalid status transition
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+          example:
+            success: false
+            message: "انتقال حالة غير مسموح — المسار الصحيح: open→in_progress→resolved→closed"
+            data: null
+            error: {code: CONFLICT, message: "Invalid status transition", details: []}
+            meta: {request_id: "uuid", timestamp: "2026-08-29T00:00:00Z", envelope_version: v1, pagination: null}

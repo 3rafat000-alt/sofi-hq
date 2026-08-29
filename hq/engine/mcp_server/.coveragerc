@@ -1,0 +1,9 @@
+## FILE: hq/engine/mcp_server/.coveragerc
+[run]
+source = hq/engine/mcp_server
+omit =
+    */tests/*
+    */__pycache__/*
+[report]
+show_missing = True
+skip_covered = False

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الهوية البصرية — الخيار الأول: النمو الذكي</title>
+<style>
+  :root{
+    --surface-0:#121212; --surface-1:#181818; --surface-2:#1F1F1F; --surface-3:#262626;
+    --line-1:#2E2E2E; --line-2:#3A3A3A;
+    --text-1:#EAEAEA; --text-2:#A8A8A8; --text-3:#6E6E6E;
+    --neon-700:#00B25C; --neon-500:#00E676; --neon-300:#4DEE9B;
+    --neon-soft:#10271B; --neon-ghost:#0F3422;
+    --error:#FF5252; --warning:#FFB300; --info:#40C4FF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0C0C0C;color:var(--text-1);font-family:'Segoe UI',Tahoma,'Noto Kufi Arabic',sans-serif;padding:40px 32px;line-height:1.6}
+  .wrap{max-width:1180px;margin:0 auto}
+  .kicker{color:var(--neon-300);font-size:13px;font-weight:700;letter-spacing:.5px}
+  h1{font-size:34px;font-weight:800;margin:6px 0 4px}
+  .sub{color:var(--text-2);font-size:15px}
+  .chips{display:flex;gap:8px;margin-top:14px}
+  .chip{background:var(--surface-2);border:1px solid var(--line-1);color:var(--text-2);font-size:12.5px;padding:5px 14px;border-radius:100px}
+  .chip b{color:var(--text-1)}
+  section{margin-top:44px}
+  h2{font-size:20px;font-weight:800;margin-bottom:6px}
+  h2 .n{color:var(--neon-500);font-size:13px;font-weight:800;margin-left:8px}
+  .desc{color:var(--text-2);font-size:13.5px;margin-bottom:18px}
+
+  /* شريط النسب */
+  .bar{display:flex;height:64px;border-radius:14px;overflow:hidden;border:1px solid var(--line-1)}
+  .bar div{display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12.5px;font-weight:700}
+  .bar .p60{width:60%;background:var(--surface-0);color:var(--text-1)}
+  .bar .p30{width:30%;background:var(--text-1);color:var(--surface-0)}
+  .bar .p10{width:10%;background:var(--neon-500);color:var(--surface-0)}
+  .bar small{font-weight:500;opacity:.75;font-size:11px}
+  .bar-legend{display:flex;gap:22px;margin-top:10px;color:var(--text-2);font-size:12.5px}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:6px;vertical-align:middle}
+
+  /* بطاقات الثلاثي */
+  .trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .swatch-card{background:var(--surface-1);border:1px solid var(--line-1);border-radius:16px;overflow:hidden}
+  .swatch-card .color{height:120px;display:flex;align-items:flex-end;padding:14px}
+  .swatch-card .color .pct{font-size:26px;font-weight:800;padding:4px 12px;border-radius:10px}
+  .swatch-card .body{padding:16px 18px}
+  .swatch-card .name{font-weight:800;font-size:15px}
+  .swatch-card .role{color:var(--text-2);font-size:12.5px;margin-bottom:10px}
+  .code{display:flex;justify-content:space-between;background:var(--surface-0);border:1px solid var(--line-1);border-radius:8px;padding:6px 10px;font-size:12px;margin-top:6px}
+  .code b{direction:ltr;font-family:Consolas,monospace;color:var(--text-1)}
+  .code span{color:var(--text-2)}
+  .uses{margin-top:10px;font-size:12px;color:var(--text-2)}
+  .uses li{margin-right:18px;margin-top:3px}
+
+  /* سلالم مشتقة */
+  .scale-row{display:flex;gap:10px;flex-wrap:wrap}
+  .tok{flex:1;min-width:150px;background:var(--surface-1);border:1px solid var(--line-1);border-radius:12px;overflow:hidden}
+  .tok .c{height:52px}
+  .tok .t{padding:8px 12px;font-size:11.5px}
+  .tok .t b{display:block;font-size:12px;direction:ltr;text-align:right;font-family:Consolas,monospace}
+  .tok .t span{color:var(--text-2)}
+
+  /* خريطة التطبيق */
+  .map{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .map-card{background:var(--surface-1);border:1px solid var(--line-1);border-radius:14px;padding:16px 18px}
+  .map-card h3{font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .map-card ul{list-style:none;font-size:12.5px;color:var(--text-2)}
+  .map-card li{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line-1)}
+  .map-card li:last-child{border:none}
+  .map-card li b{color:var(--text-1);font-weight:600}
+  .map-card li .hex{direction:ltr;font-family:Consolas,monospace;font-size:11.5px}
+
+  /* المعاينة الحية + الشعار */
+  .demo{display:grid;grid-template-columns:340px 1fr;gap:26px;align-items:start}
+  .phone{background:var(--surface-0);border:1px solid var(--line-2);border-radius:34px;padding:14px;width:340px}
+  .screen{background:var(--surface-0);border-radius:24px;overflow:hidden;border:1px solid var(--line-1)}
+  .statusbar{display:flex;justify-content:space-between;padding:10px 18px 4px;font-size:11px;color:var(--text-2)}
+  .app-head{display:flex;align-items:center;gap:10px;padding:12px 16px 8px}
+  .avatar{width:38px;height:38px;border-radius:50%;background:var(--surface-3);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--text-1)}
+  .app-head .who{flex:1}
+  .app-head .who small{display:block;color:var(--text-2);font-size:10.5px}
+  .app-head .who b{font-size:13.5px}
+  .icon-btn{width:34px;height:34px;border-radius:11px;background:var(--surface-1);border:1px solid var(--line-1);display:flex;align-items:center;justify-content:center;position:relative;color:var(--text-1);font-size:14px}
+  .ndot{position:absolute;top:6px;left:7px;width:7px;height:7px;border-radius:50%;background:var(--neon-500);border:1.5px solid var(--surface-1)}
+  .balance{margin:8px 14px;background:var(--surface-1);border:1px solid var(--line-1);border-radius:18px;padding:16px}
+  .balance .lbl{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:var(--text-2)}
+  .balance .amt{font-size:27px;font-weight:800;margin-top:6px;direction:ltr;text-align:right}
+  .growth{color:var(--neon-300);font-size:11.5px;font-weight:700;margin-top:2px}
+  .actions{display:flex;gap:8px;padding:10px 14px}
+  .btn-transfer{flex:1.4;background:var(--neon-500);color:var(--surface-0);border-radius:100px;height:44px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+  .btn-ghost{flex:1;border:1px solid var(--line-1);color:var(--text-1);border-radius:100px;height:44px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+  .chart{margin:6px 14px;background:var(--surface-1);border:1px solid var(--line-1);border-radius:16px;padding:12px}
+  .chart .t{font-size:10.5px;color:var(--text-2);display:flex;justify-content:space-between}
+  .tx{padding:4px 14px 8px}
+  .tx .row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line-1)}
+  .tx .row:last-child{border:none}
+  .tx .ic{width:34px;height:34px;border-radius:11px;background:var(--surface-3);display:flex;align-items:center;justify-content:center;font-size:14px}
+  .tx .meta{flex:1}
+  .tx .meta b{font-size:12px;display:block}
+  .tx .meta span{font-size:10px;color:var(--text-2)}
+  .tx .val{font-size:12px;font-weight:800;direction:ltr}
+  .val.up{color:var(--neon-500)} .val.down{color:var(--text-1)}
+  .navbar{display:flex;justify-content:space-around;border-top:1px solid var(--line-1);padding:9px 6px 12px;background:var(--surface-0)}
+  .nav-i{font-size:10px;color:var(--text-2);text-align:center}
+  .nav-i .ni{font-size:15px;display:block;margin-bottom:2px}
+  .nav-i.on{color:var(--neon-500);position:relative}
+  .nav-i.on::after{content:'';position:absolute;top:-10px;right:25%;left:25%;height:2px;background:var(--neon-500);border-radius:2px}
+
+  .lockups{display:flex;flex-direction:column;gap:16px}
+  .lock{border-radius:16px;border:1px solid var(--line-1);padding:20px;display:flex;align-items:center;gap:16px}
+  .lock img{width:74px;height:74px}
+  .lock .lt b{font-size:13px;display:block}
+  .lock .lt span{font-size:11.5px;color:var(--text-2)}
+  .lock.on-dark{background:var(--surface-0)}
+  .lock.on-light{background:var(--text-1)} .lock.on-light .lt b{color:var(--surface-0)} .lock.on-light .lt span{color:#555}
+  .lock-row{display:flex;gap:16px}
+  .lock-row .lock{flex:1;justify-content:center}
+
+  /* القواعد */
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .rule{border-radius:14px;padding:16px 18px;font-size:13px}
+  .rule.do{background:var(--neon-soft);border:1px solid rgba(0,230,118,.25)}
+  .rule.dont{background:#2A1416;border:1px solid rgba(255,82,82,.3)}
+  .rule h4{font-size:13.5px;margin-bottom:8px}
+  .rule.do h4{color:var(--neon-300)} .rule.dont h4{color:var(--error)}
+  .rule li{margin-right:18px;margin-top:5px;color:var(--text-2)}
+  .rule li b{color:var(--text-1)}
+
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line-1);color:var(--text-3);font-size:11.5px;display:flex;justify-content:space-between}
+  .contrast{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+  .c-tile{border-radius:12px;padding:14px;font-size:12px;border:1px solid var(--line-1)}
+  .c-tile b{display:block;font-size:15px;margin-bottom:2px}
+  .c-tile small{opacity:.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">لوحات توزيع الألوان · الخيار الأول</div>
+    <h1>الهوية البصرية — «النمو الذكي»</h1>
+    <div class="sub">نظام 60-30-10 مبني على شعار المكعب الهندسي · أسود داكن 60% · أبيض 30% · أخضر نيون 10%</div>
+    <div class="chips">
+      <div class="chip">💰 <b>مالي</b></div>
+      <div class="chip">⚡ <b>عصري</b></div>
+      <div class="chip">🚀 <b>فائق السرعة</b></div>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="n">01</span>قاعدة التوزيع 60-30-10</h2>
+    <p class="desc">60% مساحات سوداء تمنح الفخامة والتركيز · 30% أبيض للنصوص والعناصر · 10% أخضر نيون يخطف العين فقط.</p>
+    <div class="bar">
+      <div class="p60">60%<small>#121212 مساحات</small></div>
+      <div class="p30">30%<small>#EAEAEA نصوص وعناصر</small></div>
+      <div class="p10">10%<small>#00E676</small></div>
+    </div>
+    <div class="bar-legend">
+      <span><span class="dot" style="background:var(--surface-0);border:1px solid var(--line-2)"></span>الأسطح: 0=45% · 1=8% · 2=4% · 3=2% · حدود=1%</span>
+      <span><span class="dot" style="background:var(--text-1)"></span>النصوص: أساسي 22% · ثانوي 6% · تلميحات 2%</span>
+      <span><span class="dot" style="background:var(--neon-500)"></span>الأخضر: أزرار 6% · مؤشرات 3% · هوية 1%</span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>الثلاثي الأساسي</h2>
+    <div class="trio">
+      <div class="swatch-card">
+        <div class="color" style="background:#121212;border-bottom:1px solid var(--line-1)"><span class="pct" style="background:#1F1F1F;color:#EAEAEA;border:1px solid #3A3A3A">60%</span></div>
+        <div class="body">
+          <div class="name">أسود داكن — ink-950</div>
+          <div class="role">اللون الأساسي · المساحات والخلفيات</div>
+          <div class="code"><span>HEX</span><b>#121212</b></div>
+          <div class="code"><span>RGB</span><b>18, 18, 18</b></div>
+          <ul class="uses"><li>خلفيات الشاشات والموقع</li><li>البطاقات والشيتات (بمشتقاته)</li><li>أيقونة التطبيق وشاشة البداية</li></ul>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="color" style="background:#EAEAEA"><span class="pct" style="background:#121212;color:#EAEAEA">30%</span></div>
+        <div class="body">
+          <div class="name">أبيض نقّي — paper-100</div>
+          <div class="role">اللون الثانوي · النصوص والعناصر</div>
+          <div class="code"><span>HEX</span><b>#EAEAEA</b></div>
+          <div class="code"><span>RGB</span><b>234, 234, 234</b></div>
+          <ul class="uses"><li>النصوص والعناوين والأرقام</li><li>الأيقونات والشعار</li><li>الحدود (بمشتقاته الرمادية)</li></ul>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="color" style="background:#00E676"><span class="pct" style="background:#121212;color:#00E676">10%</span></div>
+        <div class="body">
+          <div class="name">أخضر نيون — neon-500</div>
+          <div class="role">لون الروح والتميّز · نقاط خاطفة فقط</div>
+          <div class="code"><span>HEX</span><b>#00E676</b></div>
+          <div class="code"><span>RGB</span><b>0, 230, 118</b></div>
+          <ul class="uses"><li>زر التحويل الرئيسي</li><li>مؤشرات النمو والخط الصاعد</li><li>معين الشعار ونقطة الإشعار</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="contrast">
+      <div class="c-tile" style="background:#121212;color:#EAEAEA"><b>15.6:1</b><small>أبيض على أسود — AAA ✅</small></div>
+      <div class="c-tile" style="background:#00E676;color:#121212"><b>11.2:1</b><small>أسود على أخضر — AAA ✅ (تركيبة الأزرار)</small></div>
+      <div class="c-tile" style="background:#121212;color:#00E676"><b>11.2:1</b><small>أخضر على أسود — AAA ✅</small></div>
+      <div class="c-tile" style="background:#00E676;color:#EAEAEA"><b>1.4:1</b><small>أبيض على أخضر — ❌ ممنوع نهائياً</small></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span>السلالم المشتقة</h2>
+    <p class="desc">كل عائلة مشتقة من لونها الأم — لا لون خارج هذه الجداول.</p>
+    <div class="scale-row" style="margin-bottom:12px">
+      <div class="tok"><div class="c" style="background:#121212"></div><div class="t"><b>surface-0 #121212</b><span>الخلفية الرئيسية</span></div></div>
+      <div class="tok"><div class="c" style="background:#181818"></div><div class="t"><b>surface-1 #181818</b><span>البطاقات</span></div></div>
+      <div class="tok"><div class="c" style="background:#1F1F1F"></div><div class="t"><b>surface-2 #1F1F1F</b><span>الشيتات</span></div></div>
+      <div class="tok"><div class="c" style="background:#262626"></div><div class="t"><b>surface-3 #262626</b><span>الحقول والشيبس</span></div></div>
+      <div class="tok"><div class="c" style="background:#2E2E2E"></div><div class="t"><b>line-1 #2E2E2E</b><span>الحدود</span></div></div>
+    </div>
+    <div class="scale-row" style="margin-bottom:12px">
+      <div class="tok"><div class="c" style="background:#EAEAEA"></div><div class="t"><b>text-1 #EAEAEA</b><span>النص الأساسي</span></div></div>
+      <div class="tok"><div class="c" style="background:#A8A8A8"></div><div class="t"><b>text-2 #A8A8A8</b><span>النص الثانوي</span></div></div>
+      <div class="tok"><div class="c" style="background:#6E6E6E"></div><div class="t"><b>text-3 #6E6E6E</b><span>التلميحات</span></div></div>
+    </div>
+    <div class="scale-row" style="margin-bottom:12px">
+      <div class="tok"><div class="c" style="background:#00B25C"></div><div class="t"><b>neon-700 #00B25C</b><span>ضغط/تحويم</span></div></div>
+      <div class="tok"><div class="c" style="background:#00E676"></div><div class="t"><b>neon-500 #00E676</b><span>الأساس</span></div></div>
+      <div class="tok"><div class="c" style="background:#4DEE9B"></div><div class="t"><b>neon-300 #4DEE9B</b><span>أيقونات صغيرة</span></div></div>
+      <div class="tok"><div class="c" style="background:#10271B"></div><div class="t"><b>neon-soft #10271B</b><span>شارات شفافة 10%</span></div></div>
+      <div class="tok"><div class="c" style="background:#0F3422"></div><div class="t"><b>neon-ghost #0F3422</b><span>تحديد 16%</span></div></div>
+    </div>
+    <div class="scale-row">
+      <div class="tok"><div class="c" style="background:#00E676"></div><div class="t"><b>success #00E676</b><span>نجاح/نمو</span></div></div>
+      <div class="tok"><div class="c" style="background:#FF5252"></div><div class="t"><b>error #FF5252</b><span>خطأ/خسارة</span></div></div>
+      <div class="tok"><div class="c" style="background:#FFB300"></div><div class="t"><b>warning #FFB300</b><span>تحذير</span></div></div>
+      <div class="tok"><div class="c" style="background:#40C4FF"></div><div class="t"><b>info #40C4FF</b><span>معلومة</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span>المعاينة الحية — كيف يُعاش النظام</h2>
+    <p class="desc">شاشة مالية نموذجية: لاحظ أن الأخضر لا يظهر إلا في 4 نقاط — زر التحويل، مؤشر النمو، خط المخطط، والتاب النشط.</p>
+    <div class="demo">
+      <div class="phone">
+        <div class="screen">
+          <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+          <div class="app-head">
+            <div class="avatar">م</div>
+            <div class="who"><small>مرحباً بك</small><b>محمد أحمد</b></div>
+            <div class="icon-btn">🔔<span class="ndot"></span></div>
+            <div class="icon-btn">⚙</div>
+          </div>
+          <div class="balance">
+            <div class="lbl"><span>الرصيد الرئيسي · حساب USD</span><span style="color:var(--text-3)">👁</span></div>
+            <div class="amt">$1,850.00</div>
+            <div class="growth">▲ +2.4% هذا الأسبوع</div>
+          </div>
+          <div class="actions">
+            <div class="btn-transfer">↑ تحويل</div>
+            <div class="btn-ghost">إيداع</div>
+            <div class="btn-ghost">بطاقة</div>
+          </div>
+          <div class="chart">
+            <div class="t"><span>حركة الرصيد</span><span style="color:var(--neon-300)">+2.4%</span></div>
+            <svg viewBox="0 0 280 70" width="100%" height="70">
+              <polyline points="0,58 40,52 80,55 120,42 160,46 200,30 240,22 280,12" fill="none" stroke="#00E676" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="280" cy="12" r="3.5" fill="#00E676"/>
+            </svg>
+          </div>
+          <div class="tx">
+            <div class="row"><div class="ic">⬇</div><div class="meta"><b>إيداع مستلم</b><span>اليوم · 10:24</span></div><div class="val up">+$500.00</div></div>
+            <div class="row"><div class="ic">🛒</div><div class="meta"><b>متجر إلكتروني</b><span>أمس · 18:02</span></div><div class="val down">−$46.49</div></div>
+            <div class="row"><div class="ic">⬆</div><div class="meta"><b>تحويل صادر</b><span>أمس · 09:15</span></div><div class="val down">−$120.00</div></div>
+          </div>
+          <div class="navbar">
+            <div class="nav-i on"><span class="ni">◉</span>الرئيسية</div>
+            <div class="nav-i"><span class="ni">▤</span>المعاملات</div>
+            <div class="nav-i"><span class="ni">▦</span>البطاقات</div>
+            <div class="nav-i"><span class="ni">⚙</span>الإعدادات</div>
+          </div>
+        </div>
+      </div>
+      <div class="lockups">
+        <div class="lock on-dark">
+          <img src="assets/logo-accent-on-dark.png" alt="الشعار بالتمييز">
+          <div class="lt"><b>التوقيع الرسمي — على الداكن</b><span>مكعب أبيض + المعين المركزي أخضر #00E676 (هذا هو الـ1% المخصص للهوية)</span></div>
+        </div>
+        <div class="lock on-light">
+          <img src="assets/logo-accent-on-light.png" alt="الشعار بالتمييز فاتح">
+          <div class="lt"><b>التوقيع الرسمي — على الفاتح</b><span>مكعب أسود + المعين الأخضر — للمطبوعات والمستندات</span></div>
+        </div>
+        <div class="lock-row">
+          <div class="lock on-dark" style="flex-direction:column;gap:8px">
+            <img src="assets/app-icon-concept.png" style="border-radius:22%" alt="أيقونة التطبيق">
+            <div class="lt" style="text-align:center"><b>أيقونة التطبيق</b><span>1024px</span></div>
+          </div>
+          <div class="lock on-dark" style="flex-direction:column;gap:8px">
+            <img src="assets/logo-light-nobg.png" alt="أحادي">
+            <div class="lt" style="text-align:center"><b>أحادي اللون</b><span>للمقاسات &lt; 48px</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span>خريطة المواضع</h2>
+    <div class="map">
+      <div class="map-card">
+        <h3><span class="dot" style="background:#121212;border:1px solid var(--line-2)"></span>الأسود #121212 — 60%</h3>
+        <ul>
+          <li><b>خلفية التطبيق والموقع كاملة</b><span class="hex">surface-0</span></li>
+          <li><b>البطاقات: رصيد · معاملات · منتجات</b><span class="hex">surface-1</span></li>
+          <li><b>القوائم السفلية والحوارات</b><span class="hex">surface-2</span></li>
+          <li><b>حقول الإدخال والبحث</b><span class="hex">surface-3</span></li>
+          <li><b>الهيدر والفوتر وشاشة البداية</b><span class="hex">surface-0</span></li>
+        </ul>
+      </div>
+      <div class="map-card">
+        <h3><span class="dot" style="background:#EAEAEA"></span>الأبيض #EAEAEA — 30%</h3>
+        <ul>
+          <li><b>العناوين والأرقام المالية</b><span class="hex">text-1</span></li>
+          <li><b>الأيقونات والشعار</b><span class="hex">text-1</span></li>
+          <li><b>الأزرار الثانوية (حدود)</b><span class="hex">line-1</span></li>
+          <li><b>الأوصاف والتواريخ</b><span class="hex">text-2</span></li>
+          <li><b>التلميحات الخاملة</b><span class="hex">text-3</span></li>
+        </ul>
+      </div>
+      <div class="map-card" style="grid-column:1/-1">
+        <h3><span class="dot" style="background:#00E676"></span>الأخضر #00E676 — 10% نقاط خاطفة فقط</h3>
+        <ul>
+          <li><b>1 · زر التحويل/الإرسال الرئيسي</b><span class="hex">تعبئة كاملة + نص #121212</span></li>
+          <li><b>2 · معين الشعار المركزي (الـ1% الهوياتي)</b><span class="hex">≥ 48px فقط</span></li>
+          <li><b>3 · مؤشرات النمو: ▲ النسب والمبالغ الواردة</b><span class="hex">neon-300/500</span></li>
+          <li><b>4 · خط المخطط الصاعد وشريط التقدم</b><span class="hex">neon-500 · 2px</span></li>
+          <li><b>5 · نقطة الإشعار + التاب النشط + المفتاح المُشغّل</b><span class="hex">neon-500</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">06</span>قواعد الانضباط</h2>
+    <div class="rules">
+      <div class="rule do">
+        <h4>✅ افعل</h4>
+        <ul>
+          <li>النص فوق الأخضر <b>أسود #121212 دائماً</b> (تباين 11.2:1)</li>
+          <li>أربعة مواضع خضراء <b>كحد أقصى</b> في الشاشة</li>
+          <li>الأخضر بمعناه: <b>نمو/نجاح/إجراء أساسي</b></li>
+          <li>المعين الأخضر في الشعار <b>للمقاسات ≥ 48px</b></li>
+        </ul>
+      </div>
+      <div class="rule dont">
+        <h4>🚫 لا تفعل</h4>
+        <ul>
+          <li><b>لا خلفية خضراء كبيرة</b> — الأخضر نقطة لا مساحة</li>
+          <li><b>لا أبيض فوق الأخضر</b> (تباين 1.4:1 غير مقروء)</li>
+          <li><b>لا تدرجات ولا توهجات</b> — مسطح تماماً</li>
+          <li><b>لا ألوان خارج الجداول</b> — أي إضافة تعود للبوابة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>الهوية البصرية — الخيار الأول «النمو الذكي» · 2026-08-26</span>
+    <span>identity/brand-palettes/option-1-smart-growth/ · palette-spec.md + board.html + assets/</span>
+  </footer>
+</div>
+</body>
+</html>

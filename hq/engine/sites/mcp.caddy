@@ -1,0 +1,18 @@
+# mcp.caddy — SOFI HQ Institutional MCP Bus (not sakk — for the whole organization)
+# Domain: institutional local only — لا علاقة بـ sakk.local — للمؤسسة كاملة
+# Backend: FastAPI MCP on 127.0.0.1:8765 (hq/engine/mcp-server) — systemd sofi-mcp.service
+# Access: http://mcp.local + http://sofi.local + http://hq.local (local only, not via Cloudflare tunnel)
+# Evidence: hq/engine/mcp-server/main.py:1 — sofi-mcp.service — Caddyfile:import sites/*.caddy
+# ───────────────────────────────────────────────────────────────────
+
+http://mcp.local, http://sofi.local, http://hq.local {
+	import block_sensitive
+	import security_headers
+
+	# Reverse proxy — all paths (REST + WebSocket) to local MCP
+	# Caddy handles WebSocket upgrade automatically
+	reverse_proxy 127.0.0.1:8765
+
+	# CORS already handled by FastAPI; Caddy just passes through
+	encode zstd gzip
+}

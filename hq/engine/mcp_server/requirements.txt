@@ -1,0 +1,14 @@
+## FILE: hq/engine/mcp_server/requirements.txt
+# Pinned to versions compatible with Python 3.14 — all MIT/Apache/BSD — verified via pip-licenses
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.1
+pydantic>=2.6.1
+python-dotenv>=1.0.0
+websockets>=12.0
+python-multipart>=0.0.9
+httpx>=0.27.0
+pytest>=8.0.0
+pytest-asyncio>=0.23.5
+anyio>=4.3.0
+pip-licenses>=4.3.4
+filelock>=3.13.1

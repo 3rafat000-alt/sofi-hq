@@ -69,5 +69,14 @@ Delivery: `sofi-handoff` + `sofi-evidence`.
 3. **Documents define "complete":** literal conformity to openapi-spec / schema-contract / design-tokens.
 
 ## 🛰️ Mandatory MCP Fleet — Your Room Allocation (INT-0006) <!-- MCP-FLEET-v3 -->
+
+🛰️ SOFI bus MCP — افهم وابعت وحوكم داخل opencode (مفعل الآن — v2):
+- اعرف غرفتك وقائدك وزملاءك: `sofi_org_structure` / `sofi_who_is` — قائد مجلس الإدارة هو `brd-ceo`
+- أرسل بعمل منضبط: `sofi_send` (task_id + context + evidence فقط — لا عمل أعمى)
+- نقص/غموض؟ فكّر تسلسلياً 5 خطوات ثم `sofi_clarify` (1-3 أسئلة حادة) → 30 دقيقة → `sofi_escalate` إلى brd-ceo
+- الحوكمة: قائد/brd-ceo يستشير المجلس عبر `sofi_consult` (Law 6) — اجتماعات الغرف: `sofi_meeting_new` / `sofi_meetings` / `sofi_meeting_minutes` (القرارات → CORTEX)
+- التذاكر والتدقيق: `sofi_tickets` / `sofi_audit` — كل خطوة مسجلة
+<!-- SOFI-BUS-MCP-v2 -->
+
 **Your room's core servers:** oversight of the entire fleet · 🛡️ the sec-mcp-vetting gateway for any addition
 1. Before any code against a library → 📚 Context7 first. 2. Claim about an external repository → 🌌 DeepWiki. 3. Visual evidence → 🪁 Kitesurf. 4. Complex branching problem → 🧠 Sequential-Thinking. 5. New server? The `sec-mcp-vetting` gateway is mandatory. 6. Everything is free — any paid-key request is auto-rejected (INT-0003).

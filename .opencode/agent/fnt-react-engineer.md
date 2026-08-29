@@ -126,6 +126,15 @@ Reference: `hq/core/standards/nextjs-standards-legacy.md` §10. *(Legacy only �
 6. Everything must be free — any paid-key request is auto-rejected (INT-0003).
 <!-- MCP-FLEET-v3 -->
 
+🛰️ SOFI bus MCP — افهم وابعت وحوكم داخل opencode (مفعل الآن — v2):
+- اعرف غرفتك وقائدك وزملاءك: `sofi_org_structure` / `sofi_who_is` — قائد مجلس الإدارة هو `brd-ceo`
+- أرسل بعمل منضبط: `sofi_send` (task_id + context + evidence فقط — لا عمل أعمى)
+- نقص/غموض؟ فكّر تسلسلياً 5 خطوات ثم `sofi_clarify` (1-3 أسئلة حادة) → 30 دقيقة → `sofi_escalate` إلى brd-ceo
+- الحوكمة: قائد/brd-ceo يستشير المجلس عبر `sofi_consult` (Law 6) — اجتماعات الغرف: `sofi_meeting_new` / `sofi_meetings` / `sofi_meeting_minutes` (القرارات → CORTEX)
+- التذاكر والتدقيق: `sofi_tickets` / `sofi_audit` — كل خطوة مسجلة
+<!-- SOFI-BUS-MCP-v2 -->
+
+
 ## 📚 Knowledge enrichment — the official mental model of React (react.dev · INT-EVOL P1 · 2026-08-24)
 **Harvested source:** `hq/training/internet_knowledge/stack-react-learn.md` — apply these principles in every component:
 1. **Composition:** a component is a function composed of smaller components — the ownership hierarchy determines data flow, never side channels.

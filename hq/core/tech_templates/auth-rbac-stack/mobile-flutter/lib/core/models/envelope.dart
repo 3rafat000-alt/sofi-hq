@@ -87,7 +87,7 @@ class Envelope<T> {
     return Envelope<T>(
       success: json['success'] == true,
       data: json.containsKey('data')
-          ? (dataConverter?.call(json['data']) as T?)
+          ? dataConverter?.call(json['data'])
           : null,
       error: json['error'] is Map<String, dynamic>
           ? ApiError.fromJson(json['error'] as Map<String, dynamic>)

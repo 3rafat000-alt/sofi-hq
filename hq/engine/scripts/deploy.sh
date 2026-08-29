@@ -2,6 +2,7 @@
 # deploy.sh — after bootstrap: validate the canon and reload the live config (no copying — live imports directly)
 set -eu
 cd "$(dirname "$0")/.."
+./scripts/check-env-guard.sh || { echo "✗ deployment blocked by env guard"; exit 1; }
 caddy validate --config ./Caddyfile >/dev/null && echo "✓ canon sound"
 if caddy reload --config /etc/caddy/Caddyfile >/dev/null 2>&1; then
   echo "✓ reloaded (without sudo — via the admin API)"

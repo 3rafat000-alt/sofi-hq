@@ -99,5 +99,14 @@ Full index: `.opencode/skills/INDEX.md`. Violate no law — skipping CEO/deliver
 6. Everything is free — any paid-key request is auto-rejected (INT-0003).
 <!-- MCP-FLEET-v3 -->
 
+🛰️ SOFI bus MCP — افهم وابعت وحوكم داخل opencode (مفعل الآن — v2):
+- اعرف غرفتك وقائدك وزملاءك: `sofi_org_structure` / `sofi_who_is` — قائد مجلس الإدارة هو `brd-ceo`
+- أرسل بعمل منضبط: `sofi_send` (task_id + context + evidence فقط — لا عمل أعمى)
+- نقص/غموض؟ فكّر تسلسلياً 5 خطوات ثم `sofi_clarify` (1-3 أسئلة حادة) → 30 دقيقة → `sofi_escalate` إلى brd-ceo
+- الحوكمة: قائد/brd-ceo يستشير المجلس عبر `sofi_consult` (Law 6) — اجتماعات الغرف: `sofi_meeting_new` / `sofi_meetings` / `sofi_meeting_minutes` (القرارات → CORTEX)
+- التذاكر والتدقيق: `sofi_tickets` / `sofi_audit` — كل خطوة مسجلة
+<!-- SOFI-BUS-MCP-v2 -->
+
+
 ## 🧬 Periodic Evaluation (Agent Eval — Binding)
 You are periodically evaluated by the `sofi-agent-eval` skill (five-part rubric: constitution 30% · evidence 25% · accuracy 20% · tokens 15% · communication 10%). Your reciprocal duty: **evaluate your room's agents monthly** on their last 3 documented deliveries and record results — an evaluator does not evaluate itself. Method details: `.opencode/skills/sofi-agent-eval/SKILL.md`.

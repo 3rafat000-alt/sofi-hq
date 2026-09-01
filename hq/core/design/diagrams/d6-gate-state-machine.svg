@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FILE: hq/core/design/diagrams/d6-gate-state-machine.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="D6 gate state machine" style="background:#ffffff;font-family:Inter, Segoe UI, sans-serif">
+<title>D6 — Gate State Machine — G0→G8 + DFR</title>
+<desc>Gate state machine G0 to G8 plus DFR</desc>
+<style>
+  .box { fill:#f5f5f5; stroke:#6e1b2d; stroke-width:2; rx:12; ry:12; }
+  .box-lead { fill:#6e1b2d; stroke:#3a0d16; stroke-width:2; rx:12; ry:12; }
+  .box-gateway { fill:#6e1b2d; stroke:#2563eb; stroke-width:2.5; rx:12; ry:12; }
+  .box-kernel { fill:#6e1b2d; stroke:#3a0d16; stroke-width:2; rx:10; ry:10; }
+  .text { font-size:18px; fill:#1f2937; font-weight:600; text-anchor:middle; dominant-baseline:middle; }
+  .text-white { font-size:18px; fill:#ffffff; font-weight:600; text-anchor:middle; dominant-baseline:middle; }
+  .text-small { font-size:14px; fill:#4b5563; text-anchor:middle; }
+  .text-small-white { font-size:13px; fill:#f3f4f6; text-anchor:middle; }
+  .arrow { stroke:#2563eb; stroke-width:2.5; fill:none; marker-end:url(#arrowBlue); }
+  .arrow-red { stroke:#dc2626; stroke-width:2; fill:none; stroke-dasharray:6 4; marker-end:url(#arrowRed); }
+  .arrow-orange { stroke:#f59e0b; stroke-width:2; fill:none; marker-end:url(#arrowOrange); }
+  .footer { font-size:13px; fill:#6b7280; text-anchor:middle; }
+</style>
+<defs>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+  <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/></marker>
+</defs>
+<rect width="1200" height="800" fill="#ffffff"/>
+<text x="600" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#6e1b2d">D6 — Gate State Machine — G0→G8 + DFR</text>
+<text x="600" y="56" text-anchor="middle" font-size="12" fill="#6b7280">SOFI HQ — Visual Diagrams Layer v1 — D6 gate state machine — source file:line in diagram</text>
+<rect x="25" y="320" width="90" height="60" fill="#dbeafe" stroke="#6b7280" rx="10" ry="10"/>
+<text x="70" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G0</text>
+<text x="70" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Inception</text>
+<path d="M 115 350 L 130 350" class="arrow"/>
+<rect x="130" y="320" width="90" height="60" fill="#dbeafe" stroke="#6b7280" rx="10" ry="10"/>
+<text x="175" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G1</text>
+<text x="175" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Discovery</text>
+<path d="M 220 350 L 235 350" class="arrow"/>
+<rect x="235" y="320" width="90" height="60" fill="#dbeafe" stroke="#6b7280" rx="10" ry="10"/>
+<text x="280" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G2</text>
+<text x="280" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Solution</text>
+<path d="M 325 350 L 340 350" class="arrow"/>
+<rect x="340" y="320" width="90" height="60" fill="#dbeafe" stroke="#6b7280" rx="10" ry="10"/>
+<text x="385" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G3</text>
+<text x="385" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Architecture</text>
+<path d="M 430 350 L 445 350" class="arrow"/>
+<rect x="445" y="320" width="90" height="60" fill="#6e1b2d" stroke="#6b7280" rx="10" ry="10"/>
+<text x="490" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">DFR</text>
+<path d="M 535 350 L 550 350" class="arrow"/>
+<rect x="550" y="320" width="90" height="60" fill="#dcfce7" stroke="#6b7280" rx="10" ry="10"/>
+<text x="595" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G4</text>
+<text x="595" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Build</text>
+<path d="M 640 350 L 655 350" class="arrow"/>
+<rect x="655" y="320" width="90" height="60" fill="#dcfce7" stroke="#6b7280" rx="10" ry="10"/>
+<text x="700" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G5</text>
+<text x="700" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Quality</text>
+<path d="M 745 350 L 760 350" class="arrow"/>
+<rect x="760" y="320" width="90" height="60" fill="#fef3c7" stroke="#6b7280" rx="10" ry="10"/>
+<text x="805" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G6</text>
+<text x="805" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Staging</text>
+<path d="M 850 350 L 865 350" class="arrow"/>
+<rect x="865" y="320" width="90" height="60" fill="#fef3c7" stroke="#6b7280" rx="10" ry="10"/>
+<text x="910" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G7</text>
+<text x="910" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Prod</text>
+<path d="M 955 350 L 970 350" class="arrow"/>
+<rect x="970" y="320" width="90" height="60" fill="#fef3c7" stroke="#6b7280" rx="10" ry="10"/>
+<text x="1015" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">G8</text>
+<text x="1015" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Observe</text>
+<path d="M 70 320 C 40 270, 100 270, 70 320" stroke="#f59e0b" fill="none" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+<path d="M 175 320 C 145 270, 205 270, 175 320" stroke="#f59e0b" fill="none" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+<path d="M 280 320 C 250 270, 310 270, 280 320" stroke="#f59e0b" fill="none" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+<path d="M 385 320 C 355 270, 415 270, 385 320" stroke="#f59e0b" fill="none" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+<path d="M 490 320 C 460 270, 520 270, 490 320" stroke="#f59e0b" fill="none" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+<path d="M 700 320 C 670 270, 730 270, 700 320" stroke="#f59e0b" fill="none" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+<path d="M 805 320 C 775 270, 835 270, 805 320" stroke="#f59e0b" fill="none" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+<path d="M 910 320 C 880 270, 940 270, 910 320" stroke="#f59e0b" fill="none" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+<text x="600" y="260" text-anchor="middle" font-size="12" fill="#f59e0b" font-weight="600">on_fail loops (orange) — revise &amp; re-enter</text>
+<rect x="20" y="500" width="500" height="90" fill="#f5f5f5" stroke="#6b7280" rx="8" ry="8" stroke-dasharray="5 5"/>
+<text x="30" y="525" font-size="11" fill="#111827">DFR: Design-Freeze Review — owner dsn-lead — signers sec-lead + qa-lead</text>
+<text x="30" y="545" font-size="11" fill="#111827">stage_map: S1[0,1] S2[3] S3[2]+DFR S4[4] S5[4] S6[5,6,7,8]</text>
+<text x="30" y="565" font-size="11" fill="#6b7280">hq/core/nexus/gates.yaml:97 — gates.yaml:107</text>
+
+<text x="600" y="780" class="footer">Source: hq/core/nexus/gates.yaml:1 — Generated from Mermaid source — SOFI-HQ-INT-007 — Law 4 evidence</text>
+</svg>

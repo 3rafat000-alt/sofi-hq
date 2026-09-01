@@ -74,14 +74,6 @@
         "/home/es3dlll/Desktop/SOFI"
       ],
       "enabled": true
-    },
-    "SOFI": {
-      "type": "local",
-      "command": [
-        "/usr/bin/python3",
-        "/home/es3dlll/Desktop/SOFI/hq/engine/mcp_server/mcp_bridge/server.py"
-      ],
-      "enabled": true
     }
   },
   "lsp": {

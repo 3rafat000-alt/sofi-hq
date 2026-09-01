@@ -24,11 +24,16 @@
 - [ ] Alert rules created — dry-tested
 - [ ] Sentry/Datadog connected — error tracking active
 
-## Documentation
+## Documentation (Axis 9 fix 2026-08-31 — knw-doc-writer link hygiene · Law 4/13)
 
 - [ ] Runbook updated — deploy steps, rollback steps, common issues
 - [ ] Release notes drafted
 - [ ] On-call engineer identified
+- [ ] **Internal documentation index freshness (knw-doc-writer):**
+  - [ ] `python3 hq/core/tooling/law13_path_guard.py` passes — every internal path has a real home (Law 13) — evidence: exit code + scanned count attached
+  - [ ] `python3 hq/core/tooling/evidence_guard.py hq/ --strict` passes — zero broken `file:line` citations in hq/ docs (Law 4) — evidence: scanned/broken counts attached
+  - [ ] `.opencode/skills/INDEX.md` + `hq/core/domain/SKILLS-ASSIGNMENT.md` updated if any skill added/removed (count_sync PASS 109/109)
+  - Failure = Gate-6 blocked until index/links fixed (mirrors Gate-0 registry guard but for docs)
 
 ## Evidence Required
 

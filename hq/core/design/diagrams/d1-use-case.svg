@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FILE: hq/core/design/diagrams/d1-use-case.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="D1 Use-Case Diagram — 15 rooms with agent counts" style="background:#ffffff;font-family:Inter, Segoe UI, sans-serif">
+<title>D1 — Use-Case / Agent Registry — 15 rooms · 114 agents</title>
+<desc>Use-Case diagram translating 15 rooms and 114 agents from registry.yaml</desc>
+<style>
+  .box { fill:#f5f5f5; stroke:#6e1b2d; stroke-width:2; rx:12; ry:12; }
+  .box-lead { fill:#6e1b2d; stroke:#3a0d16; stroke-width:2; rx:12; ry:12; }
+  .box-gateway { fill:#6e1b2d; stroke:#2563eb; stroke-width:2.5; rx:12; ry:12; }
+  .box-kernel { fill:#6e1b2d; stroke:#3a0d16; stroke-width:2; rx:10; ry:10; }
+  .text { font-size:18px; fill:#1f2937; font-weight:600; text-anchor:middle; dominant-baseline:middle; }
+  .text-white { font-size:18px; fill:#ffffff; font-weight:600; text-anchor:middle; dominant-baseline:middle; }
+  .text-small { font-size:14px; fill:#4b5563; text-anchor:middle; }
+  .text-small-white { font-size:13px; fill:#f3f4f6; text-anchor:middle; }
+  .arrow { stroke:#2563eb; stroke-width:2.5; fill:none; marker-end:url(#arrowBlue); }
+  .arrow-red { stroke:#dc2626; stroke-width:2; fill:none; stroke-dasharray:6 4; marker-end:url(#arrowRed); }
+  .arrow-orange { stroke:#f59e0b; stroke-width:2; fill:none; marker-end:url(#arrowOrange); }
+  .footer { font-size:13px; fill:#6b7280; text-anchor:middle; }
+</style>
+<defs>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+  <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/></marker>
+</defs>
+<rect width="1200" height="800" fill="#ffffff"/>
+<text x="600" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#6e1b2d">D1 — Use-Case / Agent Registry — 15 rooms · 114 agents</text>
+<text x="600" y="56" text-anchor="middle" font-size="12" fill="#6b7280">SOFI HQ — Visual Diagrams Layer v1 — D1 Use-Case Diagram — 15 rooms with agent counts — source file:line in diagram</text>
+<rect x="35" y="90" width="170" height="60" class="box-lead"/>
+<text x="120" y="110" class="text-white">00 Boardroom</text>
+<text x="120" y="132" class="text-small-white">7 agents</text>
+<rect x="255" y="90" width="170" height="60" class="box"/>
+<text x="340" y="110" class="text">01 Strategy</text>
+<text x="340" y="132" class="text-small">8 agents</text>
+<rect x="475" y="90" width="170" height="60" class="box"/>
+<text x="560" y="110" class="text">02 Research</text>
+<text x="560" y="132" class="text-small">8 agents</text>
+<rect x="695" y="90" width="170" height="60" class="box"/>
+<text x="780" y="110" class="text">03 Design</text>
+<text x="780" y="132" class="text-small">10 agents</text>
+<rect x="915" y="90" width="170" height="60" class="box"/>
+<text x="1000" y="110" class="text">04 Architecture</text>
+<text x="1000" y="132" class="text-small">9 agents</text>
+<rect x="35" y="220" width="170" height="60" class="box"/>
+<text x="120" y="240" class="text">05 Backend</text>
+<text x="120" y="262" class="text-small">8 agents</text>
+<rect x="255" y="220" width="170" height="60" class="box"/>
+<text x="340" y="240" class="text">06 Frontend</text>
+<text x="340" y="262" class="text-small">8 agents</text>
+<rect x="475" y="220" width="170" height="60" class="box"/>
+<text x="560" y="240" class="text">07 Mobile</text>
+<text x="560" y="262" class="text-small">6 agents</text>
+<rect x="695" y="220" width="170" height="60" class="box"/>
+<text x="780" y="240" class="text">08 Data</text>
+<text x="780" y="262" class="text-small">7 agents</text>
+<rect x="915" y="220" width="170" height="60" class="box"/>
+<text x="1000" y="240" class="text">09 Security</text>
+<text x="1000" y="262" class="text-small">9 agents</text>
+<rect x="35" y="350" width="170" height="60" class="box"/>
+<text x="120" y="370" class="text">10 Quality</text>
+<text x="120" y="392" class="text-small">7 agents</text>
+<rect x="255" y="350" width="170" height="60" class="box"/>
+<text x="340" y="370" class="text">11 DevOps</text>
+<text x="340" y="392" class="text-small">8 agents</text>
+<rect x="475" y="350" width="170" height="60" class="box"/>
+<text x="560" y="370" class="text">12 Observability</text>
+<text x="560" y="392" class="text-small">6 agents</text>
+<rect x="695" y="350" width="170" height="60" class="box"/>
+<text x="780" y="370" class="text">13 Knowledge</text>
+<text x="780" y="392" class="text-small">6 agents</text>
+<rect x="915" y="350" width="170" height="60" class="box-gateway"/>
+<text x="1000" y="370" class="text-white">14 Gateway</text>
+<text x="1000" y="392" class="text-small-white">7 agents</text>
+<rect x="425" y="520" width="350" height="70" fill="#2563eb" stroke="#1e40af" stroke-width="2" rx="12" ry="12"/>
+<text x="600" y="545" class="text-white">Total: 15 rooms · 114 agents</text>
+<text x="600" y="565" class="text-small-white">hq/core/nexus/registry.yaml:1 — Registry Invariant Law 12</text>
+<path d="M 120 440 L 600 520" class="arrow" opacity="0.5"/>
+<path d="M 340 440 L 600 520" class="arrow" opacity="0.5"/>
+<path d="M 780 440 L 600 520" class="arrow" opacity="0.5"/>
+<path d="M 1000 440 L 600 520" class="arrow" opacity="0.5"/>
+
+<text x="600" y="780" class="footer">Source: hq/core/nexus/registry.yaml:6 — Generated from Mermaid source — SOFI-HQ-INT-007 — Law 4 evidence</text>
+</svg>

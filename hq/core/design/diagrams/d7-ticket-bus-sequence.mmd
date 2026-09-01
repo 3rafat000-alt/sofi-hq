@@ -1,0 +1,28 @@
+%% FILE: hq/core/design/diagrams/d7-ticket-bus-sequence.mmd
+%% source: AGENTS.md:40
+%% source: hq/core/domain/context-map.yaml:11
+%% Visual Diagrams Layer v1 — D7 Ticket-Bus Sequence (Law 2 + Law 3 — Hierarchical Handoff)
+%% Governance: AGENTS.md:40 (agent→lead→brd-ceo→user) — hq/core/application/bus/ — hq/core/domain/communication-matrix.md
+
+sequenceDiagram
+    participant U as User
+    participant G as Gateway<br/>gtw-intake-reformer
+    participant C as CEO<br/>brd-ceo
+    participant L as Lead<br/>room lead
+    participant A as Agent<br/>specialist
+    participant B as Ticket Bus<br/>hq/core/application/bus
+
+    U->>G: raw speech (Ar/Eng/mixed)
+    Note over G: ambiguity ≥20%? → Law 16
+    G->>C: Intake Report (5 sections)<br/>+ gate/budget/conflict<br/>+ lane: Fast/Standard/Fateful
+    C->>L: RCCF work order<br/>Law 5 — no execution without
+    L->>A: task ticket via Bus<br/>Law 2 isolation
+    A->>B: work executes<br/>evidence file:line + exit code
+    B-->>L: delivery + evidence<br/>Law 4
+    L-->>C: reviewed delivery<br/>quality gate L8
+    C-->>U: Arabic simple summary<br/>Law 11 — why it matters
+
+    Note over A,U: ⛔ Forbidden: A -->> U direct<br/>must via L → C → U<br/>Law 3 violation = L3
+    Note over L,A: Room Isolation<br/>talks-to via contracts<br/>hq/core/domain/context-map.yaml:11
+
+%% traceability: AGENTS.md:40 + hq/core/domain/context-map.yaml:11 ← hq/core/design/diagrams/d7-ticket-bus-sequence.mmd:1

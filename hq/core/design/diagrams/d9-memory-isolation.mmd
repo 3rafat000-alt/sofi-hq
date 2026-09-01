@@ -1,0 +1,43 @@
+%% FILE: hq/core/design/diagrams/d9-memory-isolation.mmd
+%% source: AGENTS.md:44
+%% Visual Diagrams Layer v1 — D9 Memory Isolation (Law 7 — two memories never mix)
+%% Governance: AGENTS.md:44 — hq/core/system-state-current.md:33 — hq/brain/brain-index.md
+
+graph TB
+    subgraph Org["Organization Memory — hq/brain/ (Law 7)"]
+        CORTEX["CORTEX<br/>cortex-decisions.md<br/>ADRs — brd-ceo/knw only"]:::org
+        HIPPO["HIPPOCAMPUS<br/>hippocampus-sessions.md<br/>sessions log"]:::org
+        AMYGDALA["AMYGDALA<br/>amygdala-incidents.md<br/>incidents/SEV"]:::org
+        INDEX["memory_index/<br/>memory-index.md<br/>primer (ZEROED)"]:::org
+    end
+
+    subgraph Project["Project Memory — projects/sakk/brain/ (Law 7)"]
+        CONTEXT["CONTEXT.md<br/>PRD — source of truth<br/>273 lines"]:::proj
+        DECISIONS["DECISIONS.md<br/>project ADRs"]:::proj
+        HANDOFFS["HANDOFFS.md<br/>evidence tickets"]:::proj
+        LESSONS["LESSONS.md<br/>retrospectives"]:::proj
+    end
+
+    AGENT["Agent<br/>specialist<br/>(any room)"]:::agent
+    LEAD["Room Lead"]:::lead
+    CEO["brd-ceo<br/>sole promoter<br/>Law 7"]:::ceo
+
+    AGENT -->|"reads/writes<br/>within project scope"| Project
+    AGENT -.->|"⛔ forbidden direct write<br/>to hq/brain/<br/>Law 7 L2"| Org
+    Project -. "no direct write<br/>isolated" .-> Org
+    Project -- "promotion<br/>CEO decision only<br/>documented" --> CEO --> Org
+    LEAD --> CEO
+    Org -.->|"templates only<br/>never copies<br/>hq/core/templates/"| Project
+
+    ISOLATION["⛔ Red thick line = isolation<br/>2 memories never mix<br/>AGENTS.md:44"]:::forbidden
+
+    Org --- ISOLATION --- Project
+
+    classDef org fill:#6e1b2d,stroke:#3a0d16,color:#fff,stroke-width:1.5px
+    classDef proj fill:#dbeafe,stroke:#2563eb,color:#1e3a5f,stroke-width:1.5px
+    classDef agent fill:#f5f5f5,stroke:#6b7280,color:#111827,stroke-width:1.2px
+    classDef lead fill:#e0e7ff,stroke:#4f46e5,color:#1e1b4b,stroke-width:1.2px
+    classDef ceo fill:#6e1b2d,stroke:#3a0d16,color:#fff,stroke-width:2px
+    classDef forbidden fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-width:1.5px,stroke-dasharray: 5 5
+
+%% traceability: AGENTS.md:44 ← hq/core/design/diagrams/d9-memory-isolation.mmd:1

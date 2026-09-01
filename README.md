@@ -110,6 +110,35 @@ documented contracts and the ticket bus (**Law 2**).
 
 ---
 
+## Visual Diagrams — الخرائط المرئية (SOFI-HQ-INT-007)
+
+> **الطبقة المرئية الحاكمة v1** — 9 مخططات مرئية تترجم الحوكمة النصية المتفوقة إلى صور مفهومة في 5 دقائق — النص يبقى مرجع الحقيقة، الصور مضافة لا بديلة — كل صورة بثلاث صيغ `.mmd` (مصدر) + `.svg` (عرض) + `.png` (شرائح) — `hq/core/design/diagrams/README.md:1`
+> **كيف تفهم المؤسسة في 5 دقائق:** افتح الصور التسع بالترتيب D1→D9 — كل صورة مربوطة 1:1 بمصدرها النصي `file:line` — لا تخمين — لا Wireframe — لا ERD وهمي.
+
+| # | المخطط | المصدر النصي `file:line` | SVG للعرض (اضغط) | PNG للتحميل | المصدر Mermaid |
+|---|--------|--------------------------|------------------|--------------|----------------|
+| D1 | Use-Case / Agent Registry — 15 غرفة · 114 وكيلاً | `hq/core/nexus/registry.yaml:6` | [d1-use-case.svg](docs/diagrams/d1-use-case.svg) | [d1-use-case.png](docs/diagrams/d1-use-case.png) | [d1-use-case.mmd](hq/core/design/diagrams/d1-use-case.mmd) |
+| D2 | Pipeline S1→S6 + DFR Gate | `hq/core/nexus/pipeline.yaml:8` | [d2-pipeline-s1-s6.svg](docs/diagrams/d2-pipeline-s1-s6.svg) | [d2-pipeline-s1-s6.png](docs/diagrams/d2-pipeline-s1-s6.png) | [d2-pipeline-s1-s6.mmd](hq/core/design/diagrams/d2-pipeline-s1-s6.mmd) |
+| D3 | Gateway Routing + Clarification Loop 24h + Lane | `README.md:80` + `hq/core/domain/rooms/14-gateway/charter.md:86` | [d3-gateway-routing.svg](docs/diagrams/d3-gateway-routing.svg) | [d3-gateway-routing.png](docs/diagrams/d3-gateway-routing.png) | [d3-gateway-routing.mmd](hq/core/design/diagrams/d3-gateway-routing.mmd) |
+| D4 | Layered Architecture — 4 طبقات (Dependency نزولاً فقط) | `hq/core/design/system-ddd-blueprint.md:42` | [d4-layered-architecture.svg](docs/diagrams/d4-layered-architecture.svg) | [d4-layered-architecture.png](docs/diagrams/d4-layered-architecture.png) | [d4-layered-architecture.mmd](hq/core/design/diagrams/d4-layered-architecture.mmd) |
+| D5 | Context-Map — 15 عقدة + shared-kernel | `hq/core/domain/context-map.yaml:11` | [d5-context-map.svg](docs/diagrams/d5-context-map.svg) | [d5-context-map.png](docs/diagrams/d5-context-map.png) | [d5-context-map.mmd](hq/core/design/diagrams/d5-context-map.mmd) |
+| D6 | Gate State Machine — G0→G8 + DFR | `hq/core/nexus/gates.yaml:1` | [d6-gate-state-machine.svg](docs/diagrams/d6-gate-state-machine.svg) | [d6-gate-state-machine.png](docs/diagrams/d6-gate-state-machine.png) | [d6-gate-state-machine.mmd](hq/core/design/diagrams/d6-gate-state-machine.mmd) |
+| D7 | Ticket-Bus Sequence — agent→lead→ceo→user | `AGENTS.md:40` + `hq/core/domain/context-map.yaml:11` | [d7-ticket-bus-sequence.svg](docs/diagrams/d7-ticket-bus-sequence.svg) | [d7-ticket-bus-sequence.png](docs/diagrams/d7-ticket-bus-sequence.png) | [d7-ticket-bus-sequence.mmd](hq/core/design/diagrams/d7-ticket-bus-sequence.mmd) |
+| D8 | Deployment — Caddy Canon + Sites + Bootstrap | `hq/engine/Caddyfile` + `hq/engine/scripts/bootstrap-live.sh:6` | [d8-deployment-caddy.svg](docs/diagrams/d8-deployment-caddy.svg) | [d8-deployment-caddy.png](docs/diagrams/d8-deployment-caddy.png) | [d8-deployment-caddy.mmd](hq/core/design/diagrams/d8-deployment-caddy.mmd) |
+| D9 | Memory Isolation — Org vs Project (Law 7) | `AGENTS.md:44` | [d9-memory-isolation.svg](docs/diagrams/d9-memory-isolation.svg) | [d9-memory-isolation.png](docs/diagrams/d9-memory-isolation.png) | [d9-memory-isolation.mmd](hq/core/design/diagrams/d9-memory-isolation.mmd) |
+
+**معاينة سريعة (SVG inline — GitHub يرندر تلقائياً):**
+
+![D1 Use-Case](docs/diagrams/d1-use-case.svg)
+![D2 Pipeline](docs/diagrams/d2-pipeline-s1-s6.svg)
+![D3 Gateway](docs/diagrams/d3-gateway-routing.svg)
+
+*باقي الصور D4-D9 في `hq/core/design/diagrams/` و `docs/diagrams/` — كل SVG بـ `alt` + `aria-label` + تباين ≥4.5:1 + RTL صحيح — `hq/core/design/diagrams/README.md:1`*
+
+**التحديث:** أي تغيير في `hq/core/nexus/registry.yaml:6` أو `hq/core/nexus/pipeline.yaml:8` أو `hq/core/domain/context-map.yaml:11` يُحدّث `*.mmd` المقابل في نفس الـ PR — SLA ≤24h — `knw-reflector` كل 10 turns — `python3 hq/core/tooling/evidence_guard.py hq/core/design/diagrams --strict` → 0 broken — `hq/core/design/diagrams/README.md:1`
+
+---
+
 ## Repository Structure
 
 ```

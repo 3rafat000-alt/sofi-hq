@@ -50,4 +50,4 @@ gtw-dispatcher ──(Intake Report + Gate + Budget + Lane)──▶ brd-ceo
 - كل وكيل له معرّف واحد فريد في غرفة واحدة (لا ازدواج أدوار عبر الغرف) — أي تكرار يُرفع إلى brd-ceo.
 - المرجع الهيكلي: `hq/core/structure-standard.md` (خريطة old←new دائمة — Law 13).
 
-*Evidence: hq/engine/mcp_server/main.py:post_consult — meetings.py:create_meeting/close_meeting_with_minutes — leads_mcp.py:create_consultation — mcp_bridge/server.py:sofi_consult/sofi_meeting_* — registry.yaml:00-boardroom — AGENTS.md:Law6/Law12 — هذا المعيار مكمل للقوانين، لا يلغيها.*
+*Evidence: hq/engine/mcp_server/main.py:post_consult — meetings.py:create_meeting/close_meeting_with_minutes — leads_mcp.py:create_consultation — registry.yaml:00-boardroom — AGENTS.md:Law6/Law12 — هذا المعيار مكمل للقوانين، لا يلغيها — **محدّث 2026-09-01: جسر mcp_bridge محذوف**.*

@@ -65,19 +65,9 @@ await c.escalate(
 
 **قواعد ذهبية:** لا تخمين (L2) · أسئلة حادة 1-3 فقط · صعّد ولا تختبئ · كل خطوة تُسجّل في التدقيق
 
-## الخطوة 0.7 — أدوات opencode الجاهزة (MCP SOFI)
+## الخطوة 0.7 — أدوات الحافلة (محدّثة 2026-09-01 — جسر SOFI MCP محذوف)
 
-داخل opencode ترى خادم `SOFI` ببساطة — أدواته `mcp__sofi__*` (اختصار: `sofi_*`):
-
-| الأداة | متى تستخدمها |
-|---|---|
-| `sofi_org_structure` / `sofi_who_is(وكيل)` | قبل أي عمل بين الغرف — تعرف غرفتك وقائدك وزملاءك (مصدر الحقيقة: registry.yaml) |
-| `sofi_send(مرسل, مستلم, محتوى, task_id, context, evidence)` | إرسال عمل منضبط — بدون الثلاثة = رفض (لا عمل أعمى) |
-| `sofi_clarify(أسئلة 1-3, missing)` | نقص/غموض — اسأل حاداً ولا تخمّن |
-| `sofi_escalate(subject, description)` | لم يجب القائد 30 دقيقة أو حرج — فوراً إلى brd-ceo |
-| `sofi_ticket(...)` / `sofi_tickets(status)` / `sofi_audit(...)` | إنشاء/عرض التذاكر والتدقيق — كل خطوة مسجلة |
-
-**الخادم:** `hq/engine/mcp_server/mcp_bridge/server.py` — شغّله/اختبره يدوياً: `python3 hq/engine/mcp_server/mcp_bridge/server.py`
+> **تنبيه:** جسر SOFI MCP (`hq/engine/mcp_server/mcp_bridge/server.py`) **حُذف نهائياً** بأمر مالك O-01 — أدوات `sofi_*` عبر opencode لم تعد متاحة — استخدم SDK المباشر `hq/engine/mcp_server/client/mcp_client.py` للحافلة `mcp.local:8765`.
 
 ## الخطوة 1 — الوكيل يرسل لقائده (أنت وكيل)
 

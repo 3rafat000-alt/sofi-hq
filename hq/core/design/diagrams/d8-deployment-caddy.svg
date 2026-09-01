@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FILE: hq/core/design/diagrams/d8-deployment-caddy.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="D8 deployment diagram" style="background:#ffffff;font-family:Inter, Segoe UI, sans-serif">
+<title>D8 — Deployment — Caddy Canon + Sites + Bootstrap</title>
+<desc>Deployment diagram Caddy</desc>
+<style>
+  .box { fill:#f5f5f5; stroke:#6e1b2d; stroke-width:2; rx:12; ry:12; }
+  .box-lead { fill:#6e1b2d; stroke:#3a0d16; stroke-width:2; rx:12; ry:12; }
+  .box-gateway { fill:#6e1b2d; stroke:#2563eb; stroke-width:2.5; rx:12; ry:12; }
+  .box-kernel { fill:#6e1b2d; stroke:#3a0d16; stroke-width:2; rx:10; ry:10; }
+  .text { font-size:18px; fill:#1f2937; font-weight:600; text-anchor:middle; dominant-baseline:middle; }
+  .text-white { font-size:18px; fill:#ffffff; font-weight:600; text-anchor:middle; dominant-baseline:middle; }
+  .text-small { font-size:14px; fill:#4b5563; text-anchor:middle; }
+  .text-small-white { font-size:13px; fill:#f3f4f6; text-anchor:middle; }
+  .arrow { stroke:#2563eb; stroke-width:2.5; fill:none; marker-end:url(#arrowBlue); }
+  .arrow-red { stroke:#dc2626; stroke-width:2; fill:none; stroke-dasharray:6 4; marker-end:url(#arrowRed); }
+  .arrow-orange { stroke:#f59e0b; stroke-width:2; fill:none; marker-end:url(#arrowOrange); }
+  .footer { font-size:13px; fill:#6b7280; text-anchor:middle; }
+</style>
+<defs>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+  <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/></marker>
+</defs>
+<rect width="1200" height="800" fill="#ffffff"/>
+<text x="600" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#6e1b2d">D8 — Deployment — Caddy Canon + Sites + Bootstrap</text>
+<text x="600" y="56" text-anchor="middle" font-size="12" fill="#6b7280">SOFI HQ — Visual Diagrams Layer v1 — D8 deployment diagram — source file:line in diagram</text>
+<rect x="30" y="305" width="140" height="90" fill="#f5f5f5" stroke="#6b7280" rx="12" ry="12"/>
+<text x="100" y="330" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Internet</text>
+<path d="M 170 350 L 180 350" class="arrow"/>
+<rect x="180" y="305" width="140" height="90" fill="#fef3c7" stroke="#6b7280" rx="12" ry="12"/>
+<text x="250" y="330" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Cloudflare</text>
+<path d="M 320 350 L 380 350" class="arrow"/>
+<rect x="380" y="305" width="140" height="90" fill="#6e1b2d" stroke="#6b7280" rx="12" ry="12"/>
+<text x="450" y="330" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Caddy Canon</text>
+<text x="450" y="346" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">hq/engine/Caddyfile</text>
+<text x="450" y="362" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">snippets + 404 guard</text>
+<path d="M 520 350 L 630 350" class="arrow"/>
+<rect x="630" y="305" width="140" height="90" fill="#dbeafe" stroke="#6b7280" rx="12" ry="12"/>
+<text x="700" y="330" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Sites</text>
+<text x="700" y="346" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">hq/engine/sites/*.caddy</text>
+<text x="700" y="362" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">sakk.local</text>
+<path d="M 770 350 L 830 350" class="arrow"/>
+<rect x="830" y="305" width="140" height="90" fill="#dcfce7" stroke="#6b7280" rx="12" ry="12"/>
+<text x="900" y="330" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">PHP-FPM</text>
+<text x="900" y="346" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">sakk.conf</text>
+<path d="M 970 350 L 980 350" class="arrow"/>
+<rect x="980" y="305" width="140" height="90" fill="#e0e7ff" stroke="#6b7280" rx="12" ry="12"/>
+<text x="1050" y="330" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a5f">Apps</text>
+<text x="1050" y="346" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">projects/sakk/</text>
+<text x="1050" y="362" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">hq/brain/</text>
+<path d="M 450 270 L 450 305" stroke="#6e1b2d" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+<text x="450" y="255" text-anchor="middle" font-size="11" fill="#6e1b2d">bootstrap-live.sh:6 — sudo once</text>
+<text x="450" y="245" text-anchor="middle" font-size="9" fill="#6b7280">ls -l caddy = not found (symlink removed)</text>
+<rect x="550" y="500" width="300" height="70" fill="#ffffff" stroke="#6b7280" rx="8" ry="8" stroke-dasharray="5 5"/>
+<text x="700" y="525" text-anchor="middle" font-size="11" fill="#374151">create sites/&lt;domain&gt;.caddy → validate.sh (no sudo)</text>
+<text x="700" y="545" text-anchor="middle" font-size="11" fill="#374151">→ deploy.sh (admin-API, sudo fallback)</text>
+<path d="M 700 440 L 700 500" class="arrow" stroke="#6b7280"/>
+<rect x="430" y="420" width="120" height="30" fill="#fee2e2" stroke="#dc2626" rx="6" ry="6"/>
+<text x="490" y="440" text-anchor="middle" font-size="10" fill="#7f1d1d">404 guard — unknown host</text>
+
+<text x="600" y="780" class="footer">Source: hq/engine/Caddyfile + hq/engine/scripts/bootstrap-live.sh:6 — Generated from Mermaid source — SOFI-HQ-INT-007 — Law 4 evidence</text>
+</svg>

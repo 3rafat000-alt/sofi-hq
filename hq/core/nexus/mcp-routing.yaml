@@ -1,0 +1,48 @@
+# MCP Routing — ربط كل خادم MCP بغرفة وقائد وبوابة (Law 2 + MCP-FLEET)
+# المصدر الحي: opencode.json:13 (28 خادم) — هذا الملف يوثق التوجيه لا يسجله (التسجيل في opencode.json فقط)
+# تاريخ: 2026-08-29 — دمج sofi-platform/tools/mcp (20 خادم) في SOFI-HQ — تحديث 2026-09-01: حذف جسر SOFI (mcp_bridge)
+
+# القواعد الستة الملزمة (MCP-FLEET-v3 — skill sofi-mcp-fleet):
+# 1. Context7 قبل أي كود يمس مكتبة
+# 2. DeepWiki قبل أي ادعاء عن مستودع خارجي
+# 3. Kitesurf للقطة وصولية (Law 4)
+# 4. Sequential-Thinking للمشكلة المتفرعة
+# 5. sec-mcp-vetting لأي خادم جديد — تفعيل ذاتي ممنوع
+# 6. مجاني فقط — INT-0003
+
+routes:
+  # ── الأصلية (8) — sofi-hq ──
+  Context7:               { room: "04", lead: arc-lead,  gate: DFR,  when: "قبل أي كود يمس مكتبة" }
+  DeepWiki:               { room: "02", lead: res-lead, gate: G1,   when: "التحقق من مستودع/أداة خارجية" }
+  Sequential-Thinking:    { room: "00", lead: brd-ceo,  gate: any,  when: "مشكلة متفرعة معقدة" }
+  Chrome-DevTools:        { room: "03", lead: dsn-lead, gate: DFR,  when: "تدقيق وصولية/أداء واجهة" }
+  Playwright:             { room: "10", lead: qa-lead,  gate: G5,   when: "اختبار متصفح حي" }
+  Kitesurf:               { room: "03", lead: dsn-lead, gate: G5,   when: "لقطة وصولية دليل Law 4" }
+  Dart-Flutter:           { room: "07", lead: mob-lead, gate: G4,   when: "تحليل Dart/Flutter" }
+  Filesystem-Scoped:      { room: "14", lead: gtw-dispatcher, gate: G0, when: "قراءة ملفات المشروع" }
+
+  # ── الجديدة (20) — sofi-platform — tools/mcp/*.py ──
+  SOFI-Security:          { room: "09", lead: sec-lead, gate: DFR,  when: "فحص أمني SAST/تبعيات/إعدادات", file: tools/mcp/security_mcp.py }
+  SOFI-Postgres:          { room: "08", lead: dat-lead, gate: G3,   when: "استعلام PostgreSQL", file: tools/mcp/postgres_mcp.py }
+  SOFI-Redis:             { room: "08", lead: dat-cache-engineer, gate: G3, when: "كاش وطوابير Redis", file: tools/mcp/redis_mcp.py }
+  SOFI-Time:              { room: "14", lead: gtw-dispatcher, gate: G0, when: "توقيت Asia/Riyadh", file: tools/mcp/time_mcp.py }
+  SOFI-WebFetch:          { room: "02", lead: res-web-scout, gate: G1, when: "جلب ويب نظيف", file: tools/mcp/webfetch_mcp.py }
+  SOFI-MemoryHub:         { room: "13", lead: knw-lead, gate: G6,   when: "محور ذاكرة مركزي", file: tools/mcp/memory_hub_mcp.py }
+  SOFI-Sniffer:           { room: "12", lead: obs-lead, gate: G8,   when: "مراقبة شبكة وحزم", file: tools/mcp/sniffer_mcp.py }
+  SOFI-Status:            { room: "00", lead: brd-ceo,  gate: any,  when: "حالة النظام 114 وكيل", file: tools/mcp/status.py }
+  SOFI-CodeDecomposer:    { room: "04", lead: arc-lead, gate: G3,   when: "تحليل بنية مشروع", file: tools/mcp/code_decomposer.py }
+  SOFI-Research:          { room: "02", lead: res-lead, gate: G1,   when: "بحث عميق متعدد المصادر", file: tools/mcp/research.py }
+  SOFI-Consult:           { room: "00", lead: brd-ceo,  gate: any,  when: "تشاور بين وكلاء", file: tools/mcp/consult.py }
+  SOFI-Skills:            { room: "13", lead: knw-lead, gate: any,  when: "سجل مهارات 70 تعريف", file: tools/mcp/skills.py }
+  SOFI-ToolForge:         { room: "04", lead: arc-lead, gate: G3,   when: "بناء أداة Python ديناميكية", file: tools/mcp/tool_forge.py }
+  SOFI-WorkingMemory:     { room: "13", lead: knw-lead, gate: G4,   when: "ذاكرة عاملة TTL", file: tools/mcp/working_memory.py }
+  SOFI-SemanticMemory:    { room: "13", lead: knw-lead, gate: G4,   when: "ذاكرة دلالية طويلة", file: tools/mcp/semantic_memory_mcp.py }
+  SOFI-EpisodicMemory:    { room: "13", lead: knw-lead, gate: G5,   when: "ذاكرة حلقية أحداث", file: tools/mcp/episodic_memory_mcp.py }
+  SOFI-ProceduralMemory:  { room: "13", lead: knw-lead, gate: G5,   when: "ذاكرة إجرائية (إجراءات)", file: tools/mcp/procedural_memory_mcp.py }
+  SOFI-Broker:            { room: "00", lead: brd-ceo,  gate: any,  when: "تفويض هرمي", file: tools/mcp/broker.py }
+  SOFI-Network:           { room: "11", lead: ops-lead, gate: G7,   when: "إحصائيات شبكة وكلاء", file: tools/mcp/network.py }
+  SOFI-ChromeDevTools-Platform: { room: "03", lead: dsn-lead, gate: DFR, when: "تدقيق HTML/CSS/JS", file: tools/mcp/chrome_devtools_mcp.py }
+
+# حظر أمني — لا تلمس:
+forbidden:
+  - SOFI-PRJ  # عام ومكشوف — ممنوع كمصدر MCP — Context Leakage

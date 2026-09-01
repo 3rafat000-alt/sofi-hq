@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FILE: hq/core/design/diagrams/d9-memory-isolation.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="D9 memory isolation" style="background:#ffffff;font-family:Inter, Segoe UI, sans-serif">
+<title>D9 — Memory Isolation — Org vs Project (Law 7)</title>
+<desc>Memory isolation diagram</desc>
+<style>
+  .box { fill:#f5f5f5; stroke:#6e1b2d; stroke-width:2; rx:12; ry:12; }
+  .box-lead { fill:#6e1b2d; stroke:#3a0d16; stroke-width:2; rx:12; ry:12; }
+  .box-gateway { fill:#6e1b2d; stroke:#2563eb; stroke-width:2.5; rx:12; ry:12; }
+  .box-kernel { fill:#6e1b2d; stroke:#3a0d16; stroke-width:2; rx:10; ry:10; }
+  .text { font-size:18px; fill:#1f2937; font-weight:600; text-anchor:middle; dominant-baseline:middle; }
+  .text-white { font-size:18px; fill:#ffffff; font-weight:600; text-anchor:middle; dominant-baseline:middle; }
+  .text-small { font-size:14px; fill:#4b5563; text-anchor:middle; }
+  .text-small-white { font-size:13px; fill:#f3f4f6; text-anchor:middle; }
+  .arrow { stroke:#2563eb; stroke-width:2.5; fill:none; marker-end:url(#arrowBlue); }
+  .arrow-red { stroke:#dc2626; stroke-width:2; fill:none; stroke-dasharray:6 4; marker-end:url(#arrowRed); }
+  .arrow-orange { stroke:#f59e0b; stroke-width:2; fill:none; marker-end:url(#arrowOrange); }
+  .footer { font-size:13px; fill:#6b7280; text-anchor:middle; }
+</style>
+<defs>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+  <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/></marker>
+</defs>
+<rect width="1200" height="800" fill="#ffffff"/>
+<text x="600" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#6e1b2d">D9 — Memory Isolation — Org vs Project (Law 7)</text>
+<text x="600" y="56" text-anchor="middle" font-size="12" fill="#6b7280">SOFI HQ — Visual Diagrams Layer v1 — D9 memory isolation — source file:line in diagram</text>
+<rect x="50" y="120" width="500" height="420" fill="#fff7f7" stroke="#6e1b2d" stroke-width="2" rx="12" ry="12"/>
+<text x="300" y="145" text-anchor="middle" font-size="14" font-weight="700" fill="#6e1b2d">Organization Memory — hq/brain/ (Law 7)</text>
+<rect x="80" y="185" width="180" height="70" fill="#6e1b2d" stroke="#3a0d16" rx="10" ry="10"/>
+<text x="170" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">CORTEX</text>
+<text x="170" y="224" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">cortex-decisions.md</text>
+<rect x="340" y="185" width="180" height="70" fill="#6e1b2d" stroke="#3a0d16" rx="10" ry="10"/>
+<text x="430" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">HIPPOCAMPUS</text>
+<text x="430" y="224" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">hippocampus-sessions.md</text>
+<rect x="80" y="315" width="180" height="70" fill="#6e1b2d" stroke="#3a0d16" rx="10" ry="10"/>
+<text x="170" y="340" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">AMYGDALA</text>
+<text x="170" y="354" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">amygdala-incidents.md</text>
+<rect x="340" y="315" width="180" height="70" fill="#6e1b2d" stroke="#3a0d16" rx="10" ry="10"/>
+<text x="430" y="340" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">memory_index</text>
+<text x="430" y="354" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">memory-index.md</text>
+<rect x="650" y="120" width="500" height="420" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="12" ry="12"/>
+<text x="900" y="145" text-anchor="middle" font-size="14" font-weight="700" fill="#2563eb">Project Memory — projects/sakk/brain/ (Law 7)</text>
+<rect x="680" y="185" width="180" height="70" fill="#dbeafe" stroke="#2563eb" rx="10" ry="10"/>
+<text x="770" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a5f">CONTEXT.md</text>
+<text x="770" y="224" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a5f">PRD 273 lines</text>
+<rect x="940" y="185" width="180" height="70" fill="#dbeafe" stroke="#2563eb" rx="10" ry="10"/>
+<text x="1030" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a5f">DECISIONS.md</text>
+<rect x="680" y="315" width="180" height="70" fill="#dbeafe" stroke="#2563eb" rx="10" ry="10"/>
+<text x="770" y="340" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a5f">HANDOFFS.md</text>
+<rect x="940" y="315" width="180" height="70" fill="#dbeafe" stroke="#2563eb" rx="10" ry="10"/>
+<text x="1030" y="340" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a5f">LESSONS.md</text>
+<line x1="560" y1="120" x2="560" y2="540" stroke="#dc2626" stroke-width="6"/>
+<text x="560" y="580" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">⛔ NO DIRECT WRITE — isolated</text>
+<text x="560" y="600" text-anchor="middle" font-size="11" fill="#7f1d1d">2 memories never mix — AGENTS.md:44</text>
+<path d="M 770 470 L 430 470" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arrowBlue)"/>
+<text x="600" y="465" text-anchor="middle" font-size="11" fill="#14532d">promotion via brd-ceo decision only</text>
+<rect x="520" y="650" width="160" height="60" fill="#f5f5f5" stroke="#6b7280" rx="12" ry="12"/>
+<text x="600" y="675" text-anchor="middle" font-size="12" font-weight="700" fill="#111827">Agent (any room)</text>
+<text x="600" y="695" text-anchor="middle" font-size="10" fill="#6b7280">reads/writes within project only</text>
+<path d="M 600 650 L 900 540" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+<path d="M 600 650 L 300 540" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+<text x="420" y="630" text-anchor="middle" font-size="10" fill="#dc2626">⛔ forbidden direct</text>
+
+<text x="600" y="780" class="footer">Source: AGENTS.md:44 — Generated from Mermaid source — SOFI-HQ-INT-007 — Law 4 evidence</text>
+</svg>

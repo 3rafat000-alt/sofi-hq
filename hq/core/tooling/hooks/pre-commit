@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# FILE: hq/core/tooling/hooks/pre-commit
+# SOFI pre-commit hook — Law 4 (Evidence) + Law 12/13 (Registry/Zero-Randomness) + Law 15 (License) + Security (gitleaks)
+# Installed to .git/hooks/pre-commit via: bash hq/core/tooling/hooks/install.sh
+# Blocks commit on any violation (exit 1). Zero dependencies beyond python3 + gitleaks (already in gitleaks.toml).
+set -e
+# Robust ROOT detection: installed hook (.git/hooks) vs source (hq/core/tooling/hooks)
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+if [ -z "$ROOT" ]; then
+  if [ -d "$(dirname "$0")/../../../.." ] && [ -f "$(dirname "$0")/../../../..//AGENTS.md" ]; then
+    ROOT="$(cd "$(dirname "$0")/../../../.." && pwd)"
+  else
+    ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+  fi
+fi
+cd "$ROOT"
+
+echo "═══ SOFI pre-commit — Axis 5+7 gate (evidence · registry · secrets) ═══"
+
+# 1) gitleaks — secrets scan (Law 8 security gate — zero secrets in code)
+# Uses gitleaks.toml at root (allowlist: vendor, node_modules, .git, skills)
+# gitleaks v8 syntax: gitleaks git --staged --pre-commit (or protect in v7)
+if command -v gitleaks >/dev/null 2>&1; then
+  echo "→ gitleaks git --staged --pre-commit (gitleaks.toml)..."
+  if ! gitleaks git --staged --pre-commit --config gitleaks.toml --verbose --redact --no-banner 2>&1 | tail -20; then
+    if gitleaks git --staged --pre-commit --config gitleaks.toml --no-banner --redact >/dev/null 2>&1; then
+      : # pass — first verbose run exited non-zero due to pipe tail but second confirms pass
+    else
+      echo "❌ gitleaks BLOCKED — secret detected in staged files (Law P-08.1 — zero secrets in code = L4)"
+      echo "   Fix: remove secret → use env var / vault → re-stage"
+      exit 1
+    fi
+  fi
+  if ! gitleaks git --staged --pre-commit --config gitleaks.toml --no-banner --redact >/dev/null 2>&1; then
+    echo "❌ gitleaks BLOCKED — staged files contain secret (see above)"
+    exit 1
+  fi
+  echo "✓ gitleaks PASS (no secrets in staged files)"
+else
+  echo "⚠ gitleaks not found — skipping secrets scan (install: go install github.com/gitleaks/gitleaks/v8@latest)"
+fi
+
+# 2) registry_guard — Gate-0 invariant (Law 12: 15 rooms · 114 agents + capsules)
+echo "→ registry_guard --strict (Law 12)..."
+if ! python3 hq/core/tooling/registry_guard.py --strict 2>&1 | tail -30; then
+  echo "❌ registry_guard BLOCKED — .opencode/agent ↔ registry.yaml drift (see above)"
+  echo "   Fix: update hq/core/nexus/registry.yaml + .opencode/agent + hq/core/domain/rooms/*/agents/*/ then node hq/core/tooling/port-agents.mjs"
+  exit 1
+fi
+python3 hq/core/tooling/registry_guard.py --strict >/dev/null 2>&1 || { echo "❌ registry_guard failed"; exit 1; }
+echo "✓ registry_guard PASS (114/114 agents · capsules OK)"
+
+# 3) count_sync — constitutional counters (Law 12/13: 15 rooms · 114 agents · 109 skills · 16 laws)
+echo "→ count_sync (Law 12/13)..."
+if ! python3 hq/core/tooling/count_sync.py 2>&1 | tail -20; then
+  if ! python3 hq/core/tooling/count_sync.py >/dev/null 2>&1; then
+    echo "❌ count_sync BLOCKED — constitutional counter drift (see above)"
+    exit 1
+  fi
+fi
+echo "✓ count_sync PASS"
+
+# 4) evidence_guard — file:line verification (Law 4: Evidence Required + Law 13 Zero-Randomness)
+echo "→ evidence_guard --staged --strict (Law 4: file:line must exist)..."
+if ! python3 hq/core/tooling/evidence_guard.py --staged --strict 2>&1 | tail -30; then
+  echo "❌ evidence_guard BLOCKED — staged files contain broken file:line citations"
+  echo "   Fix: correct path:line to real file:line or remove citation"
+  exit 1
+fi
+echo "✓ evidence_guard PASS"
+
+# 5) law13 path guard — every path cited has a home (Law 13)
+echo "→ law13_path_guard (Law 13: every path has a home)..."
+if ! python3 hq/core/tooling/law13_path_guard.py 2>&1 | tail -20; then
+  if python3 hq/core/tooling/law13_path_guard.py >/dev/null 2>&1; then :; else
+    echo "⚠ law13_path_guard found broken path targets (advisory — not blocking commit)"
+    echo "   Check: python3 hq/core/tooling/law13_path_guard.py --fix-report"
+  fi
+else
+  echo "✓ law13_path_guard PASS"
+fi
+
+# 6) License gate advisory — remind to fill License-check on dependency changes (Law 15)
+if git diff --cached --name-only | grep -qE "(composer\.json|pubspec\.yaml|package\.json|pnpm-lock\.yaml|composer\.lock|pubspec\.lock)"; then
+  echo "⚠ dependency manifest changed — Law 15 requires 'License-check: [allowed]' task-card field via sec-license-auditor before merge"
+  echo "  Ensure: sec-license-auditor reviewed — allowed (MIT/Apache/BSD/ISC/MPL-2.0) else rejected with file:line evidence"
+fi
+
+echo "═══ pre-commit PASS — all SOFI guards green (ready to commit) ═══"

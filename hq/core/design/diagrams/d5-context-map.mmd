@@ -1,0 +1,46 @@
+%% FILE: hq/core/design/diagrams/d5-context-map.mmd
+%% source: hq/core/domain/context-map.yaml:11
+%% Visual Diagrams Layer v1 — D5 Context-Map / Component (15 bounded contexts + shared-kernel)
+%% Governance: hq/core/domain/context-map.yaml:11 — AGENTS.md:40 (Law 2 Room Isolation)
+
+graph LR
+    SK["shared-kernel<br/>glossary<br/>evidence-rule<br/>envelope<br/>identity<br/>(brd-ceo only mutates)"]:::kernel
+
+    R00["00 Boardroom<br/>brd-ceo"]:::lead
+    R01["01 Strategy"]:::room
+    R02["02 Research"]:::room
+    R03["03 Design"]:::room
+    R04["04 Architecture"]:::room
+    R05["05 Backend"]:::room
+    R06["06 Frontend"]:::room
+    R07["07 Mobile"]:::room
+    R08["08 Data"]:::room
+    R09["09 Security"]:::room
+    R10["10 Quality"]:::room
+    R11["11 DevOps"]:::room
+    R12["12 Observability"]:::room
+    R13["13 Knowledge"]:::room
+    R14["14 Gateway"]:::gateway
+
+    R01 -- "provides: prd" --> SK
+    R02 -- "provides: research" --> SK
+    R04 -- "provides: api-design" --> SK
+    R05 -- "provides: working-api" --> SK
+    R09 -- "provides: veto" --> SK
+    R10 -- "provides: verdicts" --> SK
+
+    R05 -- "talks-to 10-quality (tickets)<br/>ALLOWED" --> R10
+    R03 -- "talks-to 04-architecture<br/>ALLOWED" --> R04
+    R06 -- "talks-to 07-mobile unified<br/>ALLOWED" --> R07
+
+    R05 -. "forbidden: direct chat 06-frontend<br/>FORBIDDEN" .-> R06
+    R00 -. "forbidden: direct execution<br/>FORBIDDEN" .-> R05
+    R13 -. "forbidden: unilateral law edits<br/>FORBIDDEN" .-> R00
+
+    classDef kernel fill:#6e1b2d,stroke:#3a0d16,color:#fff,stroke-width:2px
+    classDef lead fill:#6e1b2d,stroke:#3a0d16,color:#fff,stroke-width:2px
+    classDef gateway fill:#2563eb,stroke:#1e40af,color:#fff,stroke-width:2px
+    classDef room fill:#f5f5f5,stroke:#6e1b2d,color:#1f2937,stroke-width:1.2px
+
+%% traceability: hq/core/domain/context-map.yaml:11 ← hq/core/design/diagrams/d5-context-map.mmd:1
+%% note: provides=green solid, requires=blue dashed, forbidden=red dotted X — full map 107 lines YAML

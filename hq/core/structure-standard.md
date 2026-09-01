@@ -133,3 +133,21 @@ Owner order: "احذف مجلد الـ link بس الاساسي لا تكرار"
 | Acquaintance test (اختبار تعارف) | `sofi_who_is` roll-call over all official registry ids: **114/114 introduced successfully** · room match vs registry **114/114** · per-room counts exact (7·8·8·10·9·8·8·6·7·9·7·8·6·6·7) · no agent without lead · leads 15/15 · bridge tools 13/13 — record: `hq/engine/mcp_server/docs/acquaintance-test.md` |
 | Tests | `test_governance.py` + `test_integration_api.py` together **18/18 passed** from the real package (no link) — full suite 31 passed + 3 known flaky (environmental, each file passes alone) |
 | History untouched | `hq/brain/*` append-only (Law 13) · v4.6/v4.7 sections preserved above as historical fact |
+
+## v4.9 (2026-09-01 · حذف جسر SOFI MCP نهائياً — O-01)
+
+Owner order: احذف `🛰️ SOFI local hq/engine/mcp_server/mcp_bridge/server.py 00 Boardroom / brd-ceo — any` بالكامل وكل شيء له.
+
+| Event | Detail |
+|---|---|
+| حذف الجسر | `hq/engine/mcp_server/mcp_bridge/` (مجلد + `server.py` + `__init__.py`) حُذف نهائياً — `rm -rf` exit 0 |
+| `opencode.json` | حذف كتلة `mcp.SOFI` (8→28 خادم) — `python3 -m json.tool opencode.json` → Valid exit 0 |
+| `hq/core/nexus/mcp-routing.yaml` | حذف سطر `SOFI: {room: "00"...}` — الأصلية 9→8 — المصدر 29→28 خادم — header محدّث |
+| `hq/training/mcp-platform-guide.md` | حذف صف `SOFI (الجسر)` — 29→28 — تحديث كل الإشارات + header |
+| `hq/engine/mcp_server/docs/opencode-bridge.md` | حُذف نهائياً (وثيقة الجسر) |
+| `hq/engine/mcp_server/AGENT_GUIDE.md` | حذف قسم 0.7 (أدوات SOFI MCP) — استبدال بتنبيه الحذف + SDK مباشر |
+| `hq/core/templates/mcp-agent-annex.md` | إزالة إشارة `mcp_bridge/server.py` — تحديث القناة إلى SDK فقط |
+| `hq/core/standards/room-meetings-standard.md` | إزالة `mcp_bridge/server.py` من Evidence |
+| Agent files | إزالة بلوك `<!-- SOFI-BUS-MCP-v2 -->` (5 أسطر + 🛰️) من **114** ملف `.opencode/agent/*.md` + `.kilo/agent` — `grep SOFI-BUS-MCP` → 0 |
+| التوثيق التاريخي | أقسام v4.6/v4.7/v4.8 محفوظة كسجل تاريخي (Law 13) — لم تُحرر |
+| الحالة | لا بقايا `mcp_bridge` كـ MCP فعال — الحافلة `hq/engine/mcp_server` نفسها باقية كخدمة HTTP/WS `mcp.local:8765` (main.py/ticket_bus.py) — الجسر الـ stdio فقط هو المحذوف |

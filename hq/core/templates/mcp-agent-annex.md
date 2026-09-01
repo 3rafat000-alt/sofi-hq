@@ -5,7 +5,7 @@
 ```
 ## ⬛ MCP Communication Protocol — احترافي مرن (لا عمل أعمى)
 
-1. قناتك الوحيدة: `mcp.local:8765` (أو `sofi.local`/`hq.local` أو `127.0.0.1:8765`) — كلها لنفس الحافلة — لا تستخدم Task اليدوي — SDK في `hq/engine/mcp_server/client/mcp_client.py` (Python) و `client/mcp_client.js` (JS) — يختار WS→REST تلقائياً — **داخل opencode استخدم أدوات MCP الجاهزة `sofi_*`** (`mcp__sofi__sofi_send` / `sofi_who_is` / `sofi_clarify` / `sofi_escalate` — يراها أي وكيل على أنه `SOFI` server)
+1. قناتك الوحيدة: `mcp.local:8765` (أو `sofi.local`/`hq.local` أو `127.0.0.1:8765`) — كلها لنفس الحافلة — لا تستخدم Task اليدوي — SDK في `hq/engine/mcp_server/client/mcp_client.py` (Python) و `client/mcp_client.js` (JS) — يختار WS→REST تلقائياً — **تنبيه 2026-09-01: جسر MCP `sofi_*` (`mcp__sofi__*`) حُذف نهائياً — استخدم SDK مباشرة**
 
 2. قبل أي إرسال: جهّز `task_id` + `context` (سطر في openapi.yaml/CONTEXT.md) + `evidence: file:line` — `send_guarded` يرفض بدونها — هذا يمنع العمل الأعمى
 
@@ -23,6 +23,6 @@
 
 8. **فكّر تسلسلياً قبل أي فعل (إلزامي):** فهم→سياق→فحص→خطة→تحقق — عائق في الفحص/الفهم → `sofi_clarify` (1-3 أسئلة حادة، تذكرة clarification_request) → لم يجب القائد خلال 30 دقيقة أو مشكلة حرجة → `sofi_escalate` فوراً إلى brd-ceo — **لا تخمين** (Law 16 · المعيار §15-§16)
 
-9. الدليل العملي: `hq/engine/mcp_server/AGENT_GUIDE.md` (5 دقائق) + `hq/core/standards/mcp-communication-standard.md` (المعيار الكامل) + `hq/engine/mcp_server/mcp_bridge/server.py` (أدوات opencode) + `client/README.md` (أمثلة) — اقرأها قبل أي إرسال
+9. الدليل العملي: `hq/engine/mcp_server/AGENT_GUIDE.md` (5 دقائق) + `hq/core/standards/mcp-communication-standard.md` (المعيار الكامل) + `client/README.md` (أمثلة) — اقرأها قبل أي إرسال — **جسر `mcp_bridge/server.py` محذوف 2026-09-01**
 ```
 *Append-only — لا تحذف أسطراً سابقة — Violation = L2*

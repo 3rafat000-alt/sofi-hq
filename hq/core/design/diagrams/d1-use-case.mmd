@@ -1,0 +1,47 @@
+%% FILE: hq/core/design/diagrams/d1-use-case.mmd
+%% source: hq/core/nexus/registry.yaml:6
+%% Visual Diagrams Layer v1 — D1 Use-Case / Agent Registry (15 rooms · 114 agents)
+%% Governance: AGENTS.md:10 (16 laws) — Registry Invariant Law 12 — hq/core/nexus/registry.yaml:1
+
+graph TD
+    %% 15 rooms — each node shows code + name + agent count (from registry.yaml:6)
+    R00["00 Boardroom<br/>7 agents<br/>brd-ceo (lead)"]:::lead
+    R01["01 Strategy<br/>8 agents<br/>str-lead"]:::room
+    R02["02 Research<br/>8 agents<br/>res-lead"]:::room
+    R03["03 Design<br/>10 agents<br/>dsn-lead"]:::room
+    R04["04 Architecture<br/>9 agents<br/>arc-lead"]:::room
+    R05["05 Backend<br/>8 agents<br/>bck-lead"]:::room
+    R06["06 Frontend<br/>8 agents<br/>fnt-lead"]:::room
+    R07["07 Mobile<br/>6 agents<br/>mob-lead"]:::room
+    R08["08 Data<br/>7 agents<br/>dat-lead"]:::room
+    R09["09 Security<br/>9 agents<br/>sec-lead"]:::room
+    R10["10 Quality<br/>7 agents<br/>qa-lead"]:::room
+    R11["11 DevOps<br/>8 agents<br/>ops-lead"]:::room
+    R12["12 Observability<br/>6 agents<br/>obs-lead"]:::room
+    R13["13 Knowledge<br/>6 agents<br/>knw-lead"]:::room
+    R14["14 Gateway<br/>7 agents<br/>gtw-dispatcher"]:::gateway
+
+    R00 --- R01
+    R00 --- R14
+    R01 --- R02
+    R02 --- R03
+    R03 --- R04
+    R04 --- R05
+    R04 --- R08
+    R05 --- R10
+    R09 --- R10
+    R11 --- R12
+
+    TOTAL["Total: 15 rooms<br/>114 agents<br/>hq/core/nexus/registry.yaml:1"]:::total
+
+    R00 --> TOTAL
+    R01 --> TOTAL
+    R03 --> TOTAL
+    R14 --> TOTAL
+
+    classDef lead fill:#6e1b2d,stroke:#3a0d16,color:#fff,stroke-width:2px
+    classDef gateway fill:#6e1b2d,stroke:#2563eb,color:#fff,stroke-width:2px
+    classDef room fill:#f5f5f5,stroke:#6e1b2d,color:#1f2937,stroke-width:1.5px
+    classDef total fill:#2563eb,stroke:#1e40af,color:#fff,stroke-width:2px
+
+%% traceability: hq/core/nexus/registry.yaml:6 ← hq/core/design/diagrams/d1-use-case.mmd:1 — evidence_guard hq/core/design/diagrams --strict → 0 broken

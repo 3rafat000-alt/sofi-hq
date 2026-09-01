@@ -18,12 +18,13 @@ Enforce the mandatory pipeline flow from user input to final delivery, at a dept
 6. **P-01.6 — Pipeline restart on violation.** Any pipeline violation triggers restart from gtw-intake-reformer. No continuation from midpoint.
 7. **P-01.7 — Pipeline timeout.** A stalled pipeline stage → auto-escalation to brd-ceo. Stall judgment rests with the owning room Lead against the SLA tables in `hq/core/contracts.md` (no fixed per-stage duration table exists).
 8. **P-01.8 — Lane classification & authority (single authoritative text).** The Gateway (`gtw-dispatcher`, aided by `str-gate0-classify`) classifies every request into one of three lanes at entry:
-   - 🟢 **Fast** — read/scan/query, doc lookup, or a trivial single-file **reversible** change. **Gateway auto-authorizes** this lane (no per-task CEO approval — that is what makes it fast), but ONLY within these bounds: `risk ≤ low` AND `size ≤ S` AND no money/security/privacy/schema/production impact. Flow = `intake → single lead → delivery`.
+   - 🟢 **Fast** — read/scan/query, doc lookup, or a trivial single-file **reversible** change. **Gateway auto-authorizes** this lane (no per-task CEO approval — that is what makes it fast), but ONLY within these bounds: `risk ≤ low` AND `size ≤ S` AND no money/security/privacy/schema/production impact. Flow = `intake → single lead → delivery` with **delegated authority + post-audit** (see P-01.10): the room Lead owns the Fast Track delivery end-to-end; `gtw-dispatcher` runs a weekly post-audit over the batch log in `hq/brain/cortex-decisions.md` and flags any misclassification to `brd-ceo` within 3 turns (misclassified Fast → immediate promotion + L2 for gateway; no bottleneck at brd-ceo for genuine Fast work).
    - 🟡 **Standard** — bounded feature/change over 1–2 rooms. Requires brd-ceo. Full RCCF + gates.
    - 🔴 **Fateful** — money/security/architecture/production/schema/irreversible. Requires brd-ceo + board consult + brd-cso veto. Full flow, no collapse.
 
    **Guardrails (strict):** any doubt → escalate one lane up (fail-safe toward rigor). Money/security/production/schema → **always Fateful**, never Fast, regardless of apparent size (violation → Level 3). Discovering higher risk mid-execution → immediate promotion, never demotion. Fast-lane classifications are logged to `hq/brain/cortex-decisions.md` (batch/periodic, not per-task blocking); Standard/Fateful authorizations documented per decision. Eligibility criteria live in `hq/core/nexus/gates.yaml#tracks`. Running a Fateful task in Fast/Standard, or a Fast-lane classification outside the bounds above → Level 3.
 9. **P-01.9 — Pipeline evidence chain.** Every pipeline transition produces: `[from → to] [evidence id] [timestamp] [artifacts]`. Chain maintained by receiving agent. Broken chain → Level 2.
+10. **P-01.10 — Smart Clarification Loop timeout & anti-paralysis (Law 16 amendment 2026-08-31 — Axis 3 fix).** The gateway computes an ambiguity score (0–100%) for every incoming request (Law 16). Score >20% → emits a clarification card (1–3 sharp questions) and halts routing. **Timeout:** the clarification card carries an explicit **24-hour owner-response deadline**. If the owner does not answer within 24h, the gateway **auto-escalates** to `brd-arbiter` (room 00) via `gtw-conflict-resolver` with the stalled intake + attempted clarifications as evidence; `brd-arbiter` issues a binding direction within **24h** (Law 14 window): (a) reformulate with best-available assumptions and proceed at the higher lane, (b) freeze pending owner, or (c) split into a smaller unambiguous sub-task. **Anti-paralysis guard:** no more than **2 clarification rounds** per intake without arbiter involvement; the third round without resolution = mandatory escalation. Repeated clarification loops without timeout enforcement = L2 for `gtw-intake-reformer`; ignoring arbiter window = L2 for `brd-arbiter`. Logs to `hq/brain/hippocampus-sessions.md` + `hq/brain/cortex-decisions.md`.
 
 ### Violation consequence
 Level 1–3 depending on severity. Pipeline bypass → Level 3 minimum. Repeat (2×) → Level 4.
@@ -438,7 +439,7 @@ A lower-priority protocol cannot override a higher-priority protocol. A protocol
 
 > Every tool listed below is 100% free with no paid keys, activated through `opencode.json` or `.opencode/skills/`. Goal: upgrade enforcement from textual discipline to machine-backed discipline.
 
-### a) Mapping of the 13 Laws
+### a) Mapping of the 16 Laws (updated 2026-08-31 — Laws 14-16 added)
 | Law | Machine Backing |
 |---|---|
 | 1 Gateway / Proportional Flow | `str-gate0-classify` + Sequential Thinking MCP for structured classification |
@@ -452,6 +453,11 @@ A lower-priority protocol cannot override a higher-priority protocol. A protocol
 | 9 Chain of Responsibility | The AMYGDALA log (existing) |
 | 10 Direct-on-Project | CodeSentinel (drift detection, when enabled) + completion of the INT-0003 branch unification |
 | 11 Simplified-Arabic Communication | Stylistic discipline (procedural) |
+| 12 Registry Invariant | `hq/core/tooling/registry_guard.py` + `hq/core/tooling/count_sync.py` + `node hq/core/tooling/port-agents.mjs` (Gate-0 machine guard, Law 12) |
+| 13 Zero-Randomness | `hq/core/tooling/law13_path_guard.py` + `hq/core/tooling/evidence_guard.py` (Law 13 path header + file:line verification) |
+| 14 Double-Rejection Protocol | `brd-arbiter` 24h binding arbitration, frozen record to HANDOFFS (Law 14) |
+| 15 License & IP Gate | `sec-license-auditor` + `License-check: [allowed]` task-card field (Law 15) |
+| 16 Smart Clarification Loop | `gtw-intake-reformer` ambiguity score + 24h timeout + `brd-arbiter` escalation via P-01.10 (Law 16) |
 
 ### b) Official Replacement Policy — no paid services, no keys
 `Tavily → SearXNG+Crawl4AI` · `Firecrawl → Crawl4AI` · `Exa → local search/SearXNG` · `Browserbase → local Playwright` · `SerperDev → SearXNG` · `SMS providers → self-hosted textbee`

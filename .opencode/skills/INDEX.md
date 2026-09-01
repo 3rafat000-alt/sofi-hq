@@ -2,8 +2,8 @@
 
 > **⚖️ Binding ownership registry (2026-08-25):** every skill's ownership is defined in `hq/core/domain/rooms/<room>/capabilities/skills.yaml` and the full assignment record in `hq/core/domain/SKILLS-ASSIGNMENT.md` — this index is the invocation and description reference; ownership lives there.
 
-> The register of every approved skill. Built/updated via `skill-forge`. Every skill enforces the thirteen laws. Add a row when approving any skill (§6 of skill-forge).
-> Audit 2026-08-24 (INT-GTW-016 gate — owner order «know your weak points and develop them»): **actual total 106 skills — disk match 106/106** after linking 38 external skills that existed unlinked (§Linked External below). Prior record: the 2026-08-23 arsenal batch (+7 · INT-0003) and MCP fleet (+1 · INT-0006-M3).
+> The register of every approved skill. Built/updated via `skill-forge`. Every skill enforces the sixteen laws (Laws 14-16 added 2026-08-26). Add a row when approving any skill (§6 of skill-forge).
+> Audit 2026-08-31 (Gate-0 guardian — 9-axis fix): **actual total 109 skills — disk match 109/109** (15 rooms · 114 agents · 16 laws). Prior 2026-08-24: 106/106 — +3 skills added via operational gaps (str-agile-orchestrator · ops-sandbox-executor · sec-license-auditor companion). verific: `ls .opencode/skills/*/SKILL.md | wc -l` = 109 · `hq/core/tooling/count_sync.py` = PASS · `hq/core/tooling/registry_guard.py` = PASS.
 
 ## 🏭 Foundation (serving all rooms)
 

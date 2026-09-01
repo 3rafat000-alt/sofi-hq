@@ -1,0 +1,10 @@
+title = "SOFI gitleaks config"
+
+[allowlist]
+  description = "global allowlist"
+  paths = [
+    '''vendor/''',
+    '''.opencode/skills/''',
+    '''node_modules/''',
+    '''\.git/'''
+  ]

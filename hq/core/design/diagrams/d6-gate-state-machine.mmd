@@ -1,0 +1,54 @@
+%% FILE: hq/core/design/diagrams/d6-gate-state-machine.mmd
+%% source: hq/core/nexus/gates.yaml:1
+%% Visual Diagrams Layer v1 — D6 Gate State Machine (G0→G8 + DFR — S1-S6 stage_map)
+%% Governance: hq/core/nexus/gates.yaml:1 — hq/core/nexus/pipeline.yaml:8 (stage_map)
+
+stateDiagram-v2
+    [*] --> G0: Idea worth project
+    G0 --> G1: charter pinned<br/>CONTEXT.md
+    G1 --> G2: journey frozen
+    G2 --> G3: prototype frozen
+    G3 --> DFR: schema+openapi<br/>threat-model ready
+    DFR --> G4: sec+qa sign<br/>zero code before
+    G4 --> G5: Build consolidated
+    G5 --> G6: QA PASS
+    G6 --> G7: UAT signed
+    G7 --> G8: Prod healthy<br/>blue/green
+    G8 --> [*]: SLO report
+
+    state G0 {
+        [*] --> Inception
+    }
+    state G3 {
+        [*] --> Architecture
+    }
+    state DFR {
+        [*] --> DesignFreezeReview
+    }
+
+    G0 --> G0: on_fail: Reject upward<br/>clarify scope
+    G1 --> G1: on_fail: More research
+    G2 --> G2: on_fail: Design gaps
+    G3 --> G3: on_fail: Architecture gaps<br/>revise
+    DFR --> DFR: on_fail: revise designs<br/>re-review
+    G4 --> G4: on_fail: Code gaps
+    G5 --> G5: on_fail: BLOCK
+    G6 --> G6: on_fail: UAT fails
+    G7 --> G7: on_fail: Rollback
+    G8 --> G1: on_fail: SLO breach → re-enter G1
+
+    note right of DFR
+      DFR = Design-Freeze Review
+      owner: dsn-lead
+      signers: sec-lead + qa-lead
+      stage: S3 — seals before code
+      hq/core/nexus/gates.yaml:107
+    end note
+
+    note right of G3
+      stage_map S2:[3] paper only
+      stage_map S3:[2]+DFR
+      hq/core/nexus/gates.yaml:97
+    end note
+
+%% traceability: hq/core/nexus/gates.yaml:1 ← hq/core/design/diagrams/d6-gate-state-machine.mmd:1

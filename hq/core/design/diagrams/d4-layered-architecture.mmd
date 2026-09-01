@@ -1,0 +1,27 @@
+%% FILE: hq/core/design/diagrams/d4-layered-architecture.mmd
+%% source: hq/core/design/system-ddd-blueprint.md:42
+%% Visual Diagrams Layer v1 — D4 Layered Architecture (4 layers — Dependency downward only)
+%% Governance: hq/core/design/system-ddd-blueprint.md:42 — hq/core/standards/ddd-capsule.md:1 — AGENTS.md:13 (Law 13)
+
+flowchart TB
+    PRES["PRESENTATION<br/>.kilo/agent (mirror)<br/>.opencode/agent (spec source)<br/>opencode.json · identity/"]:::pres
+    APP["APPLICATION<br/>gateway (intake→routing)<br/>RCCF work orders<br/>gate runner · ticket bus<br/>porter v2 · deploy flow"]:::app
+    DOMAIN["DOMAIN (heart)<br/>hq/core/domain/<br/>rooms/15 contexts:<br/>charter + capabilities + agents<br/>shared-kernel: glossary·evidence·envelope·identity<br/>context-map · contracts"]:::domain
+    INFRA["INFRASTRUCTURE (serves via ports)<br/>hq/engine (Caddy deploy)<br/>hq/brain + archive<br/>MCP servers · training corpus<br/>tooling · backups"]:::infra
+
+    PRES --> APP --> DOMAIN
+
+    APP -.->|"implements ports<br/>Dependency inversion"| INFRA
+    DOMAIN -.->|"defines ports<br/>never imports infra"| INFRA
+
+    FORBIDDEN["⛔ Forbidden:<br/>Domain imports Infrastructure<br/>Presentation imports Domain directly<br/>Horizontal inter-domain chat"]:::forbidden
+
+    DOMAIN --- FORBIDDEN
+
+    classDef pres fill:#f5f5f5,stroke:#6b7280,color:#111827,stroke-width:1.5px
+    classDef app fill:#dbeafe,stroke:#2563eb,color:#1e3a5f,stroke-width:1.5px
+    classDef domain fill:#6e1b2d,stroke:#3a0d16,color:#fff,stroke-width:2px
+    classDef infra fill:#fef3c7,stroke:#f59e0b,color:#78350f,stroke-width:1.5px
+    classDef forbidden fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-width:1.5px,stroke-dasharray: 5 5
+
+%% traceability: hq/core/design/system-ddd-blueprint.md:42 ← hq/core/design/diagrams/d4-layered-architecture.mmd:1

@@ -124,3 +124,38 @@
 - **المتابعة المسجلة (CONDITION-FOLLOW-UP):** الأرتيفاكتات التشغيلية المتقلبة (tickets.db · logs · workflows/*.json · n8n.caddy) لا تُقْصّ دون مراجعة في إيصالات التسليم المستقبلية — اقتراح مكان مُدار/إضافة .gitignore رُفع في تقرير القبول (اقتراح فقط — لم يُنفَّذ).
 - **الحُرّاس بعد التسجيل (exit 0):** registry_guard --strict · count_sync · evidence_guard --staged --strict · pre-commit PASS.
 - **status:** closed — إغلاق كامل للمرحلة B (P-02.4) — التسليم: RCCF + أدلة → brd-ceo (Law 3).
+
+## SES-20260905-R6-ARCHIVE-LEGACY-AGENTS — أمر R6: أرشفة الشجرة الميراثية `hq/core/agents/` (knw-lead)
+- **session:** 2026-09-05 — knw-lead نفّذ أمر الإغلاق المصغّر R6 من brd-ceo (تحقق ميداني بعد إغلاق المرحلة B: evidence_guard hq/core --strict → exit 1 · 15 استشهاداً مكسوراً كلها داخل `hq/core/agents/`).
+- **الأعمال:** أرشفة الشجرة الميراثية (108 ملفاً) → `hq/core/archive/legacy-hq-core-agents/` — MANIFEST.md (قائمة 108 + تصنيف ميراثي مكرر) + RESTORE.md + sha256-before/after بايت-مطابق (108/108 OK) · خريطة قديم←جديد دائمة (Law 13.5) `structure-standard.md` v4.11 · التحقق الميداني: port-agents.mjs لا تشير للشجرة (grep 0) · untracked (ls-files 0) · لا استشهاد حي خارجي.
+- **العزل (R6):** `.opencode/` + الملفات الخمسة المعزولة + `.env` + `.kilo/*` — لم تُلمس · التراجع الوحيد RESTORE.md.
+- **الحُرّاس بعد الأرشفة (exit 0):** registry_guard.py --strict · count_sync.py · evidence_guard.py hq/core --strict.
+- **status:** closed — وهذه الجلسة تُسجّل إغلاق R6 · التسليم: RCCF + أدلة → brd-ceo (Law 3). السجل الرسمي: `hq/brain/cortex-decisions.md:DEC-R6-20260905-ARCHIVE-LEGACY-AGENTS`
+
+## SES-20260905-GTW-INT-REACT-DDD-ARCHITECT — مدخل إضافة معماري React/DDD ومدقق جودة (امتداد مباشر لـ SES-FLUTTER)
+- **session:** 2026-09-05 — gtw-intake-reformer (14) استقبل أمر مالك لدمج منهجية "React Senior Architect, DDD & QA Master" كاختبار رسمي ثانٍ في سوفي.
+- **precedent:** SES-20260905-GTW-INT-FLUTTER-QA-ARCHITECT + ADR-20260905-GTW-FLUTTER-QA-ARCHITECT + DEC-R3.4-PHASEB-ACCEPT-20260905 (advisory only, no gates, room 10, full agent + skill, distinct Arabic name + title) — النمط مقفل ومرجعي.
+- **clarification (Law 16):** 2 أسئلة حادة (mirror-pattern + name/title) — المالك اختار النمط المطابق + Samer Al-Khalil + React/DDD title.
+- **classification:** FATEFUL (registry/architecture/operating layer — Law 12) · gates PASS · budget WITHIN · conflicts RESOLVED (5 conflicts above) · route_to = brd-ceo exclusively.
+- **CONDITION-FOLLOW-UP:** DEC-R3.4 §CONDITION-FOLLOW-UP مرعيّ — لا اقتطاع لأرتيفاكتات تشغيلية في إيصالات التسليم.
+- **status:** ready-for-review — بانتظار قبول brd-ceo وتوزيعه (→ qa-lead · knw-lead · gtw-dispatcher).
+- **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-REACT-DDD-ARCHITECT` + هذه الجلسة.
+- **checkpoint before delivery:** this entry (P-02.1).
+
+## SES-20260905-GTW-DELEGATE-EXEC — تفويض مالك صريح: البوابة تُنفّذ ADR-REACT-DDD مباشرة عبر subagent في وضع build
+- **session:** 2026-09-05 — المالك أمر البوابة (gtw-intake-reformer) صراحةً بتفويض subagent من نوع `general` في وضع build لتنفيذ ADR-20260905-GTW-REACT-DDD-ARCHITECT على القرص.
+- **override:** default "gateway prepares & routes" rule (gtw-intake-reformer charter + P-01.2) lifted by owner authority. Recorded in `cortex-decisions.md:ADR-20260905-GTW-DELEGATE-EXEC`.
+- **method:** subagent `general` receives the enhanced 13-section prompt (≈7000 chars) with: identity, scope, constraints, step-by-step, acceptance criteria, deliverables, file paths (## FILE: header), evidence, and references. Mirrors `qa-flutter-architect` as template.
+- **guards binding:** registry_guard · count_sync · evidence_guard hq/core --strict · gitleaks no leaks — all must be green at the end.
+- **CONDITION-FOLLOW-UP from DEC-R3.4 binding:** no truncation of runtime artifacts.
+- **status:** in-flight — subagent dispatched (build mode).
+
+## SES-20260905-GTW-INT-LARAVEL-DDD-ARCHITECT — مدخل إضافة معماري Laravel/DDD ومستشار قواعد البيانات والأمن كتستير رسمي ثالث
+- **session:** 2026-09-05 — المالك أمر بدمج منهجية "Laravel Senior Architect, DDD Strategist, Database & Security Master" كاختبار رسمي ثالث، امتداداً مباشراً لنمط `qa-flutter-architect` (ريان القاضي) + `qa-react-architect` (سامر الخليل) المُنفَّذين بالأمس.
+- **precedent:** SES-20260905-GTW-INT-FLUTTER-QA-ARCHITECT + SES-20260905-GTW-INT-REACT-DDD-ARCHITECT + ADR-20260905-GTW-FLUTTER-QA-ARCHITECT + ADR-20260905-GTW-REACT-DDD-ARCHITECT + ADR-20260905-GTW-DELEGATE-EXEC + DEC-R3.4-PHASEB-ACCEPT-20260905 — النمط مقفل (Room 10 · full agent + skill · advisory only · no gates · distinct Arabic name + title · exact-mirror of qa-flutter-architect).
+- **clarification (Law 16):** 2 أسئلة حادة (room-home + name/title) — المالك اختار غرفة 10 + يوسف العامري + اللقب "معماري Laravel/DDD ومستشار شامل".
+- **classification:** FATEFUL (registry/architecture/operating layer — Law 12) · gates PASS · budget WITHIN · conflicts RESOLVED (8 conflicts above) · route_to = brd-ceo exclusively OR direct execution via owner-explicit override (ADR-20260905-GTW-DELEGATE-EXEC).
+- **CONDITION-FOLLOW-UP:** DEC-R3.4 §CONDITION-FOLLOW-UP مرعيّ — لا اقتطاع لأرتيفاكتات تشغيلية في إيصالات التسليم.
+- **status:** ready-for-review — بانتظار فوّض المالك للتنفيذ المباشر عبر subagent (build mode) أو RCCF من brd-ceo.
+- **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-LARAVEL-DDD-ARCHITECT` + هذه الجلسة.
+- **checkpoint before delivery:** this entry (P-02.1).

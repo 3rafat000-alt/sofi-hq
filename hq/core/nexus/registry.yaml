@@ -1,6 +1,6 @@
 # =====================================================================
 # SOFI Registry — R3.1 (2026-09-04)
-# 14 rooms · 110 active agents
+# 14 rooms · 111 active agents
 # Owner directive: Stack Lock + Room Consolidation + Event-Driven
 # =====================================================================
 
@@ -8,7 +8,7 @@ meta:
   version: R3.1
   date: 2026-09-04
   total_rooms: 14
-  total_agents: 110
+  total_agents: 111
   constitution_ref: AGENTS.md
   amendments:
     - "Room 08 (Data) merged into Room 04 (Architecture)"
@@ -208,6 +208,7 @@ rooms:
       - { name: regression-warden, skills: ["regression suite", "flake triage", "release-blocking checks"] }
       - { name: flutter-architect, skills: ["Flutter QA architecture", "5-phase acceptance (20 points)", "adb/uiautomator/gfxinfo/meminfo profiling", "a11y/UX audit", "device-fingerprint evidence"] }
       - { name: react-architect, skills: ["React/DDD QA architecture", "5-phase acceptance (28 points)", "Web Vitals + Lighthouse + Bundle analysis", "WCAG 2.1 AA + ARIA", "DDD layer conformance"] }
+      - { name: laravel-architect, skills: ["Laravel 11+ QA architecture", "5-phase acceptance (22 points)", "DDD layer conformance", "Eloquent/Query Builder + migration review", "Security audit (Sanctum/Passport/Policies/FormRequest)"] }
 
   - code: 11-devops
     tier: T3

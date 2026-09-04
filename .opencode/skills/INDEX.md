@@ -48,6 +48,7 @@
 | 10 | [qa-test-plan](qa-test-plan/SKILL.md) | qa-lead | quality gate (Gate 5): plan + execution + coverage |
 | 10 | [qa-flutter-architect](qa-flutter-architect/SKILL.md) | qa-lead | Flutter QA architecture: 5-phase contract-conformance review + device-fingerprint perf/a11y evidence — advisory only, no gate verdicts (qa-lead · brd-cqo · C3) |
 | 10 | [qa-react-architect](qa-react-architect/SKILL.md) | qa-lead | React/DDD QA architecture: 5-phase contract-conformance review + Web Vitals/Lighthouse/Bundle evidence — advisory only, no gate verdicts (qa-lead · brd-cqo · C3) |
+| 10 | [qa-laravel-architect](qa-laravel-architect/SKILL.md) | qa-lead | Laravel/DDD QA architecture: 5-phase contract-conformance review + DB/security/N+1/EXPLAIN evidence — advisory only, no gate verdicts (qa-lead · brd-cqo · C3) |
 | 11 | [ops-deploy-runbook](ops-deploy-runbook/SKILL.md) | ops-lead | deploy + migration + health check + rollback |
 | 12 | [obs-incident-response](obs-incident-response/SKILL.md) | obs-lead | detection + alerting + incident response → AMYGDALA |
 | 13 | [knw-brain-write](knw-brain-write/SKILL.md) | knw-lead | brain writing (Law 7): CORTEX/HIPPOCAMPUS/AMYGDALA |

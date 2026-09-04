@@ -359,6 +359,10 @@ personas:
     ar: Samer Al-Khalil
     role: React QA Architect
 
+  qa-laravel-architect:
+    ar: Yousuf Al-Amiri
+    role: Laravel QA Architect
+
   res-competitor-analyst:
     ar: Arwa Al-Samman
     role: Competitor Analyst

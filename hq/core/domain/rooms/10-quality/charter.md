@@ -12,7 +12,7 @@
 **Purpose:**
 Quality assurance, automation, performance testing, regression control
 
-**Agent count:** 8
+**Agent count:** 10
 
 ---
 
@@ -25,7 +25,9 @@ Quality assurance, automation, performance testing, regression control
 - `qa-perf-analyst` — perf-analyst
 - `qa-design-auditor` — design-auditor
 - `qa-regression-warden` — regression-warden
+- `qa-flutter-architect` — flutter-architect (Phase B — added 2026-09-05 per ADR-20260905-GTW-FLUTTER-QA-ARCHITECT)
 - `qa-react-architect` — react-architect (Phase B — added 2026-09-05 per ADR-20260905-GTW-REACT-DDD-ARCHITECT)
+- `qa-laravel-architect` — laravel-architect (Phase B — added 2026-09-05 per ADR-20260905-GTW-LARAVEL-DDD-ARCHITECT)
 
 **Operational agent definitions:** `.opencode/agent/` — the single source of truth.
 

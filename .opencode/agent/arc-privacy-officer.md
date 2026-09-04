@@ -1,6 +1,6 @@
 ---
-name: dat-privacy-officer
-description: dat-privacy-officer — Privacy Officer in the Data room
+name: arc-privacy-officer
+description: arc-privacy-officer — Privacy Officer in the Architecture room
 mode: subagent
 model: opencode/big-pickle
 ---

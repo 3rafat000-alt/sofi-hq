@@ -1,6 +1,6 @@
 ---
-name: dat-ml-engineer
-description: dat-ml-engineer — ML Engineer in the Data room
+name: arc-ml-engineer
+description: arc-ml-engineer — ML Engineer in the Architecture room
 mode: subagent
 model: opencode/big-pickle
 ---

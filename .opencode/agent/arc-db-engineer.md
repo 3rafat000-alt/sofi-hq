@@ -1,6 +1,6 @@
 ---
-name: dat-db-engineer
-description: dat-db-engineer — Database Engineer in the Data room
+name: arc-db-engineer
+description: arc-db-engineer — Database Engineer in the Architecture room
 mode: subagent
 model: opencode/big-pickle
 ---

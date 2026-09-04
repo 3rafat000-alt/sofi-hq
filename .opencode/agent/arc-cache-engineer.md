@@ -1,6 +1,6 @@
 ---
-name: dat-cache-engineer
-description: dat-cache-engineer — Cache Engineer in the Data room
+name: arc-cache-engineer
+description: arc-cache-engineer — Cache Engineer in the Architecture room
 mode: subagent
 model: opencode/big-pickle
 ---

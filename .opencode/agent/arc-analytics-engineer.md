@@ -1,6 +1,6 @@
 ---
-name: dat-analytics-engineer
-description: dat-analytics-engineer — Analytics Engineer in the Data room
+name: arc-analytics-engineer
+description: arc-analytics-engineer — Analytics Engineer in the Architecture room
 mode: subagent
 model: opencode/big-pickle
 ---

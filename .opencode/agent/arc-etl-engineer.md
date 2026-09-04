@@ -1,6 +1,6 @@
 ---
-name: dat-etl-engineer
-description: dat-etl-engineer — ETL Engineer in the Data room
+name: arc-etl-engineer
+description: arc-etl-engineer — ETL Engineer in the Architecture room
 mode: subagent
 model: opencode/big-pickle
 ---

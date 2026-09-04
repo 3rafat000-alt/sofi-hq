@@ -108,3 +108,11 @@
 - **الأعمال:** استعادة CORTEX (87 سطراً) + إلحاق ADR/DEC-R3.2 (نسبة مصححة R2)/DEC-R3.3 · استعادة HIPPOCAMPUS (81 سطراً) + إلحاق 3 جلسات موازية + هذه الجلسة · استعادة `.opencode/agent/qa-flutter-architect.md` من الأرشيف (sha256 قبل=بعد) · registry 109 + صف flutter-architect · personas Rayan Al-Qadi · كبسولة qa-flutter-architect (استشارية) · هجرة 6 كبسولات 08→04 + أرشفة dat-lead وأصول الغرفة · AGENTS.md 63/256/258 · system-state 14/109/111 + ملاحظة ملزمة · خريطة قديم←جديد v4.10 في structure-standard.
 - **الحُرّاس (exit 0):** registry_guard --strict · count_sync · evidence_guard hq/core --strict — WARN صادق (INDEX stamp + أسطر تاريخية) بلا فشل.
 - **status:** closed — التسليم RCCF + أدلة → brd-ceo (Law 3). السجل الرسمي: `hq/brain/cortex-decisions.md:DEC-R3.3-PHASEB-20260905`
+
+## SES-20260905-PHASEB-DELIVERY — إيصال التسليم P-02.5 (المرحلة B → brd-ceo)
+- **session:** 2026-09-05 — knw-lead سلّم نتيجة المرحلة B (gates خضراء + التزام ذرّي) إلى brd-ceo عبر RCCF ticket (Law 3).
+- **ticket_id:** SOFI-PHASEB-001 · **from:** knw-lead · **to:** brd-ceo · **direction:** upward-only.
+- **artifacts:** commit `97eb24a` (47 ملفاً، 247 إدراجاً/42 حذفاً، n8n=0، معزول=0) — CORTEX 124 سطراً · HIPPOCAMPUS 110 ← هذه الجلسة · `hq/core/nexus/registry.yaml:11` (109) · `AGENTS.md:256` (109 active agents) · `hq/core/nexus/personas.yaml:354-357` · كبسولة `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/` · أرشيف `hq/core/archive/r3.1-reconciliation/` · هجرة 6 كبسولات 08→04.
+- **guards (exit 0):** pre-commit hook PASS · registry_guard PASS 14/109 · count_sync PASS · evidence_guard --staged --strict 0 broken · gitleaks PASS.
+- **isolation (R3):** n8n/engine المرحّل مسبقاً (7) استُبعد via pathspec وبقي مرحّلاً للجلسة الموازية · `.env` · `.kilo/*` · 5 ملفات وكلاء معزولة · `hq/core/agents/` (غير متتبَّع) — لم تُلمس.
+- **status:** in-flight — بانتظار قبول صريح من brd-ceo (P-02.4).

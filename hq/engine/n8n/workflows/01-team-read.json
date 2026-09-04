@@ -1,0 +1,51 @@
+{
+  "name": "SOFI Team — 01 Read File (كالفريق)",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "/home/node/SOFI/{{$json.path}}",
+        "options": {}
+      },
+      "id": "read-file",
+      "name": "Read SOFI File",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [520, 300],
+      "notes": "يقرأ أي ملف في SOFI — مثل الوكيل — file:line"
+    },
+    {
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "id": "telegram-trigger",
+      "name": "Telegram: /اقرأ",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300],
+      "webhookId": "sofi-read",
+      "notes": "أرسل: /اقرأ projects/sakk/brain/CONTEXT.md"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat.id }}",
+        "text": "📄 {{$json.path}}:\n\n{{ $json.content.substring(0, 1000) }}\n\nfile: {{$json.path}} — exit 0 — SOFI Team Read",
+        "additionalFields": {}
+      },
+      "id": "telegram-reply",
+      "name": "Telegram Reply",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [780, 300]
+    }
+  ],
+  "connections": {
+    "Telegram: /اقرأ": { "main": [[{"node": "Read SOFI File", "type": "main", "index": 0}]] },
+    "Read SOFI File": { "main": [[{"node": "Telegram Reply", "type": "main", "index": 0}]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "staticData": null,
+  "meta": { "instanceId": "sofi-team-read" },
+  "pinData": {},
+  "versionId": "sofi-v1"
+}

@@ -1,0 +1,24 @@
+n8n.zanjour.com, n8n.local {
+  @blocked {
+    path /data/* /vendor/* /storage/* /.env* /.git/* *.sqlite*
+  }
+  respond @blocked 404
+
+  reverse_proxy 127.0.0.1:5678 {
+    header_up Host {host}
+    header_up X-Real-IP {remote}
+    header_up X-Forwarded-For {remote}
+    header_up X-Forwarded-Proto {scheme}
+  }
+
+  header {
+    X-Frame-Options "SAMEORIGIN"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+  }
+
+  # Security: basic auth is handled by n8n itself, but we add rate limiting via Caddy if needed
+  log {
+    output stdout
+  }
+}

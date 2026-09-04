@@ -122,3 +122,11 @@
 - **الحُرّاس (exit 0):** registry_guard --strict · count_sync · evidence_guard hq/core --strict — WARN صادق متبقٍّ (INDEX stamp خارج النطاق + أسطر تاريخية) — لا فشل.
 - **الأعداد النهائية:** 14 غرفة · **109 وكيلاً** · 111 مهارة على القرص · كبسولات قانونية حاضرة 110 · extra=5 (متقاعدون مؤرشفون) · extra_rooms=0.
 - **evidence refs:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-FLUTTER-QA-ARCHITECT` · `hq/brain/hippocampus-sessions.md:SES-20260905-PHASEB-KNW-LEAD` · `hq/core/nexus/registry.yaml:11` · `AGENTS.md:256`
+
+## DEC-R3.4-PHASEB-ACCEPT-20260905 — قبول صريح لتسليم المرحلة B (P-02.4) وإغلاقها الكامل
+- **date:** 2026-09-05 · **الأمر:** RCCF-2026-0905-PHASEB-ACCEPT من brd-ceo (بعد إيصال التسليم P-02.5 · commit `8ed6afe`)
+- **verdict:** APPROVED (P-02.4) — قبول صريح لتسليم المرحلة B: `SOFI-PHASEB-001` · `ADR-20260905-GTW-FLUTTER-QA-ARCHITECT` · بنود R1–R5 · كل الحُرّاس خضراء.
+- **السلطة:** brd-ceo — قرار القبول المصيري (Law 7: CORTEX قرارات مصيرية — التوثيق مفوض إلى knw-lead بموجب write matrix).
+- **الأدلة (Law 4):** `hq/core/nexus/registry.yaml:11` (total_agents: 109) · `AGENTS.md:256` (14 rooms · 109 active agents) · `hq/core/nexus/personas.yaml:354-357` (Rayan Al-Qadi — ريان القاضي) · كبسولة `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/` · sha256 قبل=بعد `31f62a09…` · registry_guard --strict PASS · count_sync PASS · pre-commit PASS · gitleaks no leaks · evidence_guard --staged --strict exit 0.
+- **الشرط التابع (CONDITION-FOLLOW-UP):** الأرتيفاكتات التشغيلية المتقلبة — `hq/engine/mcp_server/data/tickets.db` · `hq/engine/logs/*.log` · `hq/engine/n8n/workflows/*.json` · `hq/engine/sites/n8n.caddy` — يجب ألا تُقْصّ (truncate/حذف/تفريغ) في إيصالات تسليم مستقبلية دون مراجعة؛ اقتراح المكان المُدار / إضافة `.gitignore` رُفع في تقرير القبول لهذا الأمر (اقتراح فقط — لم يُنفَّذ التغيير).
+- **الحالة:** closed — إغلاق كامل للمرحلة B (P-02.4) — سجل الجلسة: `hq/brain/hippocampus-sessions.md:SES-20260905-PHASEB-ACCEPT`

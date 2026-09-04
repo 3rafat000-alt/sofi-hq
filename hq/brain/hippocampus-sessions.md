@@ -116,3 +116,11 @@
 - **guards (exit 0):** pre-commit hook PASS · registry_guard PASS 14/109 · count_sync PASS · evidence_guard --staged --strict 0 broken · gitleaks PASS.
 - **isolation (R3):** n8n/engine المرحّل مسبقاً (7) استُبعد via pathspec وبقي مرحّلاً للجلسة الموازية · `.env` · `.kilo/*` · 5 ملفات وكلاء معزولة · `hq/core/agents/` (غير متتبَّع) — لم تُلمس.
 - **status:** in-flight — بانتظار قبول صريح من brd-ceo (P-02.4).
+
+## SES-20260905-PHASEB-ACCEPT — قبول brd-ceo لتسليم المرحلة B (P-02.4) وإغلاقها الكامل
+- **session:** 2026-09-05 — brd-ceo قبِل صراحةً تسليم المرحلة B (`SOFI-PHASEB-001`) بموجب RCCF-2026-0905-PHASEB-ACCEPT — verdict = APPROVED (P-02.4) — كل الحُرّاس خضراء (registry_guard --strict · count_sync · pre-commit · gitleaks · evidence_guard --staged).
+- **تنفيذ knw-lead:** تسجيل القرار في CORTEX (`hq/brain/cortex-decisions.md:DEC-R3.4-PHASEB-ACCEPT-20260905`) + هذه الجلسة (تسجيل RCCF) + اقتراح CONDITION-FOLLOW-UP.
+- **القرار المرجعي:** `hq/brain/cortex-decisions.md:DEC-R3.4-PHASEB-ACCEPT-20260905` — قبول `ADR-20260905-GTW-FLUTTER-QA-ARCHITECT` وبنود R1–R5 — إغلاق كامل للمرحلة B.
+- **المتابعة المسجلة (CONDITION-FOLLOW-UP):** الأرتيفاكتات التشغيلية المتقلبة (tickets.db · logs · workflows/*.json · n8n.caddy) لا تُقْصّ دون مراجعة في إيصالات التسليم المستقبلية — اقتراح مكان مُدار/إضافة .gitignore رُفع في تقرير القبول (اقتراح فقط — لم يُنفَّذ).
+- **الحُرّاس بعد التسجيل (exit 0):** registry_guard --strict · count_sync · evidence_guard --staged --strict · pre-commit PASS.
+- **status:** closed — إغلاق كامل للمرحلة B (P-02.4) — التسليم: RCCF + أدلة → brd-ceo (Law 3).

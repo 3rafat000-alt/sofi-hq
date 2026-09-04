@@ -1,0 +1,6 @@
+## FILE: hq/core/domain/rooms/10-quality/agents/qa-react-architect/senses.yaml
+# Senses — what this agent receives
+listens:
+  - tickets: { from: qa-lead, type: RCCF-task }
+reports-to: qa-lead
+forbidden-inputs: [ direct-owner-chat, other-room-tickets ]

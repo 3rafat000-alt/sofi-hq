@@ -355,6 +355,10 @@ personas:
     ar: Rayan Al-Qadi
     role: Flutter QA Architect
 
+  qa-react-architect:
+    ar: Samer Al-Khalil
+    role: React QA Architect
+
   res-competitor-analyst:
     ar: Arwa Al-Samman
     role: Competitor Analyst

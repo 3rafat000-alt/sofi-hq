@@ -17,7 +17,7 @@ import pathlib, sys, re
 ROOT = pathlib.Path(__file__).resolve().parents[3]  # hq/core/tooling -> SOFI root
 
 # ── PENDING-PHASE-B baseline (temporary stopgap per brd-ceo A-verdict ج-1..ج-4; ends when Phase B = "zero WARN left") ──
-SKILLS_BASELINE = 111   # observed .opencode/skills/*/SKILL.md at A (INDEX.md stamp says 109 — stale, Phase B)
+SKILLS_BASELINE = 112   # observed .opencode/skills/*/SKILL.md at B (2026-09-05) — bumped by qa-react-architect
 CAP_ROOM_DIRS_EXTRA = 1      # physical 08-data dir pending migration (Phase B)
 CAP_MISSING_LEGAL = 6        # arc-* capsule dirs pending 08->04 migration (Phase B)
 CAP_EXTRA_DIRS = 12          # dat-* 7 + retired 5 capsule dirs pending archiving (Phase B)

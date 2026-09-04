@@ -12,7 +12,7 @@
 **Purpose:**
 Quality assurance, automation, performance testing, regression control
 
-**Agent count:** 7
+**Agent count:** 8
 
 ---
 
@@ -25,6 +25,7 @@ Quality assurance, automation, performance testing, regression control
 - `qa-perf-analyst` — perf-analyst
 - `qa-design-auditor` — design-auditor
 - `qa-regression-warden` — regression-warden
+- `qa-react-architect` — react-architect (Phase B — added 2026-09-05 per ADR-20260905-GTW-REACT-DDD-ARCHITECT)
 
 **Operational agent definitions:** `.opencode/agent/` — the single source of truth.
 

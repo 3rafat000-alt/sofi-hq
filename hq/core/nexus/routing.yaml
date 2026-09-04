@@ -447,6 +447,18 @@ routes:
     effort: low
     caveman: full
     budget: "~3k"
+  qa-flutter-architect:
+    model: gatekeeper
+    effort: high
+    caveman: full
+    budget: "~8k"
+    note: "consultative Flutter QA (Fast/Standard only) — contract-conformance + device-fingerprint perf/a11y evidence · execution budget ~25k · no gate authority — any gate/verdict → qa-lead + brd-cqo (C3)"
+  qa-react-architect:
+    model: gatekeeper
+    effort: high
+    caveman: full
+    budget: "~8k"
+    note: "consultative React/DDD QA (Fast/Standard only) — contract-conformance + browser-fingerprint Web-Vitals/bundle/a11y evidence · execution budget ~25k · no gate authority — any gate/verdict → qa-lead + brd-cqo (C3)"
 
   # DevOps
   ops-lead:

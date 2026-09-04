@@ -8,9 +8,10 @@ import { join } from 'node:path';
 
 const SRC = '.opencode/agent';
 const DST = '.kilo/agent';
-// The guard reads the count from the official registry at runtime (INT-GTW-024) — no hard-coded constant
+// The guard reads the count from the official registry meta at runtime (INT-GTW-024 + brd-ceo verdict ج-4) — no hard-coded constant
 const registryText = readFileSync('hq/core/nexus/registry.yaml', 'utf8');
-const EXPECTED = (registryText.match(/\b(\d+) agents\b/) || [])[1] ? Number((registryText.match(/\b(\d+) agents\b/))[1]) : (() => { throw new Error('registry.yaml: agent counter not found'); })();
+const metaAgents = registryText.match(/^\s*total_agents:\s*(\d+)\s*$/m);
+const EXPECTED = metaAgents ? Number(metaAgents[1]) : (() => { throw new Error('registry.yaml: meta.total_agents not found'); })();
 
 let files;
 try {

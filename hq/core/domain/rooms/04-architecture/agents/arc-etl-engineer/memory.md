@@ -1,4 +1,4 @@
-# Memory of dat-etl-engineer — pointers, never copies
+# Memory of arc-etl-engineer — pointers, never copies
 - Organization store: hq/brain/ (via my lead/CEO)
 - Project store: projects/<slug>/brain/ (when deployed on a project)
 - My working notes:

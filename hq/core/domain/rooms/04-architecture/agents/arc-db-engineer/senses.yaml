@@ -1,5 +1,5 @@
 # Senses — what this agent receives
 listens:
-  - tickets: { from: dat-lead, type: RCCF-task }
-reports-to: dat-lead
+  - tickets: { from: arc-lead, type: RCCF-task }
+reports-to: arc-lead
 forbidden-inputs: [ direct-owner-chat, other-room-tickets ]

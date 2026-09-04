@@ -12,7 +12,7 @@ SOFI/
 ├── memory_index/                    Memory pointer (a single primer — the archive lives in hq/brain)
 ├── hq/                              General HQ ("headquarters"):
 │   ├── core/
-│   │   ├── domain/                  ★ The DDD domain: rooms/15 (charter·contracts·capabilities·agents capsules)
+│   │   ├── domain/                  ★ The DDD domain: rooms/14 (charter·contracts·capabilities·agents capsules)
 │   │   │                            shared-kernel · context-map.yaml · SKILLS-ASSIGNMENT.md
 │   │   ├── nexus/                   Official registries: registry(106)·gates·routing·personas·pipeline·bus
 │   │   ├── standards/ tech_templates/ tooling/ templates/
@@ -151,3 +151,12 @@ Owner order: احذف `🛰️ SOFI local hq/engine/mcp_server/mcp_bridge/server
 | Agent files | إزالة بلوك `<!-- SOFI-BUS-MCP-v2 -->` (5 أسطر + 🛰️) من **114** ملف `.opencode/agent/*.md` + `.kilo/agent` — `grep SOFI-BUS-MCP` → 0 |
 | التوثيق التاريخي | أقسام v4.6/v4.7/v4.8 محفوظة كسجل تاريخي (Law 13) — لم تُحرر |
 | الحالة | لا بقايا `mcp_bridge` كـ MCP فعال — الحافلة `hq/engine/mcp_server` نفسها باقية كخدمة HTTP/WS `mcp.local:8765` (main.py/ticket_bus.py) — الجسر الـ stdio فقط هو المحذوف |
+
+## v4.10 (2026-09-05 · تسوية R3.1 المرحلة B — دمج غرفة 08 في 04 + إضافة qa-flutter-architect)
+| البند | الحالة |
+|-------|--------|
+| غرفة Data (08) | **مُدمجة في غرفة Architecture (04)** — الغرفة الفيزيائية `hq/core/domain/rooms/08-data/` أُزيلت (Law 12/13) |
+| Permanent old←new map (v4.10) | كبسولات 08→04: `08-data/agents/dat-db-engineer` → `04-architecture/agents/arc-db-engineer` · `dat-cache-engineer` → `arc-cache-engineer` · `dat-etl-engineer` → `arc-etl-engineer` · `dat-analytics-engineer` → `arc-analytics-engineer` · `dat-ml-engineer` → `arc-ml-engineer` · `dat-privacy-officer` → `arc-privacy-officer` |
+| أرشفة الغرفة | `08-data/agents/dat-lead` → `hq/core/archive/r3.1-reconciliation/capsules/dat-lead` · `08-data/{charter.md,capabilities,contracts}` → `hq/core/archive/r3.1-reconciliation/rooms/08-data/` |
+| الوكلاء | `.opencode/agent/qa-flutter-architect.md` مستعاد من الأرشيف (R4) — العدد 108 → **109** (Law 12) |
+| التوثيق التاريخي | أقسام v4.5–v4.9 محفوظة كسجل تاريخي (Law 13) — لم تُحرر |

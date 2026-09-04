@@ -1,4 +1,4 @@
-# Memory of dat-db-engineer — pointers, never copies
+# Memory of arc-ml-engineer — pointers, never copies
 - Organization store: hq/brain/ (via my lead/CEO)
 - Project store: projects/<slug>/brain/ (when deployed on a project)
 - My working notes:

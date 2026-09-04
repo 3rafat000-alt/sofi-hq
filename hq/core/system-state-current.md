@@ -3,6 +3,8 @@
 > **This document is the sole up-to-date source for how the system works now** — any legal text or charter citing an old path is interpreted through it.
 > Date: 2026-08-25 · Authority: two consecutive owner directives (the purge plan, then the simplification wave) · Full archive: `/home/es3dlll/Desktop/SOFI-archive-20260825-2040/`
 
+> **⚡ Binding state 2026-09-05 (R3.1 + Phase B):** the system runs **14 rooms · 109 agents · 111 skills**. The Data room (08) was merged into Architecture (04) — its agents now live as `arc-*` and extra capsules were archived to `hq/core/archive/r3.1-reconciliation/`. Historical amendment notes below (§2) quoting older counts (15 rooms · 114 agents · 109 skills) are **kept as history** (Law 13 continuity) — the derived counts above are the binding reality; they are guarded by `hq/core/tooling/registry_guard.py` + `count_sync.py`.
+
 ## 1) The final root map (the hq pivot — owner directive 2026-08-25)
 
 ```
@@ -19,7 +21,7 @@ SOFI/
 │   │                      · sites-disabled/ · php-fpm/ · scripts/ · cloudflare/ · brain/
 │   └── hq/training/          Training guides (rooms-guide · file-discipline · internet_knowledge)
 ├── projects/sakk/         The only active project — its memories in projects/sakk/brain/ are intact
-└── .opencode/             Source of the 114 agents and 109 skills (operating layer · gate-0 guarded by hq/core/tooling/registry_guard.py + count_sync.py)
+└── .opencode/             Source of the 109 agents and 111 skills (operating layer · gate-0 guarded by hq/core/tooling/registry_guard.py + count_sync.py)
 ```
 
 **The one remaining bridge — REMOVED 2026-08-31 (9-axis fix Axis 2: hq/core/tooling/evidence_guard.py + hq/engine/scripts/bootstrap-live.sh):**
@@ -39,7 +41,7 @@ SOFI/
 
 ## 3) What did not change at all (keep working on it as usual)
 
-The constitution AGENTS.md and its laws (16 as of 2026-08-26 — Laws 14–16 added by owner order) · protocols, contracts, gates, and the nexus · the 15 rooms and their **114 agents** (source `.opencode/agent/`, generation via `node hq/core/tooling/port-agents.mjs` + guarded by `hq/core/tooling/registry_guard.py`) · the 109 skills (guarded by `hq/core/tooling/count_sync.py` 109/109) · the S1–S6 production line and the design-before-code rule · evidence discipline (`file:line` · exit code · `hq/core/tooling/evidence_guard.py` Law 4) · Law 10 (working directly on the main tree, no worktrees).
+The constitution AGENTS.md and its laws (16 as of 2026-08-26 — Laws 14–16 added by owner order) · protocols, contracts, gates, and the nexus · the 14 rooms and their **109 agents** (source `.opencode/agent/`, generation via `node hq/core/tooling/port-agents.mjs` + guarded by `hq/core/tooling/registry_guard.py`) · the 111 skills on disk (guarded by `hq/core/tooling/count_sync.py` — WARN-active until the INDEX stamp is reconciled) · the S1–S6 production line and the design-before-code rule · evidence discipline (`file:line` · exit code · `hq/core/tooling/evidence_guard.py` Law 4) · Law 10 (working directly on the main tree, no worktrees).
 
 > **Amendment 2026-08-26 — six operational gaps closed (owner order):** +3 agents (`str-agile-orchestrator` flow/WIP tracking in 01 · `ops-sandbox-executor` container build gate in 11 · `sec-license-auditor` license/IP merge gate in 09) · Laws 14–16 (double-rejection arbitration · license gate · smart clarification loop ≥20%) · shift-left rules in charters 01+04 · Hard Rule #11 + mandatory `License-check` task-card field in `tech_templates/ddd-capsule-protocol.md`. Full record: `hq/history/2026-08-26-operational-gaps/`.
 
@@ -62,7 +64,7 @@ Governing blueprint: `hq/core/design/system-ddd-blueprint.md` · contract map: `
 
 | Layer | Its home |
 |--------|-------|
-| Domain | `hq/core/domain/`: shared-kernel · rooms/15 (charter+contracts+capabilities+agents as capsules) |
+| Domain | `hq/core/domain/`: shared-kernel · rooms/14 (charter+contracts+capabilities+agents as capsules) |
 | Application | The intake gateway, RCCF, the gates, and the ticket bus (nexus + protocols) — matures gradually under `hq/core/application/` |
 | Infrastructure | `hq/engine` + `tooling` + `training` + the memory stores and the archive |
 | Presentation | `.opencode/agent` (the legal spec source — Article 00) + the generated mirror `.kilo/agent` |

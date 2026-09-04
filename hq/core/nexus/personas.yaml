@@ -351,6 +351,10 @@ personas:
     ar: Yasmin Al-Atassi
     role: Test Architect
 
+  qa-flutter-architect:
+    ar: Rayan Al-Qadi
+    role: Flutter QA Architect
+
   res-competitor-analyst:
     ar: Arwa Al-Samman
     role: Competitor Analyst

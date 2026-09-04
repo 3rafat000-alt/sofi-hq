@@ -85,3 +85,40 @@
 - **الذاكرة (Law 7):** هذا ADR هنا في CORTEX + الجلسة `hq/brain/hippocampus-sessions.md:SES-20260901-VISUAL-DIAGRAMS` + لا حادثة AMYGDALA — الذاكرتان معزولتان — `knw-reflector` ritual كل 10 turns + SLA 24h لتحديث المرئي عند تغير YAML — `hq/core/structure-standard.md:1` خريطة قديم←جديد محفوظة
 - **التراجع (4 مستويات):** `git revert <hash>` (54 كياناً) أو `rm -rf hq/core/design/diagrams docs/diagrams` + `git checkout -- README.md hq/core/design/system-ddd-blueprint.md` → `ls hq/core/design/diagrams` = exit 2 متوقع — `evidence_guard` أخضر — التراجع الذاكري = `git revert` لهذا الـADR + الجلسة — كل تغيير `.bak` أو `git diff` قابل للعكس
 - **المصادقة:** التنفيذ على الشجرة الرئيسية حصراً `AGENTS.md:58` Law 10 — لا worktree — `git worktree list` = bare only — المراجعة الجراحية 4/4 APPROVED قبل سطر `*.mmd` (`hq/brain/evidence/surgical-review-visual-2026-08-31.md:1` — INT-0004) — DFR غير مطلوب (لا كود sakk — هذه طبقة توثيقية hq فقط)
+
+---
+
+## ADR-20260905-GTW-FLUTTER-QA-ARCHITECT — إضافة مهندس جودة فلاتر كتستير رسمي (أمر مالك)
+- **date:** 2026-09-05
+- **owner decision (this session):** institutionalize the owner's "Flutter Senior Technical Architect & QA Lead" methodology as an official tester in SOFI.
+- **owner confirmed choices:** (1) home = Room 10 (Quality) · (2) form = full official agent + dedicated skill · (3) title = distinct (no "QA Lead" collision with qa-lead/Lama) + Arabic persona name.
+- **gateway routing verdict:** PASS (gate) · WITHIN (budget) · conflicts RESOLVED · lane = FATEFUL (registry/architecture/operating layer — Law 12) · route_to = brd-ceo exclusively.
+- **conflict resolution:** supersedes the 2026-08-26 "no test-engineer duplication" precedent by owner's explicit NEW order; differentiation = Flutter-domain end-to-end reviewer (architecture + perf + a11y + UX + QA methodology), distinct title, **no gate/verdict ownership** (qa-lead + brd-cqo unchanged).
+- **Phase B execution (2026-09-05 · knw-lead):** agent restored `hq/core/archive/r3.1-reconciliation/agents/qa-flutter-architect.md` → `.opencode/agent/qa-flutter-architect.md:1` (sha256 قبل=بعد `31f62a09…`) · registry `hq/core/nexus/registry.yaml:209` · persona `hq/core/nexus/personas.yaml:354-357` (Rayan Al-Qadi — ريان القاضي) · capsule `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/capabilities.yaml:1` · skill `qa-flutter-architect` موجود على القرص (111 دليلاً).
+- **evidence refs:** `hq/core/nexus/registry.yaml:11` · `hq/core/nexus/registry.yaml:209` · `hq/core/nexus/personas.yaml:354` · `hq/core/system-state-current.md:1` · `AGENTS.md:256`
+
+## DEC-R3.2-REC-20260905 — تسوية R3.1 (المصادقة اللاحقة — Post-Hoc Ratification)
+- **date:** 2026-09-05
+- **السلطة:** أحكام تنفيذ المرحلة A من knw-lead، صادق عليها brd-ceo بتاريخ 2026-09-05 بعد استشارة المجلس (CONDITIONS ×3، لا نقض CSO) — التصحيح اللاحق للنسبة (R2 من أمر المرحلة B).
+- **المحتوى:** إصلاح انجراف الوكلاء R3.1: 6 أزواج dat-*→arc-* (إعادة تسمية هوية فقط — verdict أ-2) + أرشفة 7 وكلاء (MANIFEST.md) + إعادة كتابة الحُرّاس لقراءة `meta.total_rooms`/`meta.total_agents` ديناميكياً + أساس PENDING-PHASE-B WARN.
+- **الالتزامات الذرية (المرحلة A):** `8c0698a` · `ccd8033` · `15fec10` · `6f8a568`.
+- **خارج النطاق (عزل — جلسة موازية):** 5 ملفات وكلاء (arc-infra-architect · gtw-intake-reformer · ops-cloud-engineer · ops-sandbox-executor · sec-secrets-warden) + `.env` + `.kilo/*` — لم تُضمَّن في أي التزام (verdict د-2).
+- **evidence refs:** `hq/core/archive/r3.1-reconciliation/FINDINGS.md:1` · `hq/core/archive/r3.1-reconciliation/agents/MANIFEST.md:1` · `hq/core/nexus/registry.yaml:10-11`
+
+## DEC-R3.3-PHASEB-20260905 — إغلاق المرحلة B من تسوية R3.1 (خلاصة نهائية)
+- **date:** 2026-09-05 · **الأمر:** RCCF المرحلة B من brd-ceo (بعد GATE-OPEN · ADR-20260905-GTW-FLUTTER-QA-ARCHITECT · شروط المجلس)
+- **الأحكام المنفذة R1–R5:**
+  - R1/R5.7: استعادة CORTEX من HEAD (87 سطراً — إنهاء اقتطاع موازٍ غير معتمد) + إلحاق السجلات؛ استعادة HIPPOCAMPUS (81 سطراً) + إلحاق 3 جلسات موازية + جلسة الإغلاق.
+  - R2: تصحيح نسبة DEC-R3.2 (المصادقة اللاحقة أعلاه).
+  - R3: عزل — لم تُمسّ الملفات الخمسة المعزولة ولا `.env` ولا `.kilo/*`.
+  - R4: استعادة `qa-flutter-architect` من الأرشيف (sha256 قبل=بعد `31f62a09…`).
+  - R5.1: registry → 14 غرفة · **109** وكيل (سطر 11) + صف flutter-architect (سطر 209).
+  - R5.2: personas → qa-flutter-architect (Rayan Al-Qadi — ريان القاضي) `personas.yaml:354-357`.
+  - R5.3: كبسولة `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/` (استشاري فقط، لا بوابات، تصعيد qa-lead).
+  - R5.4: system-state → 14/109/111 + ملاحظة ملزمة (الأسطر التاريخية محفوظة — Law 13).
+  - R5.5: AGENTS.md → 63/256/258 (109 active agents).
+  - R5.6: هجرة الكبسولات 08→04 (6 أزواج dat→arc) + أرشفة dat-lead وأصول الغرفة + خريطة قديم←جديد في structure-standard.md.
+  - R5.7: إغلاق الذاكرة (هذا السجل + جلسة HIPPOCAMPUS).
+- **الحُرّاس (exit 0):** registry_guard --strict · count_sync · evidence_guard hq/core --strict — WARN صادق متبقٍّ (INDEX stamp خارج النطاق + أسطر تاريخية) — لا فشل.
+- **الأعداد النهائية:** 14 غرفة · **109 وكيلاً** · 111 مهارة على القرص · كبسولات قانونية حاضرة 110 · extra=5 (متقاعدون مؤرشفون) · extra_rooms=0.
+- **evidence refs:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-FLUTTER-QA-ARCHITECT` · `hq/brain/hippocampus-sessions.md:SES-20260905-PHASEB-KNW-LEAD` · `hq/core/nexus/registry.yaml:11` · `AGENTS.md:256`

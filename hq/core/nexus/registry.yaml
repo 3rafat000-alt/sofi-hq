@@ -1,6 +1,6 @@
 # =====================================================================
 # SOFI Registry — R3.1 (2026-09-04)
-# 14 rooms · 108 active agents
+# 14 rooms · 109 active agents
 # Owner directive: Stack Lock + Room Consolidation + Event-Driven
 # =====================================================================
 
@@ -8,7 +8,7 @@ meta:
   version: R3.1
   date: 2026-09-04
   total_rooms: 14
-  total_agents: 108
+  total_agents: 109
   constitution_ref: AGENTS.md
   amendments:
     - "Room 08 (Data) merged into Room 04 (Architecture)"
@@ -206,6 +206,7 @@ rooms:
       - { name: perf-analyst, skills: ["load testing", "latency budgets", "JMeter/k6"] }
       - { name: design-auditor, skills: ["Nielsen heuristics", "WCAG audit", "slop-pattern scan"] }
       - { name: regression-warden, skills: ["regression suite", "flake triage", "release-blocking checks"] }
+      - { name: flutter-architect, skills: ["Flutter QA architecture", "5-phase acceptance (20 points)", "adb/uiautomator/gfxinfo/meminfo profiling", "a11y/UX audit", "device-fingerprint evidence"] }
 
   - code: 11-devops
     tier: T3

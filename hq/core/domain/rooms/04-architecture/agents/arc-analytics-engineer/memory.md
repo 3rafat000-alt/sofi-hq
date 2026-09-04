@@ -1,4 +1,4 @@
-# Memory of dat-privacy-officer — pointers, never copies
+# Memory of arc-analytics-engineer — pointers, never copies
 - Organization store: hq/brain/ (via my lead/CEO)
 - Project store: projects/<slug>/brain/ (when deployed on a project)
 - My working notes:

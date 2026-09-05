@@ -17,7 +17,7 @@ import pathlib, sys, re
 ROOT = pathlib.Path(__file__).resolve().parents[3]  # hq/core/tooling -> SOFI root
 
 # ── PENDING-PHASE-B baseline (temporary stopgap per brd-ceo A-verdict ج-1..ج-4; ends when Phase B = "zero WARN left") ──
-SKILLS_BASELINE = 113   # observed .opencode/skills/*/SKILL.md at B (2026-09-05) — bumped by qa-laravel-architect
+SKILLS_BASELINE = 116   # observed .opencode/skills/*/SKILL.md at B (2026-09-05) — bumped by Phase3: loc-rtl-adaptation + inn-experiment + war-incident-runbook
 CAP_ROOM_DIRS_EXTRA = 1      # physical 08-data dir pending migration (Phase B)
 CAP_MISSING_LEGAL = 6        # arc-* capsule dirs pending 08->04 migration (Phase B)
 CAP_EXTRA_DIRS = 12          # dat-* 7 + retired 5 capsule dirs pending archiving (Phase B)

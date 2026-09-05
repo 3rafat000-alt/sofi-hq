@@ -403,6 +403,14 @@ personas:
     ar: Maya Al-Nouri
     role: Tech Scout
 
+  inn-ml-engineer:
+    ar: Bushra Al-Amadi
+    role: ML Engineer (Innovation)
+
+  loc-privacy-officer:
+    ar: Dirar Al-Khatib
+    role: Privacy Officer (Localization)
+
   res-competitor-analyst:
     ar: Arwa Al-Samman
     role: Competitor Analyst

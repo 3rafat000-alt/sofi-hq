@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""
-sofi-security-scanner — periodic security scan (audit suggestion)
+"""FILE: hq/core/tooling/sofi-security-scanner.py
+sofi-security-scanner — periodic security scan (audit suggestion Phase 3)
 Runs gitleaks + evidence_guard as a combined security surface check.
 """
 import subprocess, sys, pathlib
-ROOT = pathlib.Path(__file__).resolve().parents[2]
+ROOT = pathlib.Path(__file__).resolve().parents[3]
 def run(cmd):
     r = subprocess.run(cmd, capture_output=True, text=True)
     print(r.stdout, end=""); return r.returncode

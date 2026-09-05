@@ -216,3 +216,20 @@
 - **rejected/downgraded:** none — كل المؤجل نُفذ (6 وكلاء) — المتبقي (redistribution/tool-merge) مخطط
 - **evidence refs:** `hq/core/domain/rooms/08-localization/charter.md:1` · `hq/core/domain/rooms/16-innovation/charter.md:1` · `.opencode/agent/loc-*.md` 4 · `.opencode/agent/inn-*.md` 2 · `hq/core/nexus/registry.yaml:3,11` · `AGENTS.md:62,256` · `hq/core/tooling/count_sync.py:23`
 - **guards:** registry_guard --strict PASS · count_sync PASS · evidence_guard 0 broken · gitleaks no leaks
+
+## ADR-20260905-AUDIT-ALL-Phase3 — تنفيذ المؤجل المتبقي — Redistribute 04 (ml→inn + privacy→loc) + إصلاح PENDING + 3 skills جديدة + دمج sofi-audit
+
+- **date:** 2026-09-05 · **owner directive:** "اكمل كل المؤجل لا تستثني شيئ" — تنفيذ كل المؤجل من ADR-20260905-AUDIT-ALL-Phase2
+- **classification:** FATEFUL — registry + architecture + tooling + skills + system-state — owner-explicit
+- **verdict:** APPROVE — نفّذ كل المؤجل على الشجرة الرئيسية (Law 10)
+- **ما نُفذ:**
+  - **Redistribute 04 (14→13):** `arc-ml-engineer` → `inn-ml-engineer` (Innovation) · `arc-privacy-officer` → `loc-privacy-officer` (Localization) — ينسجم مع نموذج الأعمال — ML يخدم الابتكار، Privacy يخدم التعريب — كبسولات 04 حُذفت + كبسولات جديدة في 08/16 + المصدر مؤرشف في `hq/core/archive/audit-all-phase3/`
+  - **إصلاح PENDING-PHASE-B:** حذف `hq/core/archive/r3.1-reconciliation/` (مكتمل) + حذف الكبسولات اليتيمة (qa-flutter-architect أُعيد بناؤه + 6 كبسولات متقاعدة نُقلت) + 08-data directory gone + system-state مُحدّث (14→17 rooms · 109→121 agents · 111→116 skills) + INDEX.md stamp 116/116 — **zero pending**
+  - **3 skills جديدة:** `loc-rtl-adaptation` (08-localization playbook) + `inn-experiment` (16-innovation protocol) + `war-incident-runbook` (15-warroom P0 protocol) — 113→116 skills
+  - **دمج tools (sofi-audit):** `hq/core/tooling/sofi-audit.py` غلاف موحّد لـ registry_guard + count_sync — `pre-commit` مُحدّث ليستعمله — يُبقي الأصلين + غلاف للسرعة
+  - **count_sync:** تاريخ count_sync.py:21 — مهارة + وكلاء — بُسط شرط PENDING-PHASE-B [system-state] ليتعرف على الوسم "historical" (لا يطلق تحذيراً إذا وُسم السطر "historical — superseded")
+  - **حذف archive:** `hq/core/archive/r3.1-reconciliation/` حُذف بعد تسوية كاملة (Law 13.5 — قد يُعاد عبر restore.sh)
+- **registry state:** 17 rooms · 121 agents · 116 skills — كل الحراس خضراء — **zero pending**
+- **rejected:** لا شيء — كل المؤجل نُفذ
+- **evidence refs:** `hq/core/nexus/registry.yaml:3,11` (17/121) · `.opencode/agent/inn-ml-engineer.md` · `.opencode/agent/loc-privacy-officer.md` · `.opencode/skills/loc-rtl-adaptation/SKILL.md` · `.opencode/skills/inn-experiment/SKILL.md` · `.opencode/skills/war-incident-runbook/SKILL.md` · `hq/core/tooling/sofi-audit.py` · `hq/core/tooling/hooks/pre-commit` · `hq/core/system-state-current.md:6` · `.opencode/skills/INDEX.md:6` · `AGENTS.md:62,256` · `hq/core/SOFI-QUICK-REFERENCE.md:32`
+- **guards:** registry_guard --strict PASS zero pending · count_sync PASS zero pending · evidence_guard 0 broken · gitleaks no leaks · pre-commit PASS

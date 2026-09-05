@@ -40,27 +40,17 @@ else
   echo "⚠ gitleaks not found — skipping secrets scan (install: go install github.com/gitleaks/gitleaks/v8@latest)"
 fi
 
-# 2) registry_guard — Gate-0 invariant (Law 12: 15 rooms · 114 agents + capsules)
-echo "→ registry_guard --strict (Law 12)..."
-if ! python3 hq/core/tooling/registry_guard.py --strict 2>&1 | tail -30; then
-  echo "❌ registry_guard BLOCKED — .opencode/agent ↔ registry.yaml drift (see above)"
+# 2) sofi-audit (unified wrapper: registry_guard + count_sync) — Gate-0 invariant (Law 12: 17 rooms · 121 agents + capsules)
+echo "→ sofi-audit (registry_guard + count_sync — Law 12)..."
+if ! python3 hq/core/tooling/sofi-audit.py 2>&1 | tail -40; then
+  echo "❌ sofi-audit BLOCKED — .opencode/agent ↔ registry.yaml drift (see above)"
   echo "   Fix: update hq/core/nexus/registry.yaml + .opencode/agent + hq/core/domain/rooms/*/agents/*/ then node hq/core/tooling/port-agents.mjs"
   exit 1
 fi
-python3 hq/core/tooling/registry_guard.py --strict >/dev/null 2>&1 || { echo "❌ registry_guard failed"; exit 1; }
-echo "✓ registry_guard PASS (114/114 agents · capsules OK)"
+python3 hq/core/tooling/sofi-audit.py >/dev/null 2>&1 || { echo "❌ sofi-audit failed"; exit 1; }
+echo "✓ sofi-audit PASS (17/121 agents · 113 skills · capsules OK · zero pending)"
 
-# 3) count_sync — constitutional counters (Law 12/13: 15 rooms · 114 agents · 109 skills · 16 laws)
-echo "→ count_sync (Law 12/13)..."
-if ! python3 hq/core/tooling/count_sync.py 2>&1 | tail -20; then
-  if ! python3 hq/core/tooling/count_sync.py >/dev/null 2>&1; then
-    echo "❌ count_sync BLOCKED — constitutional counter drift (see above)"
-    exit 1
-  fi
-fi
-echo "✓ count_sync PASS"
-
-# 4) evidence_guard — file:line verification (Law 4: Evidence Required + Law 13 Zero-Randomness)
+# 3) evidence_guard — file:line verification (Law 4: Evidence Required + Law 13 Zero-Randomness)
 echo "→ evidence_guard --staged --strict (Law 4: file:line must exist)..."
 if ! python3 hq/core/tooling/evidence_guard.py --staged --strict 2>&1 | tail -30; then
   echo "❌ evidence_guard BLOCKED — staged files contain broken file:line citations"

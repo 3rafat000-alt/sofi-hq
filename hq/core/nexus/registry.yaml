@@ -102,7 +102,7 @@ rooms:
     tier: T1
     name_en: Architecture
     prefix: arc
-    role: System, API, data, infra, security, and performance design — owns gates 3-4.
+    role: System, API, data, infra, security, and performance design — owns gates 3-4. (14 agents after redistribution — ml/privacy moved to 16/08 per Phase3)
     agents: &arc_agents
       - { name: lead, skills: ["architecture room lead", "ADR sign-off", "gate-3/4 owner"] }
       - { name: system-architect, skills: ["system decomposition", "bounded contexts", "ADR authoring"] }
@@ -117,8 +117,6 @@ rooms:
       - { name: cache-engineer, skills: ["Redis 7+ patterns", "cache invalidation", "TTL strategy"] }
       - { name: etl-engineer, skills: ["pipeline design", "batch/stream ETL", "data contracts", "On-event triggered"] }
       - { name: analytics-engineer, skills: ["metrics pipelines", "event taxonomy", "dashboards", "On-event triggered"] }
-      - { name: ml-engineer, skills: ["Python 3.12+ ML", "model serving", "feature stores"] }
-      - { name: privacy-officer, skills: ["PII handling", "GDPR/LGPD compliance", "data retention"] }
 
   - code: 03-design
     tier: T1
@@ -181,12 +179,13 @@ rooms:
     tier: T1
     name_en: Localization
     prefix: loc
-    role: Arabic translation & cultural adaptation — RTL + voice & tone (audit P1 gap).
+    role: Arabic translation & cultural adaptation — RTL + voice & tone + privacy (audit P1 gap).
     agents:
       - { name: translation-manager, skills: ["translation memory", "glossary", "Arabic copy"] }
       - { name: cultural-adapter, skills: ["cultural adaptation", "imagery", "examples"] }
       - { name: rtl-specialist, skills: ["RTL validation", "mirror", "typography"] }
       - { name: voice-tone-expert, skills: ["voice & tone", "Law 11 Arabic simple"] }
+      - { name: privacy-officer, skills: ["GDPR/LGPD", "PII Arabic copy", "DPIA"] }
 
   - code: 09-security
     tier: T3
@@ -277,10 +276,11 @@ rooms:
     tier: T1
     name_en: Innovation
     prefix: inn
-    role: Innovation lab — tech scouting + PoCs (audit P2 gap).
+    role: Innovation lab — tech scouting + PoCs + ML sandbox (audit P2 gap).
     agents:
       - { name: lab-lead, skills: ["experiment design", "ADR drafting", "PoC"] }
       - { name: tech-scout, skills: ["tech scouting", "trend signals", "PoC"] }
+      - { name: ml-engineer, skills: ["ML/AI experimentation", "Python 3.12+", "model serving", "sandbox"] }
 
 services:
   intake:

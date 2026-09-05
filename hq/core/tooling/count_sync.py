@@ -19,8 +19,8 @@ import pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 
 # ── PENDING-PHASE-B baseline (temporary stopgap; ends when Phase B = "zero WARN left") ──
-SKILLS_BASELINE = 113          # observed .opencode/skills/*/SKILL.md at B (2026-09-05) — bumped by qa-laravel-architect
-AGENTS_HDR_REQUIRED = (17, 121)  # R3.1 + Audit-ALL-Phase2 — 17 rooms · 121 agents — Localization 08 + Innovation 16 added
+SKILLS_BASELINE = 116          # observed .opencode/skills/*/SKILL.md at B (2026-09-05) — bumped by Phase3: loc-rtl-adaptation + inn-experiment + war-incident-runbook
+AGENTS_HDR_REQUIRED = (17, 121)  # R3.1 + Audit-ALL-Phase3 — 17 rooms · 121 agents — Localization 08 + Innovation 16 + Phase3 redistribution
 
 def parse_registry() -> tuple[dict[str, list[str]], dict[str, str], dict[str, int]]:
     """No-yaml parse matching registry_guard.py — one source of parsing truth (Law 12 consistency)."""
@@ -64,7 +64,8 @@ def b_complete() -> bool:
     """Phase-B completion probe (Event-Driven per ج-3): 08-data dir gone + system-state updated + INDEX stamp == disk skills."""
     data_dir_gone = not (ROOT / "hq/core/domain/rooms" / "08-data").exists()
     ssc = ROOT / "hq/core/system-state-current.md"
-    ssc_fixed = ssc.exists() and "114 agents" not in ssc.read_text() and "15 rooms" not in ssc.read_text()
+    ssc_text = ssc.read_text() if ssc.exists() else ""
+    ssc_fixed = ssc.exists() and "114 agents" not in ssc_text and "15 rooms" not in ssc_text and "121 agents" in ssc_text
     idx = ROOT / ".opencode/skills/INDEX.md"
     idx_fixed = idx.exists() and f"{SKILLS_BASELINE}/{SKILLS_BASELINE}" in idx.read_text()
     return data_dir_gone and ssc_fixed and idx_fixed
@@ -108,13 +109,20 @@ def main() -> int:
     ssc = ROOT / "hq/core/system-state-current.md"
     if ssc.exists():
         ssc_text = ssc.read_text()
-        if "114 agents" in ssc_text or "15 rooms" in ssc_text:
-            pending.append("PENDING-PHASE-B [system-state] stale claims '15 rooms · 114 agents' — Phase-B doc, do not edit now")
+        # Detect bare historical claims (without "historical" marker) — Phase B marked lines are OK
+        bad_lines = []
+        for line in ssc_text.splitlines():
+            if "15 rooms" in line or "114 agents" in line:
+                if "historical" not in line.lower() and "superseded" not in line.lower():
+                    bad_lines.append(line[:80])
+        if bad_lines:
+            pending.append(f"PENDING-PHASE-B [system-state] stale bare claims (no 'historical' marker) — {len(bad_lines)} line(s)")
     idx = ROOT / ".opencode/skills/INDEX.md"
     if idx.exists():
         idx_text = idx.read_text()
         m = re.search(r"(\d+)\s*/\s*(\d+)", idx_text)
-        pending.append(f"PENDING-PHASE-B [skills] disk={disk_skills} baseline={SKILLS_BASELINE} · INDEX stamp={'/'.join(m.groups()) if m else 'none'} (Phase B)")
+        if not m or (int(m.group(1)) != SKILLS_BASELINE or int(m.group(2)) != SKILLS_BASELINE):
+            pending.append(f"PENDING-PHASE-B [skills] disk={disk_skills} baseline={SKILLS_BASELINE} · INDEX stamp={'/'.join(m.groups()) if m else 'none'} (Phase B)")
 
     if done and (disk_skills != SKILLS_BASELINE or (ssc.exists() and ("114 agents" in ssc.read_text() or "15 rooms" in ssc.read_text()))):
         fails.append("Phase B complete — system-state/skills must match derived reality")

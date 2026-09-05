@@ -519,6 +519,16 @@ routes:
     effort: medium
     caveman: full
     budget: "~5k"
+  inn-ml-engineer:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
+  loc-privacy-officer:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
 
   # DevOps
   ops-lead:

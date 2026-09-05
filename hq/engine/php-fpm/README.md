@@ -1,44 +1,109 @@
-# PHP-FPM 8.5 — Work Pools
+# `hq/engine/php-fpm/` — PHP-FPM Pools
 
-> Live source: `/etc/php/8.5/fpm/pool.d/` · these are canonical, repository-managed copies.
-> **After the "sakk only" restructuring (2026-08-25):** active pools in the repository = `sakk.conf` exclusively; all other pools moved to `php-fpm/disabled/`.
+> One PHP-FPM pool per Laravel application. Each pool is a **systemd service** that listens on a
+> unique TCP port (9001, 9002, ...) and serves one Laravel codebase. Managed by room 11 (DevOps).
 
-## Pool ↔ Project Map
+Per the deploy standard, each Laravel app = one FPM pool. No sharing of pools between apps
+(strict isolation — see `deploy-standard.md`).
 
-### Active
-| Pool | Socket | Serves | Note |
-|---|---|---|---|
-| `sakk.conf` | `/run/php/sakk.sock` | sakk project (Laravel) | its own standalone repository outside SOFI · user `es3dlll` |
+---
 
-### Disabled (in `php-fpm/disabled/` — restoring = move the file back to `pool.d/` + reload)
-| Pool | Used to serve | Reason for disabling |
-|---|---|---|
-| `sofi.conf` | tobacco-center (production) | project path no longer exists |
-| `sofi-demo.conf` | tobacco demo | same reason |
-| `owais.conf` · `jw.conf` | side projects/experiments | outside the "sakk only" scope |
-| `www.conf` | unused default for sites | no beneficiary |
+## Layout
 
-> ⚠️ **The only remaining root step:** disabling the pools *live* on the system requires root privileges — run once:
-> `sudo bash caddy/php-fpm/disable-pools.sh` (stops the five pools and reloads fpm seamlessly).
+```
+php-fpm/
+├── README.md                       ← you are here
+├── pool.d/                         ← live pools (systemd services)
+│   ├── sakk.conf                   ← sakk Laravel pool
+│   └── ...
+├── disabled/                       ← archived pools (no longer used)
+└── disable-pools.sh                ← utility to disable a pool
+```
 
-## Core Commands
+---
+
+## The pool config schema (per `pool.d/*.conf`)
+
+```ini
+[pool-name]                         # e.g. sakk
+user = www-data
+group = www-data
+listen = 127.0.0.1:9001             # unique port per pool
+pm = dynamic
+pm.max_children = 20
+pm.start_servers = 4
+pm.min_spare_servers = 2
+pm.max_spare_servers = 6
+pm.max_requests = 1000
+chdir = /var/www/sakk
+php_admin_value[memory_limit] = 256M
+php_admin_value[upload_max_filesize] = 32M
+clear_env = no
+env[PATH] = /usr/local/bin:/usr/bin:/bin
+env[APP_ENV] = production
+env[APP_KEY] = base64:...           # loaded from env / vault
+catch_workers_output = yes
+decorate_workers_output = yes
+```
+
+---
+
+## The live pool (sakk)
+
+> Source: `pool.d/sakk.conf` — the sakk Laravel pool.
+
+| Field | Value | Notes |
+|-------|-------|-------|
+| `listen` | `127.0.0.1:9001` | only localhost, no public access |
+| `pm.max_children` | 20 | tune to traffic (4× CPU cores) |
+| `pm.max_requests` | 1000 | recycle workers to prevent memory leaks |
+| `memory_limit` | 256M | per PHP worker |
+| `chdir` | `/var/www/sakk` | project root (per `deploy-standard.md`) |
+| `APP_ENV` | `production` | per `deploy-standard.md` |
+
+**Managed by:** `ops-migration-runner` (migrations) + `ops-release-manager` (releases) +
+`ops-cicd-engineer` (CI/CD).
+
+---
+
+## Adding a new pool
+
+1. Copy `pool.d/sakk.conf` to `pool.d/<new-app>.conf`
+2. Change `listen` to a unique port (next: 9002)
+3. Change `chdir` to the new app's path
+4. Update `env[APP_ENV]` and `env[APP_KEY]` (load from vault, not from git)
+5. Enable the systemd service: `sudo systemctl enable php8.3-fpm@<new-app>`
+6. Run `bash hq/engine/scripts/validate.sh` — must exit 0
+7. Add a `sites/<new-app>.caddy` to reverse-proxy to the new port
+8. Commit atomically — pre-commit enforces all 4 guards
+9. Update `OPERATIONS.md` with the new pool
+
+---
+
+## Disabling a pool
 
 ```bash
-# syntax check before any reload
-php-fpm8.5 --test
-# safe reload (zero downtime)
-sudo systemctl reload php8.5-fpm
-# process status per pool
-sudo systemctl status php8.5-fpm
-ps --ppid $(pgrep -o php-fpm) -o pid,cmd | head
+sudo bash hq/engine/php-fpm/disable-pools.sh <pool-name>
 ```
 
-## ⚠️ Institutional opcache Rule (lesson LES-022)
+This moves the pool config from `pool.d/` to `disabled/`, restarts PHP-FPM, and verifies the
+disable. Per Law 10 (Direct-on-Project), disabled pools are kept in `disabled/` for audit
+(not deleted — for traceability).
 
-`validate_timestamps=Off` is enabled for production ⇒ **any edited PHP file only takes effect after a reload**:
+---
 
-```
-Edited PHP?  →  sudo systemctl reload php8.5-fpm  →  verify via the endpoint
-```
+## The CONDITION-FOLLOW-UP (DEC-R3.4)
 
-> **Note on validate without root:** the pool check may complain about `error_log (/var/log/php8.5-fpm.log): Permission denied` — that is a privilege limitation, not a syntax error; run `sudo ./scripts/validate.sh` for full confirmation.
+> PHP-FPM pool configs in `pool.d/` are **never** truncated in delivery handoffs. They are part
+> of the canon and are versioned in git.
+
+---
+
+## See also
+
+- [`../README.md`](../README.md) — `hq/engine/` parent
+- [`../sites/README.md`](../sites/README.md) — per-domain Caddy sites
+- [`../scripts/README.md`](../scripts/README.md) — operational scripts
+- [`../../core/standards/deploy-standard.md`](../../core/standards/deploy-standard.md) — binding standard
+- [Top-level README](../../../README.md)
+- [`AGENTS.md`](../../../AGENTS.md) — Law 10

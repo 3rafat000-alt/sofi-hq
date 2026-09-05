@@ -1,0 +1,5 @@
+# Senses — loc-voice-tone-expert
+listens:
+  - tickets: { from: 08-lead, type: RCCF-task }
+reports-to: 08-lead
+forbidden-inputs: [ direct-owner-chat, other-room-tickets ]

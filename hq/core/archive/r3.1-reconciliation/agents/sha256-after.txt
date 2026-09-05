@@ -1,0 +1,7 @@
+4e155f86ab9ad7e18ce0a6a840b096fdbbbb65499ed18ab8e4720b0ae3b0078d  hq/core/archive/r3.1-reconciliation/agents/dat-lead.md
+ef027e2dac20ce4d1845853e44761b9523bd3312915a6a533290539f91faf708  hq/core/archive/r3.1-reconciliation/agents/dsn-content-strategist.md
+c8b5577f74c19e9105266c5929a15b82f36ba9c52179f2a1ba9e079bd3e70aaf  hq/core/archive/r3.1-reconciliation/agents/dsn-motion-designer.md
+9b207abb0ee9a6bcbeb91954b88de911888ff7d99596e39b44f3bff86255337c  hq/core/archive/r3.1-reconciliation/agents/fnt-vue-engineer.md
+31f62a093ab46ca1f10bf2b6ae301c84fa57ef4beea51c2e8abeca6b13d746c3  hq/core/archive/r3.1-reconciliation/agents/qa-flutter-architect.md
+491da3432b91cf26f9499e03396a5b83278ac43e0b49453bff957cef1326acee  hq/core/archive/r3.1-reconciliation/agents/res-data-researcher.md
+a7cab05b13ad3281750ad3e5fca991efb9bdd015d7e28cb1de3aa0f004986347  hq/core/archive/r3.1-reconciliation/agents/res-web-scout.md

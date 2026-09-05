@@ -3,7 +3,7 @@
 > **⚖️ Binding ownership registry (2026-08-25):** every skill's ownership is defined in `hq/core/domain/rooms/<room>/capabilities/skills.yaml` and the full assignment record in `hq/core/domain/SKILLS-ASSIGNMENT.md` — this index is the invocation and description reference; ownership lives there.
 
 > The register of every approved skill. Built/updated via `skill-forge`. Every skill enforces the sixteen laws (Laws 14-16 added 2026-08-26). Add a row when approving any skill (§6 of skill-forge).
-> Audit 2026-08-31 (Gate-0 guardian — 9-axis fix): **actual total 109 skills — disk match 109/109** (15 rooms · 114 agents · 16 laws). Prior 2026-08-24: 106/106 — +3 skills added via operational gaps (str-agile-orchestrator · ops-sandbox-executor · sec-license-auditor companion). verific: `ls .opencode/skills/*/SKILL.md | wc -l` = 109 · `hq/core/tooling/count_sync.py` = PASS · `hq/core/tooling/registry_guard.py` = PASS.
+> Audit 2026-09-05 (Audit-ALL-Phase3 — owner directive "اكمل كل المؤجل"): **actual total 116 skills — disk match 116/116** (17 rooms · 121 agents · 16 laws). Prior audits: 2026-09-05 Phase B = 111/111 · 2026-08-31 (9-axis fix) = 109/109 · 2026-08-24 = 106/106 (+3 operational gaps: str-agile-orchestrator · ops-sandbox-executor · sec-license-auditor companion). Counted on disk before writing, no guesses: `ls -d .opencode/skills/*/` = 116 · `ls .opencode/skills/*/SKILL.md | wc -l` = 116. verific: `hq/core/tooling/count_sync.py` = PASS (exit 0) · `hq/core/tooling/registry_guard.py` = PASS (exit 0) · **zero PENDING-PHASE-B warnings** (Phase 3 reconciliation complete).
 
 ## 🏭 Foundation (serving all rooms)
 
@@ -15,6 +15,13 @@
 | [sofi-project-spawn](sofi-project-spawn/SKILL.md) | ops-lead | Automation | birthing new projects: isolated tree + template copies + project memory init (L7) |
 | [sofi-mcp-fleet](sofi-mcp-fleet/SKILL.md) | gtw-dispatcher | Training | MCP fleet curriculum: status board + 15 rooms' specialization + six binding rules (INT-0006-M3) |
 | [sofi-boot](sofi-boot/SKILL.md) | gtw-dispatcher | Standard | the eight-step boot ritual for every session — constitution, memory, gates, then standing at the gate |
+| [agent-reach](agent-reach/SKILL.md) | res-lead | Internet | 👁️ read & search 15+ platforms (Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu, V2EX, Xueqiu, LinkedIn, RSS, web) — multi-backend routing, zero API fees (Panniantong/Agent-Reach 78K⭐) |
+
+## 🌐 Internet capability (multi-platform)
+
+| Skill | Owner | When to invoke |
+|---------|--------|-------------|
+| [agent-reach](agent-reach/SKILL.md) | res-lead | research/look-up: web URLs, GitHub, YouTube, Reddit, Twitter, Bilibili, XiaoHongShu, V2EX, Xueqiu, Xiaoyuzhou podcasts, RSS feeds, Exa semantic search |
 
 ## 🏛️ Room playbooks (one per room)
 
@@ -39,6 +46,9 @@
 | 09 | [sec-threat-model](sec-threat-model/SKILL.md) | sec-lead | threat model + scan + pentest + security veto |
 | 09 | [sec-mcp-vetting](sec-mcp-vetting/SKILL.md) | sec-lead | vetting gate for any MCP server before enablement ([FLEET.md](sec-mcp-vetting/references/FLEET.md)) |
 | 10 | [qa-test-plan](qa-test-plan/SKILL.md) | qa-lead | quality gate (Gate 5): plan + execution + coverage |
+| 10 | [qa-flutter-architect](qa-flutter-architect/SKILL.md) | qa-lead | Flutter QA architecture: 5-phase contract-conformance review + device-fingerprint perf/a11y evidence — advisory only, no gate verdicts (qa-lead · brd-cqo · C3) |
+| 10 | [qa-react-architect](qa-react-architect/SKILL.md) | qa-lead | React/DDD QA architecture: 5-phase contract-conformance review + Web Vitals/Lighthouse/Bundle evidence — advisory only, no gate verdicts (qa-lead · brd-cqo · C3) |
+| 10 | [qa-laravel-architect](qa-laravel-architect/SKILL.md) | qa-lead | Laravel/DDD QA architecture: 5-phase contract-conformance review + DB/security/N+1/EXPLAIN evidence — advisory only, no gate verdicts (qa-lead · brd-cqo · C3) |
 | 11 | [ops-deploy-runbook](ops-deploy-runbook/SKILL.md) | ops-lead | deploy + migration + health check + rollback |
 | 12 | [obs-incident-response](obs-incident-response/SKILL.md) | obs-lead | detection + alerting + incident response → AMYGDALA |
 | 13 | [knw-brain-write](knw-brain-write/SKILL.md) | knw-lead | brain writing (Law 7): CORTEX/HIPPOCAMPUS/AMYGDALA |

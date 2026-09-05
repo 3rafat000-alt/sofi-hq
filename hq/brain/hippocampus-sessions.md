@@ -79,3 +79,114 @@
 - **Gate-3 (ورقي فقط):** المُخرَجات الخمسة كلها `.md/.yaml` — صفر `.php/.tsx/.js/.dart` — `git -C projects/sakk status --short` يُظهر فقط brain/ ورقية. العقد المجمَّد `openapi-spec.yaml` md5 ثابت `e6b121cd...` mtime `Aug 31 04:32` صفر مسار `/gold/`.
 - **التسليم:** RCCF → `brd-ceo` (قانون 3) — جاهز للمراجعة · **قرارات معلّقة عند المالك:** D-004 (نطاق الذهب G1) + بنود التسوية 1–6 في ERD §6.
 - **الذاكرة (Law 7):** جلسة + حزمة S2 في المشروع؛ DECISIONS سجل القرارات — لا حادثة
+
+---
+
+## SES-20260905-GTW-INT-FLUTTER-QA-ARCHITECT — مدخل إضافة مهندس جودة فلاتر (منقولاً من نسخة عمل جلسة موازية غير ملتزمة — R5.7)
+- **session:** 2026-09-05 — gateway intake (gtw-intake-reformer) استقبل أمر مالك غير مباشر لدمج منهجية "Flutter Senior Technical Architect & QA Lead" كمنظومة اختبار رسمية في SOFI.
+- **classification:** FATEFUL (registry/architecture/operating layer — Law 12) · gates PASS · budget WITHIN · conflicts RESOLVED · route_to = brd-ceo exclusively.
+- **status:** ready-for-review — بانتظار قبول brd-ceo وتوزيعه (→ المرحلة B: قيد صريح بعدم التسجيل في المرحلة A).
+- **evidence:** بوابة التوجيه قيد السجل `hq/brain/cortex-decisions.md:ADR-20260905-GTW-FLUTTER-QA-ARCHITECT`.
+
+## SES-20260905-QA-LEAD-FLUTTER-QA-ARCHITECT — تنفيذ qa-lead لأمر عمل RCCF (منقولاً من نسخة عمل جلسة موازية غير ملتزمة — R5.7)
+- **session:** 2026-09-05 — qa-lead نفّذ أمر عمل RCCF لبناء وكيل جودة فلاتر وتسليمه.
+- **deliverables:** `.opencode/agent/qa-flutter-architect.md` (جديد) · `.opencode/skills/qa-flutter-architect/SKILL.md` (جديد) · `references/acceptance-and-report.md` (جديد).
+- **automated matrix:** 15/15 صفوف ALL PASS.
+- **not touched (ownership):** registry.yaml · personas.yaml · capsules · charters · mcp-routing · INDEX.md · count_sync — بقيت خارج صلاحية الجلسة للمرحلة B.
+- **pending at gate:** الاسم العربي Rayan Al-Qadi (ريان القاضي) مقترح وفق نمط `personas.yaml:326-350` · تسجيل المهارة · صف الريجستري · ملفات الكبسولة · عدّ الوكلاء 108→109.
+- **status:** ready-for-review — اكتمل تنفيذه في المرحلة B (R4/R5.1–R5.3).
+
+## SES-20260905-KNW-LEAD-R31-RECONCILIATION — مصالحة R3.1 المرحلة A (منقولاً من نسخة عمل جلسة موازية غير ملتزمة — R5.7)
+- **session:** 2026-09-05 — knw-lead نفّذ المرحلة A من تسوية R3.1 (إصلاح الحُرّاس + ترشيد انجراف الوكلاء).
+- **documented:** اقتطاع غير معتمد لسجلي الذاكرة على القرص (CORTEX 87 HEAD → 14 قرص · HIPPOCAMPUS 81 → 40) — الجلسة الموازية لم تلتزمه عمداً وأثارته للتقرير → عولج في المرحلة B (R1/R5.7: استعادة كاملة + إلحاق منقّح).
+- **commits (المرحلة A):** `8c0698a` · `ccd8033` · `15fec10` · `6f8a568` — ذرّية بمسارات محددة؛ العزل محفوظ (5 ملفات وكلاء + `.env` + `.kilo/*`).
+- **evidence:** `hq/core/archive/r3.1-reconciliation/FINDINGS.md:1` · `CHECKLIST-C2.md:1` · `MANIFEST.md:1`.
+
+## SES-20260905-PHASEB-KNW-LEAD — إغلاق المرحلة B من تسوية R3.1 (R1–R5)
+- **session:** 2026-09-05 — knw-lead نفّذ المرحلة B بعد GATE-OPEN (`ADR-20260905-GTW-FLUTTER-QA-ARCHITECT`) بأحكام brd-ceo الخمسة (R1–R5).
+- **commits:** ذرّي بمسارات الأمر فقط (هذه الجلسة) + التزامات المرحلة A السابقة — استُبعدت الملفات الخمسة المعزولة و `.env` و `.kilo/*` تماماً (R3).
+- **الأعمال:** استعادة CORTEX (87 سطراً) + إلحاق ADR/DEC-R3.2 (نسبة مصححة R2)/DEC-R3.3 · استعادة HIPPOCAMPUS (81 سطراً) + إلحاق 3 جلسات موازية + هذه الجلسة · استعادة `.opencode/agent/qa-flutter-architect.md` من الأرشيف (sha256 قبل=بعد) · registry 109 + صف flutter-architect · personas Rayan Al-Qadi · كبسولة qa-flutter-architect (استشارية) · هجرة 6 كبسولات 08→04 + أرشفة dat-lead وأصول الغرفة · AGENTS.md 63/256/258 · system-state 14/109/111 + ملاحظة ملزمة · خريطة قديم←جديد v4.10 في structure-standard.
+- **الحُرّاس (exit 0):** registry_guard --strict · count_sync · evidence_guard hq/core --strict — WARN صادق (INDEX stamp + أسطر تاريخية) بلا فشل.
+- **status:** closed — التسليم RCCF + أدلة → brd-ceo (Law 3). السجل الرسمي: `hq/brain/cortex-decisions.md:DEC-R3.3-PHASEB-20260905`
+
+## SES-20260905-PHASEB-DELIVERY — إيصال التسليم P-02.5 (المرحلة B → brd-ceo)
+- **session:** 2026-09-05 — knw-lead سلّم نتيجة المرحلة B (gates خضراء + التزام ذرّي) إلى brd-ceo عبر RCCF ticket (Law 3).
+- **ticket_id:** SOFI-PHASEB-001 · **from:** knw-lead · **to:** brd-ceo · **direction:** upward-only.
+- **artifacts:** commit `97eb24a` (47 ملفاً، 247 إدراجاً/42 حذفاً، n8n=0، معزول=0) — CORTEX 124 سطراً · HIPPOCAMPUS 110 ← هذه الجلسة · `hq/core/nexus/registry.yaml:11` (109) · `AGENTS.md:256` (109 active agents) · `hq/core/nexus/personas.yaml:354-357` · كبسولة `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/` · أرشيف `hq/core/archive/r3.1-reconciliation/` · هجرة 6 كبسولات 08→04.
+- **guards (exit 0):** pre-commit hook PASS · registry_guard PASS 14/109 · count_sync PASS · evidence_guard --staged --strict 0 broken · gitleaks PASS.
+- **isolation (R3):** n8n/engine المرحّل مسبقاً (7) استُبعد via pathspec وبقي مرحّلاً للجلسة الموازية · `.env` · `.kilo/*` · 5 ملفات وكلاء معزولة · `hq/core/agents/` (غير متتبَّع) — لم تُلمس.
+- **status:** in-flight — بانتظار قبول صريح من brd-ceo (P-02.4).
+
+## SES-20260905-PHASEB-ACCEPT — قبول brd-ceo لتسليم المرحلة B (P-02.4) وإغلاقها الكامل
+- **session:** 2026-09-05 — brd-ceo قبِل صراحةً تسليم المرحلة B (`SOFI-PHASEB-001`) بموجب RCCF-2026-0905-PHASEB-ACCEPT — verdict = APPROVED (P-02.4) — كل الحُرّاس خضراء (registry_guard --strict · count_sync · pre-commit · gitleaks · evidence_guard --staged).
+- **تنفيذ knw-lead:** تسجيل القرار في CORTEX (`hq/brain/cortex-decisions.md:DEC-R3.4-PHASEB-ACCEPT-20260905`) + هذه الجلسة (تسجيل RCCF) + اقتراح CONDITION-FOLLOW-UP.
+- **القرار المرجعي:** `hq/brain/cortex-decisions.md:DEC-R3.4-PHASEB-ACCEPT-20260905` — قبول `ADR-20260905-GTW-FLUTTER-QA-ARCHITECT` وبنود R1–R5 — إغلاق كامل للمرحلة B.
+- **المتابعة المسجلة (CONDITION-FOLLOW-UP):** الأرتيفاكتات التشغيلية المتقلبة (tickets.db · logs · workflows/*.json · n8n.caddy) لا تُقْصّ دون مراجعة في إيصالات التسليم المستقبلية — اقتراح مكان مُدار/إضافة .gitignore رُفع في تقرير القبول (اقتراح فقط — لم يُنفَّذ).
+- **الحُرّاس بعد التسجيل (exit 0):** registry_guard --strict · count_sync · evidence_guard --staged --strict · pre-commit PASS.
+- **status:** closed — إغلاق كامل للمرحلة B (P-02.4) — التسليم: RCCF + أدلة → brd-ceo (Law 3).
+
+## SES-20260905-R6-ARCHIVE-LEGACY-AGENTS — أمر R6: أرشفة الشجرة الميراثية `hq/core/agents/` (knw-lead)
+- **session:** 2026-09-05 — knw-lead نفّذ أمر الإغلاق المصغّر R6 من brd-ceo (تحقق ميداني بعد إغلاق المرحلة B: evidence_guard hq/core --strict → exit 1 · 15 استشهاداً مكسوراً كلها داخل `hq/core/agents/`).
+- **الأعمال:** أرشفة الشجرة الميراثية (108 ملفاً) → `hq/core/archive/legacy-hq-core-agents/` — MANIFEST.md (قائمة 108 + تصنيف ميراثي مكرر) + RESTORE.md + sha256-before/after بايت-مطابق (108/108 OK) · خريطة قديم←جديد دائمة (Law 13.5) `structure-standard.md` v4.11 · التحقق الميداني: port-agents.mjs لا تشير للشجرة (grep 0) · untracked (ls-files 0) · لا استشهاد حي خارجي.
+- **العزل (R6):** `.opencode/` + الملفات الخمسة المعزولة + `.env` + `.kilo/*` — لم تُلمس · التراجع الوحيد RESTORE.md.
+- **الحُرّاس بعد الأرشفة (exit 0):** registry_guard.py --strict · count_sync.py · evidence_guard.py hq/core --strict.
+- **status:** closed — وهذه الجلسة تُسجّل إغلاق R6 · التسليم: RCCF + أدلة → brd-ceo (Law 3). السجل الرسمي: `hq/brain/cortex-decisions.md:DEC-R6-20260905-ARCHIVE-LEGACY-AGENTS`
+
+## SES-20260905-GTW-INT-REACT-DDD-ARCHITECT — مدخل إضافة معماري React/DDD ومدقق جودة (امتداد مباشر لـ SES-FLUTTER)
+- **session:** 2026-09-05 — gtw-intake-reformer (14) استقبل أمر مالك لدمج منهجية "React Senior Architect, DDD & QA Master" كاختبار رسمي ثانٍ في سوفي.
+- **precedent:** SES-20260905-GTW-INT-FLUTTER-QA-ARCHITECT + ADR-20260905-GTW-FLUTTER-QA-ARCHITECT + DEC-R3.4-PHASEB-ACCEPT-20260905 (advisory only, no gates, room 10, full agent + skill, distinct Arabic name + title) — النمط مقفل ومرجعي.
+- **clarification (Law 16):** 2 أسئلة حادة (mirror-pattern + name/title) — المالك اختار النمط المطابق + Samer Al-Khalil + React/DDD title.
+- **classification:** FATEFUL (registry/architecture/operating layer — Law 12) · gates PASS · budget WITHIN · conflicts RESOLVED (5 conflicts above) · route_to = brd-ceo exclusively.
+- **CONDITION-FOLLOW-UP:** DEC-R3.4 §CONDITION-FOLLOW-UP مرعيّ — لا اقتطاع لأرتيفاكتات تشغيلية في إيصالات التسليم.
+- **status:** ready-for-review — بانتظار قبول brd-ceo وتوزيعه (→ qa-lead · knw-lead · gtw-dispatcher).
+- **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-REACT-DDD-ARCHITECT` + هذه الجلسة.
+- **checkpoint before delivery:** this entry (P-02.1).
+
+## SES-20260905-GTW-DELEGATE-EXEC — تفويض مالك صريح: البوابة تُنفّذ ADR-REACT-DDD مباشرة عبر subagent في وضع build
+- **session:** 2026-09-05 — المالك أمر البوابة (gtw-intake-reformer) صراحةً بتفويض subagent من نوع `general` في وضع build لتنفيذ ADR-20260905-GTW-REACT-DDD-ARCHITECT على القرص.
+- **override:** default "gateway prepares & routes" rule (gtw-intake-reformer charter + P-01.2) lifted by owner authority. Recorded in `cortex-decisions.md:ADR-20260905-GTW-DELEGATE-EXEC`.
+- **method:** subagent `general` receives the enhanced 13-section prompt (≈7000 chars) with: identity, scope, constraints, step-by-step, acceptance criteria, deliverables, file paths (## FILE: header), evidence, and references. Mirrors `qa-flutter-architect` as template.
+- **guards binding:** registry_guard · count_sync · evidence_guard hq/core --strict · gitleaks no leaks — all must be green at the end.
+- **CONDITION-FOLLOW-UP from DEC-R3.4 binding:** no truncation of runtime artifacts.
+- **status:** in-flight — subagent dispatched (build mode).
+
+## SES-20260905-GTW-INT-LARAVEL-DDD-ARCHITECT — مدخل إضافة معماري Laravel/DDD ومستشار قواعد البيانات والأمن كتستير رسمي ثالث
+- **session:** 2026-09-05 — المالك أمر بدمج منهجية "Laravel Senior Architect, DDD Strategist, Database & Security Master" كاختبار رسمي ثالث، امتداداً مباشراً لنمط `qa-flutter-architect` (ريان القاضي) + `qa-react-architect` (سامر الخليل) المُنفَّذين بالأمس.
+- **precedent:** SES-20260905-GTW-INT-FLUTTER-QA-ARCHITECT + SES-20260905-GTW-INT-REACT-DDD-ARCHITECT + ADR-20260905-GTW-FLUTTER-QA-ARCHITECT + ADR-20260905-GTW-REACT-DDD-ARCHITECT + ADR-20260905-GTW-DELEGATE-EXEC + DEC-R3.4-PHASEB-ACCEPT-20260905 — النمط مقفل (Room 10 · full agent + skill · advisory only · no gates · distinct Arabic name + title · exact-mirror of qa-flutter-architect).
+- **clarification (Law 16):** 2 أسئلة حادة (room-home + name/title) — المالك اختار غرفة 10 + يوسف العامري + اللقب "معماري Laravel/DDD ومستشار شامل".
+- **classification:** FATEFUL (registry/architecture/operating layer — Law 12) · gates PASS · budget WITHIN · conflicts RESOLVED (8 conflicts above) · route_to = brd-ceo exclusively OR direct execution via owner-explicit override (ADR-20260905-GTW-DELEGATE-EXEC).
+- **CONDITION-FOLLOW-UP:** DEC-R3.4 §CONDITION-FOLLOW-UP مرعيّ — لا اقتطاع لأرتيفاكتات تشغيلية في إيصالات التسليم.
+- **status:** ready-for-review — بانتظار فوّض المالك للتنفيذ المباشر عبر subagent (build mode) أو RCCF من brd-ceo.
+- **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-LARAVEL-DDD-ARCHITECT` + هذه الجلسة.
+- **checkpoint before delivery:** this entry (P-02.1).
+
+## SES-20260905-AUDIT-ALL — تنفيذ المراجعة الشاملة (سوي كل شيئ) — المستويات 1+2+3
+
+- **session:** 2026-09-05 — المالك أمر "سوي كل شيئ" على المراجعة الشاملة (645 سطراً) — gtw-intake-reformer صنفها FATEFUL → نفذها على الشجرة الرئيسية (Law 10) بأمر مالك صريح (تجاوز P-01.2)
+- **Level 1 (5):** Law 1 توحيد P-01.8 في AGENTS.md:10 — SOFI-QUICK-REFERENCE.md — P-19/20 في protocols.md:391 — context-map v1.1 حدود 04/09/10
+- **Level 2 (4):** rccf-registry.yaml — living-docs.md — qa-assessment-matrix.md — report-template.md + sofi-audit.py + sofi-security-scanner.py
+- **Level 3 (WarRoom):** 15-warroom — 4 وكلاء (Firas · Layla · Omar · Salma) — charter + 4 agents + 12 capsule — registry 14→15 · 111→115 — AGENTS 111→115 — room-priority T3 + warroom
+- **Level 3 (مؤجل):** Localization/Innovation + إعادة توزيع 04 + دمج أدوات — موثق كـ ADR مخطط — لا تنفيذ بلا تصميم مجمد (INT-0004)
+- **guards:** registry_guard PASS 15/115 1:1 · count_sync PASS 15/115 · evidence_guard 0 broken · gitleaks no leaks — all green
+- **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-AUDIT-ALL` + هذه الجلسة — commit ذري قادم
+- **status:** in-flight — بانتظار الالتزام الذري
+
+## SES-20260905-AUDIT-ALL-Phase2 — تنفيذ المؤجل — Localization + Innovation
+
+- **session:** 2026-09-05 — المالك أمر "نفّذ المؤجل" — نفذ المؤجل من SES-20260905-AUDIT-ALL — 6 وكلاء جدد (08:4 + 16:2) — 17 غرفة · 121 وكيلاً
+- **what:** 08-localization (Noura · Khalid · Hadi · Rana) + 16-innovation (Ziad · Maya) — charters + agents + capsules — registry 15→17 · 115→121
+- **guards:** 17/121 1:1 PASS · 17/121 PASS · 0 broken · no leaks
+- **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-AUDIT-ALL-Phase2` + هذه الجلسة
+- **status:** in-flight — بانتظار الالتزام الذري
+
+## SES-20260905-AUDIT-ALL-Phase3 — تنفيذ كل المؤجل — Redistribute + PENDING + 3 skills + sofi-audit
+
+- **session:** 2026-09-05 — المالك أمر "اكمل كل المؤجل لا تستثني شيئ" — تنفيذ كل المؤجل من SES-20260905-AUDIT-ALL-Phase2
+- **what:**
+  - redistribute 04 (14→13): arc-ml → inn-ml (Innovation) · arc-privacy → loc-privacy (Localization) + كبسولات + personas + routing
+  - إصلاح PENDING-PHASE-B: حذف r3.1-reconciliation + 6 كبسولات تقاعدت + نظام-state 14→17 + INDEX 116/116 — **zero pending**
+  - 3 skills جديدة: loc-rtl-adaptation + inn-experiment + war-incident-runbook (113→116)
+  - دمج sofi-audit: pre-commit يستعمل sofi-audit بدلاً من registry_guard+count_sync المنفصلين
+- **guards:** 17/121 1:1 PASS · 17/121 zero pending PASS · 0 broken · no leaks — all green
+- **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-AUDIT-ALL-Phase3` + هذه الجلسة
+- **status:** in-flight — بانتظار الالتزام الذري

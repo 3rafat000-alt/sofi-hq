@@ -1,0 +1,7 @@
+## FILE: hq/core/domain/rooms/10-quality/agents/qa-react-architect/capabilities.yaml
+# Capabilities of qa-react-architect — by name only, must exist in room manifests
+skills:
+tools:
+  - Filesystem-Scoped
+  - Bash
+  - Kitesurf

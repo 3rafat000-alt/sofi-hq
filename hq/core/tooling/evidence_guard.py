@@ -13,7 +13,7 @@ import re, sys, pathlib, subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[3]  # hq/core/tooling -> SOFI root
 SKIP_DIRS = {"node_modules", ".git", ".venv", "vendor", "backups", ".kilo", "dist", "build", ".dart_tool"}
 
-# Pattern: path:line  e.g. hq/core/nexus/registry.yaml:1 or projects/sakk/brain/CONTEXT.md:45
+# Pattern: path:line  e.g. hq/core/nexus/registry.yaml:10 or AGENTS.md:1
 # Also captures file:line with optional line range
 PAT = re.compile(r"([A-Za-z0-9_.\-/@]+\.(?:md|yaml|yml|json|mjs|js|ts|tsx|py|sh|toml|sql|caddy|php|dart|css)):(\d+)")
 ALLOWLIST_PATTERNS = [

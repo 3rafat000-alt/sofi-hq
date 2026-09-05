@@ -1,0 +1,6 @@
+# Capabilities — WarRoom agent — by name only, must exist in room manifests
+skills:
+tools:
+  - Filesystem-Scoped
+  - Bash
+  - Kitesurf

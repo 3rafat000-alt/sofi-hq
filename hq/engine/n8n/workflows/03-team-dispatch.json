@@ -1,0 +1,56 @@
+{
+  "name": "SOFI Team — 03 Dispatch to 114 Agents (كالفريق الحقيقي)",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8765/api/v1/message",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "sender", "value": "n8n-team"},
+            {"name": "recipient", "value": "brd-ceo"},
+            {"name": "content", "value": "=مهمة من تلجرام: {{$json.message}} — عبر n8n كفريق — 29 MCP + latest-version"},
+            {"name": "task_id", "value": "=N8N-TEAM-{{$json.task_id || $now}}"},
+            {"name": "context", "value": "n8n dispatch → SOFI 114 وكيل — Telegram → MCP"},
+            {"name": "evidence", "value": "file: n8n/workflows/03-team-dispatch.json:1 — Telegram → SOFI MCP — Law 2/3"}
+          ]
+        },
+        "options": {}
+      },
+      "id": "sofi-send",
+      "name": "SOFI: Send to CEO",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [520, 300],
+      "notes": "n8n لا يكتب بنفسه — يرسل للفريق الحقيقي 114 وكيل عبر MCP — Law 5 RCCF"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8765/api/v1/tickets?limit=5",
+        "sendMethod": "GET",
+        "options": {}
+      },
+      "id": "check-tickets",
+      "name": "Check Tickets",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [740, 300]
+    },
+    {
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "id": "telegram-trigger",
+      "name": "Telegram: /شغل",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300],
+      "webhookId": "sofi-dispatch"
+    }
+  ],
+  "connections": {
+    "Telegram: /شغل": { "main": [[{"node": "SOFI: Send to CEO", "type": "main", "index": 0}]] },
+    "SOFI: Send to CEO": { "main": [[{"node": "Check Tickets", "type": "main", "index": 0}]] }
+  }
+}

@@ -1,65 +1,163 @@
 # FILE: hq/core/nexus/room-priority.yaml
-# Room Priority & Work-Order Map — owner order 2026-08-26
-#
-# Purpose: single binding reference for room priority tiers and execution order.
+# SOFI R3.1 — Room Priority & Work-Order Map
+# Authority: owner order 2026-09-04
 # Precedence: AGENTS.md laws > pipeline.yaml > this map > any charter-local ordering.
-# Companion docs: pipeline-production-line.md (S1–S6 backbone) · routing.yaml (request grid)
 
-version: 1
-date: 2026-08-26
-authority: owner order — "arrange the rooms, the priorities, and the work in order of importance"
+version: 3
+date: 2026-09-04
+edition: "R3.1"
+final_state:
+  total_rooms: 17
+  total_agents: 121
+
+# ============================================================================
+# PRIORITY TIERS — execution order, top-to-bottom
+# ============================================================================
 
 priority_tiers:
 
+  # --------------------------------------------------------------------------
+  # T0 — SOVEREIGN SPINE (always-on, never deprioritized)
+  # --------------------------------------------------------------------------
   T0_spine:
+    order: 0
     rooms: [14-gateway, 00-boardroom]
+    active_stages: "all"
+    entry_trigger: "Any inbound request or escalation"
+    exit_gate: "Never — spine is permanent"
     role: >
-      Always-on spine. Every request enters via 14-gateway (Law 1) and every
-      escalation ends at 00-boardroom. Never deprioritized; the gateway
-      classifies the lane before any other room activates.
-    active_stages: all
+      Always-on sovereign spine. Every request enters via 14-gateway (Law 1);
+      every escalation ends at 00-boardroom. The gateway classifies the lane
+      (fast/standard/fateful) before ANY other room activates. The Board
+      advises brd-ceo on fateful decisions via Task consultations.
+      Event-driven (Rec #16): responds to inbound requests and escalation
+      events, not schedules. No daily standup, no nightly scan.
 
+  # --------------------------------------------------------------------------
+  # T1 — DESIGN-FIRST (paper stages, no code before exit)
+  # --------------------------------------------------------------------------
   T1_design_first:
-    rooms: [01-strategy, 02-research, 04-architecture, 08-data, 03-design]
-    order: "01 -> 02 -> 04+08 (parallel) -> 03"
-    role: >
-      Paper stages. No executable code may exist while a T1 artifact is open.
-      Exit condition for the whole tier: PRD approved, schema + OpenAPI frozen,
-      Design-Freeze Review signed by 09-security and 10-quality (DFR gate).
+    order: 1
+    rooms: [01-strategy, 02-research, 04-architecture, 03-design, 08-localization, 16-innovation]
     active_stages: [S1, S2, S3]
+    entry_trigger: "Lane classification complete (fast/standard/fateful)"
+    exit_gate: "DFR signed — 09-security + 10-quality stamps present"
+    role: >
+      Paper-only stages. No executable code may exist while any T1 artifact
+      is open. Sequence: 01-strategy → 02-research → 04-architecture →
+      03-design. Exit condition: PRD approved (S1), schema-contract +
+      OpenAPI frozen (S2), Design-Freeze Review signed (S3).
+      Event-driven (Rec #16): activates on intake handoff from gateway,
+      exits on DFR signature event.
 
+  # --------------------------------------------------------------------------
+  # T2 — EXECUTION (code stages, strict sequencing)
+  # --------------------------------------------------------------------------
   T2_execution:
+    order: 2
     rooms: [05-backend, 06-frontend, 07-mobile]
-    order: "05 alone (S4) -> 06+07 as one merged team on Flutter R2 (S5)"
-    role: >
-      Code stages. Activate only after T1 exits clean. Hard rule: backend
-      complete, running, and security-checked before any UI line is written.
     active_stages: [S4, S5]
+    entry_trigger: "DFR signed (T1 exit) + OpenAPI contract frozen"
+    exit_gate: "All routes implemented + security gate passed + tests green"
+    role: >
+      Code stages. Activate only after T1 exits clean. HARD RULE: backend
+      (05) complete, running, and security-checked before ANY UI line is
+      written. Frontend (06) and Mobile (07) start together as one merged
+      team on the FROZEN OpenAPI contract. Agile loop S4⇆S5 allowed.
+      Event-driven (Rec #16): activates on DFR-sign event, exits on
+      Gate-5 pass event.
 
+  # --------------------------------------------------------------------------
+  # T3 — SHIELD (continuous across all tiers)
+  # --------------------------------------------------------------------------
   T3_shield:
-    rooms: [09-security, 10-quality, 11-devops, 12-observability]
+    order: 3
+    rooms: [09-security, 10-quality, 11-devops, 12-observability, 15-warroom]
+    active_stages: "all"
+    entry_trigger: "Any change touching security/data/production/schema"
+    exit_gate: "Never — shield is permanent"
     role: >
-      Continuous shield across ALL tiers. Veto powers apply anywhere:
-      cso veto on security, qa rejection returning work upstream through the
-      leads' chain, license gate on every merge (Law 15), Gate-8 observation.
-    active_stages: all
+      Continuous shield across ALL tiers. Veto powers apply ANYWHERE:
+      cso veto on security (absolute), qa rejection returning work
+      upstream via leads' chain, license gate on every merge (Law 15),
+      ops deploy/rollback authority, obs SLO/alerting.
+      Event-driven (Rec #16): triggers on merge, deploy, incident, and
+      drift events. On-merge scan replaces nightly scan.
 
+  # --------------------------------------------------------------------------
+  # T4 — MEMORY (continuity layer, never blocking)
+  # --------------------------------------------------------------------------
   T4_memory:
+    order: 4
     rooms: [13-knowledge]
+    active_stages: "all"
+    entry_trigger: "Any decision, session, or incident event"
+    exit_gate: "Never — memory is permanent"
     role: >
-      Continuity layer. Logs every tier's decisions into CORTEX (Law 7).
-      Never blocks a stage; skipping its logging is an L1/L2 violation handled
-      after the fact, not a reason to pause live work.
+      Continuity layer. Logs every tier's decisions into CORTEX (Law 7),
+      sessions in HIPPOCAMPUS, incidents in AMYGDALA. NEVER blocks a
+      stage; missing logging = L1/L2 handled after the fact.
+      Event-driven (Rec #16): records on-incident-close lessons, on-merge
+      decisions, and on-session-end summaries.
+
+# ============================================================================
+# WORK-ORDER RULES — binding
+# ============================================================================
 
 work_order_rules:
-  - Requests enter only via 14-gateway (Law 1) and flow strictly S1->S6.
-  - Money/security/production/schema work is FATEFUL regardless of size — no tier shortcut applies.
-  - Lane promotion ascends only (fast -> standard -> fateful); it never descends.
-  - A blocked T1 artifact freezes its entire downstream chain until resolved.
-  - T3 rejections return work to the lowest responsible tier through the leads' chain (never sideways).
+  - id: WR-01
+    rule: "Every request enters ONLY via 14-gateway (Law 1)."
+    exception: "none — bypass = L4"
+  - id: WR-02
+    rule: "Flow is strictly S1 → S2 → S3 → S4 → S5 → S6. No skipping stages."
+    exception: "Fast lane may skip to delivery for trivial tasks only."
+  - id: WR-03
+    rule: "Money/security/production/schema work is FATEFUL regardless of size."
+    escalation: "brd-cso veto on security; brd-cto veto on architecture."
+  - id: WR-04
+    rule: "Lane promotion ascends only (fast → standard → fateful); never descends."
+    note: "Higher danger discovered later → immediate promotion."
+  - id: WR-05
+    rule: "A blocked T1 artifact freezes its entire downstream chain until resolved."
+    note: "No T2 work without T1 exit."
+  - id: WR-06
+    rule: "T3 rejections return work to the LOWEST responsible tier through leads' chain."
+    note: "Never sideways; never skip the lead."
+  - id: WR-07
+    rule: "Every merge requires a license check (Law 15)."
+    exception: "No exception — missing field = return to sender."
+  - id: WR-08
+    rule: "Stack lock is binding: React/HTML-CSS-JS/Tailwind + Laravel 11+ + Flutter 3.22+ only."
+    exception: "Owner order only."
+  - id: WR-09
+    rule: "Every delivery needs evidence (file:line + exit code) per Law 4."
+    exception: "Fast lane may use RCCF-lite but evidence remains mandatory."
+  - id: WR-10
+    rule: "Ambiguity > 20% = halt routing + emit 1-3 sharp clarification questions."
+    note: "Law 16 Smart Clarification Loop; max 2 rounds without brd-arbiter."
+
+# ============================================================================
+# LANE → TIER MAPPING
+# ============================================================================
+
+lane_tier_map:
+  fast:
+    typical_tier: "T0 → single room lead → delivery"
+    may_skip: "DFR for trivial docs only"
+  standard:
+    typical_tier: "T0 → T1 subset → T2 (1-2 rooms) → T3 gate → delivery"
+    must_have: "DFR + Gate-5 for non-trivial features"
+  fateful:
+    typical_tier: "Full S1→S6 flow + Board (cso veto) + zero shortcuts"
+    must_have: "All gates, all evidence, all memory logs"
+
+# ============================================================================
+# ESCALATION PRIORITY — when multiple things break at once
+# ============================================================================
 
 escalation_priority:
   1: "SEV-1 incidents (Protocol 10) — everything else pauses"
   2: "Law-14 double-rejection arbitration (24-hour binding window)"
-  3: "Gate failures blocking an active stage"
-  4: "Scheduled reporting cadence (standards/reporting-cadence.md)"
+  3: "Gate failures blocking an active stage (DFR/Gate-5/8)"
+  4: "Ambiguity-card timeout (owner has not answered)"
+  5: "Reporting cadence (on-merge, on-incident-close, on-session-end)"

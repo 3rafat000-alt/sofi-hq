@@ -351,6 +351,66 @@ personas:
     ar: Yasmin Al-Atassi
     role: Test Architect
 
+  qa-flutter-architect:
+    ar: Rayan Al-Qadi
+    role: Flutter QA Architect
+
+  qa-react-architect:
+    ar: Samer Al-Khalil
+    role: React QA Architect
+
+  qa-laravel-architect:
+    ar: Yousuf Al-Amiri
+    role: Laravel QA Architect
+
+  war-incident-commander:
+    ar: Firas Al-Najjar
+    role: WarRoom Incident Commander
+
+  war-forensic-analyst:
+    ar: Layla Al-Halabi
+    role: Forensic Analyst
+
+  war-rollback-engineer:
+    ar: Omar Al-Khani
+    role: Rollback Engineer
+
+  war-communication-lead:
+    ar: Salma Al-Rashid
+    role: Communication Lead
+
+  loc-translation-manager:
+    ar: Noura Al-Hassan
+    role: Translation Manager
+
+  loc-cultural-adapter:
+    ar: Khalid Al-Masri
+    role: Cultural Adapter
+
+  loc-rtl-specialist:
+    ar: Hadi Al-Quds
+    role: RTL Specialist
+
+  loc-voice-tone-expert:
+    ar: Rana Al-Shami
+    role: Voice Tone Expert
+
+  inn-lab-lead:
+    ar: Ziad Al-Hariri
+    role: Innovation Lab Lead
+
+  inn-tech-scout:
+    ar: Maya Al-Nouri
+    role: Tech Scout
+
+  inn-ml-engineer:
+    ar: Bushra Al-Amadi
+    role: ML Engineer (Innovation)
+
+  loc-privacy-officer:
+    ar: Dirar Al-Khatib
+    role: Privacy Officer (Localization)
+
   res-competitor-analyst:
     ar: Arwa Al-Samman
     role: Competitor Analyst

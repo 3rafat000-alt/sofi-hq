@@ -1,0 +1,5 @@
+# Senses — what this agent receives
+listens:
+  - tickets: { from: room-lead, type: RCCF-task }
+reports-to: room-lead
+forbidden-inputs: [ direct-owner-chat, other-room-tickets ]

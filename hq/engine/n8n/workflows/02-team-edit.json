@@ -1,0 +1,56 @@
+{
+  "name": "SOFI Team — 02 Edit File (كالفريق بلا كسر)",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "/home/node/SOFI/{{$json.path}}",
+        "options": {}
+      },
+      "id": "read-before",
+      "name": "Read Before",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "path": "/home/node/SOFI/{{$json.path}}",
+        "content": "={{ $json.newContent }}",
+        "options": {}
+      },
+      "id": "write-file",
+      "name": "Edit SOFI File",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /home/node/SOFI && git diff --stat && echo \"---\" && git diff --name-only | head -20",
+        "options": {}
+      },
+      "id": "git-diff",
+      "name": "Git Diff Proof",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "id": "telegram-trigger",
+      "name": "Telegram: /عدل",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300],
+      "webhookId": "sofi-edit"
+    }
+  ],
+  "connections": {
+    "Telegram: /عدل": { "main": [[{"node": "Read Before", "type": "main", "index": 0}]] },
+    "Read Before": { "main": [[{"node": "Edit SOFI File", "type": "main", "index": 0}]] },
+    "Edit SOFI File": { "main": [[{"node": "Git Diff Proof", "type": "main", "index": 0}]] }
+  }
+}

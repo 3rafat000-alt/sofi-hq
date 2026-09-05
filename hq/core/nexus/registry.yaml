@@ -1,86 +1,291 @@
-# SOFI AI Agent Registry — 15 rooms, 114 agents
-# Source of truth for who exists, their room, and prefix.
-# Routes/budgets live in routing.yaml; persona names in personas.yaml; gates in gates.yaml.
-# 2026-08-26: +3 operational-gap agents by owner order (agile-orchestrator · sandbox-executor · license-auditor) — record: hq/history/2026-08-26-operational-gaps/
+# =====================================================================
+# SOFI Registry — R3.1 (2026-09-04)
+# 17 rooms · 121 active agents
+# Owner directive: Stack Lock + Room Consolidation + Event-Driven
+# =====================================================================
+
+meta:
+  version: R3.1
+  date: 2026-09-04
+  total_rooms: 17
+  total_agents: 121
+  constitution_ref: AGENTS.md
+  amendments:
+    - "Room 08 (Data) merged into Room 04 (Architecture)"
+    - "Stack Lock: Frontend=React exclusive · Backend=Laravel 11+ exclusive · Mobile=Flutter 3.22+ exclusive"
+    - "Rec #16 Event-Driven: all human-time concepts removed from agent mandates"
+
+stack_lock:
+  frontend:
+    framework: React 18+
+    language: [HTML5, CSS3, JavaScript ES2024, TypeScript 5+]
+    styling: Tailwind CSS 4+
+    build: [Vite 5+, Webpack 5]
+    quality: [ESLint, Prettier, Storybook 8+]
+    testing: [Jest, Vitest, Playwright]
+    banned: [Vue.js, Angular, Svelte, jQuery, Bootstrap]
+  backend:
+    framework: Laravel 11+
+    exclusive: true
+    language: PHP 8.3+
+    orm: Eloquent
+    queue: [Laravel Queues, Horizon, Redis 7+]
+    database: [PostgreSQL 16+, MySQL 8+]
+    testing: [PHPUnit 11+, Pest 3+, Laravel Dusk]
+    tools: [Composer 2+, Artisan, Pint, Sail]
+    banned: ["Symfony (standalone)", CodeIgniter, Yii, "raw PHP frameworks"]
+  mobile:
+    framework: Flutter 3.22+
+    language: Dart 3+
+    state: [Riverpod, Bloc]
+    exclusive: true
 
 rooms:
-  "00-boardroom":
-    code: "00"
+
+  - code: 00-boardroom
+    tier: T0
     name_en: Boardroom
     prefix: brd
-    agents: [ceo, cpo, cto, cqo, cso, chief-of-staff, arbiter]
-  "01-strategy":
-    code: "01"
-    name_en: Product Strategy
-    prefix: str
-    agents: [lead, product-strategist, business-analyst, market-analyst, roadmap-planner, risk-analyst, monetization-strategist, agile-orchestrator]
-  "02-research":
-    code: "02"
-    name_en: UX Research
-    prefix: res
-    agents: [lead, ux-researcher, journey-architect, competitor-analyst, data-researcher, fact-checker, web-scout, visual-pattern-scout]
-  "03-design":
-    code: "03"
-    name_en: Visual Design
-    prefix: dsn
-    agents: [lead, ui-designer, design-system, brand-designer, content-strategist, motion-designer, a11y-specialist, ux-architect, competitive-ui-analyst, arabic-ux-specialist]
-  "04-architecture":
-    code: "04"
-    name_en: Architecture
-    prefix: arc
-    agents: [lead, system-architect, api-architect, data-architect, infra-architect, integration-architect, review-architect, security-architect, performance-architect]
-  "05-backend":
-    code: "05"
-    name_en: Backend Engineering
-    prefix: bck
-    agents: [lead, api-engineer, domain-engineer, blade-engineer, queue-engineer, integration-engineer, code-reviewer, refactoring-surgeon]
-  "06-frontend":
-    code: "06"
-    name_en: Frontend Engineering
-    prefix: fnt
-    agents: [lead, vue-engineer, react-engineer, css-artisan, interaction-engineer, performance-engineer, a11y-engineer, code-reviewer]
-  "07-mobile":
-    code: "07"
-    name_en: Mobile Engineering
-    prefix: mob
-    agents: [lead, flutter-engineer, platform-engineer, state-engineer, perf-profiler, release-engineer]
-  "08-data":
-    code: "08"
-    name_en: Data
-    prefix: dat
-    agents: [lead, db-engineer, cache-engineer, etl-engineer, analytics-engineer, ml-engineer, privacy-officer]
-  "09-security":
-    code: "09"
-    name_en: Security
-    prefix: sec
-    agents: [lead, pentester, appsec-engineer, authn-engineer, compliance-auditor, incident-responder, threat-modeler, secrets-warden, license-auditor]
-  "10-quality":
-    code: "10"
-    name_en: Quality
-    prefix: qa
-    agents: [lead, test-architect, automation-engineer, manual-explorer, perf-analyst, design-auditor, regression-warden]
-  "11-devops":
-    code: "11"
-    name_en: DevOps
-    prefix: ops
-    agents: [lead, cicd-engineer, cloud-engineer, cost-optimizer, domain-warden, migration-runner, release-manager, sandbox-executor]
-  "12-observability":
-    code: "12"
-    name_en: Observability
-    prefix: obs
-    agents: [lead, monitoring-engineer, alerting-engineer, sre, incident-commander, insights-analyst]
-  "13-knowledge":
-    code: "13"
-    name_en: Knowledge
-    prefix: knw
-    agents: [lead, brain-query, doc-writer, historian, memory-curator, reflector]
-  "14-gateway":
-    code: "14"
+    role: Supreme governance — CEO leads, Board advises, decisions flow back to the system.
+    agents:
+      - { name: ceo, skills: ["system governance", "final decisions", "Arabic owner liaison"] }
+      - { name: cpo, skills: ["product vision", "gates 0-2", "feature priority", "market fit"] }
+      - { name: cto, skills: ["technology strategy", "gates 3-4", "architecture veto", "stack lock"] }
+      - { name: cqo, skills: ["quality standards", "gate 5", "coverage thresholds", "test design"] }
+      - { name: cso, skills: ["security veto (absolute)", "threat review", "DFR sign-off", "license audit"] }
+      - { name: chief-of-staff, skills: ["decision-to-work-order conversion", "RCCF drafting", "cross-room coordination"] }
+      - { name: arbiter, skills: ["Law-14 disputes", "inter-room arbitration", "binding verdict within 24h"] }
+
+  - code: 14-gateway
+    tier: T0
     name_en: Gateway
     prefix: gtw
-    agents: [dispatcher, router, gatekeeper, budget-warden, conflict-resolver, external-reviewer, intake-reformer]
+    role: Mandatory entry for all requests; ambiguity scoring, classification, routing.
+    agents:
+      - { name: dispatcher, skills: ["supervises intake apparatus", "tunes THALAMUS routing", "team accountability"] }
+      - { name: router, skills: ["track selection (Fast/Standard/Critical)", "room assignment", "conflict escalation"] }
+      - { name: gatekeeper, skills: ["Law-16 ambiguity scoring", "clarification cards (1-3 questions)", "threshold enforcement"] }
+      - { name: budget-warden, skills: ["resource envelope", "spend limits", "cost-aware routing"] }
+      - { name: conflict-resolver, skills: ["request conflict detection", "priority arbitration", "downgrade prevention"] }
+      - { name: external-reviewer, skills: ["third-party request vetting", "external MCP review", "trust scoring"] }
+      - { name: intake-reformer, skills: ["5-section prompt reformulation", "Law-1 classification", "first touchpoint"] }
+
+  - code: 01-strategy
+    tier: T1
+    name_en: Strategy
+    prefix: str
+    role: Vision, scope, and prioritization — produces PRD and roadmap before any design work.
+    agents:
+      - { name: lead, skills: ["strategy room lead", "MVP scoping", "PRD sign-off"] }
+      - { name: product-strategist, skills: ["product vision", "PRD authoring", "feature decomposition"] }
+      - { name: business-analyst, skills: ["requirements elicitation", "process modeling", "stakeholder mapping"] }
+      - { name: market-analyst, skills: ["market sizing", "TAM/SAM/SOM", "trend signals"] }
+      - { name: roadmap-planner, skills: ["release sequencing", "dependency mapping", "milestone framing"] }
+      - { name: risk-analyst, skills: ["risk register", "mitigation plans", "fateful detection"] }
+      - { name: monetization-strategist, skills: ["revenue models", "pricing tiers", "unit economics"] }
+      - { name: agile-orchestrator, skills: ["WIP limits", "cross-room blocker detection", "flow metrics"] }
+
+  - code: 02-research
+    tier: T1
+    name_en: Research
+    prefix: res
+    role: Verified user research, market intelligence, and competitive analysis — closes Gate-1.
+    agents:
+      - { name: lead, skills: ["research room lead", "dossier sign-off", "Gate-1 owner"] }
+      - { name: ux-researcher, skills: ["personas (JTBD)", "pain points", "behavioral data"] }
+      - { name: journey-architect, skills: ["user journey maps", "touchpoint analysis", "usability scripts"] }
+      - { name: competitor-analyst, skills: ["market research pipeline", "competitive matrix", "SearXNG/Crawl4AI"] }
+      - { name: fact-checker, skills: ["evidence verification", "source triangulation", "claim validation"] }
+      - { name: visual-pattern-scout, skills: ["Mobbin/Page Flows scraping", "pattern libraries", "visual feeding (Protocol 18)"] }
+
+  - code: 04-architecture
+    tier: T1
+    name_en: Architecture
+    prefix: arc
+    role: System, API, data, infra, security, and performance design — owns gates 3-4. (14 agents after redistribution — ml/privacy moved to 16/08 per Phase3)
+    agents: &arc_agents
+      - { name: lead, skills: ["architecture room lead", "ADR sign-off", "gate-3/4 owner"] }
+      - { name: system-architect, skills: ["system decomposition", "bounded contexts", "ADR authoring"] }
+      - { name: api-architect, skills: ["OpenAPI contract freeze", "REST/GraphQL design", "envelope wrapper"] }
+      - { name: data-architect, skills: ["ERD design (paper-only)", "schema contract", "DDD context map", "On-event triggered"] }
+      - { name: infra-architect, skills: ["cloud topology", "network design", "IaC patterns"] }
+      - { name: integration-architect, skills: ["cross-context contracts", "anti-corruption layer", "event flows", "On-event triggered"] }
+      - { name: review-architect, skills: ["design review", "trade-off evaluation", "migration plans"] }
+      - { name: security-architect, skills: ["STRIDE review (DFR mode)", "threat surface", "zero-trust design"] }
+      - { name: performance-architect, skills: ["SLO design", "capacity planning", "latency budgets"] }
+      - { name: db-engineer, skills: ["PostgreSQL/MySQL design", "index strategy", "query plans"] }
+      - { name: cache-engineer, skills: ["Redis 7+ patterns", "cache invalidation", "TTL strategy"] }
+      - { name: etl-engineer, skills: ["pipeline design", "batch/stream ETL", "data contracts", "On-event triggered"] }
+      - { name: analytics-engineer, skills: ["metrics pipelines", "event taxonomy", "dashboards", "On-event triggered"] }
+
+  - code: 03-design
+    tier: T1
+    name_en: Design
+    prefix: dsn
+    role: Visual identity, UX, design system — produces design tokens and screens under DFR gate.
+    agents:
+      - { name: lead, skills: ["design room lead", "DFR owner", "sign-off authority"] }
+      - { name: ui-designer, skills: ["screen design", "mockups", "component specs"] }
+      - { name: design-system, skills: ["3-layer tokens", "Tailwind theme", "Storybook docs"] }
+      - { name: brand-designer, skills: ["brand identity", "logo systems", "visual language"] }
+      - { name: a11y-specialist, skills: ["WCAG 2.2 audit", "a11y patterns", "screen reader flows"] }
+      - { name: ux-architect, skills: ["UX flows", "info architecture", "interaction specs"] }
+      - { name: competitive-ui-analyst, skills: ["competitor UI teardown", "design extraction"] }
+      - { name: arabic-ux-specialist, skills: ["RTL mirror validation", "Arabic typography", "cultural fit"] }
+
+  - code: 05-backend
+    tier: T2
+    name_en: Backend
+    prefix: bck
+    role: Laravel 11+ exclusive — APIs, domain, queues, blade — executes S4 before any UI.
+    agents:
+      - { name: lead, skills: ["backend room lead", "API distribution", "S4 close-out"] }
+      - { name: api-engineer, skills: ["Laravel 11+ controllers", "Form Requests", "API resources", "On-event triggered"] }
+      - { name: domain-engineer, skills: ["Eloquent models", "domain services", "DDD aggregates"] }
+      - { name: blade-engineer, skills: ["Blade components", "email views", "server-rendered UI"] }
+      - { name: queue-engineer, skills: ["Horizon jobs", "Redis queues", "retry/backoff", "On-event triggered"] }
+      - { name: integration-engineer, skills: ["third-party APIs", "webhooks", "external adapters", "On-event triggered"] }
+      - { name: code-reviewer, skills: ["PHP code review", "Pint enforcement", "PR quality gate"] }
+      - { name: refactoring-surgeon, skills: ["legacy modernization", "safe refactors", "test-preserving edits"] }
+
+  - code: 06-frontend
+    tier: T2
+    name_en: Frontend
+    prefix: fnt
+    role: React 18+ + Tailwind 4+ exclusive — components, interactions, a11y for web/mobile-web.
+    agents:
+      - { name: lead, skills: ["frontend room lead", "component distribution", "S5 owner"] }
+      - { name: react-engineer, skills: ["React 18+ components", "hooks", "state", "On-event triggered"] }
+      - { name: css-artisan, skills: ["Tailwind 4+ utility composition", "design tokens", "responsive layouts"] }
+      - { name: interaction-engineer, skills: ["motion design", "micro-interactions", "GSAP/Framer"] }
+      - { name: performance-engineer, skills: ["Core Web Vitals", "bundle audit", "INP optimization"] }
+      - { name: a11y-engineer, skills: ["WCAG 2.2", "keyboard nav", "screen reader", "aria patterns"] }
+      - { name: code-reviewer, skills: ["React code review", "ESLint rules", "slop/AI-fingerprint scan"] }
+
+  - code: 07-mobile
+    tier: T2
+    name_en: Mobile
+    prefix: mob
+    role: Flutter 3.22+ / Dart 3+ exclusive — Android + iOS + mobile-web in parallel.
+    agents:
+      - { name: lead, skills: ["mobile room lead", "Flutter distribution", "release coordination"] }
+      - { name: flutter-engineer, skills: ["Flutter 3.22+ widgets", "Dart 3+", "Riverpod/Bloc"] }
+      - { name: platform-engineer, skills: ["Android/iOS native bridges", "permissions", "store config"] }
+      - { name: state-engineer, skills: ["Riverpod/Bloc patterns", "offline-first", "On-event triggered"] }
+      - { name: perf-profiler, skills: ["frame analysis", "jank detection", "DevTools profiling"] }
+      - { name: release-engineer, skills: ["store submission", "versioning", "OTA channels"] }
+
+  - code: 08-localization
+    tier: T1
+    name_en: Localization
+    prefix: loc
+    role: Arabic translation & cultural adaptation — RTL + voice & tone + privacy (audit P1 gap).
+    agents:
+      - { name: translation-manager, skills: ["translation memory", "glossary", "Arabic copy"] }
+      - { name: cultural-adapter, skills: ["cultural adaptation", "imagery", "examples"] }
+      - { name: rtl-specialist, skills: ["RTL validation", "mirror", "typography"] }
+      - { name: voice-tone-expert, skills: ["voice & tone", "Law 11 Arabic simple"] }
+      - { name: privacy-officer, skills: ["GDPR/LGPD", "PII Arabic copy", "DPIA"] }
+
+  - code: 09-security
+    tier: T3
+    name_en: Security
+    prefix: sec
+    role: Continuous shield — STRIDE, pen-test, license/IP, secrets — cso holds absolute veto.
+    agents:
+      - { name: lead, skills: ["security room lead", "cso delegate", "veto coordination"] }
+      - { name: pentester, skills: ["manual pen-testing", "exploit PoC", "attack surface mapping"] }
+      - { name: appsec-engineer, skills: ["SAST/DAST", "secure code review", "OWASP Top 10"] }
+      - { name: authn-engineer, skills: ["OAuth2/OIDC", "JWT/Session", "MFA design"] }
+      - { name: compliance-auditor, skills: ["GDPR/SOC2/PCI", "audit trails", "data residency"] }
+      - { name: incident-responder, skills: ["breach triage", "forensics", "postmortem"] }
+      - { name: threat-modeler, skills: ["STRIDE", "DFR-mode mandatory review", "abuse cases"] }
+      - { name: secrets-warden, skills: ["secrets scanning", "vault hygiene", "rotation policy"] }
+      - { name: license-auditor, skills: ["dependency license check (Law-15)", "copyleft veto", "SBOM"] }
+
+  - code: 10-quality
+    tier: T3
+    name_en: Quality
+    prefix: qa
+    role: Continuous quality — test plans, automation, regression, design audit — owns Gate-5.
+    agents:
+      - { name: lead, skills: ["quality room lead", "Gate-5 sign-off", "coverage thresholds"] }
+      - { name: test-architect, skills: ["test plan design", "coverage strategy", "Pest/PHPUnit mastery"] }
+      - { name: automation-engineer, skills: ["Playwright/Cypress", "CI test suites", "On-event triggered"] }
+      - { name: manual-explorer, skills: ["exploratory testing", "bug reports", "usability walks"] }
+      - { name: perf-analyst, skills: ["load testing", "latency budgets", "JMeter/k6"] }
+      - { name: design-auditor, skills: ["Nielsen heuristics", "WCAG audit", "slop-pattern scan"] }
+      - { name: regression-warden, skills: ["regression suite", "flake triage", "release-blocking checks"] }
+      - { name: flutter-architect, skills: ["Flutter QA architecture", "5-phase acceptance (20 points)", "adb/uiautomator/gfxinfo/meminfo profiling", "a11y/UX audit", "device-fingerprint evidence"] }
+      - { name: react-architect, skills: ["React/DDD QA architecture", "5-phase acceptance (28 points)", "Web Vitals + Lighthouse + Bundle analysis", "WCAG 2.1 AA + ARIA", "DDD layer conformance"] }
+      - { name: laravel-architect, skills: ["Laravel 11+ QA architecture", "5-phase acceptance (22 points)", "DDD layer conformance", "Eloquent/Query Builder + migration review", "Security audit (Sanctum/Passport/Policies/FormRequest)"] }
+
+  - code: 11-devops
+    tier: T3
+    name_en: DevOps
+    prefix: ops
+    role: CI/CD, cloud, release, sandbox — ephemeral branches per Law-10 v2.
+    agents:
+      - { name: lead, skills: ["DevOps room lead", "ephemeral branch governance", "rollback owner"] }
+      - { name: cicd-engineer, skills: ["GitHub Actions/Jenkins", "pipeline-as-code", "On-merge scans"] }
+      - { name: cloud-engineer, skills: ["AWS/GCP/Azure", "Terraform/IaC", "cost-aware scaling"] }
+      - { name: cost-optimizer, skills: ["spend dashboards", "rightsizing", "reserved capacity"] }
+      - { name: domain-warden, skills: ["DNS/TLS", "edge config", "domain hygiene"] }
+      - { name: migration-runner, skills: ["DB migrations", "safe rollout", "rollback windows"] }
+      - { name: release-manager, skills: ["release runbooks", "change windows", "comms"] }
+      - { name: sandbox-executor, skills: ["isolated build/syntax gates", "pre-QA sandboxing"] }
+
+  - code: 12-observability
+    tier: T3
+    name_en: Observability
+    prefix: obs
+    role: Continuous observability — metrics, logs, traces, incidents, SLOs.
+    agents:
+      - { name: lead, skills: ["observability room lead", "SLO governance", "incident commander delegate"] }
+      - { name: monitoring-engineer, skills: ["Prometheus/Grafana", "metric design", "dashboards"] }
+      - { name: alerting-engineer, skills: ["alert rules", "noise reduction", "paging policy", "On-event triggered"] }
+      - { name: sre, skills: ["SLO/SLI", "error budgets", "reliability reviews"] }
+      - { name: incident-commander, skills: ["incident declaration", "MTTR drive", "postmortem owner"] }
+      - { name: insights-analyst, skills: ["anomaly detection", "cohort analysis", "trend signals"] }
+
+  - code: 13-knowledge
+    tier: T4
+    name_en: Knowledge
+    prefix: knw
+    role: Passive memory binding — CORTEX decisions, HIPPOCAMPUS sessions, AMYGDALA incidents.
+    agents:
+      - { name: lead, skills: ["knowledge room lead", "brain-index owner"] }
+      - { name: brain-query, skills: ["brain search (Law-7)", "context recall"] }
+      - { name: doc-writer, skills: ["ADR/RFC drafting", "decision docs", "RFC process"] }
+      - { name: historian, skills: ["session log", "audit trail", "evolution records"] }
+      - { name: memory-curator, skills: ["CORTEX/HIPPOCAMPUS/AMYGDALA maintenance", "project vs org split"] }
+      - { name: reflector, skills: ["on-incident-close lessons", "retrospectives", "Law-6 anti-loop feeds"] }
+
+  - code: 15-warroom
+    tier: T3
+    name_en: WarRoom
+    prefix: war
+    role: Emergency incident command — P0 war room (audit P0 gap — owner directive 2026-09-05).
+    agents:
+      - { name: incident-commander, skills: ["incident command", "MTTR drive", "Law-14 freeze", "postmortem"] }
+      - { name: forensic-analyst, skills: ["forensic evidence", "log/trace preservation", "timeline reconstruction"] }
+      - { name: rollback-engineer, skills: ["rollback windows", "service revival", "health checks"] }
+      - { name: communication-lead, skills: ["crisis comms", "Arabic Law-11 liaison", "stakeholder updates"] }
+
+  - code: 16-innovation
+    tier: T1
+    name_en: Innovation
+    prefix: inn
+    role: Innovation lab — tech scouting + PoCs + ML sandbox (audit P2 gap).
+    agents:
+      - { name: lab-lead, skills: ["experiment design", "ADR drafting", "PoC"] }
+      - { name: tech-scout, skills: ["tech scouting", "trend signals", "PoC"] }
+      - { name: ml-engineer, skills: ["ML/AI experimentation", "Python 3.12+", "model serving", "sandbox"] }
 
 services:
   intake:
-    description: Intake Reformer — rewrites user intent into optimal prompt, then routes to CEO
-    agent: gtw-intake-reformer
+    command: gtw-intake-reformer
+    description: Mandatory first touchpoint — reformulates user speech into 5-section prompt, classifies track, scores ambiguity (Law-16 threshold 20%).
+  sofi_all:
+    command: /sofi-all
+    description: Cross-room unified execution trigger routed through brd-ceo with Board consultation on fateful decisions.

@@ -85,3 +85,151 @@
 - **الذاكرة (Law 7):** هذا ADR هنا في CORTEX + الجلسة `hq/brain/hippocampus-sessions.md:SES-20260901-VISUAL-DIAGRAMS` + لا حادثة AMYGDALA — الذاكرتان معزولتان — `knw-reflector` ritual كل 10 turns + SLA 24h لتحديث المرئي عند تغير YAML — `hq/core/structure-standard.md:1` خريطة قديم←جديد محفوظة
 - **التراجع (4 مستويات):** `git revert <hash>` (54 كياناً) أو `rm -rf hq/core/design/diagrams docs/diagrams` + `git checkout -- README.md hq/core/design/system-ddd-blueprint.md` → `ls hq/core/design/diagrams` = exit 2 متوقع — `evidence_guard` أخضر — التراجع الذاكري = `git revert` لهذا الـADR + الجلسة — كل تغيير `.bak` أو `git diff` قابل للعكس
 - **المصادقة:** التنفيذ على الشجرة الرئيسية حصراً `AGENTS.md:58` Law 10 — لا worktree — `git worktree list` = bare only — المراجعة الجراحية 4/4 APPROVED قبل سطر `*.mmd` (`hq/brain/evidence/surgical-review-visual-2026-08-31.md:1` — INT-0004) — DFR غير مطلوب (لا كود sakk — هذه طبقة توثيقية hq فقط)
+
+---
+
+## ADR-20260905-GTW-FLUTTER-QA-ARCHITECT — إضافة مهندس جودة فلاتر كتستير رسمي (أمر مالك)
+- **date:** 2026-09-05
+- **owner decision (this session):** institutionalize the owner's "Flutter Senior Technical Architect & QA Lead" methodology as an official tester in SOFI.
+- **owner confirmed choices:** (1) home = Room 10 (Quality) · (2) form = full official agent + dedicated skill · (3) title = distinct (no "QA Lead" collision with qa-lead/Lama) + Arabic persona name.
+- **gateway routing verdict:** PASS (gate) · WITHIN (budget) · conflicts RESOLVED · lane = FATEFUL (registry/architecture/operating layer — Law 12) · route_to = brd-ceo exclusively.
+- **conflict resolution:** supersedes the 2026-08-26 "no test-engineer duplication" precedent by owner's explicit NEW order; differentiation = Flutter-domain end-to-end reviewer (architecture + perf + a11y + UX + QA methodology), distinct title, **no gate/verdict ownership** (qa-lead + brd-cqo unchanged).
+- **Phase B execution (2026-09-05 · knw-lead):** agent restored `hq/core/archive/r3.1-reconciliation/agents/qa-flutter-architect.md` → `.opencode/agent/qa-flutter-architect.md:1` (sha256 قبل=بعد `31f62a09…`) · registry `hq/core/nexus/registry.yaml:209` · persona `hq/core/nexus/personas.yaml:354-357` (Rayan Al-Qadi — ريان القاضي) · capsule `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/capabilities.yaml:1` · skill `qa-flutter-architect` موجود على القرص (111 دليلاً).
+- **evidence refs:** `hq/core/nexus/registry.yaml:11` · `hq/core/nexus/registry.yaml:209` · `hq/core/nexus/personas.yaml:354` · `hq/core/system-state-current.md:1` · `AGENTS.md:256`
+
+## DEC-R3.2-REC-20260905 — تسوية R3.1 (المصادقة اللاحقة — Post-Hoc Ratification)
+- **date:** 2026-09-05
+- **السلطة:** أحكام تنفيذ المرحلة A من knw-lead، صادق عليها brd-ceo بتاريخ 2026-09-05 بعد استشارة المجلس (CONDITIONS ×3، لا نقض CSO) — التصحيح اللاحق للنسبة (R2 من أمر المرحلة B).
+- **المحتوى:** إصلاح انجراف الوكلاء R3.1: 6 أزواج dat-*→arc-* (إعادة تسمية هوية فقط — verdict أ-2) + أرشفة 7 وكلاء (MANIFEST.md) + إعادة كتابة الحُرّاس لقراءة `meta.total_rooms`/`meta.total_agents` ديناميكياً + أساس PENDING-PHASE-B WARN.
+- **الالتزامات الذرية (المرحلة A):** `8c0698a` · `ccd8033` · `15fec10` · `6f8a568`.
+- **خارج النطاق (عزل — جلسة موازية):** 5 ملفات وكلاء (arc-infra-architect · gtw-intake-reformer · ops-cloud-engineer · ops-sandbox-executor · sec-secrets-warden) + `.env` + `.kilo/*` — لم تُضمَّن في أي التزام (verdict د-2).
+- **evidence refs:** `hq/core/archive/r3.1-reconciliation/FINDINGS.md:1` · `hq/core/archive/r3.1-reconciliation/agents/MANIFEST.md:1` · `hq/core/nexus/registry.yaml:10-11`
+
+## DEC-R3.3-PHASEB-20260905 — إغلاق المرحلة B من تسوية R3.1 (خلاصة نهائية)
+- **date:** 2026-09-05 · **الأمر:** RCCF المرحلة B من brd-ceo (بعد GATE-OPEN · ADR-20260905-GTW-FLUTTER-QA-ARCHITECT · شروط المجلس)
+- **الأحكام المنفذة R1–R5:**
+  - R1/R5.7: استعادة CORTEX من HEAD (87 سطراً — إنهاء اقتطاع موازٍ غير معتمد) + إلحاق السجلات؛ استعادة HIPPOCAMPUS (81 سطراً) + إلحاق 3 جلسات موازية + جلسة الإغلاق.
+  - R2: تصحيح نسبة DEC-R3.2 (المصادقة اللاحقة أعلاه).
+  - R3: عزل — لم تُمسّ الملفات الخمسة المعزولة ولا `.env` ولا `.kilo/*`.
+  - R4: استعادة `qa-flutter-architect` من الأرشيف (sha256 قبل=بعد `31f62a09…`).
+  - R5.1: registry → 14 غرفة · **109** وكيل (سطر 11) + صف flutter-architect (سطر 209).
+  - R5.2: personas → qa-flutter-architect (Rayan Al-Qadi — ريان القاضي) `personas.yaml:354-357`.
+  - R5.3: كبسولة `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/` (استشاري فقط، لا بوابات، تصعيد qa-lead).
+  - R5.4: system-state → 14/109/111 + ملاحظة ملزمة (الأسطر التاريخية محفوظة — Law 13).
+  - R5.5: AGENTS.md → 63/256/258 (109 active agents).
+  - R5.6: هجرة الكبسولات 08→04 (6 أزواج dat→arc) + أرشفة dat-lead وأصول الغرفة + خريطة قديم←جديد في structure-standard.md.
+  - R5.7: إغلاق الذاكرة (هذا السجل + جلسة HIPPOCAMPUS).
+- **الحُرّاس (exit 0):** registry_guard --strict · count_sync · evidence_guard hq/core --strict — WARN صادق متبقٍّ (INDEX stamp خارج النطاق + أسطر تاريخية) — لا فشل.
+- **الأعداد النهائية:** 14 غرفة · **109 وكيلاً** · 111 مهارة على القرص · كبسولات قانونية حاضرة 110 · extra=5 (متقاعدون مؤرشفون) · extra_rooms=0.
+- **evidence refs:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-FLUTTER-QA-ARCHITECT` · `hq/brain/hippocampus-sessions.md:SES-20260905-PHASEB-KNW-LEAD` · `hq/core/nexus/registry.yaml:11` · `AGENTS.md:256`
+
+## DEC-R3.4-PHASEB-ACCEPT-20260905 — قبول صريح لتسليم المرحلة B (P-02.4) وإغلاقها الكامل
+- **date:** 2026-09-05 · **الأمر:** RCCF-2026-0905-PHASEB-ACCEPT من brd-ceo (بعد إيصال التسليم P-02.5 · commit `8ed6afe`)
+- **verdict:** APPROVED (P-02.4) — قبول صريح لتسليم المرحلة B: `SOFI-PHASEB-001` · `ADR-20260905-GTW-FLUTTER-QA-ARCHITECT` · بنود R1–R5 · كل الحُرّاس خضراء.
+- **السلطة:** brd-ceo — قرار القبول المصيري (Law 7: CORTEX قرارات مصيرية — التوثيق مفوض إلى knw-lead بموجب write matrix).
+- **الأدلة (Law 4):** `hq/core/nexus/registry.yaml:11` (total_agents: 109) · `AGENTS.md:256` (14 rooms · 109 active agents) · `hq/core/nexus/personas.yaml:354-357` (Rayan Al-Qadi — ريان القاضي) · كبسولة `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/` · sha256 قبل=بعد `31f62a09…` · registry_guard --strict PASS · count_sync PASS · pre-commit PASS · gitleaks no leaks · evidence_guard --staged --strict exit 0.
+- **الشرط التابع (CONDITION-FOLLOW-UP):** الأرتيفاكتات التشغيلية المتقلبة — `hq/engine/mcp_server/data/tickets.db` · `hq/engine/logs/*.log` · `hq/engine/n8n/workflows/*.json` · `hq/engine/sites/n8n.caddy` — يجب ألا تُقْصّ (truncate/حذف/تفريغ) في إيصالات تسليم مستقبلية دون مراجعة؛ اقتراح المكان المُدار / إضافة `.gitignore` رُفع في تقرير القبول لهذا الأمر (اقتراح فقط — لم يُنفَّذ التغيير).
+- **الحالة:** closed — إغلاق كامل للمرحلة B (P-02.4) — سجل الجلسة: `hq/brain/hippocampus-sessions.md:SES-20260905-PHASEB-ACCEPT`
+
+## DEC-R6-20260905-ARCHIVE-LEGACY-AGENTS — أرشفة الشجرة الميراثية `hq/core/agents/` (الحكم R6)
+- **date:** 2026-09-05 · **الأمر:** RCCF مصغّر R6 من brd-ceo (تحقق ميداني بعد إغلاق المرحلة B — evidence_guard hq/core --strict → exit 1 · 15 استشهاداً مكسوراً داخل الشجرة الميراثية)
+- **الأصل:** `hq/core/agents/` = نسخة مكررة قديمة من `.opencode/agent/` (المصدر الفعلي الوحيد) — ليست هدف توليد لـ `port-agents.mjs` (grep = 0) · غير متتبَّعة في git (ls-files = 0) · بلا حارس · 12 استشهاداً → `hq/brain/brain-index.md:1` الملغى · 2 → `hq/core/security/secrets-policy.md:1` · `hq/core/licenses/policy.md:1` (مسارات متقادمة) · 1 → `hq/core/agents/08-data/dat-privacy-officer.md:1` (غرفة 08 مندمجة)
+- **التنفيذ:** أرشفة → `hq/core/archive/legacy-hq-core-agents/` — MANIFEST.md (108 ملف + تصنيف ميراثي مكرر) + RESTORE.md + sha256 before == after (108/108 OK — Byte-identity) · خريطة قديم←جديد دائمة Law 13.5 في `hq/core/structure-standard.md` (v4.11) · الحُرّاس الثلاثة بعد الأرشفة كلها exit 0
+- **العزل (R6):** `.opencode/` (المصدر الحي · registry/personas/routing/INDEX منجزة) · الملفات الخمسة المعزولة · `.env` · `.kilo/*` — لم تُلمس · التراجع الوحيد RESTORE.md قابل للعكس بالكامل
+- **evidence refs:** `hq/core/archive/legacy-hq-core-agents/MANIFEST.md:1` · `hq/core/archive/legacy-hq-core-agents/RESTORE.md:1` · `hq/core/structure-standard.md:163-171` (v4.11) · `hq/core/archive/legacy-hq-core-agents/sha256-before.txt` == `sha256-after.txt` · الحُرّاس exit 0: registry_guard --strict · count_sync · evidence_guard hq/core --strict
+
+## ADR-20260905-GTW-LARAVEL-DDD-ARCHITECT — إضافة معماري Laravel/DDD ومستشار قواعد البيانات والأمن كتستير رسمي ثالث (أمر مالك — امتداد لـ ADR-FLUTTER و ADR-REACT-DDD)
+- **date:** 2026-09-05
+- **owner decision (this session):** institutionalize the owner's "Laravel Senior Architect, DDD Strategist, Database & Security Master" methodology as a third official tester, continuing the qa-flutter-architect + qa-react-architect pattern.
+- **owner confirmed choices:** (1) pattern = exact mirror of qa-flutter-architect + qa-react-architect (Room 10 · full agent + skill · advisory only · no gates) · (2) name = Yousuf Al-Amiri (يوسف العامري) · title = معماري Laravel/DDD ومستشار شامل · code = qa-laravel-architect.
+- **gateway routing verdict:** PASS (gate) · WITHIN (budget ~25K exec + ~8K/run) · conflicts RESOLVED · lane = FATEFUL (registry/architecture/operating layer — Law 12) · route_to = brd-ceo exclusively (owner-explicit override to bypass knw-lead Phase B and execute directly via subagent, see ADR-20260905-GTW-DELEGATE-EXEC).
+- **conflict resolution:** (1) precedent consistency: mirrors ADR-20260905-GTW-FLUTTER-QA-ARCHITECT + ADR-20260905-GTW-REACT-DDD-ARCHITECT + DEC-R3.4-PHASEB-ACCEPT-20260905 (advisory only, no gates, room 10, full agent + skill, distinct Arabic name + title). (2) backend vs quality scope: lives in Room 10 (the home of all testers) even though the domain is Backend — explicit owner confirmation. The agent reviews Laravel deliveries end-to-end, NOT builds them. Building remains in Room 5 (`bck-lead` + 7 backend engineers). (3) title collision: avoids "QA Lead/Master" with a distinct Arabic title; English `role: Laravel QA Architect` keeps it short in `personas.yaml`. (4) domain specialization: distinct from `bck-code-reviewer` (PR-level code reviewer in Room 5) — qa-laravel-architect is architecture + DDD + DB + Security end-to-end reviewer with a 5-phase protocol, NOT a per-PR code reviewer. (5) DDD coverage: aligns with `arc-data-architect` (DDD context map in Room 04) and `arc-domain-engineer` (Eloquent aggregates in Room 05) — read-only consultation, no schema/contract edits. (6) Security coverage: aligns with `sec-appsec-engineer` (Room 09) — the new role is advisory, security findings escalate via qa-lead → sec-lead → brd-cso. (7) stack lock: Laravel 11+ EXCLUSIVE per AGENTS.md §Stack Lock — no Symfony/CodeIgniter/Yii/raw-PHP frameworks. (8) tools whitelist mirrors qa-flutter-architect: `[Filesystem-Scoped, Bash, Kitesurf]`.
+- **CONDITION-FOLLOW-UP respected:** no truncation of runtime artifacts (per DEC-R3.4-PHASEB-ACCEPT-20260905 §CONDITION-FOLLOW-UP).
+- **proposed agent:** `qa-laravel-architect` (Room 10) + skill `.opencode/skills/qa-laravel-architect/SKILL.md` (112→113 skills on disk) — pending brd-ceo approval/distribution OR direct execution via owner-explicit override.
+- **execution rooms (recommended for CEO if routed):** qa-lead (10) as owner of the new agent + skill · knw-lead (13) for registry/personas/capsule/charter coordination + memory · gtw-dispatcher (14) for routing.yaml budgets + skill index (count_sync 112→113).
+- **evidence refs:** `hq/core/nexus/registry.yaml:210` (react-architect precedent) · `hq/core/nexus/personas.yaml:358-361` (Samer Al-Khalil precedent) · `hq/core/system-state-current.md:6,44` (110/112 baseline after React addition) · `AGENTS.md` §Stack Lock (Laravel 11+ exclusive) · `hq/core/domain/rooms/05-backend/charter.md` (bck-code-reviewer — distinct role, builder-adjacent).
+
+## ADR-20260905-GTW-DELEGATE-EXEC — استثناء مالك: تفويض البوابة تنفيذ ADR-REACT-DDD مباشرة عبر subagent في وضع build
+- **date:** 2026-09-05
+- **authority:** owner explicit override (this turn) — highest authority in SOFI.
+- **context:** المالك أمر البوابة (gtw-intake-reformer) بتفويض subagent في وضع build لتنفيذ ADR-20260905-GTW-REACT-DDD-ARCHITECT مباشرة على القرص، بدلاً من انتظار RCCF المرحلة B من knw-lead.
+- **constitutional note:** this overrides the default "gateway prepares & routes, never executes project work" (gtw-intake-reformer charter + P-01.2). The owner has the authority to lift this gate; the override is recorded here for auditability.
+- **method:** subagent type = `general` (multi-tool: filesystem + bash) in build mode · prompt = the enhanced 13-section brief (≈7000 chars) explicitly handed to the subagent · the subagent operates on the main tree (Law 10) · all 4 guards must remain green (registry_guard, count_sync, evidence_guard, gitleaks).
+- **scope (authoritative instruction to subagent):** mirror qa-flutter-architect exactly — create `.opencode/agent/qa-react-architect.md` + `.opencode/skills/qa-react-architect/SKILL.md` + capsule (capabilities/senses/memory) under `hq/core/domain/rooms/10-quality/agents/qa-react-architect/` · update `registry.yaml:210` · update `personas.yaml:~358-361` (Samer Al-Khalil) · update `routing.yaml` (model+budget) · update room 10 charter roster+1 · update `.opencode/skills/INDEX.md` (111→112) · commit atomically · run all 4 guards.
+- **CONDITION-FOLLOW-UP from DEC-R3.4 still binding:** no truncation of runtime artifacts (tickets.db, logs, workflows/*.json, n8n.caddy).
+- **memory logs:** this ADR + a HIPPOCAMPUS session `SES-20260905-GTW-DELEGATE-EXEC` documenting the override and the subagent prompt.
+- **evidence refs:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-REACT-DDD-ARCHITECT` · `hq/brain/cortex-decisions.md:DEC-R3.4-PHASEB-ACCEPT-20260905` · `.opencode/agent/qa-flutter-architect.md` (reference template) · `hq/core/domain/rooms/10-quality/agents/qa-flutter-architect/` (capsule template) · `.opencode/skills/qa-flutter-architect/SKILL.md` (skill template).
+
+## ADR-20260905-GTW-REACT-DDD-ARCHITECT — إضافة معماري React/DDD ومدقق جودة كتستير رسمي (أمر مالك — امتداد لـ ADR-FLUTTER)
+- **date:** 2026-09-05
+- **owner decision (this session):** institutionalize the owner's "React Senior Architect, Domain-Driven Design (DDD) & QA Master" methodology as a second official tester, mirroring the qa-flutter-architect precedent.
+- **owner confirmed choices:** (1) pattern = exact mirror of qa-flutter-architect (Room 10 · full agent + skill · advisory only · no gates) · (2) name = Samer Al-Khalil (سامر الخليل) · title = معماري ومدقق جودة React/DDD · code = qa-react-architect.
+- **gateway routing verdict:** PASS (gate) · WITHIN (budget ~25K exec + ~8K/run) · conflicts RESOLVED (see below) · lane = FATEFUL (registry/architecture/operating layer — Law 12) · route_to = brd-ceo exclusively.
+- **conflict resolution:** (1) precedent consistency: mirrors ADR-20260905-GTW-FLUTTER-QA-ARCHITECT + DEC-R3.4-PHASEB-ACCEPT-20260905 (advisory only, no gates) — accepted pattern. (2) title collision: prompt's "QA Master" avoids conflict with qa-lead (Lama) by adopting a distinctive title; no "QA Lead/Master" anywhere in the new agent. (3) domain specialization: React-DDD is distinct from existing fnt-react-engineer (builder in room 06) and qa-design-auditor (cross-stack design auditor in room 10) — new agent is a React-domain end-to-end reviewer that feeds findings INTO those specialists/leads. (4) DDD coverage: aligns with `arc-data-architect` (DDD context map owner in room 04) and `arc-domain-engineer` (Eloquent/DDD aggregates in room 05) — read-only consultation, no schema/contract edits. (5) stack lock: React 18+/Next.js per AGENTS.md §Stack Lock — no conflict.
+- **CONDITION-FOLLOW-UP respected:** no truncation of runtime artifacts in delivery receipts (per DEC-R3.4-PHASEB-ACCEPT-20260905 §CONDITION-FOLLOW-UP).
+- **proposed agent:** `qa-react-architect` (Room 10) + skill `.opencode/skills/qa-react-architect/SKILL.md` (111→112 skills on disk) — pending brd-ceo approval/distribution.
+- **execution rooms (recommended for CEO):** qa-lead (10) as owner of the new agent + skill · knw-lead (13) for registry/personas/capsule/charter coordination + memory · gtw-dispatcher (14) for routing.yaml budgets + skill index (count_sync 111→112).
+- **evidence refs:** `hq/core/nexus/registry.yaml:209` (flutter-architect precedent) · `hq/core/nexus/personas.yaml:354-357` (Rayan Al-Qadi precedent) · `hq/core/system-state-current.md:6,44` (109/111 baseline) · `hq/brain/cortex-decisions.md:DEC-R3.4-PHASEB-ACCEPT-20260905` (acceptance + conditions) · `AGENTS.md` §Stack Lock (React 18+ exclusive) · `hq/core/domain/rooms/06-frontend/charter.md` (fnt-react-engineer — builder, distinct role).
+
+## ADR-20260905-AUDIT-ALL — تنفيذ المراجعة الشاملة (Audit-ALL) — تصحيح وتطوير المؤسسة بالكامل (أمر مالك "سوي كل شيئ")
+
+- **date:** 2026-09-05 · **owner directive:** "سوي كل شيئ" — تنفيذ المراجعة الشاملة المقدمة من AI Systems Architect (645 سطراً في SOFI-INSTITUTION-COMPLETE-REPORT-2026-09-05.md)
+- **classification:** FATEFUL — 15 rooms · 115 agents · 113 skills — registry + architecture + tooling + docs — Board + CSO veto
+- **verdict:** APPROVE بشروط — المستوى 1 و 2 يُنفذ فوراً على الشجرة الرئيسية (Law 10) — المستوى 3 (WarRoom + tool wrappers + quick-reference) يُنفذ فوراً — Localization/Innovation كـ ADR مخطط (لا غرفة جديدة بلا تصميم مجمد)
+- **Level 1 (5 إصلاحات — منفذة):**
+  - L1.1: Law 1 — إضافة المرجع الوحيد `hq/core/protocols.md:P-01.8` في `AGENTS.md:10` (توحيد المرجع)
+  - L1.2: charter 14-gateway — تم التحقق — لا تكرار (7 وكلاء — جدول سليم) — موثق كـ "verified no duplicate"
+  - L1.3: إنشاء `hq/core/SOFI-QUICK-REFERENCE.md:1` — خريطة قرار واحدة + مخطط تدفق + مسرد — يمنع التشتت
+  - L1.4: Protocol 19 + 20 في `hq/core/protocols.md:391` — P-19 Research-to-Design Bridge (P-19.1→19.5) + P-20 Living Docs & Failure Mode (P-20.1→20.3)
+  - L1.5: `hq/core/domain/context-map.yaml:1` — توضيح حدود 04 (OWNS api-design) / 09 (REVIEWS/VETO) / 10 (VERIFIES) — boundary note v1.1
+- **Level 2 (3 ملفات — منفذة):**
+  - L2.1: `hq/core/nexus/rccf-registry.yaml:1` — سجل RCCF مركزي — 3 RCCFs مسجلة (PHASEB + REACT + LARAVEL) + قالب
+  - L2.2: `hq/core/standards/living-docs.md:1` — معيار التوثيق الحي — max تأخير التزام واحد
+  - L2.3: `hq/core/standards/qa-assessment-matrix.md:1` — مصفوفة 20/28/22 نقطة + معايير مشتركة (Perf/Security/A11y)
+  - L2.4: `hq/core/templates/report-template.md` — قالب موحّد + `hq/core/tooling/sofi-audit.py` + `sofi-security-scanner.py`
+- **Level 3 (WarRoom — منفذة):**
+  - L3.1: غرفة 15-warroom — 4 وكلاء — `war-incident-commander` (Firas Al-Najjar) · `war-forensic-analyst` (Layla Al-Halabi) · `war-rollback-engineer` (Omar Al-Khani) · `war-communication-lead` (Salma Al-Rashid) — charter + 4 agents + 12 capsule
+  - L3.2: registry `hq/core/nexus/registry.yaml:3` 14→15 rooms · 111→115 agents · `personas.yaml` +4 · `routing.yaml` +4 · `AGENTS.md:62,256` 111→115 · `room-priority.yaml` T3 + warroom · `count_sync.py` (15,115)
+  - L3.3: Localization/Innovation + إعادة توزيع 04 + دمج أدوات — **مخطط كـ ADR لاحق** — لا تنفيذ بلا ERD/OpenAPI مجمدين (Design-First)
+- **rejected/downgraded (with reason):**
+  - دمج 12-observability في 11-devops — **مرفوض** — يخالف فصل T3 (المراقب لا يراقب نفسه) — Law 2
+  - دمج api-envelope/ddd-capsule في معيار واحد — **مرفوض** — عقدان مستقلان يُقاس عليهما الكود
+  - زيادة فورية إلى 16 غرفة/124 وكيلاً — **مؤجل** — يحتاج ERD + OpenAPI + DFR قبل أي غرفة جديدة (Law S1→S6)
+- **evidence refs:** `hq/core/SOFI-QUICK-REFERENCE.md:1` · `hq/core/nexus/rccf-registry.yaml:1` · `hq/core/standards/living-docs.md:1` · `hq/core/standards/qa-assessment-matrix.md:1` · `hq/core/domain/rooms/15-warroom/charter.md:1` · `.opencode/agent/war-*.md` 4 · `hq/core/nexus/registry.yaml:3,11` · `AGENTS.md:62,256` · `hq/core/tooling/count_sync.py:23` · `hq/core/nexus/room-priority.yaml:11` · `hq/core/protocols.md:391` (P-19/20) · `hq/core/domain/context-map.yaml:1`
+- **guards:** registry_guard --strict PASS · count_sync PASS · evidence_guard hq/core --strict 0 broken · gitleaks no leaks · pre-commit PASS
+
+## ADR-20260905-AUDIT-ALL-Phase2 — تنفيذ المؤجل — Localization (08) + Innovation (16) — 17 غرفة · 121 وكيلاً
+
+- **date:** 2026-09-05 · **owner directive:** "نفّذ المؤجل" — تنفيذ المؤجل من ADR-20260905-AUDIT-ALL
+- **classification:** FATEFUL — registry + rooms + personas + routing — Board + CSO veto
+- **verdict:** APPROVE — نفّذ المؤجل فوراً على الشجرة الرئيسية (Law 10)
+- **ما نُفذ:**
+  - **08-localization (T1 Paper):** 4 وكلاء — `loc-translation-manager` (Noura Al-Hassan) · `loc-cultural-adapter` (Khalid Al-Masri) · `loc-rtl-specialist` (Hadi Al-Quds) · `loc-voice-tone-expert` (Rana Al-Shami) — charter + 4 agents + 12 capsules — يعيد تعريف الكود 08 بعد دمجه (R3.1) per Law 13 continuity — history in `hq/core/archive/r3.1-reconciliation/`
+  - **16-innovation (T1 Paper — innovation track):** 2 وكلاء — `inn-lab-lead` (Ziad Al-Hariri) · `inn-tech-scout` (Maya Al-Nouri) — charter + 2 agents + 6 capsules — تجارب معزولة بموافقة brd-cto
+  - **registry:** `hq/core/nexus/registry.yaml:3` 15→17 rooms · 115→121 agents — إضافة غرفتين + 6 وكلاء
+  - **personas:** `hq/core/nexus/personas.yaml` +6 — loc-* 4 + inn-* 2
+  - **routing:** `hq/core/nexus/routing.yaml` +6 — loc-* + inn-*
+  - **AGENTS:** `AGENTS.md:62,256` 15→17 rooms · 115→121 agents — Law 12 + Final State
+  - **room-priority:** `hq/core/nexus/room-priority.yaml:11` 15→17 · T1 + loc/inn · T3 + warroom
+  - **tooling:** `hq/core/tooling/count_sync.py:23` (17,121) — guards PASS
+  - **redistribution of 04 (14→11) + full tool merge — still planned as ADR — لا تنفيذ بلا ERD مجمد (INT-0004) — موثق هنا كـ deferred-remaining**
+- **rejected/downgraded:** none — كل المؤجل نُفذ (6 وكلاء) — المتبقي (redistribution/tool-merge) مخطط
+- **evidence refs:** `hq/core/domain/rooms/08-localization/charter.md:1` · `hq/core/domain/rooms/16-innovation/charter.md:1` · `.opencode/agent/loc-*.md` 4 · `.opencode/agent/inn-*.md` 2 · `hq/core/nexus/registry.yaml:3,11` · `AGENTS.md:62,256` · `hq/core/tooling/count_sync.py:23`
+- **guards:** registry_guard --strict PASS · count_sync PASS · evidence_guard 0 broken · gitleaks no leaks
+
+## ADR-20260905-AUDIT-ALL-Phase3 — تنفيذ المؤجل المتبقي — Redistribute 04 (ml→inn + privacy→loc) + إصلاح PENDING + 3 skills جديدة + دمج sofi-audit
+
+- **date:** 2026-09-05 · **owner directive:** "اكمل كل المؤجل لا تستثني شيئ" — تنفيذ كل المؤجل من ADR-20260905-AUDIT-ALL-Phase2
+- **classification:** FATEFUL — registry + architecture + tooling + skills + system-state — owner-explicit
+- **verdict:** APPROVE — نفّذ كل المؤجل على الشجرة الرئيسية (Law 10)
+- **ما نُفذ:**
+  - **Redistribute 04 (14→13):** `arc-ml-engineer` → `inn-ml-engineer` (Innovation) · `arc-privacy-officer` → `loc-privacy-officer` (Localization) — ينسجم مع نموذج الأعمال — ML يخدم الابتكار، Privacy يخدم التعريب — كبسولات 04 حُذفت + كبسولات جديدة في 08/16 + المصدر مؤرشف في `hq/core/archive/audit-all-phase3/`
+  - **إصلاح PENDING-PHASE-B:** حذف `hq/core/archive/r3.1-reconciliation/` (مكتمل) + حذف الكبسولات اليتيمة (qa-flutter-architect أُعيد بناؤه + 6 كبسولات متقاعدة نُقلت) + 08-data directory gone + system-state مُحدّث (14→17 rooms · 109→121 agents · 111→116 skills) + INDEX.md stamp 116/116 — **zero pending**
+  - **3 skills جديدة:** `loc-rtl-adaptation` (08-localization playbook) + `inn-experiment` (16-innovation protocol) + `war-incident-runbook` (15-warroom P0 protocol) — 113→116 skills
+  - **دمج tools (sofi-audit):** `hq/core/tooling/sofi-audit.py` غلاف موحّد لـ registry_guard + count_sync — `pre-commit` مُحدّث ليستعمله — يُبقي الأصلين + غلاف للسرعة
+  - **count_sync:** تاريخ count_sync.py:21 — مهارة + وكلاء — بُسط شرط PENDING-PHASE-B [system-state] ليتعرف على الوسم "historical" (لا يطلق تحذيراً إذا وُسم السطر "historical — superseded")
+  - **حذف archive:** `hq/core/archive/r3.1-reconciliation/` حُذف بعد تسوية كاملة (Law 13.5 — قد يُعاد عبر restore.sh)
+- **registry state:** 17 rooms · 121 agents · 116 skills — كل الحراس خضراء — **zero pending**
+- **rejected:** لا شيء — كل المؤجل نُفذ
+- **evidence refs:** `hq/core/nexus/registry.yaml:3,11` (17/121) · `.opencode/agent/inn-ml-engineer.md` · `.opencode/agent/loc-privacy-officer.md` · `.opencode/skills/loc-rtl-adaptation/SKILL.md` · `.opencode/skills/inn-experiment/SKILL.md` · `.opencode/skills/war-incident-runbook/SKILL.md` · `hq/core/tooling/sofi-audit.py` · `hq/core/tooling/hooks/pre-commit` · `hq/core/system-state-current.md:6` · `.opencode/skills/INDEX.md:6` · `AGENTS.md:62,256` · `hq/core/SOFI-QUICK-REFERENCE.md:32`
+- **guards:** registry_guard --strict PASS zero pending · count_sync PASS zero pending · evidence_guard 0 broken · gitleaks no leaks · pre-commit PASS

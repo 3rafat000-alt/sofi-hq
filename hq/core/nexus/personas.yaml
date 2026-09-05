@@ -379,6 +379,30 @@ personas:
     ar: Salma Al-Rashid
     role: Communication Lead
 
+  loc-translation-manager:
+    ar: Noura Al-Hassan
+    role: Translation Manager
+
+  loc-cultural-adapter:
+    ar: Khalid Al-Masri
+    role: Cultural Adapter
+
+  loc-rtl-specialist:
+    ar: Hadi Al-Quds
+    role: RTL Specialist
+
+  loc-voice-tone-expert:
+    ar: Rana Al-Shami
+    role: Voice Tone Expert
+
+  inn-lab-lead:
+    ar: Ziad Al-Hariri
+    role: Innovation Lab Lead
+
+  inn-tech-scout:
+    ar: Maya Al-Nouri
+    role: Tech Scout
+
   res-competitor-analyst:
     ar: Arwa Al-Samman
     role: Competitor Analyst

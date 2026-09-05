@@ -489,6 +489,36 @@ routes:
     caveman: full
     budget: "~3k"
     note: "WarRoom comms — Arabic Law-11 liaison — 30min updates"
+  loc-translation-manager:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
+  loc-cultural-adapter:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
+  loc-rtl-specialist:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
+  loc-voice-tone-expert:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~3k"
+  inn-lab-lead:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
+  inn-tech-scout:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
 
   # DevOps
   ops-lead:

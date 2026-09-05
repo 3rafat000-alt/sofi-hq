@@ -1,14 +1,14 @@
 # =====================================================================
 # SOFI Registry — R3.1 (2026-09-04)
-# 15 rooms · 115 active agents
+# 17 rooms · 121 active agents
 # Owner directive: Stack Lock + Room Consolidation + Event-Driven
 # =====================================================================
 
 meta:
   version: R3.1
   date: 2026-09-04
-  total_rooms: 15
-  total_agents: 115
+  total_rooms: 17
+  total_agents: 121
   constitution_ref: AGENTS.md
   amendments:
     - "Room 08 (Data) merged into Room 04 (Architecture)"
@@ -177,6 +177,17 @@ rooms:
       - { name: perf-profiler, skills: ["frame analysis", "jank detection", "DevTools profiling"] }
       - { name: release-engineer, skills: ["store submission", "versioning", "OTA channels"] }
 
+  - code: 08-localization
+    tier: T1
+    name_en: Localization
+    prefix: loc
+    role: Arabic translation & cultural adaptation — RTL + voice & tone (audit P1 gap).
+    agents:
+      - { name: translation-manager, skills: ["translation memory", "glossary", "Arabic copy"] }
+      - { name: cultural-adapter, skills: ["cultural adaptation", "imagery", "examples"] }
+      - { name: rtl-specialist, skills: ["RTL validation", "mirror", "typography"] }
+      - { name: voice-tone-expert, skills: ["voice & tone", "Law 11 Arabic simple"] }
+
   - code: 09-security
     tier: T3
     name_en: Security
@@ -261,6 +272,15 @@ rooms:
       - { name: forensic-analyst, skills: ["forensic evidence", "log/trace preservation", "timeline reconstruction"] }
       - { name: rollback-engineer, skills: ["rollback windows", "service revival", "health checks"] }
       - { name: communication-lead, skills: ["crisis comms", "Arabic Law-11 liaison", "stakeholder updates"] }
+
+  - code: 16-innovation
+    tier: T1
+    name_en: Innovation
+    prefix: inn
+    role: Innovation lab — tech scouting + PoCs (audit P2 gap).
+    agents:
+      - { name: lab-lead, skills: ["experiment design", "ADR drafting", "PoC"] }
+      - { name: tech-scout, skills: ["tech scouting", "trend signals", "PoC"] }
 
 services:
   intake:

@@ -197,3 +197,22 @@
   - زيادة فورية إلى 16 غرفة/124 وكيلاً — **مؤجل** — يحتاج ERD + OpenAPI + DFR قبل أي غرفة جديدة (Law S1→S6)
 - **evidence refs:** `hq/core/SOFI-QUICK-REFERENCE.md:1` · `hq/core/nexus/rccf-registry.yaml:1` · `hq/core/standards/living-docs.md:1` · `hq/core/standards/qa-assessment-matrix.md:1` · `hq/core/domain/rooms/15-warroom/charter.md:1` · `.opencode/agent/war-*.md` 4 · `hq/core/nexus/registry.yaml:3,11` · `AGENTS.md:62,256` · `hq/core/tooling/count_sync.py:23` · `hq/core/nexus/room-priority.yaml:11` · `hq/core/protocols.md:391` (P-19/20) · `hq/core/domain/context-map.yaml:1`
 - **guards:** registry_guard --strict PASS · count_sync PASS · evidence_guard hq/core --strict 0 broken · gitleaks no leaks · pre-commit PASS
+
+## ADR-20260905-AUDIT-ALL-Phase2 — تنفيذ المؤجل — Localization (08) + Innovation (16) — 17 غرفة · 121 وكيلاً
+
+- **date:** 2026-09-05 · **owner directive:** "نفّذ المؤجل" — تنفيذ المؤجل من ADR-20260905-AUDIT-ALL
+- **classification:** FATEFUL — registry + rooms + personas + routing — Board + CSO veto
+- **verdict:** APPROVE — نفّذ المؤجل فوراً على الشجرة الرئيسية (Law 10)
+- **ما نُفذ:**
+  - **08-localization (T1 Paper):** 4 وكلاء — `loc-translation-manager` (Noura Al-Hassan) · `loc-cultural-adapter` (Khalid Al-Masri) · `loc-rtl-specialist` (Hadi Al-Quds) · `loc-voice-tone-expert` (Rana Al-Shami) — charter + 4 agents + 12 capsules — يعيد تعريف الكود 08 بعد دمجه (R3.1) per Law 13 continuity — history in `hq/core/archive/r3.1-reconciliation/`
+  - **16-innovation (T1 Paper — innovation track):** 2 وكلاء — `inn-lab-lead` (Ziad Al-Hariri) · `inn-tech-scout` (Maya Al-Nouri) — charter + 2 agents + 6 capsules — تجارب معزولة بموافقة brd-cto
+  - **registry:** `hq/core/nexus/registry.yaml:3` 15→17 rooms · 115→121 agents — إضافة غرفتين + 6 وكلاء
+  - **personas:** `hq/core/nexus/personas.yaml` +6 — loc-* 4 + inn-* 2
+  - **routing:** `hq/core/nexus/routing.yaml` +6 — loc-* + inn-*
+  - **AGENTS:** `AGENTS.md:62,256` 15→17 rooms · 115→121 agents — Law 12 + Final State
+  - **room-priority:** `hq/core/nexus/room-priority.yaml:11` 15→17 · T1 + loc/inn · T3 + warroom
+  - **tooling:** `hq/core/tooling/count_sync.py:23` (17,121) — guards PASS
+  - **redistribution of 04 (14→11) + full tool merge — still planned as ADR — لا تنفيذ بلا ERD مجمد (INT-0004) — موثق هنا كـ deferred-remaining**
+- **rejected/downgraded:** none — كل المؤجل نُفذ (6 وكلاء) — المتبقي (redistribution/tool-merge) مخطط
+- **evidence refs:** `hq/core/domain/rooms/08-localization/charter.md:1` · `hq/core/domain/rooms/16-innovation/charter.md:1` · `.opencode/agent/loc-*.md` 4 · `.opencode/agent/inn-*.md` 2 · `hq/core/nexus/registry.yaml:3,11` · `AGENTS.md:62,256` · `hq/core/tooling/count_sync.py:23`
+- **guards:** registry_guard --strict PASS · count_sync PASS · evidence_guard 0 broken · gitleaks no leaks

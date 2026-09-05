@@ -60,7 +60,7 @@ Default: all work on the project's main tree.
 The owner speaks Arabic only and is non-technical on abstract terms. Every direct communication (delivery · report · question · decision option) uses clear simple Arabic, explaining *why it matters to him*, not just *what happened*. Applies to CEO delivery (L3) and fast-track delivery (L1). Internal agent-to-agent work remains technical. **Violation = L1, then L2 on repetition.**
 
 ### Law 12 — Registry Invariant
-`hq/core/nexus/registry.yaml` is the official registry of 15 rooms · 115 agents. Any generation or migration must match it or fail loudly. Capsules in `hq/core/domain/rooms/` respect their capability limits.
+`hq/core/nexus/registry.yaml` is the official registry of 17 rooms · 121 agents. Any generation or migration must match it or fail loudly. Capsules in `hq/core/domain/rooms/` respect their capability limits.
 
 ### Law 13 — Zero-Randomness (INT-GTW-026)
 1. **Triple engine** for critical/architectural work: sequential thinking decomposes dependencies ← tree audit of every asset's path ← strict task tree.
@@ -253,9 +253,9 @@ Full index: `hq/core/nexus/registry.yaml` · Charters: `hq/core/domain/rooms/<ro
 
 ## | Final State — v4.1
 
-- **15 rooms** · **115 active agents** · **26 standards** · **~96/100 audit score**
-- Last updated: **2026-09-05 (R3.1 + Audit-ALL)** — Laws 1–16 + Stack Lock + Room Priority v2 + Room 04+08 Merger + Event-Driven (Rec #16) + P-19/20 + WarRoom (15) + SOFI-Quick-Reference + RCCF Registry + Living Docs + QA Matrix
-- **Amendment R3.1:** T1.4 merged 4 agents (114→108) · Room 08 (Data) merged into Room 04 (15→14) · **Phase B (2026-09-05):** +3 agents (qa-flutter-architect → 109 · qa-react-architect → 110 · qa-laravel-architect → 111) · **Audit-ALL (2026-09-05):** +4 agents (WarRoom 15-warroom: incident-commander/forensic/rollback/comms → 115) — next: Localization/Innovation planned as ADR · Stack Lock: Frontend=React EXCLUSIVE · Backend=Laravel 11+ EXCLUSIVE · Mobile=Flutter 3.22+/Dart 3+ EXCLUSIVE · All human-time concepts removed from agent mandates.
+- **17 rooms** · **121 active agents** · **26 standards** · **~96/100 audit score**
+- Last updated: **2026-09-05 (R3.1 + Audit-ALL-Phase2)** — Laws 1–16 + Stack Lock + Room Priority v2 + Room 04+08 Merger + Event-Driven (Rec #16) + P-19/20 + WarRoom (15) + Localization (08) + Innovation (16) + SOFI-Quick-Reference + RCCF Registry + Living Docs + QA Matrix
+- **Amendment R3.1:** T1.4 merged 4 agents (114→108) · Room 08 (Data) merged into Room 04 (15→14) · **Phase B (2026-09-05):** +3 agents (qa-flutter-architect → 109 · qa-react-architect → 110 · qa-laravel-architect → 111) · **Audit-ALL (2026-09-05):** +4 agents (WarRoom 15-warroom → 115) · **Audit-ALL-Phase2 (2026-09-05 — نفّذ المؤجل):** +6 agents (Localization 08: 4 · Innovation 16: 2 → 121) — 17 rooms total — next: redistribution of 04 planned · Stack Lock: Frontend=React EXCLUSIVE · Backend=Laravel 11+ EXCLUSIVE · Mobile=Flutter 3.22+/Dart 3+ EXCLUSIVE · All human-time concepts removed from agent mandates.
 - Any modification requires **brd-ceo approval** and is recorded in CORTEX.
 
 ---

@@ -7,8 +7,8 @@ version: 3
 date: 2026-09-04
 edition: "R3.1"
 final_state:
-  total_rooms: 15
-  total_agents: 115
+  total_rooms: 17
+  total_agents: 121
 
 # ============================================================================
 # PRIORITY TIERS — execution order, top-to-bottom
@@ -38,7 +38,7 @@ priority_tiers:
   # --------------------------------------------------------------------------
   T1_design_first:
     order: 1
-    rooms: [01-strategy, 02-research, 04-architecture, 03-design]
+    rooms: [01-strategy, 02-research, 04-architecture, 03-design, 08-localization, 16-innovation]
     active_stages: [S1, S2, S3]
     entry_trigger: "Lane classification complete (fast/standard/fateful)"
     exit_gate: "DFR signed — 09-security + 10-quality stamps present"

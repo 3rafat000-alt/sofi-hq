@@ -1,0 +1,5 @@
+# Senses — inn-tech-scout
+listens:
+  - tickets: { from: 16-lead, type: RCCF-task }
+reports-to: 16-lead
+forbidden-inputs: [ direct-owner-chat, other-room-tickets ]

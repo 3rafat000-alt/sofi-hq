@@ -465,6 +465,30 @@ routes:
     caveman: full
     budget: "~8k"
     note: "consultative Laravel/DDD QA (Fast/Standard only) — DDD layer conformance + Eloquent/Query Builder + migration + security (Sanctum/Passport/Policies/FormRequest) · execution budget ~25k · no gate authority — any gate/verdict → qa-lead + brd-cqo (C3)"
+  war-incident-commander:
+    model: workhorse
+    effort: high
+    caveman: full
+    budget: "~5k"
+    note: "WarRoom lead — P0 incident command · Law 14 freeze · MTTR — on-call, no gate"
+  war-forensic-analyst:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
+    note: "WarRoom forensic — log/trace preservation — chain-of-custody"
+  war-rollback-engineer:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~5k"
+    note: "WarRoom rollback — service revival — health checks"
+  war-communication-lead:
+    model: workhorse
+    effort: medium
+    caveman: full
+    budget: "~3k"
+    note: "WarRoom comms — Arabic Law-11 liaison — 30min updates"
 
   # DevOps
   ops-lead:

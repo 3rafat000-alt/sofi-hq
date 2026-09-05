@@ -1,14 +1,14 @@
 # =====================================================================
 # SOFI Registry — R3.1 (2026-09-04)
-# 14 rooms · 111 active agents
+# 15 rooms · 115 active agents
 # Owner directive: Stack Lock + Room Consolidation + Event-Driven
 # =====================================================================
 
 meta:
   version: R3.1
   date: 2026-09-04
-  total_rooms: 14
-  total_agents: 111
+  total_rooms: 15
+  total_agents: 115
   constitution_ref: AGENTS.md
   amendments:
     - "Room 08 (Data) merged into Room 04 (Architecture)"
@@ -250,6 +250,17 @@ rooms:
       - { name: historian, skills: ["session log", "audit trail", "evolution records"] }
       - { name: memory-curator, skills: ["CORTEX/HIPPOCAMPUS/AMYGDALA maintenance", "project vs org split"] }
       - { name: reflector, skills: ["on-incident-close lessons", "retrospectives", "Law-6 anti-loop feeds"] }
+
+  - code: 15-warroom
+    tier: T3
+    name_en: WarRoom
+    prefix: war
+    role: Emergency incident command — P0 war room (audit P0 gap — owner directive 2026-09-05).
+    agents:
+      - { name: incident-commander, skills: ["incident command", "MTTR drive", "Law-14 freeze", "postmortem"] }
+      - { name: forensic-analyst, skills: ["forensic evidence", "log/trace preservation", "timeline reconstruction"] }
+      - { name: rollback-engineer, skills: ["rollback windows", "service revival", "health checks"] }
+      - { name: communication-lead, skills: ["crisis comms", "Arabic Law-11 liaison", "stakeholder updates"] }
 
 services:
   intake:

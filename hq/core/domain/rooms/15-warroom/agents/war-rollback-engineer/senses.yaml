@@ -1,0 +1,5 @@
+# Senses — what this agent receives
+listens:
+  - tickets: { from: war-incident-commander, type: RCCF-emergency }
+reports-to: war-incident-commander
+forbidden-inputs: [ direct-owner-chat, other-room-tickets ]

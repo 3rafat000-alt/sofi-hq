@@ -1,0 +1,69 @@
+# RCCF Registry — سجل تتبع أوامر العمل المركزي
+# Purpose: تتبع كل RCCF مركزياً — الحل لفجوة "تعدد أوامر التنفيذ بلا تتبع" (audit 2026-09-05)
+# Owner: brd-chief-of-staff (00-boardroom) — ينشئ السجل، brd-ceo يصدقه، knw-lead يوثقه في CORTEX
+# Law: Law 5 (RCCF Mandatory) + P-02 (Handoff) — لا تنفيذ بلا RCCF مسجل هنا
+# Usage: كل RCCF جديد يُضاف هنا قبل توزيعه؛ كل انتقال يُحدث حالته؛ الإغلاق يوثق في HIPPOCAMPUS
+
+meta:
+  version: 1.0
+  date: 2026-09-05
+  owner: brd-chief-of-staff
+  approver: brd-ceo
+  recorder: knw-lead
+  states: [draft, issued, in_progress, blocked, delivered, accepted, rejected, frozen]
+  law_ref: AGENTS.md:35
+
+# الحقول الإلزامية لكل RCCF:
+#   rccf_id: RCCF-YYYY-MMDD-NAME (فريد — kebab-case)
+#   intake_ref: INT-YYYYMMDD-NAME (مرجع البوابة)
+#   lane: FAST|STANDARD|FATEFUL
+#   from: brd-ceo
+#   to: room-lead(s) — واحد أو أكثر
+#   objective: سطر واحد — الهدف
+#   success_metric: مقياس قبول قابل للقياس
+#   artifacts_in: ملفات الدخل file:line
+#   artifacts_out: ملفات الخرج المتوقعة file:line
+#   state: إحدى الحالات أعلاه
+#   evidence_ref: سجل HIPPOCAMPUS/CORTEX file:line
+
+registry:
+  - rccf_id: RCCF-2026-0905-PHASEB
+    intake_ref: INT-20260905-PHASEB
+    lane: FATEFUL
+    from: brd-ceo
+    to: [knw-lead, qa-lead, gtw-dispatcher]
+    objective: "Phase B — qa-flutter-architect (109) + migration 08→04 + brain restore (R1–R5)"
+    success_metric: "14/109/113 — all guards green — commit 97eb24a"
+    state: accepted
+    evidence_ref: hq/brain/cortex-decisions.md:DEC-R3.3-PHASEB-20260905
+
+  - rccf_id: RCCF-2026-0905-REACT-DDD
+    intake_ref: INT-20260905-REACT-DDD-002
+    lane: FATEFUL
+    from: brd-ceo
+    to: [qa-lead, knw-lead, gtw-dispatcher]
+    objective: "Add qa-react-architect (Samer Al-Khalil) — Room 10 — React/DDD advisory"
+    success_metric: "14/110/113 — all guards green — commit 2a6b383"
+    state: accepted
+    evidence_ref: hq/brain/cortex-decisions.md:ADR-20260905-GTW-REACT-DDD-ARCHITECT
+
+  - rccf_id: RCCF-2026-0905-LARAVEL-DDD
+    intake_ref: INT-20260905-LARAVEL-DDD-003
+    lane: FATEFUL
+    from: brd-ceo
+    to: [qa-lead, knw-lead, gtw-dispatcher]
+    objective: "Add qa-laravel-architect (Yousuf Al-Amiri) — Room 10 — Laravel/DDD/DB/Security advisory"
+    success_metric: "14/111/113 — all guards green — commit 83f4c84"
+    state: accepted
+    evidence_ref: hq/brain/cortex-decisions.md:ADR-20260905-GTW-LARAVEL-DDD-ARCHITECT
+
+  # مثال فارغ للتعبئة — انسخه لكل RCCF جديد:
+  # - rccf_id: RCCF-2026-XXXX-NAME
+  #   intake_ref: INT-YYYYMMDD-NAME
+  #   lane: STANDARD
+  #   from: brd-ceo
+  #   to: [room-lead]
+  #   objective: "..."
+  #   success_metric: "..."
+  #   state: draft
+  #   evidence_ref: hq/brain/hippocampus-sessions.md:SES-XXXX

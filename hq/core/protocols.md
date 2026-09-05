@@ -417,6 +417,38 @@ Binding platform list: `hq/core/standards/uiux-standard.md §Visual Inspiration 
 
 ---
 
+## Protocol 19 — Research-to-Design Bridge Protocol
+
+### Purpose
+Ensure every UX decision in room 03 is traceable to verified research from room 02 — no design on assumptions. Closes the gap noted in audit 2026-09-05: "ضعف الربط بين البحث والتصميم".
+
+### Rules
+
+1. **P-19.1 — Mandatory handoff:** `02-research` delivers its dossier (`res-journey-map` skill: journey map + JTBD personas + pain points + behavioral data + usability scripts) to `03-design` via Contract 02 (the single official Research→Design contract in `context-map.yaml`). No design starts before Gate-1 dossier is `PASS`. Violation = L2.
+2. **P-19.2 — Traceability:** every screen/flow in `03-design` cites its source research `file:line` (e.g. `hq/brain/cortex-decisions.md:1` as example). A screen with no research source = gate return to 02. Violation = L1.
+3. **P-19.3 — Persona → Flow mapping:** `res-ux-researcher` personas (JTBD) map 1:1 to `dsn-ux-architect` user flows — the mapping table lives in `projects/<slug>/brain/research-to-design-bridge.md` (one file per project).
+4. **P-19.4 — Pain → Solution mapping:** every pain point in the research dossier maps to a design solution or an explicit "deferred with reason" note (no silent drops).
+5. **P-19.5 — Joint Gate-1/DFR check:** `res-lead` co-signs DFR with `dsn-lead` + `sec-lead` + `qa-lead` that the research trace is intact. Missing co-signature = DFR incomplete. Violation = L2.
+
+Artifacts: `projects/<slug>/brain/research-dossier.md` (02) → `projects/<slug>/brain/research-to-design-bridge.md` (02+03 joint) → `projects/<slug>/brain/ux-flows.md` (03) — all `file:line` cited.
+
+---
+
+## Protocol 20 — Living Documentation & Failure Mode Protocol
+
+### Purpose
+Keep documentation alive and failures proactive — no stale docs, no repeated surprises (audit gaps 2026-09-05: "عدم وجود معيار موحد للتوثيق الحي" + "ضعف توثيق السيناريوهات السلبية").
+
+### Rules
+
+1. **P-20.1 — Living docs:** every room updates its owned docs with every Fateful/Standard change (same commit or the next — max 1 commit lag). Stale doc = L1. Owner: `knw-lead` audits monthly via `memory_summarizer.py`.
+2. **P-20.2 — Decision backup:** `knw-lead` schedules a weekly external backup of `hq/brain/` (CORTEX/HIPPOCAMPUS/AMYGDALA) to the archive (`SOFI-archive-*`) — loss of org memory = L3 for `knw-lead`. Violation = L2.
+3. **P-20.3 — Failure mode analysis:** every room runs a monthly failure-mode review (one file `projects/<slug>/brain/failure-modes/<room>.md` per room) listing top 3 risks + mitigations. AMYGDALA incidents auto-trigger a re-evaluation of the linked Gate (e.g. security incident → re-open G4). Missing review = L1.
+
+Artifacts: `hq/brain/` (live + weekly backup) + `projects/<slug>/brain/failure-modes/` + doc freshness via `evidence_guard`.
+
+---
+
 ## Protocol Priority
 
 In case of conflict between protocols, resolution follows:

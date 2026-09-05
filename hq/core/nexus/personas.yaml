@@ -363,6 +363,22 @@ personas:
     ar: Yousuf Al-Amiri
     role: Laravel QA Architect
 
+  war-incident-commander:
+    ar: Firas Al-Najjar
+    role: WarRoom Incident Commander
+
+  war-forensic-analyst:
+    ar: Layla Al-Halabi
+    role: Forensic Analyst
+
+  war-rollback-engineer:
+    ar: Omar Al-Khani
+    role: Rollback Engineer
+
+  war-communication-lead:
+    ar: Salma Al-Rashid
+    role: Communication Lead
+
   res-competitor-analyst:
     ar: Arwa Al-Samman
     role: Competitor Analyst

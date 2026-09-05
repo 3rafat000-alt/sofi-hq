@@ -170,3 +170,30 @@
 - **proposed agent:** `qa-react-architect` (Room 10) + skill `.opencode/skills/qa-react-architect/SKILL.md` (111→112 skills on disk) — pending brd-ceo approval/distribution.
 - **execution rooms (recommended for CEO):** qa-lead (10) as owner of the new agent + skill · knw-lead (13) for registry/personas/capsule/charter coordination + memory · gtw-dispatcher (14) for routing.yaml budgets + skill index (count_sync 111→112).
 - **evidence refs:** `hq/core/nexus/registry.yaml:209` (flutter-architect precedent) · `hq/core/nexus/personas.yaml:354-357` (Rayan Al-Qadi precedent) · `hq/core/system-state-current.md:6,44` (109/111 baseline) · `hq/brain/cortex-decisions.md:DEC-R3.4-PHASEB-ACCEPT-20260905` (acceptance + conditions) · `AGENTS.md` §Stack Lock (React 18+ exclusive) · `hq/core/domain/rooms/06-frontend/charter.md` (fnt-react-engineer — builder, distinct role).
+
+## ADR-20260905-AUDIT-ALL — تنفيذ المراجعة الشاملة (Audit-ALL) — تصحيح وتطوير المؤسسة بالكامل (أمر مالك "سوي كل شيئ")
+
+- **date:** 2026-09-05 · **owner directive:** "سوي كل شيئ" — تنفيذ المراجعة الشاملة المقدمة من AI Systems Architect (645 سطراً في SOFI-INSTITUTION-COMPLETE-REPORT-2026-09-05.md)
+- **classification:** FATEFUL — 15 rooms · 115 agents · 113 skills — registry + architecture + tooling + docs — Board + CSO veto
+- **verdict:** APPROVE بشروط — المستوى 1 و 2 يُنفذ فوراً على الشجرة الرئيسية (Law 10) — المستوى 3 (WarRoom + tool wrappers + quick-reference) يُنفذ فوراً — Localization/Innovation كـ ADR مخطط (لا غرفة جديدة بلا تصميم مجمد)
+- **Level 1 (5 إصلاحات — منفذة):**
+  - L1.1: Law 1 — إضافة المرجع الوحيد `hq/core/protocols.md:P-01.8` في `AGENTS.md:10` (توحيد المرجع)
+  - L1.2: charter 14-gateway — تم التحقق — لا تكرار (7 وكلاء — جدول سليم) — موثق كـ "verified no duplicate"
+  - L1.3: إنشاء `hq/core/SOFI-QUICK-REFERENCE.md:1` — خريطة قرار واحدة + مخطط تدفق + مسرد — يمنع التشتت
+  - L1.4: Protocol 19 + 20 في `hq/core/protocols.md:391` — P-19 Research-to-Design Bridge (P-19.1→19.5) + P-20 Living Docs & Failure Mode (P-20.1→20.3)
+  - L1.5: `hq/core/domain/context-map.yaml:1` — توضيح حدود 04 (OWNS api-design) / 09 (REVIEWS/VETO) / 10 (VERIFIES) — boundary note v1.1
+- **Level 2 (3 ملفات — منفذة):**
+  - L2.1: `hq/core/nexus/rccf-registry.yaml:1` — سجل RCCF مركزي — 3 RCCFs مسجلة (PHASEB + REACT + LARAVEL) + قالب
+  - L2.2: `hq/core/standards/living-docs.md:1` — معيار التوثيق الحي — max تأخير التزام واحد
+  - L2.3: `hq/core/standards/qa-assessment-matrix.md:1` — مصفوفة 20/28/22 نقطة + معايير مشتركة (Perf/Security/A11y)
+  - L2.4: `hq/core/templates/report-template.md` — قالب موحّد + `hq/core/tooling/sofi-audit.py` + `sofi-security-scanner.py`
+- **Level 3 (WarRoom — منفذة):**
+  - L3.1: غرفة 15-warroom — 4 وكلاء — `war-incident-commander` (Firas Al-Najjar) · `war-forensic-analyst` (Layla Al-Halabi) · `war-rollback-engineer` (Omar Al-Khani) · `war-communication-lead` (Salma Al-Rashid) — charter + 4 agents + 12 capsule
+  - L3.2: registry `hq/core/nexus/registry.yaml:3` 14→15 rooms · 111→115 agents · `personas.yaml` +4 · `routing.yaml` +4 · `AGENTS.md:62,256` 111→115 · `room-priority.yaml` T3 + warroom · `count_sync.py` (15,115)
+  - L3.3: Localization/Innovation + إعادة توزيع 04 + دمج أدوات — **مخطط كـ ADR لاحق** — لا تنفيذ بلا ERD/OpenAPI مجمدين (Design-First)
+- **rejected/downgraded (with reason):**
+  - دمج 12-observability في 11-devops — **مرفوض** — يخالف فصل T3 (المراقب لا يراقب نفسه) — Law 2
+  - دمج api-envelope/ddd-capsule في معيار واحد — **مرفوض** — عقدان مستقلان يُقاس عليهما الكود
+  - زيادة فورية إلى 16 غرفة/124 وكيلاً — **مؤجل** — يحتاج ERD + OpenAPI + DFR قبل أي غرفة جديدة (Law S1→S6)
+- **evidence refs:** `hq/core/SOFI-QUICK-REFERENCE.md:1` · `hq/core/nexus/rccf-registry.yaml:1` · `hq/core/standards/living-docs.md:1` · `hq/core/standards/qa-assessment-matrix.md:1` · `hq/core/domain/rooms/15-warroom/charter.md:1` · `.opencode/agent/war-*.md` 4 · `hq/core/nexus/registry.yaml:3,11` · `AGENTS.md:62,256` · `hq/core/tooling/count_sync.py:23` · `hq/core/nexus/room-priority.yaml:11` · `hq/core/protocols.md:391` (P-19/20) · `hq/core/domain/context-map.yaml:1`
+- **guards:** registry_guard --strict PASS · count_sync PASS · evidence_guard hq/core --strict 0 broken · gitleaks no leaks · pre-commit PASS

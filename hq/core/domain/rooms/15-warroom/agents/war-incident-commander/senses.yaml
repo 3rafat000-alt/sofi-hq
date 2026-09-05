@@ -1,0 +1,7 @@
+# Senses — what this agent receives
+listens:
+  - tickets: { from: brd-ceo, type: RCCF-emergency }
+  - tickets: { from: obs-incident-commander, type: incident-alert }
+  - tickets: { from: sec-incident-responder, type: security-alert }
+reports-to: brd-ceo
+forbidden-inputs: [ direct-owner-chat ]

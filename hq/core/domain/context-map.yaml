@@ -1,8 +1,12 @@
-# Context Map — contexts and contracts across the 15 rooms
+# Context Map — contexts and contracts across the 14 rooms (R3.1: 08 merged into 04 — history kept per Law 13)
 # Governing rule: this is the single official interface between domain contexts.
 # Communication outside what is defined here = leakage (Law 2 / Law 3).
 # Execution goes through the ticket bus at hq/core/application/bus, and delivery is exclusively through the room lead.
 # v1 (2026-08-25): derived from the constitution, contracts, and charters — each room matures its own lines in its dedicated session.
+# v1.1 (2026-09-05 — boundary clarification): 04-architecture OWNS api-design + data-design (OpenAPI + ERD) — single source of truth;
+#   09-security REVIEWS and VETOES security aspects of every design/release (STRIDE, DFR signature) but never designs APIs;
+#   10-quality VERIFIES testability and contract-conformance (test plans + Gate-5 verdict) but never fixes code or designs APIs.
+#   No overlap: design ownership is 04, security gate is 09, quality gate is 10 — all via tickets only.
 # Reading rules:
 #   provides = what the room commits to produce for the system · requires = what it needs by name, not by source
 #   talks-to = legitimate neighbors, via tickets only · forbidden = explicit prohibitions
@@ -35,9 +39,9 @@ shared-kernel: [glossary, evidence-rule, envelope, identity]  # read by everyone
   forbidden: [code-commits-before-dfr-gate]
 
 "04-architecture":
-  provides: [data-design, api-design, adr-chain, capsule-standards]
+  provides: [data-design, api-design, adr-chain, capsule-standards]  # OWNS OpenAPI + ERD — sole designer — see boundary note v1.1
   requires: [prd-from-01-strategy, designs-from-03-design]
-  talks-to: ["05-backend", "08-data", all-engineering-leads]
+  talks-to: ["05-backend", "08-data(archived-R3.1)", all-engineering-leads]
   forbidden: [bypassing-dfr]
 
 "05-backend":
@@ -65,16 +69,16 @@ shared-kernel: [glossary, evidence-rule, envelope, identity]  # read by everyone
   forbidden: [production-data-exposure]
 
 "09-security":
-  provides: [threat-models, pentest-reports, dfr-signature, absolute-veto]
+  provides: [threat-models, pentest-reports, dfr-signature, absolute-veto]  # REVIEWS only — never designs APIs/data — veto via gates
   requires: [review-access-to-every-design-and-release]
   talks-to: [all-rooms-gates-only, "00-boardroom"]
-  forbidden: [implementation-duties]
+  forbidden: [implementation-duties, api-design, data-design]
 
 "10-quality":
-  provides: [test-plans, zero-bug-evidence, release-verdicts]
+  provides: [test-plans, zero-bug-evidence, release-verdicts]  # VERIFIES contract-conformance + DFR tokens — never fixes code/designs APIs
   requires: [testable-builds-via-bus, acceptance-criteria-from-leads]
   talks-to: ["05-backend", "06-frontend", "07-mobile", "11-devops"]
-  forbidden: [fixing-code-themselves]
+  forbidden: [fixing-code-themselves, api-design, data-design]
 
 "11-devops":
   provides: [deployments, live-infra-health, rollback-plans]

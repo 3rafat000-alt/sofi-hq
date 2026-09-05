@@ -8,7 +8,7 @@
 ## | The 16 Binding Laws
 
 ### Law 1 — Proportional Flow
-Every request enters through `gtw-intake-reformer` — no exceptions. Direct response without intake = **L4**. Flow depth is proportional to task criticality (`gtw-dispatcher` + `str-gate0-classify`). Evidence (L4), memory (L7), and ownership (L9) are mandatory on every track.
+Every request enters through `gtw-intake-reformer` — no exceptions. Direct response without intake = **L4**. Flow depth is proportional to task criticality (`gtw-dispatcher` + `str-gate0-classify`). Evidence (L4), memory (L7), and ownership (L9) are mandatory on every track. **Single authoritative lane text:** `hq/core/protocols.md:P-01.8` — this Law defers to P-01.8 for Fast/Standard/Fateful definitions and guardrails (Law 1 is the principle, P-01.8 is the binding detail).
 
 | Track | For Which Tasks | Flow | Minimum |
 |-------|-----------------|------|---------|
@@ -60,7 +60,7 @@ Default: all work on the project's main tree.
 The owner speaks Arabic only and is non-technical on abstract terms. Every direct communication (delivery · report · question · decision option) uses clear simple Arabic, explaining *why it matters to him*, not just *what happened*. Applies to CEO delivery (L3) and fast-track delivery (L1). Internal agent-to-agent work remains technical. **Violation = L1, then L2 on repetition.**
 
 ### Law 12 — Registry Invariant
-`hq/core/nexus/registry.yaml` is the official registry of 14 rooms · 111 agents. Any generation or migration must match it or fail loudly. Capsules in `hq/core/domain/rooms/` respect their capability limits.
+`hq/core/nexus/registry.yaml` is the official registry of 15 rooms · 115 agents. Any generation or migration must match it or fail loudly. Capsules in `hq/core/domain/rooms/` respect their capability limits.
 
 ### Law 13 — Zero-Randomness (INT-GTW-026)
 1. **Triple engine** for critical/architectural work: sequential thinking decomposes dependencies ← tree audit of every asset's path ← strict task tree.
@@ -253,9 +253,9 @@ Full index: `hq/core/nexus/registry.yaml` · Charters: `hq/core/domain/rooms/<ro
 
 ## | Final State — v4.1
 
-- **14 rooms** · **111 active agents** · **26 standards** · **~96/100 audit score**
-- Last updated: **2026-09-05 (R3.1)** — Laws 1–16 + Stack Lock + Room Priority v2 + Room 04+08 Merger + Event-Driven (Rec #16)
-- **Amendment R3.1:** T1.4 merged 4 agents (114→108) · Room 08 (Data) merged into Room 04 (15→14) · **Phase B (2026-09-05):** +3 agents (qa-flutter-architect → 109 · qa-react-architect → 110 · qa-laravel-architect → 111) · Stack Lock: Frontend=React EXCLUSIVE · Backend=Laravel 11+ EXCLUSIVE · Mobile=Flutter 3.22+/Dart 3+ EXCLUSIVE · All human-time concepts removed from agent mandates.
+- **15 rooms** · **115 active agents** · **26 standards** · **~96/100 audit score**
+- Last updated: **2026-09-05 (R3.1 + Audit-ALL)** — Laws 1–16 + Stack Lock + Room Priority v2 + Room 04+08 Merger + Event-Driven (Rec #16) + P-19/20 + WarRoom (15) + SOFI-Quick-Reference + RCCF Registry + Living Docs + QA Matrix
+- **Amendment R3.1:** T1.4 merged 4 agents (114→108) · Room 08 (Data) merged into Room 04 (15→14) · **Phase B (2026-09-05):** +3 agents (qa-flutter-architect → 109 · qa-react-architect → 110 · qa-laravel-architect → 111) · **Audit-ALL (2026-09-05):** +4 agents (WarRoom 15-warroom: incident-commander/forensic/rollback/comms → 115) — next: Localization/Innovation planned as ADR · Stack Lock: Frontend=React EXCLUSIVE · Backend=Laravel 11+ EXCLUSIVE · Mobile=Flutter 3.22+/Dart 3+ EXCLUSIVE · All human-time concepts removed from agent mandates.
 - Any modification requires **brd-ceo approval** and is recorded in CORTEX.
 
 ---

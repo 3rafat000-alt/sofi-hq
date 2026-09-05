@@ -20,7 +20,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[3]
 
 # ── PENDING-PHASE-B baseline (temporary stopgap; ends when Phase B = "zero WARN left") ──
 SKILLS_BASELINE = 113          # observed .opencode/skills/*/SKILL.md at B (2026-09-05) — bumped by qa-laravel-architect
-AGENTS_HDR_REQUIRED = (14, 111)  # R3.1 claims that must appear in AGENTS.md header/final state — bumped by qa-laravel-architect
+AGENTS_HDR_REQUIRED = (15, 115)  # R3.1 + Audit-ALL — 15 rooms · 115 agents — WarRoom 15-warroom added
 
 def parse_registry() -> tuple[dict[str, list[str]], dict[str, str], dict[str, int]]:
     """No-yaml parse matching registry_guard.py — one source of parsing truth (Law 12 consistency)."""

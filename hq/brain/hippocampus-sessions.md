@@ -159,3 +159,14 @@
 - **status:** ready-for-review — بانتظار فوّض المالك للتنفيذ المباشر عبر subagent (build mode) أو RCCF من brd-ceo.
 - **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-GTW-LARAVEL-DDD-ARCHITECT` + هذه الجلسة.
 - **checkpoint before delivery:** this entry (P-02.1).
+
+## SES-20260905-AUDIT-ALL — تنفيذ المراجعة الشاملة (سوي كل شيئ) — المستويات 1+2+3
+
+- **session:** 2026-09-05 — المالك أمر "سوي كل شيئ" على المراجعة الشاملة (645 سطراً) — gtw-intake-reformer صنفها FATEFUL → نفذها على الشجرة الرئيسية (Law 10) بأمر مالك صريح (تجاوز P-01.2)
+- **Level 1 (5):** Law 1 توحيد P-01.8 في AGENTS.md:10 — SOFI-QUICK-REFERENCE.md — P-19/20 في protocols.md:391 — context-map v1.1 حدود 04/09/10
+- **Level 2 (4):** rccf-registry.yaml — living-docs.md — qa-assessment-matrix.md — report-template.md + sofi-audit.py + sofi-security-scanner.py
+- **Level 3 (WarRoom):** 15-warroom — 4 وكلاء (Firas · Layla · Omar · Salma) — charter + 4 agents + 12 capsule — registry 14→15 · 111→115 — AGENTS 111→115 — room-priority T3 + warroom
+- **Level 3 (مؤجل):** Localization/Innovation + إعادة توزيع 04 + دمج أدوات — موثق كـ ADR مخطط — لا تنفيذ بلا تصميم مجمد (INT-0004)
+- **guards:** registry_guard PASS 15/115 1:1 · count_sync PASS 15/115 · evidence_guard 0 broken · gitleaks no leaks — all green
+- **evidence:** `hq/brain/cortex-decisions.md:ADR-20260905-AUDIT-ALL` + هذه الجلسة — commit ذري قادم
+- **status:** in-flight — بانتظار الالتزام الذري

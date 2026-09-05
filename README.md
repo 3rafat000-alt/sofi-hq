@@ -11,11 +11,13 @@ memory isolation, and incident runbooks built in.
 > **Status (R3.1 + Audit-ALL-Phase3 — 2026-09-05):** `17 rooms · 121 agents · 116 skills` — all 4
 > constitutional guards green · **zero PENDING warnings** · main tree only · every change atomic + auditable.
 >
-> **Live dashboard:** [`SOFI-INSTITUTION-COMPLETE-REPORT-2026-09-05.md`](./SOFI-INSTITUTION-COMPLETE-REPORT-2026-09-05.md) — 685 lines, the single source of truth for the org state.
+> **Live dashboard:** [`docs/SOFI-INSTITUTION-COMPLETE-REPORT.md`](./docs/SOFI-INSTITUTION-COMPLETE-REPORT.md) — 685 lines, the single source of truth for the org state. *(moved from Desktop to `docs/` on 2026-09-05 — P0 fix)*
 
 ---
 
 ## Table of Contents
+
+**[Quick Start — 5 Minutes](#quick-start--5-minutes)** — for the impatient
 
 ### Part 1 — Orientation
 1. [What is SOFI HQ?](#1-what-is-sofi-hq)
@@ -88,6 +90,28 @@ memory isolation, and incident runbooks built in.
 50. [Versioning & History (Full Timeline)](#50-versioning--history)
 51. [Troubleshooting & FAQ](#51-troubleshooting--faq)
 52. [License & Contributing](#52-license--contributing)
+
+---
+
+## Quick Start — 5 Minutes
+
+> **For the non-technical owner:** copy-paste these 3 commands. If all 3 say **PASS**, your machine is ready. If any says **FAIL**, read the line above it — it tells you exactly which file:line is wrong.
+
+```bash
+# 1. Clone (already done if you are reading this here)
+git clone https://github.com/3rafat000-alt/sofi-hq.git
+cd sofi-hq
+
+# 2. Install the pre-commit hook (one-time)
+bash hq/core/tooling/hooks/install.sh
+
+# 3. Verify the 4 constitutional guards — all must say PASS + zero pending
+python3 hq/core/tooling/sofi-audit.py
+python3 hq/core/tooling/evidence_guard.py hq/core --strict
+# Expected: registry_guard PASS 17/121 · count_sync PASS 17/121 · evidence_guard 0 broken · gitleaks no leaks
+```
+
+**Next:** read `hq/core/SOFI-QUICK-REFERENCE.md` (1 page — the whole org on one page) → then `AGENTS.md:10` (the 16 laws).
 
 ---
 
@@ -1504,7 +1528,7 @@ See [Scenario 2](#41-scenario-2-a-p0-production-incident).
 9. Bump `hq/core/tooling/registry_guard.py:20` + `count_sync.py:23`
 10. Bump `AGENTS.md:62,256` + `hq/core/nexus/registry.yaml:3,11` + `room-priority.yaml:11`
 11. Record ADR in `hq/brain/cortex-decisions.md` + SES in `hippocampus-sessions.md`
-12. Update `SOFI-INSTITUTION-COMPLETE-REPORT-2026-09-05.md` on desktop
+12. Update `docs/SOFI-INSTITUTION-COMPLETE-REPORT.md` (and the Desktop copy if needed)
 13. Commit atomically — pre-commit enforces all 4 guards
 
 ### Adding a new skill
@@ -1618,7 +1642,7 @@ A: In this order:
 1. `AGENTS.md:1` (the constitution)
 2. `hq/core/SOFI-QUICK-REFERENCE.md` (1-page map)
 3. `hq/core/system-state-current.md:1` (binding state)
-4. `SOFI-INSTITUTION-COMPLETE-REPORT-2026-09-05.md` (on your desktop) — the live dashboard
+4. `docs/SOFI-INSTITUTION-COMPLETE-REPORT.md:1` — the live dashboard (also on Desktop)
 5. `hq/core/standards/pipeline-production-line.md` (the S1→S6 map)
 6. Run `bash hq/core/tooling/hooks/pre-commit` to see the guards in action
 7. Open one issue for a small improvement + follow the full pipeline
